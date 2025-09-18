@@ -1,6 +1,6 @@
 gstdtoken.net {
   encode zstd gzip
-  tls admin@gstdtoken.net
+  tls goldenbit.kz@yandex.kz
   handle /api/health {
     reverse_proxy web:3000
   }
