@@ -1,0 +1,153 @@
+'use client';
+
+import { useLanguage } from '@/components/LanguageProvider';
+import { PageHeader } from '@/components/PageHeader';
+import { HowToSteps } from '@/components/HowToSteps';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { ExternalLink, Shield, Zap, Users } from 'lucide-react';
+import { LINKS } from '@/content/config';
+
+export default function BuyPage() {
+  const { t } = useLanguage();
+
+  const benefits = [
+    {
+      icon: Shield,
+      title: (t('buy.benefits')[0] as any).title,
+      description: (t('buy.benefits')[0] as any).description,
+    },
+    {
+      icon: Zap,
+      title: (t('buy.benefits')[1] as any).title,
+      description: (t('buy.benefits')[1] as any).description,
+    },
+    {
+      icon: Users,
+      title: (t('buy.benefits')[2] as any).title,
+      description: (t('buy.benefits')[2] as any).description,
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-white">
+      <PageHeader 
+        title={t('buyTitle')} 
+        subtitle={t('buy.subtitle')}
+      />
+      
+      <main className="container mx-auto px-4 py-12">
+        {/* Quick Buy Section */}
+        <section className="mb-16">
+          <Card className="bg-gradient-to-br from-gold-500/10 to-gold-600/5 border-gold-200">
+            <CardHeader className="text-center">
+              <CardTitle className="text-3xl text-light-bg mb-4">
+                <span className="text-gradient-gold">{t('buy.quickBuyTitle')}</span>
+              </CardTitle>
+              <CardDescription className="text-muted-light text-lg">
+                {t('buy.quickBuyDescription')}
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="text-center">
+              <Button size="lg" className="btn-gold mb-4" asChild>
+                <a href={LINKS.stonfiSwap} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="w-5 h-5 mr-2" />
+                  {t('buy.buyButtonText')}
+                </a>
+              </Button>
+              <p className="text-sm text-muted-light">
+                {t('buy.poweredBy')}
+              </p>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* How to Buy Steps */}
+        <HowToSteps />
+
+        {/* Benefits Section */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            <span className="text-gradient-gold">Why Choose GSTD?</span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {benefits.map((benefit, index) => (
+              <Card key={index} className="bg-white border-gold-200 hover:border-gold-300 transition-all duration-300 text-center">
+                <CardHeader>
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 flex items-center justify-center">
+                    <benefit.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <CardTitle className="text-xl text-light-bg">{benefit.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-muted-light leading-relaxed">
+                    {benefit.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* Features List */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            <span className="text-gradient-gold">{t('buy.featuresTitle')}</span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {(t('buy.features') as string[]).map((feature, index) => (
+              <div key={index} className="flex items-start space-x-3 p-4 bg-slate-50 rounded-lg">
+                <div className="w-6 h-6 rounded-full bg-gold-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-white text-sm font-bold">✓</span>
+                </div>
+                <p className="text-muted-light">{feature}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Additional Resources */}
+        <section>
+          <h2 className="text-3xl font-bold text-center mb-12">
+            <span className="text-gradient-gold">Additional Resources</span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card className="bg-white border-gold-200">
+              <CardHeader>
+                <CardTitle className="text-lg text-light-bg">Advantages</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-light mb-4">
+                  Learn more about GSTD token, its utility, and how to use it effectively.
+                </p>
+                <Button variant="outline" className="btn-outline-gold" asChild>
+                  <a href={LINKS.docs} target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Read Details
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white border-gold-200">
+              <CardHeader>
+                <CardTitle className="text-lg text-light-bg">Community</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-light mb-4">
+                  Join our community to stay updated and get support from other users.
+                </p>
+                <Button variant="outline" className="btn-outline-gold" asChild>
+                  <a href={LINKS.telegram} target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Join Telegram
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+}
