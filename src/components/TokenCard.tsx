@@ -69,14 +69,15 @@ export function TokenCard() {
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-3">
           <Button className="btn-gold flex-1" asChild>
-            <a href="/buy">
+            <a href={LINKS.stonfiSwap} target="_blank" rel="noopener noreferrer">
+              <ExternalLink className="w-4 h-4 mr-2" />
               Buy GSTD
             </a>
           </Button>
           <Button variant="outline" className="btn-outline-gold flex-1" asChild>
-            <a href={LINKS.stonfiSwap} target="_blank" rel="noopener noreferrer">
+            <a href={LINKS.docs} target="_blank" rel="noopener noreferrer">
               <ExternalLink className="w-4 h-4 mr-2" />
-              Swap on StonFi
+              Documentation
             </a>
           </Button>
         </div>
