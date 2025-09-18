@@ -122,6 +122,17 @@ export default function TokenPage() {
           <h2 className="text-3xl font-bold text-center mb-12">
             <span className="text-gradient-gold">{t('token.featuresTitle')}</span>
           </h2>
+          
+          {/* Buy Button */}
+          <div className="flex justify-center mb-12">
+            <Button className="btn-gold text-lg px-8 py-3" asChild>
+              <a href="/buy" className="flex items-center gap-2">
+                <Coins className="w-5 h-5" />
+                Buy GSTD Token Now
+              </a>
+            </Button>
+          </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {tokenFeatures.map((feature, index) => (
               <Card key={index} className="bg-white border-gold-200 hover:border-gold-300 transition-all duration-300">
@@ -148,6 +159,17 @@ export default function TokenPage() {
           <h2 className="text-3xl font-bold text-center mb-12">
             <span className="text-gradient-gold">Token Economics</span>
           </h2>
+          
+          {/* Buy Button */}
+          <div className="flex justify-center mb-8">
+            <Button className="btn-gold text-lg px-8 py-3" asChild>
+              <a href="/buy" className="flex items-center gap-2">
+                <Coins className="w-5 h-5" />
+                Buy GSTD Token Now
+              </a>
+            </Button>
+          </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card className="bg-white border-gold-200">
               <CardHeader>
