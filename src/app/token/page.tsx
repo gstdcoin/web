@@ -76,7 +76,7 @@ export default function TokenPage() {
                 </div>
                 <div className="text-center p-4 bg-slate-50 rounded-lg">
                   <p className="text-sm text-muted-light mb-1">{t('tokenInfo.utility')}</p>
-                  <p className="font-semibold text-gold-600">Collateral & Access</p>
+                  <p className="font-semibold text-gold-600">{t('tokenInfo.utilityValue')}</p>
                 </div>
               </div>
 
@@ -209,15 +209,15 @@ export default function TokenPage() {
                 <div className="space-y-3">
                   <div className="flex justify-between">
                     <span className="text-muted-light">{t('tokenInfo.maxSupply')}</span>
-                    <span className="font-semibold text-gold-600">1B (TON)</span>
+                    <span className="font-semibold text-gold-600">{t('tokenInfo.maxSupplyValue')}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-light">{t('tokenInfo.solana')}</span>
-                    <span className="font-semibold text-gold-600">60K</span>
+                    <span className="font-semibold text-gold-600">{t('tokenInfo.solanaValue')}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-light">{t('tokenInfo.xrpl')}</span>
-                    <span className="font-semibold text-gold-600">20K</span>
+                    <span className="font-semibold text-gold-600">{t('tokenInfo.xrplValue')}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-light">{t('tokenInfo.network')}</span>
