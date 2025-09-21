@@ -1,29 +1,33 @@
-# Build stage
+# Build stage - optimized for low memory
 FROM node:20-alpine AS builder
 WORKDIR /app
 
+# Set memory limits for build process
+ENV NODE_OPTIONS="--max-old-space-size=512"
+
 # Install dependencies first for better caching
 COPY package.json package-lock.json ./
-RUN npm ci --silent
+RUN npm ci --silent --no-audit --no-fund
 
-# Copy source code and build
+# Copy source code and build with memory optimization
 COPY . .
 RUN npm run build
 
-# Production stage
+# Production stage - minimal image
 FROM node:20-alpine AS runner
 WORKDIR /app
 
-# Install wget for health checks
-RUN apk add --no-cache wget
+# Install minimal dependencies
+RUN apk add --no-cache wget dumb-init
 
 # Create non-root user for security
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-# Set production environment
+# Set production environment with memory limits
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_OPTIONS="--max-old-space-size=256 --max-semi-space-size=64"
 
 # Copy built application
 COPY --from=builder /app/public ./public
@@ -38,5 +42,6 @@ EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
-# Start the application
+# Use dumb-init for proper signal handling and start the application
+ENTRYPOINT ["dumb-init", "--"]
 CMD ["node", "server.js"]

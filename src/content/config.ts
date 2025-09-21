@@ -27,5 +27,5 @@ export const SOCIAL_LINKS = {
   telegram: "https://t.me/goldstandardcoin",
   twitter: "https://x.com/gstdtoken",
   github: "https://github.com/gstdcoin",
-  docs: "/investors"
+  docs: "/advantages"
 };

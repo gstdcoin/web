@@ -7,15 +7,21 @@ const nextConfig = {
   // Enable standalone output for Docker optimization
   output: 'standalone',
   
-  // Disable experimental features that are now stable
+  // Optimize for low-resource environments
   experimental: {
-    // Remove appDir as it's now stable in Next.js 14
+    // Reduce memory usage
+    memoryBasedWorkersCount: true,
+    // Optimize build process
+    optimizePackageImports: ['lucide-react'],
   },
   
-  // Optimize images
+  // Optimize images for low memory
   images: {
     domains: ['localhost'],
-    formats: ['image/webp', 'image/avif'],
+    formats: ['image/webp'],
+    minimumCacheTTL: 60,
+    dangerouslyAllowSVG: false,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   
   // Environment variables
@@ -23,23 +29,51 @@ const nextConfig = {
     NEXT_PUBLIC_PLAUSIBLE_DOMAIN: process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || 'gstdtoken.net',
   },
   
-  // Compression
+  // Compression and performance
   compress: true,
-  
-  // Performance optimizations
   poweredByHeader: false,
   generateEtags: false,
   
-  // Bundle analyzer (uncomment for analysis)
-  // webpack: (config, { isServer }) => {
-  //   if (!isServer) {
-  //     config.resolve.fallback = {
-  //       ...config.resolve.fallback,
-  //       fs: false,
-  //     };
-  //   }
-  //   return config;
-  // },
+  // Memory optimization
+  swcMinify: true,
+  
+  // Webpack optimizations for low memory
+  webpack: (config, { isServer, dev }) => {
+    // Reduce memory usage during build
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        net: false,
+        tls: false,
+      };
+    }
+    
+    // Optimize for production builds
+    if (!dev) {
+      config.optimization = {
+        ...config.optimization,
+        splitChunks: {
+          chunks: 'all',
+          cacheGroups: {
+            default: {
+              minChunks: 2,
+              priority: -20,
+              reuseExistingChunk: true,
+            },
+            vendor: {
+              test: /[\\/]node_modules[\\/]/,
+              name: 'vendors',
+              priority: -10,
+              chunks: 'all',
+            },
+          },
+        },
+      };
+    }
+    
+    return config;
+  },
 };
 
 export default withNextIntl(nextConfig);

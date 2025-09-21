@@ -1,32 +1,38 @@
 services:
   web:
     build: .
-    env_file: .env
+    env_file: .env.production
     restart: unless-stopped
     networks:
       - gstd-network
-    # Resource limits to prevent memory issues
+    # Resource limits optimized for 1GB RAM VPS
     deploy:
       resources:
         limits:
-          memory: 512M
-          cpus: '0.5'
+          memory: 400M
+          cpus: '0.8'
         reservations:
-          memory: 256M
-          cpus: '0.25'
-    # Health check - оптимизирован для быстрого запуска
+          memory: 200M
+          cpus: '0.3'
+    # Health check - optimized for quick startup
     healthcheck:
       test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/api/health"]
-      interval: 15s
-      timeout: 5s
-      retries: 2
-      start_period: 20s
-    # Logging
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    # Logging with size limits
     logging:
       driver: "json-file"
       options:
-        max-size: "10m"
-        max-file: "3"
+        max-size: "5m"
+        max-file: "2"
+    # Security and performance
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp:noexec,nosuid,size=100m
 
   caddy:
     image: caddy:2-alpine
@@ -43,27 +49,30 @@ services:
       - caddy_config:/config
     networks:
       - gstd-network
-    # Resource limits for Caddy
+    # Resource limits optimized for 1GB RAM VPS
     deploy:
       resources:
         limits:
-          memory: 128M
-          cpus: '0.25'
+          memory: 100M
+          cpus: '0.2'
         reservations:
-          memory: 64M
+          memory: 50M
           cpus: '0.1'
-    # Health check - оптимизирован для быстрого запуска
+    # Health check - optimized for quick startup
     healthcheck:
       test: ["CMD", "caddy", "version"]
-      interval: 15s
-      timeout: 5s
-      retries: 2
-    # Logging
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    # Logging with size limits
     logging:
       driver: "json-file"
       options:
-        max-size: "5m"
+        max-size: "3m"
         max-file: "2"
+    # Security
+    security_opt:
+      - no-new-privileges:true
 
 networks:
   gstd-network:

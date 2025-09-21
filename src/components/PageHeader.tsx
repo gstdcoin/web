@@ -3,8 +3,9 @@
 import { useLanguage } from '@/components/LanguageProvider';
 import { Button } from '@/components/ui/button';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
-import { ArrowLeft, Zap } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { LINKS } from '@/content/config';
 
 interface PageHeaderProps {
@@ -26,10 +27,15 @@ export function PageHeader({ title, subtitle, showBackButton = true }: PageHeade
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <div className="flex items-center space-x-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-gold-500 to-gold-600">
-                <Zap className="h-5 w-5 text-white" />
-              </div>
-              <span className="text-xl font-bold text-gradient-gold">GSTD</span>
+              <Image
+                src="/logogstd.png"
+                alt="GSTD Token Logo"
+                width={32}
+                height={32}
+                className="h-8 w-8"
+                priority
+                unoptimized
+              />
             </div>
           </Link>
 
@@ -42,18 +48,18 @@ export function PageHeader({ title, subtitle, showBackButton = true }: PageHeade
           </div>
 
           {/* Actions */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-1">
             <LanguageSwitcher />
-            <Button className="btn-gold" size="sm" asChild>
+            <Button className="btn-gold hidden sm:inline-flex" size="sm" asChild>
               <a href={LINKS.stonfiSwap} target="_blank" rel="noopener noreferrer">
                 {t('ctaPrimary')}
               </a>
             </Button>
             {showBackButton && (
-              <Button variant="outline" size="sm" asChild>
+              <Button variant="outline" size="sm" asChild className="min-w-0">
                 <Link href="/" className="flex items-center">
-                  <ArrowLeft className="w-4 h-4 mr-2" />
-                  {t('backToHome')}
+                  <ArrowLeft className="w-4 h-4 sm:mr-2" />
+                  <span className="hidden sm:inline">{t('backToHome')}</span>
                 </Link>
               </Button>
             )}

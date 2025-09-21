@@ -38,6 +38,7 @@ export function Navbar() {
                 height={32}
                 className="h-8 w-8"
                 priority
+                unoptimized
               />
             </div>
           </Link>

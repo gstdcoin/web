@@ -7,15 +7,7 @@ gstdtoken.net {
   reverse_proxy web:3000
 }
 
-82.115.48.232:80 {
-  encode zstd gzip
-  handle /api/health {
-    reverse_proxy web:3000
-  }
-  reverse_proxy web:3000
-}
-
 # Block all other requests
 :80, :443 {
-  respond "Access denied - Site available only at gstdtoken.net" 403
+  respond "Access denied" 403
 }
