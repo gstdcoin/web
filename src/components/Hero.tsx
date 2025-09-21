@@ -48,24 +48,24 @@ export function Hero() {
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-slide-up">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6 animate-slide-up px-4">
             <span className="text-gradient-gold">{t('hero.title')}</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-muted-light mb-8 max-w-3xl mx-auto animate-slide-up delay-200">
+          <p className="text-lg sm:text-xl md:text-2xl text-muted-light mb-8 max-w-3xl mx-auto animate-slide-up delay-200 px-4">
             {t('hero.subtitle')}
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-slide-up delay-400">
-            <Button size="lg" className="btn-gold group" asChild>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-slide-up delay-400 px-4">
+            <Button size="lg" className="btn-gold group w-full sm:w-auto touch-manipulation" asChild>
               <a href={LINKS.stonfiSwap} target="_blank" rel="noopener noreferrer">
                 {t('ctaPrimary')}
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
-            <Button size="lg" variant="outline" className="btn-outline-gold" asChild>
+            <Button size="lg" variant="outline" className="btn-outline-gold w-full sm:w-auto touch-manipulation" asChild>
               <a href={LINKS.telegram} target="_blank" rel="noopener noreferrer">
                 {t('ctaSecondary')}
               </a>
@@ -73,14 +73,14 @@ export function Hero() {
           </div>
 
           {/* Feature Pills */}
-          <div className="flex flex-wrap justify-center gap-4 animate-slide-up delay-500">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 animate-slide-up delay-500 px-4">
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="flex items-center px-4 py-2 rounded-full bg-gold-500/10 backdrop-blur-sm border border-gold-500/20 text-gold-600"
+                className="flex items-center px-3 sm:px-4 py-2 rounded-full bg-gold-500/10 backdrop-blur-sm border border-gold-500/20 text-gold-600 touch-manipulation"
               >
-                <feature.icon className="w-4 h-4 mr-2" />
-                <span className="text-sm font-medium">{feature.text}</span>
+                <feature.icon className="w-4 h-4 mr-2 flex-shrink-0" />
+                <span className="text-xs sm:text-sm font-medium">{feature.text}</span>
               </div>
             ))}
           </div>

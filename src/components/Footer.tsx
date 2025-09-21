@@ -19,20 +19,20 @@ export function Footer() {
 
   return (
     <footer className="bg-slate-900 border-t border-gold-500/20">
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="container mx-auto px-4 py-12 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
           {/* Brand */}
-          <div className="md:col-span-2">
+          <div className="sm:col-span-2 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <Image
                 src="/logogstd.png"
                 alt="GSTD Token Logo"
                 width={40}
                 height={40}
-                className="h-10 w-10"
+                className="h-10 w-10 flex-shrink-0"
               />
             </div>
-            <p className="text-muted-dark mb-6 max-w-md">
+            <p className="text-muted-dark mb-6 max-w-md text-sm sm:text-base">
               {t('footer.description')}
             </p>
 

@@ -12,25 +12,25 @@ export function HowToSteps() {
     {
       number: 1,
       title: t('buySteps')[0],
-      description: 'Choose from Telegram Wallet Tonkeeper or other TON-compatible wallets.',
+      description: t('buyStepsDescriptions')[0],
       icon: Download,
     },
     {
       number: 2,
       title: t('buySteps')[1],
-      description: 'Get TON tokens through exchanges on-ramps or peer-to-peer transfers.',
+      description: t('buyStepsDescriptions')[1],
       icon: Wallet,
     },
     {
       number: 3,
       title: t('buySteps')[2],
-      description: 'Use our pre-filled STON.fi link for seamless TON to GSTD swapping.',
+      description: t('buyStepsDescriptions')[2],
       icon: ArrowRight,
     },
     {
       number: 4,
       title: t('buySteps')[3],
-      description: 'Add GSTD to your wallet favorites for easy access and tracking.',
+      description: t('buyStepsDescriptions')[3],
       icon: Star,
     },
   ];

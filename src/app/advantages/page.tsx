@@ -60,32 +60,17 @@ export default function InvestorsPage() {
     {
       title: t('investors.sections.documentation.title'),
       description: t('investors.sections.documentation.description'),
-      items: [
-        t('investors.sections.documentation.items.whitepaper'),
-        t('investors.sections.documentation.items.technical'),
-        t('investors.sections.documentation.items.api'),
-        t('investors.sections.documentation.items.audit'),
-      ],
+      items: t('investors.sections.documentation.items') as string[],
     },
     {
       title: t('investors.sections.developers.title'),
       description: t('investors.sections.developers.description'),
-      items: [
-        t('investors.sections.developers.items.sdk'),
-        t('investors.sections.developers.items.integration'),
-        t('investors.sections.developers.items.examples'),
-        t('investors.sections.developers.items.support'),
-      ],
+      items: t('investors.sections.developers.items') as string[],
     },
     {
       title: t('investors.sections.partners.title'),
       description: t('investors.sections.partners.description'),
-      items: [
-        t('investors.sections.partners.items.program'),
-        t('investors.sections.partners.items.requirements'),
-        t('investors.sections.partners.items.benefits'),
-        t('investors.sections.partners.items.contact'),
-      ],
+      items: t('investors.sections.partners.items') as string[],
     },
   ];
 
@@ -113,19 +98,19 @@ export default function InvestorsPage() {
         </section>
 
         {/* Key Advantages */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-12">
+        <section className="mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 px-4">
             <span className="text-gradient-gold">{t('investors.advantagesTitle')}</span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 px-4">
             {advantages.map((advantage, index) => (
               <Card key={index} className="bg-white border-gold-200 hover:border-gold-300 transition-all duration-300 hover:shadow-lg">
                 <CardHeader>
                   <div className="flex items-center space-x-3">
-                    <div className={`w-12 h-12 rounded-lg ${advantage.color} flex items-center justify-center`}>
-                      <advantage.icon className="w-6 h-6 text-white" />
+                    <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg ${advantage.color} flex items-center justify-center flex-shrink-0`}>
+                      <advantage.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
-                    <CardTitle className="text-xl text-light-bg">{advantage.title}</CardTitle>
+                    <CardTitle className="text-lg sm:text-xl text-light-bg">{advantage.title}</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
@@ -139,16 +124,16 @@ export default function InvestorsPage() {
         </section>
 
         {/* Information Sections */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-12">
+        <section className="mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 px-4">
             <span className="text-gradient-gold">{t('investors.sectionsTitle')}</span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 px-4">
             {sections.map((section, index) => (
               <Card key={index} className="bg-white border-gold-200 hover:border-gold-300 transition-all duration-300">
                 <CardHeader>
-                  <CardTitle className="text-xl text-light-bg mb-2">{section.title}</CardTitle>
-                  <CardDescription className="text-muted-light">
+                  <CardTitle className="text-lg sm:text-xl text-light-bg mb-2">{section.title}</CardTitle>
+                  <CardDescription className="text-muted-light text-sm sm:text-base">
                     {section.description}
                   </CardDescription>
                 </CardHeader>

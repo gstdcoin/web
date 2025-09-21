@@ -68,7 +68,7 @@ export default function BuyPage() {
         {/* Benefits Section */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-center mb-12">
-            <span className="text-gradient-gold">Why Choose GSTD?</span>
+            <span className="text-gradient-gold">{t('buyPage.whyChooseGSTD')}</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
@@ -109,21 +109,21 @@ export default function BuyPage() {
         {/* Additional Resources */}
         <section>
           <h2 className="text-3xl font-bold text-center mb-12">
-            <span className="text-gradient-gold">Additional Resources</span>
+            <span className="text-gradient-gold">{t('buyPage.additionalResources')}</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Card className="bg-white border-gold-200">
               <CardHeader>
-                <CardTitle className="text-lg text-light-bg">Advantages</CardTitle>
+                <CardTitle className="text-lg text-light-bg">{t('buyPage.advantages')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-light mb-4">
-                  Learn more about GSTD token, its utility, and how to use it effectively.
+                  {t('buyPage.advantagesDescription')}
                 </p>
                 <Button variant="outline" className="btn-outline-gold" asChild>
                   <a href={LINKS.docs} target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="w-4 h-4 mr-2" />
-                    Read Details
+                    {t('buyPage.readDetails')}
                   </a>
                 </Button>
               </CardContent>
@@ -131,16 +131,16 @@ export default function BuyPage() {
 
             <Card className="bg-white border-gold-200">
               <CardHeader>
-                <CardTitle className="text-lg text-light-bg">Community</CardTitle>
+                <CardTitle className="text-lg text-light-bg">{t('buyPage.community')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-light mb-4">
-                  Join our community to stay updated and get support from other users.
+                  {t('buyPage.communityDescription')}
                 </p>
                 <Button variant="outline" className="btn-outline-gold" asChild>
                   <a href={LINKS.telegram} target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="w-4 h-4 mr-2" />
-                    Join Telegram
+                    {t('buyPage.joinTelegram')}
                   </a>
                 </Button>
               </CardContent>

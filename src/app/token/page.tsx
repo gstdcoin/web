@@ -63,26 +63,26 @@ export default function TokenPage() {
               {/* Token Info Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div className="text-center p-4 bg-slate-50 rounded-lg">
-                  <p className="text-sm text-muted-light mb-1">Network</p>
+                  <p className="text-sm text-muted-light mb-1">{t('tokenInfo.network')}</p>
                   <p className="font-semibold text-gold-600">{TOKEN_INFO.network}</p>
                 </div>
                 <div className="text-center p-4 bg-slate-50 rounded-lg">
-                  <p className="text-sm text-muted-light mb-1">Decimals</p>
+                  <p className="text-sm text-muted-light mb-1">{t('tokenInfo.decimals')}</p>
                   <p className="font-semibold text-gold-600">{TOKEN_INFO.decimals}</p>
                 </div>
                 <div className="text-center p-4 bg-slate-50 rounded-lg">
-                  <p className="text-sm text-muted-light mb-1">Total Supply</p>
+                  <p className="text-sm text-muted-light mb-1">{t('tokenInfo.totalSupply')}</p>
                   <p className="font-semibold text-gold-600">{TOKEN_INFO.totalSupply}</p>
                 </div>
                 <div className="text-center p-4 bg-slate-50 rounded-lg">
-                  <p className="text-sm text-muted-light mb-1">Utility</p>
+                  <p className="text-sm text-muted-light mb-1">{t('tokenInfo.utility')}</p>
                   <p className="font-semibold text-gold-600">Collateral & Access</p>
                 </div>
               </div>
 
               {/* Contract Address */}
               <div>
-                <p className="text-sm text-muted-light mb-2">Contract Address</p>
+                <p className="text-sm text-muted-light mb-2">{t('tokenInfo.contractAddress')}</p>
                 <div className="flex items-center space-x-2 p-3 bg-slate-50 rounded-lg border border-gold-200">
                   <code className="flex-1 text-sm font-mono text-gold-600 break-all">
                     {TOKEN_INFO.contractAddress}
@@ -103,13 +103,13 @@ export default function TokenPage() {
                 <Button className="btn-gold flex-1" asChild>
                   <a href={LINKS.stonfiSwap} target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="w-4 h-4 mr-2" />
-                    Buy GSTD
+                    {t('tokenInfo.buyGSTD')}
                   </a>
                 </Button>
                 <Button variant="outline" className="btn-outline-gold flex-1" asChild>
                   <a href={LINKS.docs} target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="w-4 h-4 mr-2" />
-                    Investor
+                    {t('tokenInfo.investor')}
                   </a>
                 </Button>
               </div>
@@ -146,29 +146,29 @@ export default function TokenPage() {
         {/* Token Economics */}
         <section>
           <h2 className="text-3xl font-bold text-center mb-12">
-            <span className="text-gradient-gold">Token Economics</span>
+            <span className="text-gradient-gold">{t('tokenInfo.tokenEconomics')}</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card className="bg-white border-gold-200">
               <CardHeader>
-                <CardTitle className="text-lg text-light-bg">Supply Distribution</CardTitle>
+                <CardTitle className="text-lg text-light-bg">{t('tokenInfo.supplyDistribution')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
                   <div className="flex justify-between">
-                    <span className="text-muted-light">Liquidity</span>
+                    <span className="text-muted-light">{t('tokenInfo.liquidity')}</span>
                     <span className="font-semibold text-gold-600">30%</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-light">Community</span>
+                    <span className="text-muted-light">{t('tokenInfo.community')}</span>
                     <span className="font-semibold text-gold-600">40%</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-light">Team</span>
+                    <span className="text-muted-light">{t('tokenInfo.team')}</span>
                     <span className="font-semibold text-gold-600">20%</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-light">Reserve</span>
+                    <span className="text-muted-light">{t('tokenInfo.reserve')}</span>
                     <span className="font-semibold text-gold-600">10%</span>
                   </div>
                 </div>
@@ -177,25 +177,25 @@ export default function TokenPage() {
 
             <Card className="bg-white border-gold-200">
               <CardHeader>
-                <CardTitle className="text-lg text-light-bg">Use Cases</CardTitle>
+                <CardTitle className="text-lg text-light-bg">{t('tokenInfo.useCases')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-gold-500 rounded-full"></div>
-                    <span className="text-muted-light">Collateral for loans</span>
+                    <span className="text-muted-light">{t('tokenInfo.collateralForLoans')}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-gold-500 rounded-full"></div>
-                    <span className="text-muted-light">Governance voting</span>
+                    <span className="text-muted-light">{t('tokenInfo.governanceVoting')}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-gold-500 rounded-full"></div>
-                    <span className="text-muted-light">Fee discounts</span>
+                    <span className="text-muted-light">{t('tokenInfo.feeDiscounts')}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-gold-500 rounded-full"></div>
-                    <span className="text-muted-light">Staking rewards</span>
+                    <span className="text-muted-light">{t('tokenInfo.stakingRewards')}</span>
                   </div>
                 </div>
               </CardContent>
@@ -203,25 +203,25 @@ export default function TokenPage() {
 
             <Card className="bg-white border-gold-200">
               <CardHeader>
-                <CardTitle className="text-lg text-light-bg">Key Metrics</CardTitle>
+                <CardTitle className="text-lg text-light-bg">{t('tokenInfo.keyMetrics')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
                   <div className="flex justify-between">
-                    <span className="text-muted-light">Max Supply</span>
+                    <span className="text-muted-light">{t('tokenInfo.maxSupply')}</span>
                     <span className="font-semibold text-gold-600">1B (TON)</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-light">Solana</span>
+                    <span className="text-muted-light">{t('tokenInfo.solana')}</span>
                     <span className="font-semibold text-gold-600">60K</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-light">XRPL</span>
+                    <span className="text-muted-light">{t('tokenInfo.xrpl')}</span>
                     <span className="font-semibold text-gold-600">20K</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-light">Network</span>
-                    <span className="font-semibold text-gold-600">Multichain</span>
+                    <span className="text-muted-light">{t('tokenInfo.network')}</span>
+                    <span className="font-semibold text-gold-600">{t('tokenInfo.multichain')}</span>
                   </div>
                 </div>
               </CardContent>

@@ -78,22 +78,19 @@ export default function LegalPage() {
             <CardHeader>
               <CardTitle className="text-2xl text-light-bg flex items-center gap-2">
                 <AlertTriangle className="w-6 h-6 text-amber-600" />
-                Important Notice
+                {t('legal.importantNotice')}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4 text-muted-light">
                 <p>
-                  <strong className="text-light-bg">Risk Warning:</strong> Cryptocurrency investments are subject to high market risk. 
-                  Please make your investments cautiously. GSTD is not responsible for any financial losses.
+                  <strong className="text-light-bg">{t('legal.riskWarning')}</strong> {t('legal.riskWarningText')}
                 </p>
                 <p>
-                  <strong className="text-light-bg">Regulatory Notice:</strong> The regulatory status of digital assets and related services 
-                  is uncertain in many jurisdictions. Users should ensure compliance with local laws and regulations.
+                  <strong className="text-light-bg">{t('legal.regulatoryNotice')}</strong> {t('legal.regulatoryNoticeText')}
                 </p>
                 <p>
-                  <strong className="text-light-bg">No Financial Advice:</strong> The information provided on this platform is for 
-                  informational purposes only and should not be considered as financial, investment, or legal advice.
+                  <strong className="text-light-bg">{t('legal.noFinancialAdvice')}</strong> {t('legal.noFinancialAdviceText')}
                 </p>
               </div>
             </CardContent>
@@ -103,7 +100,7 @@ export default function LegalPage() {
         {/* Compliance Information */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-center mb-12">
-            <span className="text-gradient-gold">Compliance & Security</span>
+            <span className="text-gradient-gold">{t('legal.complianceSecurity')}</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Card className="bg-white border-gold-200 text-center">
@@ -111,11 +108,11 @@ export default function LegalPage() {
                 <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 flex items-center justify-center">
                   <Shield className="w-8 h-8 text-white" />
                 </div>
-                <CardTitle className="text-lg text-light-bg">Security Audits</CardTitle>
+                <CardTitle className="text-lg text-light-bg">{t('legal.securityAudits')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-muted-light">
-                  All smart contracts undergo comprehensive security audits by leading blockchain security firms.
+                  {t('legal.securityAuditsDescription')}
                 </CardDescription>
               </CardContent>
             </Card>
@@ -125,11 +122,11 @@ export default function LegalPage() {
                 <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 flex items-center justify-center">
                   <Scale className="w-8 h-8 text-white" />
                 </div>
-                <CardTitle className="text-lg text-light-bg">Legal Compliance</CardTitle>
+                <CardTitle className="text-lg text-light-bg">{t('legal.legalCompliance')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-muted-light">
-                  We work with legal experts to ensure compliance with applicable laws and regulations.
+                  {t('legal.legalComplianceDescription')}
                 </CardDescription>
               </CardContent>
             </Card>
@@ -139,11 +136,11 @@ export default function LegalPage() {
                 <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 flex items-center justify-center">
                   <FileText className="w-8 h-8 text-white" />
                 </div>
-                <CardTitle className="text-lg text-light-bg">Transparency</CardTitle>
+                <CardTitle className="text-lg text-light-bg">{t('legal.transparency')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-muted-light">
-                  All legal documents and policies are publicly available and regularly updated.
+                  {t('legal.transparencyDescription')}
                 </CardDescription>
               </CardContent>
             </Card>
@@ -154,23 +151,23 @@ export default function LegalPage() {
         <section>
           <Card className="bg-white border-gold-200">
             <CardHeader>
-              <CardTitle className="text-2xl text-light-bg">Support Contact</CardTitle>
+              <CardTitle className="text-2xl text-light-bg">{t('legal.supportContact')}</CardTitle>
               <CardDescription className="text-muted-light">
-                For project inquiries and support
+                {t('legal.supportContactDescription')}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="font-semibold text-light-bg mb-2">Support for project inquiries</h3>
-                  <p className="text-muted-light">Telegram community</p>
+                  <h3 className="font-semibold text-light-bg mb-2">{t('legal.supportProjectInquiries')}</h3>
+                  <p className="text-muted-light">{t('legal.telegramCommunity')}</p>
                   <p className="text-muted-light">https://t.me/gstdtoken</p>
-                  <p className="text-muted-light">Response time: 24–48 hours</p>
+                  <p className="text-muted-light">{t('legal.responseTime')}</p>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-light-bg mb-2">Development and Integration Team</h3>
+                  <h3 className="font-semibold text-light-bg mb-2">{t('legal.developmentTeam')}</h3>
                   <p className="text-muted-light">Telegram: https://t.me/ipgoldenbit</p>
-                  <p className="text-muted-light">Response time: 24–48 hours</p>
+                  <p className="text-muted-light">{t('legal.responseTime')}</p>
                 </div>
               </div>
             </CardContent>

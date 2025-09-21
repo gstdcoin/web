@@ -51,31 +51,31 @@ export default function RoadmapPage() {
   const milestones = [
     {
       icon: Shield,
-      title: 'Security First',
-      description: 'Comprehensive security audits and insurance coverage',
+      title: t('roadmap.securityFirst'),
+      description: t('roadmap.securityFirstDescription'),
     },
     {
       icon: Users,
-      title: 'Community Driven',
-      description: 'Decentralized governance and community decision making',
+      title: t('roadmap.communityDriven'),
+      description: t('roadmap.communityDrivenDescription'),
     },
     {
       icon: TrendingUp,
-      title: 'Scalable Growth',
-      description: 'Sustainable growth with innovative features and partnerships',
+      title: t('roadmap.scalableGrowth'),
+      description: t('roadmap.scalableGrowthDescription'),
     },
   ];
 
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'completed':
-        return <Badge className="bg-green-500 text-white">Completed</Badge>;
+        return <Badge className="bg-green-500 text-white">{t('roadmap.completed')}</Badge>;
       case 'current':
-        return <Badge className="bg-gold-500 text-white">In Progress</Badge>;
+        return <Badge className="bg-gold-500 text-white">{t('roadmap.inProgress')}</Badge>;
       case 'upcoming':
-        return <Badge className="bg-blue-500 text-white">Upcoming</Badge>;
+        return <Badge className="bg-blue-500 text-white">{t('roadmap.upcoming')}</Badge>;
       case 'future':
-        return <Badge className="bg-purple-500 text-white">Future</Badge>;
+        return <Badge className="bg-purple-500 text-white">{t('roadmap.future')}</Badge>;
       default:
         return null;
     }
@@ -149,7 +149,7 @@ export default function RoadmapPage() {
         {/* Key Milestones */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-center mb-12">
-            <span className="text-gradient-gold">Key Milestones</span>
+            <span className="text-gradient-gold">{t('roadmap.keyMilestones')}</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {milestones.map((milestone, index) => (
@@ -174,28 +174,28 @@ export default function RoadmapPage() {
         <section>
           <Card className="bg-gradient-to-br from-gold-500/10 to-gold-600/5 border-gold-200">
             <CardHeader className="text-center">
-              <CardTitle className="text-2xl text-light-bg">Development Progress</CardTitle>
+              <CardTitle className="text-2xl text-light-bg">{t('roadmap.developmentProgress')}</CardTitle>
               <CardDescription className="text-muted-light">
-                Track our progress as we build the future of DeFi lending
+                {t('roadmap.developmentProgressDescription')}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-gold-600 mb-2">100%</div>
-                  <div className="text-sm text-muted-light">Phase 1 Complete</div>
+                  <div className="text-sm text-muted-light">{t('roadmap.phaseComplete')}</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-gold-600 mb-2">75%</div>
-                  <div className="text-sm text-muted-light">Phase 2 Progress</div>
+                  <div className="text-sm text-muted-light">{t('roadmap.phaseProgress')}</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-gold-600 mb-2">25%</div>
-                  <div className="text-sm text-muted-light">Phase 3 Planning</div>
+                  <div className="text-sm text-muted-light">{t('roadmap.phasePlanning')}</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-gold-600 mb-2">0%</div>
-                  <div className="text-sm text-muted-light">Phase 4 Research</div>
+                  <div className="text-sm text-muted-light">{t('roadmap.phaseResearch')}</div>
                 </div>
               </div>
             </CardContent>
