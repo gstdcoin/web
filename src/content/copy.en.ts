@@ -53,7 +53,7 @@ export default {
     utilityValue: 'Collateral & Access',
     contractAddress: 'Contract Address',
     buyGSTD: 'Buy GSTD',
-    investor: 'Investor',
+    advantages: 'Advantages',
     tokenEconomics: 'Token Economics',
     supplyDistribution: 'Supply Distribution',
     useCases: 'Use Cases',

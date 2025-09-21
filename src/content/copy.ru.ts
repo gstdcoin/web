@@ -53,7 +53,7 @@ export default {
     utilityValue: 'Залог и доступ',
     contractAddress: 'Адрес контракта',
     buyGSTD: 'Купить GSTD',
-    investor: 'Инвестор',
+    advantages: 'Преимущества',
     tokenEconomics: 'Токеномика',
     supplyDistribution: 'Распределение предложения',
     useCases: 'Случаи использования',

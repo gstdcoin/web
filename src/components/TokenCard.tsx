@@ -75,9 +75,9 @@ export function TokenCard() {
             </a>
           </Button>
           <Button variant="outline" className="btn-outline-gold flex-1" asChild>
-            <a href={LINKS.docs} target="_blank" rel="noopener noreferrer">
+            <a href="https://gstdtoken.com/advantages" target="_blank" rel="noopener noreferrer">
               <ExternalLink className="w-4 h-4 mr-2" />
-              {t('tokenInfo.investor')}
+              {t('tokenInfo.advantages')}
             </a>
           </Button>
         </div>
