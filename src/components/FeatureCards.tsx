@@ -11,19 +11,19 @@ export function FeatureCards() {
     {
       icon: Zap,
       title: t('whatWeBuildBullets')[0],
-      description: 'Advanced risk management with dynamic loan-to-value ratios and automatic circuit breakers.',
+      description: t('whatWeBuildDescriptions')[0],
       gradient: 'from-gold-500 to-gold-600',
     },
     {
       icon: Shield,
       title: t('whatWeBuildBullets')[1],
-      description: 'Sophisticated vault system with insurance reserves for maximum security.',
+      description: t('whatWeBuildDescriptions')[1],
       gradient: 'from-gold-500 to-gold-600',
     },
     {
       icon: TrendingUp,
       title: t('whatWeBuildBullets')[2],
-      description: 'Self-repaying loans with budgeted payments for seamless user experience.',
+      description: t('whatWeBuildDescriptions')[2],
       gradient: 'from-gold-500 to-gold-600',
     },
   ];

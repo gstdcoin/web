@@ -39,6 +39,11 @@ export default {
     'Senior/Junior LP vaults with Insurance reserve',
     'Self-repaying mode (budgeted) for great UX',
   ],
+  whatWeBuildDescriptions: [
+    'Advanced risk management with dynamic loan-to-value ratios and automatic circuit breakers.',
+    'Sophisticated vault system with insurance reserves for maximum security.',
+    'Self-repaying loans with budgeted payments for seamless user experience.',
+  ],
 
   // Token Section
   tokenSectionTitle: 'Token',
