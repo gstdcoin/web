@@ -31,26 +31,26 @@ export function TokenCard() {
         {/* Token Info */}
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <p className="text-sm text-muted-light">Network</p>
+            <p className="text-sm text-muted-light">{t('tokenInfo.network')}</p>
             <p className="font-semibold text-gold-600">{TOKEN_INFO.network}</p>
           </div>
           <div>
-            <p className="text-sm text-muted-light">Decimals</p>
+            <p className="text-sm text-muted-light">{t('tokenInfo.decimals')}</p>
             <p className="font-semibold text-gold-600">{TOKEN_INFO.decimals}</p>
           </div>
           <div>
-            <p className="text-sm text-muted-light">Total Supply</p>
+            <p className="text-sm text-muted-light">{t('tokenInfo.totalSupply')}</p>
             <p className="font-semibold text-gold-600">{TOKEN_INFO.totalSupply}</p>
           </div>
           <div>
-            <p className="text-sm text-muted-light">Utility</p>
-            <p className="font-semibold text-gold-600">Collateral & Access</p>
+            <p className="text-sm text-muted-light">{t('tokenInfo.utility')}</p>
+            <p className="font-semibold text-gold-600">{t('tokenInfo.utilityValue')}</p>
           </div>
         </div>
 
         {/* Contract Address */}
         <div>
-          <p className="text-sm text-muted-light mb-2">Contract Address</p>
+          <p className="text-sm text-muted-light mb-2">{t('tokenInfo.contractAddress')}</p>
           <div className="flex items-center space-x-2 p-3 bg-slate-50 rounded-lg border border-gold-200">
             <code className="flex-1 text-sm font-mono text-gold-600 break-all">
               {TOKEN_INFO.contractAddress}
@@ -71,13 +71,13 @@ export function TokenCard() {
           <Button className="btn-gold flex-1" asChild>
             <a href={LINKS.stonfiSwap} target="_blank" rel="noopener noreferrer">
               <ExternalLink className="w-4 h-4 mr-2" />
-              Buy GSTD
+              {t('tokenInfo.buyGSTD')}
             </a>
           </Button>
           <Button variant="outline" className="btn-outline-gold flex-1" asChild>
             <a href={LINKS.docs} target="_blank" rel="noopener noreferrer">
               <ExternalLink className="w-4 h-4 mr-2" />
-              Documentation
+              {t('tokenInfo.investor')}
             </a>
           </Button>
         </div>

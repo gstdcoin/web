@@ -29,6 +29,8 @@ export default {
   ctaPrimary: 'Купить GSTD',
   ctaSecondary: 'Присоединиться к Telegram',
   backToHome: 'На главную',
+  ctaTitle: 'Готовы начать?',
+  ctaDescription: 'Присоединяйтесь к будущему кредитования под залог золота с GSTD. Получите токены сегодня и станьте частью DeFi революции.',
 
   // What We Build
   whatWeBuildTitle: 'Что мы строим',

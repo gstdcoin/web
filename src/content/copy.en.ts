@@ -29,6 +29,8 @@ export default {
   ctaPrimary: 'Buy GSTD',
   ctaSecondary: 'Join Telegram',
   backToHome: 'Back to Home',
+  ctaTitle: 'Ready to Get Started?',
+  ctaDescription: 'Join the future of gold-anchored lending with GSTD. Get your tokens today and be part of the DeFi revolution.',
 
   // What We Build
   whatWeBuildTitle: 'What we are building',

@@ -13,10 +13,10 @@ export function CTA() {
       <div className="container mx-auto px-4">
         <div className="text-center max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-gradient-gold">Ready to Get Started?</span>
+            <span className="text-gradient-gold">{t('ctaTitle')}</span>
           </h2>
           <p className="text-xl text-muted-light mb-12">
-            Join the future of gold-anchored lending with GSTD. Get your tokens today and be part of the DeFi revolution.
+            {t('ctaDescription')}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
