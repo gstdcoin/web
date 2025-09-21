@@ -1,7 +1,7 @@
 export const SITE = {
   name: "GSTD Token",
-  url: "https://gstdtoken.net",
-  localeDefault: "en",
+  url: "https://gstdtoken.com",
+  localeDefault: "ru",
   locales: ["en", "ru"],
 };
 

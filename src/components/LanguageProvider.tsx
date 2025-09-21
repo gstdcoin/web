@@ -22,7 +22,7 @@ const translations = {
 };
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>('ru');
 
   useEffect(() => {
     // Check localStorage for saved language preference

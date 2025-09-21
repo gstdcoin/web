@@ -103,8 +103,8 @@ check_dependencies() {
         cat > .env.production << 'EOF'
 NODE_ENV=production
 NEXT_TELEMETRY_DISABLED=1
-NEXT_PUBLIC_SITE_URL=https://gstdtoken.net
-NEXT_PUBLIC_PLAUSIBLE_DOMAIN=gstdtoken.net
+NEXT_PUBLIC_SITE_URL=https://gstdtoken.com
+NEXT_PUBLIC_PLAUSIBLE_DOMAIN=gstdtoken.com
 NEXT_PUBLIC_TELEGRAM=https://t.me/goldstandardcoin
 NEXT_PUBLIC_TWITTER=https://x.com/gstdtoken
 NEXT_PUBLIC_GITHUB=https://github.com/gstdcoin
@@ -159,7 +159,7 @@ start_docker() {
     # Check if services are running
     if docker compose ps | grep -q "healthy\|running"; then
         success "Site started with Docker Compose"
-        log "🌐 Available at: https://gstdtoken.net"
+        log "🌐 Available at: https://gstdtoken.com"
         log "📊 Monitor with: docker compose logs -f"
         log "🛑 Stop with: docker compose down"
         return 0
