@@ -1,4 +1,4 @@
-gstdtoken.net {
+gstdtoken.com {
   encode zstd gzip
   tls goldenbit.kz@yandex.kz
   handle /api/health {
