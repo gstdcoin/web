@@ -12,9 +12,9 @@ export default {
 
   // Hero Section
   hero: {
-    badge: 'DePIN Infrastructure • Gold-Backed Liquidity',
-    title: 'The Liquidity Layer for Decentralized Infrastructure',
-    subtitle: 'GSDT transforms DePIN operational power into physical gold backing, unlocking institutional-grade lending access.',
+    badge: 'Wallet-as-Node • Pay-for-Result • Gold Backed',
+    title: 'GSTD: Global Supercomputer with Gold Backing',
+    subtitle: 'The first DePIN network on TON that turns your smartphone power into gold. Mathematical guarantee of task execution and institutional protection of your assets.',
   },
 
   // Features
@@ -488,6 +488,18 @@ export default {
         label: 'Gold Backing Ratio',
         unit: '%',
       },
+      computationalPressure: {
+        label: 'Computational Pressure',
+        unit: '%',
+      },
+      pflopsPower: {
+        label: 'Network Power',
+        unit: 'PFLOPS',
+      },
+      activeWorkers: {
+        label: 'Active Workers',
+        unit: '',
+      },
     },
     // Additional labels for LiveNetworkStatus
     lastTx: 'Last TX',
@@ -527,6 +539,112 @@ export default {
         question: 'What types of DePIN operations generate revenue?',
         answer: 'GSDT infrastructure generates revenue through: Data Processing (encrypted data processing in decentralized network), Network Validating (transaction confirmation in cross-chain hub), Compute Resources (computing power provision for AI models).',
       },
+      {
+        question: 'What is GSTD (Guaranteed Service Time Depth)?',
+        answer: 'It is a mathematical standard guaranteeing the execution of your task in the network. If the task is not completed — you don\'t pay. 95% of task budget is protected in Escrow and paid only for valid Proof-of-Work.',
+      },
+      {
+        question: 'How does browser mining work?',
+        answer: 'Our Wallet-as-Node technology uses your browser or Telegram bot resources for small computations (SLM/AI), turning your device into part of a global supercomputer. No software download needed — launch worker directly in Telegram bot.',
+      },
+      {
+        question: 'Why is gold important for DePIN?',
+        answer: 'Gold (XAUt) creates a "price floor" for GSDT token. While other DePIN tokens depend only on hype, GSDT grows with the platform\'s physical gold reserve. 5% of fees and unused capacity remainders are converted to XAUt daily.',
+      },
     ],
+  },
+
+  // Cloud Comparison
+  cloudComparison: {
+    title: 'Technological Superiority',
+    subtitle: 'Why pay Amazon for time when you can pay GSTD for results?',
+    description: 'GSTD offers distributed computing 70% cheaper than cloud providers, with payment only for completed work.',
+    cloud: {
+      title: 'Cloud Providers',
+      features: [
+        'Pay for usage time',
+        'High prices',
+        'Centralized infrastructure',
+        'No result guarantee',
+      ],
+      price: '~$0.10/hour',
+    },
+    gstd: {
+      title: 'GSTD Network',
+      features: [
+        'Pay only for results',
+        'Save up to 70%',
+        'Decentralized network',
+        'Mathematical execution guarantee',
+      ],
+      price: '~$0.03/result',
+      savings: '70% Savings',
+    },
+  },
+
+  // Wallet as Node
+  walletAsNode: {
+    title: 'Wallet-as-Node',
+    subtitle: 'Mining in one click',
+    description: 'Your wallet is your node. No software download needed. Launch worker directly in Telegram bot and start monetizing your device\'s idle capacity.',
+    benefits: [
+      'Your Wallet = Node',
+      'One-click launch via Telegram',
+      'Monetize idle capacity',
+      'Fees instantly to Gold Reserve',
+    ],
+    flow: {
+      title: 'How it works',
+      steps: [
+        {
+          title: 'Connect Wallet',
+          description: 'Use TonConnect to connect your Telegram Wallet',
+        },
+        {
+          title: 'Launch Worker',
+          description: 'Activate worker in Telegram bot — your device becomes part of the network',
+        },
+        {
+          title: 'Execute Tasks',
+          description: 'Your device processes computations (SLM/AI) and receives fees',
+        },
+        {
+          title: 'Earn Gold',
+          description: 'Your earned fees are instantly directed to Gold Reserve, increasing your GSDT value',
+        },
+      ],
+    },
+    cta: 'Connect Wallet',
+  },
+
+  // Escrow & Treasury
+  escrowTreasury: {
+    title: 'Escrow 2.0 & Treasury',
+    subtitle: 'Protection and transparency',
+    escrow: {
+      title: 'Escrow: Budget Protection',
+      description: '95% of task budget is protected and paid only for valid Proof-of-Work. If task is not completed — you don\'t pay.',
+      features: [
+        '95% budget in Escrow',
+        'Pay only for results',
+        'Automatic Proof-of-Work verification',
+        'Fraud protection',
+      ],
+    },
+    treasury: {
+      title: 'Treasury: Gold Reserve',
+      description: '5% of fees and unused capacity remainders are converted to XAUt (Tether Gold) daily.',
+      features: [
+        '5% fees → XAUt',
+        'Unused capacity → XAUt',
+        'Daily conversion',
+        'Transparent process',
+      ],
+    },
+    nightAudit: {
+      title: 'Night Audit',
+      description: 'Daily public verification of gold reserves. All transactions are verified on blockchain.',
+      time: 'Every day at 00:00 UTC',
+    },
   },
 };

@@ -6,8 +6,8 @@ export const defaultMetadata: Metadata = {
     default: SITE.name,
     template: `%s | ${SITE.name}`,
   },
-  description: 'Gold-anchored lending with GSTD. Borrow without selling your core holdings. Transparent risk controls, real-time protection.',
-  keywords: ['GSTD', 'DeFi', 'lending', 'TON', 'blockchain', 'gold', 'cryptocurrency'],
+  description: 'GSTD: Global Supercomputer with Gold Backing. First DePIN network on TON that turns your smartphone power into gold. Wallet-as-Node, Pay-for-Result, Distributed computing.',
+  keywords: ['GSTD', 'DePIN', 'TON ecosystem', 'Distributed computing', 'Gold backed RWA', 'AI training on blockchain', 'Wallet-as-Node', 'Pay-for-Result', 'Global supercomputer', 'DePIN 2.0'],
   authors: [{ name: 'GSTD Team' }],
   creator: 'GSTD',
   publisher: 'GSTD',
@@ -26,7 +26,7 @@ export const defaultMetadata: Metadata = {
   },
   openGraph: {
     title: SITE.name,
-    description: 'Gold-anchored lending with GSTD. Borrow without selling your core holdings.',
+    description: 'GSTD: Global Supercomputer with Gold Backing. First DePIN network on TON that turns your smartphone power into gold.',
     url: SITE.url,
     siteName: SITE.name,
     images: [
@@ -43,7 +43,7 @@ export const defaultMetadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: SITE.name,
-    description: 'Gold-anchored lending with GSTD. Borrow without selling your core holdings.',
+    description: 'GSTD: Global Supercomputer with Gold Backing. First DePIN network on TON that turns your smartphone power into gold.',
     images: ['/og-image.png'],
     creator: '@gstdtoken',
   },

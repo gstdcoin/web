@@ -33,7 +33,7 @@ export default function RootLayout({
               "name": "GSTD Token",
               "url": "https://gstdtoken.net",
               "logo": "https://gstdtoken.net/logogstd.png",
-              "description": "Professional crypto-backed lending with GSTD. Borrow without selling your core holdings.",
+              "description": "GSTD: Global Supercomputer with Gold Backing. First DePIN network on TON that turns your smartphone power into gold.",
               "sameAs": [
                 "https://t.me/goldstandardcoin",
                 "https://x.com/gstdtoken",
@@ -50,7 +50,7 @@ export default function RootLayout({
               "@type": "WebSite",
               "name": "GSTD Token",
               "url": "https://gstdtoken.net",
-              "description": "Professional crypto-backed lending with GSTD. Borrow without selling your core holdings.",
+              "description": "GSTD: Global Supercomputer with Gold Backing. First DePIN network on TON that turns your smartphone power into gold.",
               "potentialAction": {
                 "@type": "SearchAction",
                 "target": "https://gstdtoken.net/search?q={search_term_string}",

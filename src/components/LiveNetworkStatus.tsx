@@ -14,6 +14,9 @@ const mockMetrics = {
   nodes: { count: 247, uptime: 99.9, countries: 12 },
   tvl: { value: 12500000, change: 3.5, unit: 'USD' },
   goldBackingRatio: { value: 2.85, change: 0.15 },
+  computationalPressure: { value: 68.5, change: 2.3, unit: '%' },
+  pflopsPower: { value: 12.47, change: 0.52, unit: 'PFLOPS' },
+  activeWorkers: { count: 12475, change: 247 },
 };
 
 function formatNumber(num: number): string {
@@ -91,6 +94,18 @@ export function LiveNetworkStatus() {
           ...prev.goldPool,
           oz: prev.goldPool.oz + Math.random() * 0.5,
           usd: prev.goldPool.usd + Math.random() * 1000,
+        },
+        computationalPressure: {
+          ...prev.computationalPressure,
+          value: Math.max(0, Math.min(100, prev.computationalPressure.value + (Math.random() - 0.5) * 2)),
+        },
+        pflopsPower: {
+          ...prev.pflopsPower,
+          value: prev.pflopsPower.value + (Math.random() - 0.5) * 0.1,
+        },
+        activeWorkers: {
+          ...prev.activeWorkers,
+          count: prev.activeWorkers.count + Math.floor((Math.random() - 0.5) * 10),
         },
       }));
     }, 5000);
@@ -183,7 +198,7 @@ export function LiveNetworkStatus() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {metricsCards.map((metric, index) => {
             const IconComponent = metric.icon;
             
