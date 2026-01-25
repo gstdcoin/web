@@ -76,6 +76,9 @@ const config: Config = {
           100: '#2a2a2a',
           200: '#3a3a3a',
         },
+        antique: {
+          white: '#FAEBD7', // Antique White for text on dark
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

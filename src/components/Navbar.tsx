@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useLanguage } from './LanguageProvider';
 import { Button } from '@/components/ui/button';
@@ -12,7 +12,17 @@ import { LINKS } from '@/content/config';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const { t } = useLanguage();
+
+  // Adaptive glass header based on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navItems = [
     { key: 'home', href: '/' },
@@ -25,31 +35,45 @@ export function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-white/10 bg-white/80 backdrop-blur-md supports-[backdrop-filter]:bg-white/40">
-      <div className="container mx-auto px-4">
+    <nav 
+      className={cn(
+        "sticky top-0 z-50 w-full transition-all duration-300",
+        "border-b border-[#F3E5AB]/10",
+        "glass-institutional",
+        isScrolled 
+          ? "bg-[#0A0A0A]/90 backdrop-blur-xl" 
+          : "bg-[#0A0A0A]/60 backdrop-blur-md"
+      )}
+    >
+      <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex h-14 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-2 group">
             <div className="flex items-center space-x-2">
               <Image
                 src="/logogstd.png"
                 alt={t('tokenInfo.logoAlt') as string}
                 width={32}
                 height={32}
-                className="h-8 w-8"
+                className="h-8 w-8 transition-transform group-hover:scale-110"
                 priority
                 unoptimized
               />
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - Champagne Stroke */}
           <div className="hidden md:flex items-center justify-between w-full max-w-4xl mx-auto px-8">
             {navItems.map((item) => (
               <Link
                 key={item.key}
                 href={item.href}
-                className="text-sm font-medium text-slate-600 hover:text-gold-600 transition-colors whitespace-nowrap"
+                className={cn(
+                  "text-xs font-medium transition-all duration-300 whitespace-nowrap",
+                  "text-[#FAEBD7] hover:text-[#F3E5AB]",
+                  "border-b border-transparent hover:border-[#F3E5AB]/30",
+                  "pb-1 hover:pb-0.5"
+                )}
               >
                 {t(`nav.${item.key}`)}
               </Link>
@@ -67,36 +91,46 @@ export function Navbar() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-1">
+          <div className="md:hidden flex items-center space-x-2">
             <LanguageSwitcher />
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden min-w-0 px-2"
+              className="md:hidden min-w-0 px-2 text-[#FAEBD7] hover:text-[#F3E5AB] hover:bg-[#F3E5AB]/10"
             >
-              {isOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation - Bento Style Grid */}
         {isOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 border-t bg-white">
-              {navItems.map((item) => (
-                <Link
-                  key={item.key}
-                  href={item.href}
-                  className="block px-3 py-3 text-base font-medium text-slate-600 hover:text-gold-600 hover:bg-gold-50 rounded-md transition-colors touch-manipulation"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {t(`nav.${item.key}`)}
-                </Link>
-              ))}
-              <div className="px-3 py-2 border-t border-gold-200 mt-2">
+            <div className="px-2 pt-4 pb-4 border-t border-[#F3E5AB]/10">
+              {/* Bento Grid Layout */}
+              <div className="grid grid-cols-2 gap-2">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.key}
+                    href={item.href}
+                    className={cn(
+                      "block px-3 py-3 text-sm font-medium rounded-lg transition-all duration-300 touch-manipulation",
+                      "glass-institutional border-gradient-gold",
+                      "text-[#FAEBD7] hover:text-[#F3E5AB]",
+                      "hover:border-[#F3E5AB]/40 hover:shadow-[0_0_20px_rgba(243,229,171,0.1)]",
+                      "active:scale-95"
+                    )}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {t(`nav.${item.key}`)}
+                  </Link>
+                ))}
+              </div>
+              {/* CTA Button in Grid */}
+              <div className="mt-3">
                 <Button className="btn-gold w-full" size="sm" asChild>
-                  <Link href={LINKS.getGSDT}>
+                  <Link href={LINKS.getGSDT} onClick={() => setIsOpen(false)}>
                     {t('ctaPrimary')}
                   </Link>
                 </Button>
