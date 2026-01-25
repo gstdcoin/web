@@ -71,7 +71,7 @@ export default function RoadmapPage() {
       case 'completed':
         return <Badge className="bg-green-500 text-white">{t('roadmap.completed')}</Badge>;
       case 'current':
-        return <Badge className="bg-gold-500 text-white">{t('roadmap.inProgress')}</Badge>;
+        return <Badge className="bg-[#D4AF37] text-[#0A0A0A]">{t('roadmap.inProgress')}</Badge>;
       case 'upcoming':
         return <Badge className="bg-[#D4AF37] text-[#0A0A0A]">{t('roadmap.upcoming')}</Badge>;
       case 'future':

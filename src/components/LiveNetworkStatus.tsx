@@ -206,7 +206,7 @@ export function LiveNetworkStatus() {
             return (
               <Card
                 key={index}
-                className={`group hover:shadow-gold-lg transition-all duration-300 glass-institutional border-gradient-gold hover:border-[#D4AF37]/40 card-mobile-full min-w-[280px] md:min-w-0 ${index === 0 || index === 4 ? 'md:col-span-2' : ''}`}
+                className={`group hover:shadow-gold-lg transition-all duration-300 glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 rounded-2xl card-mobile-full min-w-[280px] md:min-w-0 ${index === 0 || index === 4 ? 'md:col-span-2' : ''}`}
               >
                 <CardHeader>
                   <div className="flex items-center justify-between mb-4">
@@ -230,14 +230,14 @@ export function LiveNetworkStatus() {
                       {metric.value}
                     </div>
                     {metric.subValue && (
-                      <div className="text-sm text-muted-light">
+                      <div className="text-sm text-slate-300">
                         {metric.subValue}
                       </div>
                     )}
                     <div className="flex items-center justify-between mt-2">
                       {metric.change && (
                         <div className={`text-xs font-medium ${
-                          metric.changeType === 'positive' ? 'text-green-600' : 'text-muted-light'
+                          metric.changeType === 'positive' ? 'text-green-400' : 'text-slate-300'
                         }`}>
                           {metric.change}
                         </div>

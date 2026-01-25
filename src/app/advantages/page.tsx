@@ -22,7 +22,7 @@ export default function InvestorsPage() {
       icon: Zap,
       title: t('investors.advantages.interest.title'),
       description: t('investors.advantages.interest.description'),
-      color: 'bg-yellow-500',
+      color: 'bg-[#D4AF37]',
     },
     {
       icon: Eye,

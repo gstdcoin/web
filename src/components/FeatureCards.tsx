@@ -52,7 +52,7 @@ export function FeatureCards() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <Card
-                className="group hover:shadow-gold-lg transition-all duration-300 glass-institutional border-gradient-gold hover:border-[#D4AF37]/40 card-mobile-full"
+                className="group hover:shadow-gold-lg transition-all duration-300 glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 rounded-2xl card-mobile-full"
               >
               <CardHeader className="text-center">
                 <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r ${feature.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
@@ -63,7 +63,7 @@ export function FeatureCards() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-center text-muted-light leading-relaxed">
+                <CardDescription className="text-center text-slate-300 leading-relaxed">
                   {feature.description}
                 </CardDescription>
               </CardContent>

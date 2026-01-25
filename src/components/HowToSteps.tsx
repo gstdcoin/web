@@ -48,7 +48,7 @@ export function HowToSteps() {
           {steps.map((step, index) => (
             <Card
               key={index}
-              className="relative glass-institutional border-gradient-gold hover:border-[#D4AF37]/40 transition-all duration-300 group card-mobile-full"
+              className="relative glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 rounded-2xl transition-all duration-300 group card-mobile-full"
             >
               <CardHeader className="text-center">
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#B8860B] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">

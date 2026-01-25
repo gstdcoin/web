@@ -73,7 +73,7 @@ export function WalletAsNode() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="glass-institutional border-gradient-gold hover:border-[#D4AF37]/30 h-full card-mobile-full">
+                <Card className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 rounded-2xl h-full card-mobile-full">
                   <CardHeader>
                     <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#1a1a1a] to-[#2a2a2a] flex items-center justify-center text-[#D4AF37] font-bold text-xl mb-4">
                       {index + 1}

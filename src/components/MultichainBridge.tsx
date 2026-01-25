@@ -55,7 +55,7 @@ export function MultichainBridge() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <Card
-                  className="group hover:shadow-gold-lg transition-all duration-300 glass-institutional border-gradient-gold hover:border-[#D4AF37]/30 card-mobile-full"
+                  className="group hover:shadow-gold-lg transition-all duration-300 glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 rounded-2xl card-mobile-full"
                 >
                   <CardHeader>
                     <div className="flex items-center justify-between mb-4">

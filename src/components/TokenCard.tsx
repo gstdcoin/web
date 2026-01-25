@@ -25,7 +25,7 @@ export function TokenCard() {
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5 }}
     >
-      <Card className="glass-institutional border-gradient-gold shadow-gold card-mobile-full">
+      <Card className="glass-institutional border-[#D4AF37]/20 shadow-gold rounded-2xl card-mobile-full">
       <CardHeader>
         <CardTitle className="text-2xl text-[#D4AF37] flex items-center gap-2">
           {t('tokenSectionTitle')}

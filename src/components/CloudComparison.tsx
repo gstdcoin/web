@@ -33,7 +33,7 @@ export function CloudComparison() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5 }}
           >
-            <Card className="glass-institutional border-gradient-gold hover:border-red-500/30 h-full card-mobile-full">
+            <Card className="glass-institutional border-[#D4AF37]/20 hover:border-red-500/30 rounded-2xl h-full card-mobile-full">
               <CardHeader>
                 <CardTitle className="text-2xl text-slate-100 flex items-center justify-between">
                   {comparison?.cloud?.title || 'Облачные провайдеры'}
@@ -63,7 +63,7 @@ export function CloudComparison() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5 }}
           >
-            <Card className="glass-institutional border-[#D4AF37]/30 hover:border-[#D4AF37]/50 shadow-lg h-full card-mobile-full">
+            <Card className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 rounded-2xl shadow-lg h-full card-mobile-full">
               <CardHeader>
                 <CardTitle className="text-2xl text-slate-100 flex items-center justify-between">
                   {comparison?.gstd?.title || 'GSTD Network'}

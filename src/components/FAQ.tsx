@@ -32,7 +32,7 @@ export function FAQ() {
             return (
               <Card
                 key={index}
-                className="glass-institutional border-gradient-gold hover:border-[#D4AF37]/40 transition-all duration-300 card-mobile-full"
+                className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 rounded-2xl transition-all duration-300 card-mobile-full"
               >
                 <CardHeader
                   className="cursor-pointer"

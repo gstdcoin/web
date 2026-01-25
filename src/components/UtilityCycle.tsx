@@ -52,7 +52,7 @@ export function UtilityCycle() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="group hover:shadow-gold-lg transition-all duration-300 glass-institutional border-gradient-gold hover:border-[#D4AF37]/30 h-full card-mobile-full">
+                <Card className="group hover:shadow-gold-lg transition-all duration-300 glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 rounded-2xl h-full card-mobile-full">
                   <CardHeader className="text-center">
                     {/* Step Number Badge */}
                     <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-[#1a1a1a] to-[#2a2a2a] flex items-center justify-center text-[#D4AF37] font-bold text-xl group-hover:scale-110 transition-transform duration-300">
