@@ -13,6 +13,9 @@ export const LINKS = {
   stonfiSwap:
     "https://app.ston.fi/swap?ft=TON&tt=EQDv6cYW9nNiKjN3Nwl8D6ABjUiH1gYfWVGZhfP7-9tZskTO&amount=1",
   tonContract: "EQDv6cYW9nNiKjN3Nwl8D6ABjUiH1gYfWVGZhfP7-9tZskTO",
+  // CTA Links - легко заменяемые на внутренний dApp
+  getGSDT: "https://app.ston.fi/swap?ft=TON&tt=EQDv6cYW9nNiKjN3Nwl8D6ABjUiH1gYfWVGZhfP7-9tZskTO&amount=1", // StonFi swap (placeholder)
+  launchNodes: "https://t.me/goldstandardcoin", // Telegram (placeholder)
 };
 
 export const TOKEN_INFO = {

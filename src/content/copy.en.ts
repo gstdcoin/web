@@ -5,32 +5,32 @@ export default {
     about: 'About',
     token: 'Token',
     buy: 'Buy',
-    roadmap: 'Roadmap',
-    docs: 'Advantages',
+    roadmap: 'Development Cycle',
+    docs: 'Core Protocol',
     legal: 'Legal',
   },
 
   // Hero Section
   hero: {
-    badge: 'The Future of DeFi is Here',
-    title: 'Professional crypto-backed lending with GSTD',
-    subtitle: 'Borrow without selling your core holdings. Transparent risk controls, real-time protection.',
+    badge: 'DePIN Infrastructure • Gold-Backed Liquidity',
+    title: 'The Liquidity Layer for Decentralized Infrastructure',
+    subtitle: 'GSDT transforms DePIN operational power into physical gold backing, unlocking institutional-grade lending access.',
   },
 
   // Features
   features: {
-    lightningFast: 'Lightning Fast',
-    secure: 'Secure',
-    communityDriven: 'Community Driven',
-    scalable: 'Scalable',
+    lightningFast: 'DePIN Infrastructure',
+    secure: 'Gold-Backed',
+    communityDriven: 'Low-Interest Lending',
+    scalable: 'Multichain',
   },
 
   // CTA
-  ctaPrimary: 'Buy GSTD',
-  ctaSecondary: 'Join Telegram',
+  ctaPrimary: 'Get GSDT',
+  ctaSecondary: 'Explore Protocol',
   backToHome: 'Back to Home',
   ctaTitle: 'Ready to Get Started?',
-  ctaDescription: 'Join the future of gold-anchored lending with GSTD. Get your tokens today and be part of the DeFi revolution.',
+  ctaDescription: 'Join the GSDT DePIN platform. Launch a node, become a liquidity provider, or gain access to low-interest loans.',
 
   // What We Build
   whatWeBuildTitle: 'What we are building',
@@ -63,6 +63,14 @@ export default {
     supplyDistribution: 'Supply Distribution',
     useCases: 'Use Cases',
     keyMetrics: 'Key Metrics',
+    proofOfReserve: 'Proof of Reserve',
+    proofOfReserveTitle: 'Gold Backing Transparency',
+    proofOfReserveDescription: 'Every GSDT token is backed by physical gold stored in audited vaults.',
+    proofOfReserveNote: 'Smart contract or gold audit link will be available here',
+    verifiedViaOracle: 'Verified via Oracle',
+    goldBackingRatio: 'Gold Backing Ratio',
+    physicalGoldReserve: 'Physical Gold Reserve',
+    reserveValue: 'Reserve Value (USD)',
     liquidity: 'Liquidity',
     community: 'Community',
     team: 'Team',
@@ -97,30 +105,30 @@ export default {
 
   // About Page
   about: {
-    title: 'About GSTD',
-    subtitle: 'Revolutionizing DeFi lending with gold-anchored stability',
-    description: 'GSTD is a next-generation DeFi lending platform that allows users to borrow against their cryptocurrency holdings without selling them. Our innovative approach combines traditional financial stability with cutting-edge blockchain technology.',
+    title: 'About GSDT',
+    subtitle: 'DePIN platform with gold reserve',
+    description: 'GSDT is not just a token, it\'s a DePIN platform creating physical infrastructure. Every transaction and network fee is directed to purchasing physical gold, forming "Gold Liquidity" for low-interest loans.',
     featuresTitle: 'Key Features',
     features: [
-      'Advanced Risk Management',
-      'Community Governance',
-      'Lightning Fast Transactions',
-      'Precise Risk Assessment',
+      'DePIN Infrastructure',
+      'Gold-Backed Liquidity',
+      'Multichain Architecture',
+      'Low-Interest Lending',
     ],
     featureDescriptions: [
-      'Advanced risk management with dynamic loan-to-value ratios and automatic circuit breakers.',
-      'Community-driven governance with transparent decision-making processes.',
-      'Lightning-fast transactions on the TON blockchain with minimal fees.',
-      'Precise risk assessment and automated liquidation mechanisms.',
+      'Physical infrastructure where every transaction creates value. Network nodes generate fees that turn into a gold reserve.',
+      '70% of fees are automatically converted into physical gold (XAUT), forming a transparent reserve for the credit line.',
+      'Multichain architecture: TON for mass access, Solana for speed, XRPL for institutions.',
+      'GSDT holders gain access to loans at ~1.5% APY, backed by the growing gold pool.',
     ],
     buildBullets: [
-      'Dynamic loan-to-value ratios based on real-time market conditions',
-      'Automated circuit breakers to protect against market volatility',
-      'Insurance reserves to cover potential losses',
-      'Self-repaying loans with budgeted payment options',
+      'DePIN Operations: Network processes transactions and generates fees through physical infrastructure',
+      'Gold Accumulation: 70% of fees are automatically converted into physical gold (XAUT)',
+      'Liquidity Provision: Gold reserve forms the collateral pool for the platform\'s credit line',
+      'Low-Interest Lending: GSDT holders receive loans at ~1.5% APY, backed by the gold pool',
     ],
     missionTitle: 'Our Mission',
-    missionDescription: 'To democratize access to financial services by providing secure transparent and efficient lending solutions that empower users to unlock the value of their digital assets without compromising their long-term investment strategies.',
+    missionDescription: 'Create a DePIN platform where every transaction increases the gold reserve, providing a stable foundation for low-interest loans. We turn network activity into real liquidity and access to cheap capital for GSDT holders.',
   },
 
   // Buy Page
@@ -180,8 +188,8 @@ export default {
 
   // Roadmap
   roadmap: {
-    title: 'Roadmap',
-    subtitle: 'Our journey to revolutionize DeFi lending',
+    title: 'Development Cycle',
+    subtitle: 'GSDT Protocol Evolution',
     description: 'Our comprehensive development roadmap outlines the key milestones and features we plan to deliver to build the most advanced DeFi lending platform.',
     phases: [
       'Launch',
@@ -279,8 +287,8 @@ export default {
 
   // Investors Page
   investors: {
-    title: 'Advantages',
-    subtitle: 'Advantages of the upcoming GSTD Web3 Lending Platform',
+    title: 'Core Protocol',
+    subtitle: 'GSDT Protocol Core Components',
     description: 'We are building not just a lending service but a new standard in decentralized finance, where every loan is backed by gold and the GSTD token.',
     summary: '⚡️ GSTD Lending is not just about loans — it\'s a fair and transparent system where liquidity providers earn interest and borrowers access credit secured by gold. Join the future where gold meets Web3.',
     advantagesTitle: 'Key Advantages',
@@ -356,12 +364,114 @@ export default {
 
   // Footer
   footer: {
-    description: 'Gold-anchored lending with GSTD. Borrow without selling your core holdings. Transparent risk controls, real-time protection.',
+    description: 'DePIN platform with gold reserve. Infrastructure that creates value through every transaction.',
     followUs: 'Follow us',
     quickLinks: 'Quick Links',
     contact: 'Contact',
     allRightsReserved: 'All rights reserved',
     privacyPolicy: 'Privacy Policy',
     termsOfService: 'Terms of Service',
+  },
+
+  // Utility Cycle
+  utilityCycle: {
+    title: 'Protocol Utility',
+    subtitle: 'Three tiers of GSDT functionality',
+    steps: [
+      {
+        number: 1,
+        title: 'Asset Backing',
+        description: 'GSDT as a physical gold index. Each token is backed by a growing gold reserve created through DePIN operations.',
+        metric: 'Gold Backing Ratio',
+        icon: 'Coins',
+      },
+      {
+        number: 2,
+        title: 'Borrowing Power',
+        description: 'GSDT as collateral for stablecoin loans at 1.5% APY. Institutional-grade lending with minimal rates.',
+        metric: 'Lending Rate: 1.5% APY',
+        icon: 'CreditCard',
+      },
+      {
+        number: 3,
+        title: 'Infrastructure Yield',
+        description: 'Revenue from network fees. 70% of all DePIN operation fees are automatically converted into physical gold, increasing backing.',
+        metric: 'Network Fee Conversion',
+        icon: 'Network',
+      },
+    ],
+  },
+
+  // Multichain
+  multichain: {
+    title: 'Cross-Chain Interoperability Hub',
+    subtitle: 'GSDT as the liquidity bridge connecting TON, Solana, and XRPL',
+    networks: [
+      {
+        name: 'TON',
+        title: 'Entry point for millions',
+        description: 'Millions of users through Telegram. Fast transactions, low fees.',
+        features: [
+          'Telegram Wallet integration',
+          'Millions of users',
+          'Low fees',
+        ],
+        status: 'active',
+      },
+      {
+        name: 'Solana',
+        title: 'Ultra-fast layer',
+        description: 'Lightning-fast transactions for DePIN activity. High throughput.',
+        features: [
+          '65,000 TPS',
+          'DePIN optimization',
+          'Low latency',
+        ],
+        status: 'active',
+      },
+      {
+        name: 'XRPL',
+        title: 'Institutional level',
+        description: 'Cross-border payments and gold asset management. Regulatory compliance.',
+        features: [
+          'CBDC compatibility',
+          'Institutional access',
+          'Regulatory readiness',
+        ],
+        status: 'active',
+      },
+    ],
+    bridge: {
+      status: 'Operational',
+      networks: 'TON ↔ SOL ↔ XRPL',
+      time: '~2-5 minutes',
+    },
+  },
+
+  // Network Status
+  networkStatus: {
+    title: 'Real-time Network Status',
+    subtitle: 'Live GSDT platform metrics',
+    metrics: {
+      hashrate: {
+        label: 'Network Hashrate',
+        unit: 'TH/s',
+      },
+      goldPool: {
+        label: 'Gold Pool',
+        unitOz: 'oz',
+        unitUsd: 'USD',
+      },
+      bridge: {
+        label: 'Bridge Status',
+      },
+      nodes: {
+        label: 'Active Nodes',
+      },
+      tvl: {
+        label: 'Total Value Locked',
+        unit: 'USD',
+      },
+    },
   },
 };

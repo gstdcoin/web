@@ -1,4 +1,7 @@
 import { Hero } from '@/components/Hero';
+import { UtilityCycle } from '@/components/UtilityCycle';
+import { MultichainBridge } from '@/components/MultichainBridge';
+import { LiveNetworkStatus } from '@/components/LiveNetworkStatus';
 import { FeatureCards } from '@/components/FeatureCards';
 import { TokenCard } from '@/components/TokenCard';
 import { CTA } from '@/components/CTA';
@@ -11,6 +14,9 @@ export default function HomePage() {
       <Navbar />
       <main className="flex-1">
         <Hero />
+        <UtilityCycle />
+        <MultichainBridge />
+        <LiveNetworkStatus />
         <FeatureCards />
         <TokenCard />
         <CTA />

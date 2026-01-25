@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Copy, ExternalLink } from 'lucide-react';
 import { TOKEN_INFO, LINKS } from '@/content/config';
 import { copyToClipboard } from '@/lib/utils';
+import { motion } from 'framer-motion';
 
 export function TokenCard() {
   const { t } = useLanguage();
@@ -18,7 +19,13 @@ export function TokenCard() {
   };
 
   return (
-    <Card className="bg-white border-gold-200 shadow-gold">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5 }}
+    >
+      <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-gold hover:bg-white/60">
       <CardHeader>
         <CardTitle className="text-2xl text-gold-600 flex items-center gap-2">
           {t('tokenSectionTitle')}
@@ -70,7 +77,7 @@ export function TokenCard() {
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-3">
           <Button className="btn-gold flex-1" asChild>
-            <a href={LINKS.stonfiSwap} target="_blank" rel="noopener noreferrer">
+            <a href={LINKS.getGSDT} target="_blank" rel="noopener noreferrer">
               <ExternalLink className="w-4 h-4 mr-2" />
               {t('tokenInfo.buyGSTD')}
             </a>
@@ -84,5 +91,6 @@ export function TokenCard() {
         </div>
       </CardContent>
     </Card>
+    </motion.div>
   );
 }

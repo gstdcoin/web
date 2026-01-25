@@ -19,12 +19,12 @@ export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gold-500/5 to-gold-600/10 opacity-20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-amber-600/10 opacity-20" />
       
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gold-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl animate-pulse delay-1000" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -42,13 +42,13 @@ export function Hero() {
           </div>
 
           {/* Badge */}
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-gold-500/10 border border-gold-500/20 text-gold-600 text-sm font-medium mb-8 animate-fade-in">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 text-sm font-medium mb-8 animate-fade-in">
             <Zap className="w-4 h-4 mr-2" />
             {t('hero.badge')}
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6 animate-slide-up px-4">
+          <h1 className="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6 animate-slide-up px-4">
             <span className="text-gradient-gold">{t('hero.title')}</span>
           </h1>
 
@@ -60,13 +60,13 @@ export function Hero() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-slide-up delay-400 px-4">
             <Button size="lg" className="btn-gold group w-full sm:w-auto touch-manipulation" asChild>
-              <a href={LINKS.stonfiSwap} target="_blank" rel="noopener noreferrer">
+              <a href={LINKS.getGSDT} target="_blank" rel="noopener noreferrer">
                 {t('ctaPrimary')}
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
             <Button size="lg" variant="outline" className="btn-outline-gold w-full sm:w-auto touch-manipulation" asChild>
-              <a href={LINKS.telegram} target="_blank" rel="noopener noreferrer">
+              <a href={LINKS.launchNodes} target="_blank" rel="noopener noreferrer">
                 {t('ctaSecondary')}
               </a>
             </Button>
@@ -77,7 +77,7 @@ export function Hero() {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="flex items-center px-3 sm:px-4 py-2 rounded-full bg-gold-500/10 backdrop-blur-sm border border-gold-500/20 text-gold-600 touch-manipulation"
+                className="flex items-center px-3 sm:px-4 py-2 rounded-full bg-amber-500/10 backdrop-blur-sm border border-amber-500/20 text-amber-600 touch-manipulation"
               >
                 <feature.icon className="w-4 h-4 mr-2 flex-shrink-0" />
                 <span className="text-xs sm:text-sm font-medium">{feature.text}</span>
@@ -89,8 +89,8 @@ export function Hero() {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-gold-500/50 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-gold-500 rounded-full mt-2 animate-pulse" />
+        <div className="w-6 h-10 border-2 border-amber-500/50 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-amber-500 rounded-full mt-2 animate-pulse" />
         </div>
       </div>
     </section>

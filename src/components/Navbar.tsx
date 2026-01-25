@@ -25,9 +25,9 @@ export function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+    <nav className="sticky top-0 z-50 w-full border-b border-white/10 bg-white/80 backdrop-blur-md supports-[backdrop-filter]:bg-white/40">
       <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-14 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <div className="flex items-center space-x-2">
@@ -60,7 +60,7 @@ export function Navbar() {
           <div className="hidden md:flex items-center space-x-4">
             <LanguageSwitcher />
             <Button className="btn-gold" size="sm" asChild>
-              <a href={LINKS.stonfiSwap} target="_blank" rel="noopener noreferrer">
+              <a href={LINKS.getGSDT} target="_blank" rel="noopener noreferrer">
                 {t('ctaPrimary')}
               </a>
             </Button>
@@ -96,7 +96,7 @@ export function Navbar() {
               ))}
               <div className="px-3 py-2 border-t border-gold-200 mt-2">
                 <Button className="btn-gold w-full" size="sm" asChild>
-                  <a href={LINKS.stonfiSwap} target="_blank" rel="noopener noreferrer">
+                  <a href={LINKS.getGSDT} target="_blank" rel="noopener noreferrer">
                     {t('ctaPrimary')}
                   </a>
                 </Button>
