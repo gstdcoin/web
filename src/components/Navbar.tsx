@@ -62,7 +62,7 @@ export function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Navigation - Champagne Stroke */}
+          {/* Desktop Navigation - Classic Gold Stroke */}
           <div className="hidden md:flex items-center justify-between w-full max-w-4xl mx-auto px-8">
             {navItems.map((item) => (
               <Link

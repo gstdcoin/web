@@ -40,7 +40,7 @@ export default function BuyPage() {
       <main className="container mx-auto px-4 py-12">
         {/* Quick Buy Section */}
         <section className="mb-16">
-          <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-amber-500/30 transition-all duration-300">
+          <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-[#D4AF37]/30 transition-all duration-300">
             <CardHeader className="text-center">
               <CardTitle className="text-3xl text-light-bg mb-4">
                 <span className="text-gradient-gold">{t('buy.quickBuyTitle')}</span>
@@ -73,7 +73,7 @@ export default function BuyPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
-              <Card key={index} className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-amber-500/30 transition-all duration-300 text-center">
+              <Card key={index} className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-[#D4AF37]/30 transition-all duration-300 text-center">
                 <CardHeader>
                   <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 flex items-center justify-center">
                     <benefit.icon className="w-8 h-8 text-white" />
@@ -113,7 +113,7 @@ export default function BuyPage() {
             <span className="text-gradient-gold">{t('buyPage.additionalResources')}</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-amber-500/30 transition-all duration-300">
+            <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-[#D4AF37]/30 transition-all duration-300">
               <CardHeader>
                 <CardTitle className="text-lg text-light-bg">{t('buyPage.advantages')}</CardTitle>
               </CardHeader>
@@ -130,7 +130,7 @@ export default function BuyPage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-amber-500/30 transition-all duration-300">
+            <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-[#D4AF37]/30 transition-all duration-300">
               <CardHeader>
                 <CardTitle className="text-lg text-light-bg">{t('buyPage.community')}</CardTitle>
               </CardHeader>

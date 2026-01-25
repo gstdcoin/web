@@ -53,7 +53,7 @@ export default function LegalPage() {
         <section className="mb-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {legalSections.map((section, index) => (
-              <Card key={index} className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-amber-500/30 transition-all duration-300">
+              <Card key={index} className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-[#D4AF37]/30 transition-all duration-300">
                 <CardHeader>
                   <div className="flex items-center space-x-3">
                     <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-gold-500 to-gold-600 flex items-center justify-center">
@@ -74,10 +74,10 @@ export default function LegalPage() {
 
         {/* Important Notice */}
         <section className="mb-16">
-          <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-amber-500/30 transition-all duration-300">
+          <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-[#D4AF37]/30 transition-all duration-300">
             <CardHeader>
               <CardTitle className="text-2xl text-light-bg flex items-center gap-2">
-                <AlertTriangle className="w-6 h-6 text-amber-600" />
+                <AlertTriangle className="w-6 h-6 text-[#D4AF37]" />
                 {t('legal.importantNotice')}
               </CardTitle>
             </CardHeader>
@@ -103,7 +103,7 @@ export default function LegalPage() {
             <span className="text-gradient-gold">{t('legal.complianceSecurity')}</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-amber-500/30 transition-all duration-300 text-center">
+            <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-[#D4AF37]/30 transition-all duration-300 text-center">
               <CardHeader>
                 <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 flex items-center justify-center">
                   <Shield className="w-8 h-8 text-white" />
@@ -117,7 +117,7 @@ export default function LegalPage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-amber-500/30 transition-all duration-300 text-center">
+            <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-[#D4AF37]/30 transition-all duration-300 text-center">
               <CardHeader>
                 <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 flex items-center justify-center">
                   <Scale className="w-8 h-8 text-white" />
@@ -131,7 +131,7 @@ export default function LegalPage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-amber-500/30 transition-all duration-300 text-center">
+            <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-[#D4AF37]/30 transition-all duration-300 text-center">
               <CardHeader>
                 <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 flex items-center justify-center">
                   <FileText className="w-8 h-8 text-white" />
@@ -149,7 +149,7 @@ export default function LegalPage() {
 
         {/* Contact Information */}
         <section>
-          <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-amber-500/30 transition-all duration-300">
+          <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-[#D4AF37]/30 transition-all duration-300">
             <CardHeader>
               <CardTitle className="text-2xl text-light-bg">{t('legal.supportContact')}</CardTitle>
               <CardDescription className="text-muted-light">
