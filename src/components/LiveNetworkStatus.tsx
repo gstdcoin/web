@@ -187,25 +187,26 @@ export function LiveNetworkStatus() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-slate-50 to-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+    <section className="py-12 md:py-16 bg-gradient-to-b from-[#0A0A0A] via-[#1a1a1a] to-[#2a2a2a]" style={{ '--section-padding': '5rem' } as React.CSSProperties}>
+      <div className="container mx-auto px-4 max-w-7xl">
+        <div className="text-center mb-10 md:mb-12">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4">
             <span className="text-gradient-gold">{networkStatusTitle}</span>
           </h2>
-          <p className="text-xl text-muted-light max-w-3xl mx-auto">
+          <p className="text-sm md:text-base text-slate-300 max-w-3xl mx-auto">
             {networkStatusSubtitle}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {metricsCards.map((metric, index) => {
             const IconComponent = metric.icon;
             
             return (
               <Card
                 key={index}
-                className={`group hover:shadow-gold-lg transition-all duration-300 border-white/10 hover:border-amber-500/30 bg-white/40 backdrop-blur-md`}
+                className={`group hover:shadow-gold-lg transition-all duration-300 glass-institutional border-gradient-gold hover:border-[#F3E5AB]/40 card-mobile-full ${index === 0 || index === 4 ? 'md:col-span-2' : ''}`}
               >
                 <CardHeader>
                   <div className="flex items-center justify-between mb-4">

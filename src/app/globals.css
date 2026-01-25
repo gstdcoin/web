@@ -81,9 +81,10 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold tracking-tight;
-    line-height: 1.4;
-    font-family: var(--font-inter), system-ui, sans-serif;
+    @apply font-semibold;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    font-family: var(--font-inter), -apple-system, 'SF Pro Display', system-ui, sans-serif;
   }
   
   /* Playfair только для Hero заголовков */
@@ -93,12 +94,21 @@
   
   p {
     @apply leading-relaxed;
-    line-height: 1.7;
+    line-height: 1.6;
+    font-size: 0.9375rem; /* 15px */
   }
   
-  /* Apply line-height 1.7 to all text blocks */
+  /* Compact text blocks for institutional feel */
   .text-sm, .text-base, .text-lg, .text-xl {
-    line-height: 1.7;
+    line-height: 1.6;
+  }
+  
+  /* Mobile: reduce padding by 30% */
+  @media (max-width: 768px) {
+    section {
+      padding-top: calc(var(--section-padding, 5rem) * 0.7) !important;
+      padding-bottom: calc(var(--section-padding, 5rem) * 0.7) !important;
+    }
   }
   
   /* Card content spacing */
@@ -118,10 +128,42 @@
   }
   
   .text-gradient-gold {
-    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+    background: linear-gradient(135deg, #F3E5AB 0%, #d97706 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+  
+  /* Institutional glass effect */
+  .glass-institutional {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(243, 229, 171, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+  
+  /* Mobile full-width cards */
+  @media (max-width: 768px) {
+    .card-mobile-full {
+      width: 100%;
+      border-radius: 1rem; /* rounded-2xl */
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+  
+  /* Horizontal scroll for metrics */
+  .scroll-horizontal {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  
+  .scroll-horizontal > * {
+    scroll-snap-align: start;
+    flex-shrink: 0;
   }
   
   /* Gold borders and shadows */
@@ -142,13 +184,65 @@
     @apply bg-card border border-border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200;
   }
   
-  /* Button styles */
+  /* Institutional button styles - compact with glow */
   .btn-gold {
-    @apply border-2 border-amber-500 text-amber-600 bg-transparent hover:bg-amber-500/20 hover:shadow-[0_0_20px_rgba(217,119,6,0.2)] transition-all duration-300;
+    @apply border-2 bg-transparent;
+    @apply hover:shadow-[0_0_30px_rgba(243,229,171,0.3)] transition-all duration-300;
+    @apply h-10 px-6 text-sm font-medium;
+    border-color: #F3E5AB;
+    color: #F3E5AB;
+    backdrop-filter: blur(8px);
+  }
+  
+  .btn-gold:hover {
+    background-color: rgba(243, 229, 171, 0.1);
   }
   
   .btn-outline-gold {
-    @apply border-2 border-amber-500 text-amber-600 hover:bg-amber-500/20 hover:shadow-[0_0_20px_rgba(217,119,6,0.2)] transition-all duration-300;
+    @apply border-2;
+    @apply hover:shadow-[0_0_30px_rgba(243,229,171,0.3)] transition-all duration-300;
+    @apply h-10 px-6 text-sm font-medium;
+    border-color: #F3E5AB;
+    color: #F3E5AB;
+    backdrop-filter: blur(8px);
+  }
+  
+  .btn-outline-gold:hover {
+    background-color: rgba(243, 229, 171, 0.1);
+  }
+  
+  /* Gradient border utility */
+  .border-gradient-gold {
+    position: relative;
+    background: rgba(10, 10, 10, 0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid transparent;
+  }
+  
+  .border-gradient-gold::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(243, 229, 171, 0.3), rgba(243, 229, 171, 0.1));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  
+  /* Champagne Gold color */
+  .champagne-gold {
+    color: #F3E5AB;
+  }
+  
+  .bg-champagne-gold {
+    background-color: #F3E5AB;
+  }
+  
+  .border-champagne-gold {
+    border-color: #F3E5AB;
   }
   
   /* Text contrast utilities */

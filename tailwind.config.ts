@@ -10,9 +10,15 @@ const config: Config = {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: {
+        DEFAULT: "1rem",
+        sm: "1.4rem",
+        lg: "2rem",
+        xl: "2rem",
+        "2xl": "2rem",
+      },
       screens: {
-        "2xl": "1400px",
+        "2xl": "1440px",
       },
     },
     extend: {
@@ -50,7 +56,7 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Gold theme colors
+        // Institutional colors
         gold: {
           50: '#fffbeb',
           100: '#fef3c7',
@@ -58,10 +64,17 @@ const config: Config = {
           300: '#fcd34d',
           400: '#fbbf24',
           500: '#f59e0b',
-          600: '#d97706', // Main gold
+          600: '#d97706',
           700: '#b45309',
           800: '#92400e',
           900: '#78350f',
+          champagne: '#F3E5AB', // Champagne Gold
+        },
+        obsidian: {
+          DEFAULT: '#0A0A0A', // Deep Obsidian
+          50: '#1a1a1a',
+          100: '#2a2a2a',
+          200: '#3a3a3a',
         },
       },
       borderRadius: {
@@ -70,8 +83,19 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', '-apple-system', 'SF Pro Display', 'system-ui', 'sans-serif'],
         serif: ['Playfair Display', 'serif'],
+      },
+      fontSize: {
+        'xs': ['0.75rem', { lineHeight: '1.5', letterSpacing: '-0.01em' }],
+        'sm': ['0.875rem', { lineHeight: '1.5', letterSpacing: '-0.01em' }],
+        'base': ['0.9375rem', { lineHeight: '1.6', letterSpacing: '-0.01em' }], // 15px
+        'lg': ['1rem', { lineHeight: '1.6', letterSpacing: '-0.02em' }],
+        'xl': ['1.125rem', { lineHeight: '1.5', letterSpacing: '-0.02em' }],
+        '2xl': ['1.5rem', { lineHeight: '1.4', letterSpacing: '-0.02em' }],
+        '3xl': ['1.875rem', { lineHeight: '1.3', letterSpacing: '-0.02em' }],
+        '4xl': ['2.25rem', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
+        '5xl': ['3rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
       },
       keyframes: {
         "accordion-down": {
