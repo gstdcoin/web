@@ -65,7 +65,7 @@ export function MultichainBridge() {
                       {network.status === 'active' && (
                         <Badge className="bg-green-500/20 text-green-600 border-green-500/30">
                           <CheckCircle2 className="w-3 h-3 mr-1" />
-                          Active
+                          {(t('networkStatus.active') as string) || 'Active'}
                         </Badge>
                       )}
                     </div>
@@ -106,13 +106,13 @@ export function MultichainBridge() {
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-light-bg mb-2">
-                  Interoperability Hub
+                  {bridge.title || 'Interoperability Hub'}
                 </h3>
                 <p className="text-muted-light">
                   {bridge.networks}
                 </p>
                 <p className="text-sm text-muted-light mt-2">
-                  Unified liquidity layer across chains
+                  {bridge.unifiedLiquidity || 'Unified liquidity layer across chains'}
                 </p>
               </div>
             </div>

@@ -98,7 +98,7 @@ export function UtilityCycle() {
         <div className="mt-12 text-center">
           <div className="inline-flex items-center px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-muted-light text-sm">
             <div className="w-2 h-2 bg-amber-500 rounded-full mr-2 animate-pulse"></div>
-            Institutional-Grade Protocol • Three-Tier Utility Model
+            {t('utilityCycle.protocolIndicator') || 'Institutional-Grade Protocol • Three-Tier Utility Model'}
           </div>
         </div>
       </div>

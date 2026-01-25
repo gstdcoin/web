@@ -33,7 +33,7 @@ export function Hero() {
           <div className="flex justify-center mb-8 animate-fade-in">
             <Image
               src="/logogstd.png"
-              alt="GSTD Token Logo"
+              alt={t('tokenInfo.logoAlt') as string}
               width={120}
               height={120}
               className="h-16 w-16"

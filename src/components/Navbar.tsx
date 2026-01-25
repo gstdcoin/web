@@ -33,7 +33,7 @@ export function Navbar() {
             <div className="flex items-center space-x-2">
               <Image
                 src="/logogstd.png"
-                alt="GSTD Token Logo"
+                alt={t('tokenInfo.logoAlt') as string}
                 width={32}
                 height={32}
                 className="h-8 w-8"

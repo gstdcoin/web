@@ -71,6 +71,7 @@ export default {
     goldBackingRatio: 'Коэффициент золотого обеспечения',
     physicalGoldReserve: 'Физический золотой резерв',
     reserveValue: 'Стоимость резерва (USD)',
+    logoAlt: 'Логотип токена GSTD',
     liquidity: 'Ликвидность',
     community: 'Сообщество',
     team: 'Команда',
@@ -110,10 +111,10 @@ export default {
     description: 'GSDT — это не просто токен, это DePIN-платформа, создающая физическую инфраструктуру. Каждая транзакция и комиссия сети направляется на выкуп физического золота, формируя "Золотую Ликвидность" для низкопроцентных займов.',
     featuresTitle: 'Ключевые особенности',
     features: [
-      'DePIN Infrastructure',
-      'Gold-Backed Liquidity',
-      'Multichain Architecture',
-      'Low-Interest Lending',
+      'DePIN-инфраструктура',
+      'Золотое обеспечение ликвидности',
+      'Мультичейн-архитектура',
+      'Низкопроцентное кредитование',
     ],
     featureDescriptions: [
       'Физическая инфраструктура, где каждая транзакция создает ценность. Ноды сети генерируют комиссии, которые превращаются в золотой резерв.',
@@ -400,6 +401,7 @@ export default {
         icon: 'Network',
       },
     ],
+    protocolIndicator: 'Протокол институционального уровня • Трехуровневая модель функциональности',
   },
 
   // Multichain
@@ -445,6 +447,8 @@ export default {
       status: 'Работает',
       networks: 'TON ↔ SOL ↔ XRPL',
       time: '~2-5 минут',
+      title: 'Хаб совместимости',
+      unifiedLiquidity: 'Единый слой ликвидности между сетями',
     },
   },
 
@@ -477,5 +481,12 @@ export default {
         unit: '%',
       },
     },
+    // Additional labels for LiveNetworkStatus
+    lastTx: 'Последняя транзакция',
+    uptime: 'время работы',
+    countries: 'стран',
+    perToken: 'на токен',
+    active: 'Активен',
+    operational: 'Работает',
   },
 };

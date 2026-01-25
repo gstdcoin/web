@@ -71,6 +71,7 @@ export default {
     goldBackingRatio: 'Gold Backing Ratio',
     physicalGoldReserve: 'Physical Gold Reserve',
     reserveValue: 'Reserve Value (USD)',
+    logoAlt: 'GSTD Token Logo',
     liquidity: 'Liquidity',
     community: 'Community',
     team: 'Team',
@@ -400,6 +401,7 @@ export default {
         icon: 'Network',
       },
     ],
+    protocolIndicator: 'Institutional-Grade Protocol • Three-Tier Utility Model',
   },
 
   // Multichain
@@ -445,6 +447,8 @@ export default {
       status: 'Operational',
       networks: 'TON ↔ SOL ↔ XRPL',
       time: '~2-5 minutes',
+      title: 'Interoperability Hub',
+      unifiedLiquidity: 'Unified liquidity layer across chains',
     },
   },
 
@@ -472,6 +476,17 @@ export default {
         label: 'Total Value Locked',
         unit: 'USD',
       },
+      goldBackingRatio: {
+        label: 'Gold Backing Ratio',
+        unit: '%',
+      },
     },
+    // Additional labels for LiveNetworkStatus
+    lastTx: 'Last TX',
+    uptime: 'uptime',
+    countries: 'countries',
+    perToken: 'per token',
+    active: 'Active',
+    operational: 'Operational',
   },
 };
