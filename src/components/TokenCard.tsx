@@ -77,7 +77,7 @@ export function TokenCard() {
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-3">
           <Button className="btn-gold flex-1" asChild>
-            <a href={LINKS.getGSDT} target="_blank" rel="noopener noreferrer">
+            <a href={LINKS.buyGSDT} target="_blank" rel="noopener noreferrer">
               <ExternalLink className="w-4 h-4 mr-2" />
               {t('tokenInfo.buyGSTD')}
             </a>

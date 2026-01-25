@@ -67,6 +67,8 @@ export default {
     proofOfReserveTitle: 'Gold Backing Transparency',
     proofOfReserveDescription: 'Every GSDT token is backed by physical gold stored in audited vaults.',
     proofOfReserveNote: 'Smart contract or gold audit link will be available here',
+    proofOfReserveAuditor: 'Independent Custodian Audit (Tether Gold Support)',
+    proofOfReserveUpdate: 'Updated every 24 hours. All assets verified on TON, Solana and XRPL networks.',
     verifiedViaOracle: 'Verified via Oracle',
     goldBackingRatio: 'Gold Backing Ratio',
     physicalGoldReserve: 'Physical Gold Reserve',
@@ -87,6 +89,12 @@ export default {
     xrpl: 'XRPL',
     xrplValue: '20K',
     multichain: 'Multichain',
+    // Lending details
+    lendingStablecoins: 'Loans in stablecoins (USDT/USDC)',
+    lendingLTV: 'LTV (Loan-to-Value): Up to 60% of GSDT market value',
+    lendingRate: '1.5% Rate: Fixed because gold in reserve is not a volatile speculative asset, but acts as a "liquidity anchor"',
+    whyLowRate: 'Why is the rate so low?',
+    whyLowRateAnswer: 'Gold backing of the platform reduces liquidation risks and capital acquisition costs.',
   },
   token: {
     featuresTitle: 'Token Features',
@@ -117,16 +125,16 @@ export default {
       'Low-Interest Lending',
     ],
     featureDescriptions: [
-      'Physical infrastructure where every transaction creates value. Network nodes generate fees that turn into a gold reserve.',
-      '70% of fees are automatically converted into physical gold (XAUT), forming a transparent reserve for the credit line.',
+      'GSDT infrastructure generates revenue through: Data Processing (encrypted data processing in decentralized network), Network Validating (transaction confirmation in cross-chain hub), Compute Resources (computing power provision for AI models).',
+      '70% of Net Protocol Revenue is automatically converted into physical gold (XAUT), forming a transparent reserve for the credit line.',
       'Multichain architecture: TON for mass access, Solana for speed, XRPL for institutions.',
-      'GSDT holders gain access to loans at ~1.5% APY, backed by the growing gold pool.',
+      'GSDT holders gain access to loans in stablecoins (USDT/USDC) at 1.5% APY. LTV up to 60% of GSDT market value. Rate is fixed because gold in reserve is not a volatile speculative asset, but acts as a "liquidity anchor".',
     ],
     buildBullets: [
-      'DePIN Operations: Network processes transactions and generates fees through physical infrastructure',
-      'Gold Accumulation: 70% of fees are automatically converted into physical gold (XAUT)',
+      'DePIN Operations: Network processes transactions through Data Processing, Network Validating and Compute Resources, generating protocol revenue',
+      'Gold Accumulation: 70% of Net Protocol Revenue is automatically converted into physical gold (XAUT)',
       'Liquidity Provision: Gold reserve forms the collateral pool for the platform\'s credit line',
-      'Low-Interest Lending: GSDT holders receive loans at ~1.5% APY, backed by the gold pool',
+      'Low-Interest Lending: GSDT holders receive loans in stablecoins at 1.5% APY with LTV up to 60%, backed by the gold pool',
     ],
     missionTitle: 'Our Mission',
     missionDescription: 'Create a DePIN platform where every transaction increases the gold reserve, providing a stable foundation for low-interest loans. We turn network activity into real liquidity and access to cheap capital for GSDT holders.',
@@ -389,14 +397,14 @@ export default {
       {
         number: 2,
         title: 'Borrowing Power',
-        description: 'GSDT as collateral for stablecoin loans at 1.5% APY. Institutional-grade lending with minimal rates.',
-        metric: 'Lending Rate: 1.5% APY',
+        description: 'GSDT as collateral for stablecoin loans (USDT/USDC) at 1.5% APY. LTV up to 60% of GSDT market value. Rate is fixed because gold in reserve acts as a "liquidity anchor", reducing liquidation risks and capital acquisition costs.',
+        metric: 'Lending Rate: 1.5% APY, LTV up to 60%',
         icon: 'CreditCard',
       },
       {
         number: 3,
         title: 'Infrastructure Yield',
-        description: 'Revenue from network fees. 70% of all DePIN operation fees are automatically converted into physical gold, increasing backing.',
+        description: 'Revenue from network fees. 70% of Net Protocol Revenue from DePIN operations (Data Processing, Network Validating, Compute Resources) is automatically converted into physical gold, increasing backing.',
         metric: 'Network Fee Conversion',
         icon: 'Network',
       },
@@ -412,7 +420,7 @@ export default {
       {
         name: 'TON',
         title: 'Entry point for millions',
-        description: 'Millions of users through Telegram. Fast transactions, low fees.',
+        description: 'Your wallet in Telegram — entry point. Millions of users through Telegram. Fast transactions, low fees.',
         features: [
           'Telegram Wallet integration',
           'Millions of users',
@@ -423,7 +431,7 @@ export default {
       {
         name: 'Solana',
         title: 'Ultra-fast layer',
-        description: 'Lightning-fast transactions for DePIN activity. High throughput.',
+        description: 'Your trading terminal — exchange speed. Lightning-fast transactions for DePIN activity. High throughput.',
         features: [
           '65,000 TPS',
           'DePIN optimization',
@@ -434,7 +442,7 @@ export default {
       {
         name: 'XRPL',
         title: 'Institutional level',
-        description: 'Cross-border payments and gold asset management. Regulatory compliance.',
+        description: 'Your bank — security and large transfers. Cross-border payments and gold asset management. Regulatory compliance.',
         features: [
           'CBDC compatibility',
           'Institutional access',
@@ -488,5 +496,37 @@ export default {
     perToken: 'per token',
     active: 'Active',
     operational: 'Operational',
+  },
+
+  // FAQ Section
+  faq: {
+    title: 'Frequently Asked Questions',
+    subtitle: 'Answers to key questions about GSDT',
+    items: [
+      {
+        question: 'How is GSDT connected to gold?',
+        answer: '70% of DePIN network profit buys gold, which is stored in reserve and increases the "price floor" of the token. Each GSDT token is backed by a growing gold reserve created through DePIN operations (Data Processing, Network Validating, Compute Resources).',
+      },
+      {
+        question: 'Can I lose my GSDT when taking a loan?',
+        answer: 'Only if the value of your collateral falls below the liquidation threshold (40% LTV). The gold reserve is designed to minimize such fluctuations, acting as a "liquidity anchor" and reducing volatility.',
+      },
+      {
+        question: 'Why is the lending rate so low (1.5%)?',
+        answer: 'Gold backing of the platform reduces liquidation risks and capital acquisition costs. Gold in reserve is not a volatile speculative asset, but acts as a stable "liquidity anchor", allowing for institutional rates.',
+      },
+      {
+        question: 'How does fee conversion to gold work?',
+        answer: '70% of Net Protocol Revenue from all DePIN operations is automatically converted into physical gold (XAUT) through smart contracts. The process is transparent and verifiable on the blockchain.',
+      },
+      {
+        question: 'Why is multichain architecture needed?',
+        answer: 'TON — your wallet in Telegram (entry point), Solana — your trading terminal (exchange speed), XRPL — your bank (security and large transfers). GSDT unites all three networks into a single liquidity ecosystem.',
+      },
+      {
+        question: 'What types of DePIN operations generate revenue?',
+        answer: 'GSDT infrastructure generates revenue through: Data Processing (encrypted data processing in decentralized network), Network Validating (transaction confirmation in cross-chain hub), Compute Resources (computing power provision for AI models).',
+      },
+    ],
   },
 };

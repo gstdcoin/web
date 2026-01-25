@@ -4,6 +4,7 @@ import { useLanguage } from './LanguageProvider';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 import { LINKS } from '@/content/config';
+import Link from 'next/link';
 
 export function CTA() {
   const { t } = useLanguage();
@@ -21,10 +22,10 @@ export function CTA() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button size="lg" className="btn-gold group" asChild>
-              <a href={LINKS.getGSDT} target="_blank" rel="noopener noreferrer">
+              <Link href={LINKS.getGSDT}>
                 {t('ctaPrimary')}
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </a>
+              </Link>
             </Button>
             <Button size="lg" variant="outline" className="btn-outline-gold" asChild>
               <a href={LINKS.telegram} target="_blank" rel="noopener noreferrer">

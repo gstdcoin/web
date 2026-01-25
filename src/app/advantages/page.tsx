@@ -163,7 +163,7 @@ export default function InvestorsPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button className="btn-gold" asChild>
-                <a href={LINKS.getGSDT} target="_blank" rel="noopener noreferrer">
+                <a href={LINKS.buyGSDT} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="w-4 h-4 mr-2" />
                   {t('investors.cta.badge')}
                 </a>

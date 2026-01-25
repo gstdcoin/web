@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Zap, Shield, Users, TrendingUp } from 'lucide-react';
 import { LINKS } from '@/content/config';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export function Hero() {
   const { t } = useLanguage();
@@ -60,10 +61,10 @@ export function Hero() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-slide-up delay-400 px-4">
             <Button size="lg" className="btn-gold group w-full sm:w-auto touch-manipulation" asChild>
-              <a href={LINKS.getGSDT} target="_blank" rel="noopener noreferrer">
+              <Link href={LINKS.getGSDT}>
                 {t('ctaPrimary')}
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </a>
+              </Link>
             </Button>
             <Button size="lg" variant="outline" className="btn-outline-gold w-full sm:w-auto touch-manipulation" asChild>
               <a href={LINKS.launchNodes} target="_blank" rel="noopener noreferrer">

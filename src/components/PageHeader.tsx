@@ -51,9 +51,9 @@ export function PageHeader({ title, subtitle, showBackButton = true }: PageHeade
           <div className="flex items-center space-x-1 min-w-0">
             <LanguageSwitcher />
             <Button className="btn-gold hidden sm:inline-flex" size="sm" asChild>
-              <a href={LINKS.getGSDT} target="_blank" rel="noopener noreferrer">
+              <Link href={LINKS.getGSDT}>
                 {t('ctaPrimary')}
-              </a>
+              </Link>
             </Button>
             {showBackButton && (
               <Button variant="outline" size="sm" asChild className="min-w-0 px-2">

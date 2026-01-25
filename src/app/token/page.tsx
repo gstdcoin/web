@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Copy, ExternalLink, Coins, Shield, Zap, TrendingUp } from 'lucide-react';
-import { TOKEN_INFO, LINKS } from '@/content/config';
+import { TOKEN_INFO, LINKS, PROOF_OF_RESERVE } from '@/content/config';
 import { copyToClipboard } from '@/lib/utils';
 
 export default function TokenPage() {
@@ -102,7 +102,7 @@ export default function TokenPage() {
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button className="btn-gold flex-1" asChild>
-                  <a href={LINKS.getGSDT} target="_blank" rel="noopener noreferrer">
+                  <a href={LINKS.buyGSDT} target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="w-4 h-4 mr-2" />
                     {t('tokenInfo.buyGSTD')}
                   </a>
@@ -160,7 +160,7 @@ export default function TokenPage() {
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-white/30 rounded-lg border border-white/20">
                   <div className="text-center relative">
-                    <div className="text-2xl font-bold text-amber-600 mb-1">2.85%</div>
+                    <div className="text-2xl font-bold text-amber-600 mb-1">{PROOF_OF_RESERVE.goldBackingRatio.toFixed(2)}%</div>
                     <div className="text-sm text-muted-light mb-2">
                       {t('tokenInfo.goldBackingRatio') || 'Коэффициент золотого обеспечения'}
                     </div>
@@ -170,7 +170,7 @@ export default function TokenPage() {
                     </div>
                   </div>
                   <div className="text-center relative">
-                    <div className="text-2xl font-bold text-amber-600 mb-1">1,247.5 oz</div>
+                    <div className="text-2xl font-bold text-amber-600 mb-1">{PROOF_OF_RESERVE.physicalGoldReserveOz.toLocaleString('en-US', { maximumFractionDigits: 1 })} oz</div>
                     <div className="text-sm text-muted-light mb-2">
                       {t('tokenInfo.physicalGoldReserve') || 'Физический золотой резерв'}
                     </div>
@@ -180,7 +180,9 @@ export default function TokenPage() {
                     </div>
                   </div>
                   <div className="text-center relative">
-                    <div className="text-2xl font-bold text-amber-600 mb-1">$2.85M</div>
+                    <div className="text-2xl font-bold text-amber-600 mb-1">
+                      ${(PROOF_OF_RESERVE.reserveValueUSD / 1000000).toFixed(2)}M
+                    </div>
                     <div className="text-sm text-muted-light mb-2">
                       {t('tokenInfo.reserveValue') || 'Стоимость резерва (USD)'}
                     </div>
@@ -190,10 +192,20 @@ export default function TokenPage() {
                     </div>
                   </div>
                 </div>
-                <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg">
-                  <p className="text-sm text-muted-light italic" style={{ lineHeight: '1.7' }}>
-                    {t('tokenInfo.proofOfReserveNote')}
-                  </p>
+                <div className="space-y-3">
+                  <div className="p-3 bg-white/20 border border-white/10 rounded-lg">
+                    <p className="text-xs font-semibold text-amber-600 mb-1">
+                      {t('tokenInfo.proofOfReserveAuditor') || 'Independent Custodian Audit (Tether Gold Support)'}
+                    </p>
+                    <p className="text-xs text-muted-light" style={{ lineHeight: '1.7' }}>
+                      {t('tokenInfo.proofOfReserveUpdate') || 'Обновляется каждые 24 часа. Все активы верифицированы в сетях TON, Solana и XRPL.'}
+                    </p>
+                  </div>
+                  <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg">
+                    <p className="text-sm text-muted-light italic" style={{ lineHeight: '1.7' }}>
+                      {t('tokenInfo.proofOfReserveNote')}
+                    </p>
+                  </div>
                 </div>
               </div>
             </CardContent>

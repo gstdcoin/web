@@ -40,6 +40,9 @@ export default function AboutPage() {
       />
       
       <main className="container mx-auto px-4 py-12">
+        {/* Anchor for how-it-works */}
+        <div id="how-it-works" className="scroll-mt-20"></div>
+        
         {/* Hero Section */}
         <section className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">

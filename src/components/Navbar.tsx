@@ -60,9 +60,9 @@ export function Navbar() {
           <div className="hidden md:flex items-center space-x-4">
             <LanguageSwitcher />
             <Button className="btn-gold" size="sm" asChild>
-              <a href={LINKS.getGSDT} target="_blank" rel="noopener noreferrer">
+              <Link href={LINKS.getGSDT}>
                 {t('ctaPrimary')}
-              </a>
+              </Link>
             </Button>
           </div>
 
@@ -96,9 +96,9 @@ export function Navbar() {
               ))}
               <div className="px-3 py-2 border-t border-gold-200 mt-2">
                 <Button className="btn-gold w-full" size="sm" asChild>
-                  <a href={LINKS.getGSDT} target="_blank" rel="noopener noreferrer">
+                  <Link href={LINKS.getGSDT}>
                     {t('ctaPrimary')}
-                  </a>
+                  </Link>
                 </Button>
               </div>
             </div>
