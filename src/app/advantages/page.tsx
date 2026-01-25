@@ -52,7 +52,7 @@ export default function InvestorsPage() {
       icon: Globe,
       title: t('investors.advantages.growth.title'),
       description: t('investors.advantages.growth.description'),
-      color: 'bg-cyan-500',
+      color: 'bg-[#D4AF37]',
     },
   ];
 

@@ -13,7 +13,7 @@ export function FeatureCards() {
       icon: Zap,
       title: 'DePIN Infrastructure',
       description: 'Физическая инфраструктура, где каждая транзакция создает ценность. Ноды сети генерируют комиссии, которые превращаются в золотой резерв.',
-      gradient: 'from-cyan-400 to-cyan-600',
+      gradient: 'from-[#D4AF37] to-[#B8860B]',
     },
     {
       icon: Shield,
