@@ -36,7 +36,7 @@ export function FeatureCards() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4">
             <span className="text-gradient-gold">Ключевые особенности</span>
           </h2>
-          <p className="text-sm md:text-base text-slate-300 max-w-3xl mx-auto">
+          <p className="text-sm md:text-base text-slate-200 max-w-3xl mx-auto">
             DePIN-платформа, создающая золотую ликвидность через каждую транзакцию
           </p>
         </div>
@@ -58,7 +58,7 @@ export function FeatureCards() {
                 <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r ${feature.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                   <feature.icon className="w-8 h-8 text-white" />
                 </div>
-                <CardTitle className="text-xl font-bold group-hover:text-gold-600 transition-colors text-light-bg">
+                <CardTitle className="text-xl font-bold group-hover:text-[#F3E5AB] transition-colors text-slate-100">
                   {feature.title}
                 </CardTitle>
               </CardHeader>

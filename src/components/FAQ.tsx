@@ -19,13 +19,13 @@ export function FAQ() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4">
             <span className="text-gradient-gold">{faqData?.title || 'Часто задаваемые вопросы'}</span>
           </h2>
-          <p className="text-sm md:text-base text-slate-300 max-w-3xl mx-auto">
+          <p className="text-sm md:text-base text-slate-200 max-w-3xl mx-auto">
             {faqData?.subtitle || 'Ответы на ключевые вопросы о GSDT'}
           </p>
         </div>
 
         {/* Two columns on desktop, single on mobile */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-7xl mx-auto">
           {items.map((item: any, index: number) => {
             const isOpen = openIndex === index;
             
@@ -39,21 +39,21 @@ export function FAQ() {
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                 >
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg text-light-bg pr-8">
+                    <CardTitle className="text-lg text-slate-100 pr-8">
                       {item.question}
                     </CardTitle>
                     <div className="flex-shrink-0">
                       {isOpen ? (
-                        <ChevronUp className="w-5 h-5 text-amber-600" />
+                        <ChevronUp className="w-5 h-5 text-[#F3E5AB]" />
                       ) : (
-                        <ChevronDown className="w-5 h-5 text-amber-600" />
+                        <ChevronDown className="w-5 h-5 text-[#F3E5AB]" />
                       )}
                     </div>
                   </div>
                 </CardHeader>
                 {isOpen && (
                   <CardContent>
-                    <p className="text-muted-light leading-relaxed" style={{ lineHeight: '1.7' }}>
+                    <p className="text-slate-300 leading-relaxed" style={{ lineHeight: '1.7' }}>
                       {item.answer}
                     </p>
                   </CardContent>

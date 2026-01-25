@@ -18,7 +18,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-slate-900 border-t border-gold-500/20">
+    <footer className="bg-[#0A0A0A] border-t border-[#F3E5AB]/10">
       <div className="container mx-auto px-4 py-12 sm:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
           {/* Brand */}
@@ -32,13 +32,13 @@ export function Footer() {
                 className="h-10 w-10 flex-shrink-0"
               />
             </div>
-            <p className="text-muted-dark mb-6 max-w-md text-sm sm:text-base">
+            <p className="text-slate-300 mb-6 max-w-md text-sm sm:text-base">
               {t('footer.description')}
             </p>
 
             {/* Social Links */}
             <div>
-              <h3 className="text-sm font-semibold text-gold-400 mb-4">
+              <h3 className="text-sm font-semibold text-[#F3E5AB] mb-4">
                 {t('footer.followUs')}
               </h3>
               <SocialLinks />
@@ -47,7 +47,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-sm font-semibold text-gold-400 mb-4">
+            <h3 className="text-sm font-semibold text-[#F3E5AB] mb-4">
               {t('footer.quickLinks')}
             </h3>
             <ul className="space-y-3">
@@ -55,7 +55,7 @@ export function Footer() {
                 <li key={link.key}>
                   <Link
                     href={link.href}
-                    className="text-muted-dark hover:text-gold-400 transition-colors"
+                    className="text-slate-300 hover:text-[#F3E5AB] transition-colors"
                   >
                     {t(`nav.${link.key}`)}
                   </Link>
@@ -66,10 +66,10 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-sm font-semibold text-gold-400 mb-4">
+            <h3 className="text-sm font-semibold text-[#F3E5AB] mb-4">
               {t('footer.contact')}
             </h3>
-            <div className="space-y-3 text-muted-dark">
+            <div className="space-y-3 text-slate-300">
               <p>Telegram: @goldstandardcoin</p>
               <p>X: @gstdtoken</p>
               <p>GitHub: @gstdcoin</p>
@@ -78,21 +78,21 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gold-500/20 mt-12 pt-8">
+        <div className="border-t border-[#F3E5AB]/10 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-slate-400 text-sm">
+            <p className="text-slate-300 text-sm">
               © 2025 {SITE.name}. {t('footer.allRightsReserved')}.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link
                 href="/legal"
-                className="text-slate-400 hover:text-gold-400 text-sm transition-colors"
+                className="text-slate-300 hover:text-[#F3E5AB] text-sm transition-colors"
               >
                 {t('footer.privacyPolicy')}
               </Link>
               <Link
                 href="/legal"
-                className="text-slate-400 hover:text-gold-400 text-sm transition-colors"
+                className="text-slate-300 hover:text-[#F3E5AB] text-sm transition-colors"
               >
                 {t('footer.termsOfService')}
               </Link>

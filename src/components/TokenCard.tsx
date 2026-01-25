@@ -25,13 +25,13 @@ export function TokenCard() {
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5 }}
     >
-      <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-gold hover:bg-white/60">
+      <Card className="glass-institutional border-gradient-gold shadow-gold card-mobile-full">
       <CardHeader>
-        <CardTitle className="text-2xl text-gold-600 flex items-center gap-2">
+        <CardTitle className="text-2xl text-[#F3E5AB] flex items-center gap-2">
           {t('tokenSectionTitle')}
-          <Badge className="bg-gold-500 text-white">{TOKEN_INFO.symbol}</Badge>
+          <Badge className="bg-[#F3E5AB] text-[#0A0A0A]">{TOKEN_INFO.symbol}</Badge>
         </CardTitle>
-        <CardDescription className="text-muted-light">
+        <CardDescription className="text-slate-300">
           {t('tokenBullets')[0]}
         </CardDescription>
       </CardHeader>
@@ -39,35 +39,35 @@ export function TokenCard() {
         {/* Token Info */}
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <p className="text-sm text-muted-light">{t('tokenInfo.network')}</p>
-            <p className="font-semibold text-gold-600">{TOKEN_INFO.network}</p>
+            <p className="text-sm text-slate-300">{t('tokenInfo.network')}</p>
+            <p className="font-semibold text-[#F3E5AB]">{TOKEN_INFO.network}</p>
           </div>
           <div>
-            <p className="text-sm text-muted-light">{t('tokenInfo.decimals')}</p>
-            <p className="font-semibold text-gold-600">{TOKEN_INFO.decimals}</p>
+            <p className="text-sm text-slate-300">{t('tokenInfo.decimals')}</p>
+            <p className="font-semibold text-[#F3E5AB]">{TOKEN_INFO.decimals}</p>
           </div>
           <div>
-            <p className="text-sm text-muted-light">{t('tokenInfo.totalSupply')}</p>
-            <p className="font-semibold text-gold-600">{TOKEN_INFO.totalSupply}</p>
+            <p className="text-sm text-slate-300">{t('tokenInfo.totalSupply')}</p>
+            <p className="font-semibold text-[#F3E5AB]">{TOKEN_INFO.totalSupply}</p>
           </div>
           <div>
-            <p className="text-sm text-muted-light">{t('tokenInfo.utility')}</p>
-            <p className="font-semibold text-gold-600">{t('tokenInfo.utilityValue')}</p>
+            <p className="text-sm text-slate-300">{t('tokenInfo.utility')}</p>
+            <p className="font-semibold text-[#F3E5AB]">{t('tokenInfo.utilityValue')}</p>
           </div>
         </div>
 
         {/* Contract Address */}
         <div>
-          <p className="text-sm text-muted-light mb-2">{t('tokenInfo.contractAddress')}</p>
-          <div className="flex items-center space-x-2 p-3 bg-slate-50 rounded-lg border border-gold-200">
-            <code className="flex-1 text-sm font-mono text-gold-600 break-all">
+          <p className="text-sm text-slate-300 mb-2">{t('tokenInfo.contractAddress')}</p>
+          <div className="flex items-center space-x-2 p-3 bg-[#1a1a1a] rounded-lg border border-[#F3E5AB]/20">
+            <code className="flex-1 text-sm font-mono text-[#F3E5AB] break-all">
               {TOKEN_INFO.contractAddress}
             </code>
             <Button
               size="sm"
               variant="ghost"
               onClick={handleCopyContract}
-              className="text-gold-600 hover:bg-gold-50"
+              className="text-[#F3E5AB] hover:bg-[#F3E5AB]/10"
             >
               <Copy className="h-4 w-4" />
             </Button>

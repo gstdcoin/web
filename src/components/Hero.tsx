@@ -58,7 +58,7 @@ export function Hero() {
             </h1>
 
             {/* Subtitle */}
-            <p className="text-base sm:text-lg md:text-xl text-slate-300 mb-6 md:mb-8 max-w-2xl animate-slide-up" style={{ animationDelay: '0.2s' }}>
+            <p className="text-base sm:text-lg md:text-xl text-slate-200 mb-6 md:mb-8 max-w-2xl animate-slide-up" style={{ animationDelay: '0.2s' }}>
               {t('hero.subtitle')}
             </p>
 

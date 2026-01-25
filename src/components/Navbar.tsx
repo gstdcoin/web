@@ -69,7 +69,7 @@ export function Navbar() {
                 key={item.key}
                 href={item.href}
                 className={cn(
-                  "text-xs font-medium transition-all duration-300 whitespace-nowrap",
+                  "text-sm font-medium transition-all duration-300 whitespace-nowrap",
                   "text-[#FAEBD7] hover:text-[#F3E5AB]",
                   "border-b border-transparent hover:border-[#F3E5AB]/30",
                   "pb-1 hover:pb-0.5"

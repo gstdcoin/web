@@ -20,16 +20,16 @@ export function WalletAsNode() {
   const steps = walletAsNode?.flow?.steps || [];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 md:py-16 bg-gradient-to-b from-[#0A0A0A] via-[#1a1a1a] to-[#0A0A0A]" style={{ '--section-padding': '5rem' } as React.CSSProperties}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="text-gradient-gold">{walletAsNode?.title || 'Wallet-as-Node'}</span>
           </h2>
-          <p className="text-xl text-muted-light max-w-3xl mx-auto mb-8">
+          <p className="text-sm md:text-base text-slate-200 max-w-3xl mx-auto mb-8">
             {walletAsNode?.subtitle || 'Майнинг в один клик'}
           </p>
-          <p className="text-lg text-muted-light max-w-3xl mx-auto mb-8" style={{ lineHeight: '1.7' }}>
+          <p className="text-sm md:text-base text-slate-200 max-w-3xl mx-auto mb-8" style={{ lineHeight: '1.7' }}>
             {walletAsNode?.description}
           </p>
         </div>
@@ -46,12 +46,12 @@ export function WalletAsNode() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="bg-white/40 backdrop-blur-md border-white/10 hover:border-amber-500/30 text-center h-full">
+                <Card className="glass-institutional border-gradient-gold hover:border-[#F3E5AB]/30 text-center h-full card-mobile-full">
                   <CardContent className="pt-6">
-                    <div className="w-12 h-12 mx-auto mb-3 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 flex items-center justify-center">
-                      <IconComponent className="w-6 h-6 text-white" />
+                    <div className="w-12 h-12 mx-auto mb-3 rounded-lg bg-gradient-to-r from-[#F3E5AB] to-[#C9A961] flex items-center justify-center">
+                      <IconComponent className="w-6 h-6 text-[#0A0A0A]" />
                     </div>
-                    <p className="text-sm text-muted-light">{benefit}</p>
+                    <p className="text-sm text-slate-300">{benefit}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -73,17 +73,17 @@ export function WalletAsNode() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="bg-white/40 backdrop-blur-md border-white/10 hover:border-amber-500/30 h-full">
+                <Card className="glass-institutional border-gradient-gold hover:border-[#F3E5AB]/30 h-full card-mobile-full">
                   <CardHeader>
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-slate-900 to-slate-700 flex items-center justify-center text-white font-bold text-xl mb-4">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#1a1a1a] to-[#2a2a2a] flex items-center justify-center text-[#F3E5AB] font-bold text-xl mb-4">
                       {index + 1}
                     </div>
-                    <CardTitle className="text-lg text-light-bg mb-2">
+                    <CardTitle className="text-lg text-slate-100 mb-2">
                       {step.title}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-muted-light" style={{ lineHeight: '1.7' }}>
+                    <CardDescription className="text-slate-300" style={{ lineHeight: '1.7' }}>
                       {step.description}
                     </CardDescription>
                   </CardContent>

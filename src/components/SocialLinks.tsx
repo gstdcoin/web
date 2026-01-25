@@ -33,7 +33,7 @@ export function SocialLinks() {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-lg bg-slate-800 border border-gold-500/20 flex items-center justify-center text-gold-400 hover:bg-gold-500/10 hover:border-gold-500/40 transition-all duration-300"
+              className="w-10 h-10 rounded-lg bg-[#1a1a1a] border border-[#F3E5AB]/20 flex items-center justify-center text-[#F3E5AB] hover:bg-[#F3E5AB]/10 hover:border-[#F3E5AB]/40 transition-all duration-300"
             >
               {IconComponent && <IconComponent className="w-5 h-5" />}
             </a>
@@ -43,7 +43,7 @@ export function SocialLinks() {
             <Link
               key={social.key}
               href={href}
-              className="w-10 h-10 rounded-lg bg-slate-800 border border-gold-500/20 flex items-center justify-center text-gold-400 hover:bg-gold-500/10 hover:border-gold-500/40 transition-all duration-300"
+              className="w-10 h-10 rounded-lg bg-[#1a1a1a] border border-[#F3E5AB]/20 flex items-center justify-center text-[#F3E5AB] hover:bg-[#F3E5AB]/10 hover:border-[#F3E5AB]/40 transition-all duration-300"
             >
               {IconComponent && <IconComponent className="w-5 h-5" />}
             </Link>

@@ -21,7 +21,7 @@ export function PageHeader({ title, subtitle, showBackButton = true }: PageHeade
   const subtitleText = subtitle ? (Array.isArray(subtitle) ? subtitle[0] : subtitle) : undefined;
 
   return (
-    <header className="bg-white border-b border-gold-200">
+    <header className="bg-[#0A0A0A]/60 backdrop-blur-md border-b border-[#F3E5AB]/10">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
@@ -41,9 +41,9 @@ export function PageHeader({ title, subtitle, showBackButton = true }: PageHeade
 
           {/* Page Title */}
           <div className="flex-1 text-center px-2 min-w-0">
-            <h1 className="text-base sm:text-lg font-semibold text-light-bg truncate">{titleText}</h1>
+            <h1 className="text-base sm:text-lg font-semibold text-slate-100 truncate">{titleText}</h1>
             {subtitleText && (
-              <p className="text-xs sm:text-sm text-muted-light truncate">{subtitleText}</p>
+              <p className="text-xs sm:text-sm text-slate-300 truncate">{subtitleText}</p>
             )}
           </div>
 

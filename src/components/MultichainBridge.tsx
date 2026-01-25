@@ -28,7 +28,7 @@ export function MultichainBridge() {
   };
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 md:py-16 bg-gradient-to-b from-[#0A0A0A] via-[#1a1a1a] to-[#0A0A0A]" style={{ '--section-padding': '5rem' } as React.CSSProperties}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -36,7 +36,7 @@ export function MultichainBridge() {
               {title}
             </span>
           </h2>
-          <p className="text-xl text-muted-light max-w-3xl mx-auto">
+          <p className="text-sm md:text-base text-slate-200 max-w-3xl mx-auto">
             {subtitle}
           </p>
         </div>
@@ -55,7 +55,7 @@ export function MultichainBridge() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <Card
-                  className="group hover:shadow-gold-lg transition-all duration-300 border-white/10 hover:border-amber-500/30 bg-white/40 backdrop-blur-md hover:bg-white/60"
+                  className="group hover:shadow-gold-lg transition-all duration-300 glass-institutional border-gradient-gold hover:border-[#F3E5AB]/30 card-mobile-full"
                 >
                   <CardHeader>
                     <div className="flex items-center justify-between mb-4">
@@ -63,20 +63,20 @@ export function MultichainBridge() {
                         {icon}
                       </div>
                       {network.status === 'active' && (
-                        <Badge className="bg-green-500/20 text-green-600 border-green-500/30">
+                        <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
                           <CheckCircle2 className="w-3 h-3 mr-1" />
                           {(t('networkStatus.active') as string) || 'Active'}
                         </Badge>
                       )}
                     </div>
                     
-                    <CardTitle className="text-xl font-bold text-light-bg mb-2">
+                    <CardTitle className="text-xl font-bold text-slate-100 mb-2">
                       {network.name}
                     </CardTitle>
-                    <CardDescription className="text-muted-light font-medium mb-2">
+                    <CardDescription className="text-slate-300 font-medium mb-2">
                       {network.title}
                     </CardDescription>
-                    <CardDescription className="text-muted-light text-sm">
+                    <CardDescription className="text-slate-300 text-sm">
                       {network.description}
                     </CardDescription>
                   </CardHeader>
@@ -85,8 +85,8 @@ export function MultichainBridge() {
                     <ul className="space-y-2">
                       {(Array.isArray(network.features) ? network.features : []).map((feature: string, featureIndex: number) => (
                         <li key={featureIndex} className="flex items-start space-x-2">
-                          <div className="w-1.5 h-1.5 bg-amber-500 rounded-full flex-shrink-0 mt-2"></div>
-                          <span className="text-muted-light text-sm">{feature}</span>
+                          <div className="w-1.5 h-1.5 bg-[#F3E5AB] rounded-full flex-shrink-0 mt-2"></div>
+                          <span className="text-slate-300 text-sm">{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -98,20 +98,20 @@ export function MultichainBridge() {
         </div>
 
         {/* Bridge Status */}
-        <div className="bg-white/20 backdrop-blur-md border border-white/10 rounded-2xl p-8 shadow-lg">
+        <div className="glass-institutional border-[#F3E5AB]/20 rounded-2xl p-8 shadow-lg">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center space-x-4">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 flex items-center justify-center shadow-lg">
-                <ArrowLeftRight className="w-8 h-8 text-white" />
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-[#F3E5AB] to-[#C9A961] flex items-center justify-center shadow-lg">
+                <ArrowLeftRight className="w-8 h-8 text-[#0A0A0A]" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-light-bg mb-2">
+                <h3 className="text-2xl font-bold text-slate-100 mb-2">
                   {bridge.title || 'Interoperability Hub'}
                 </h3>
-                <p className="text-muted-light">
+                <p className="text-slate-300">
                   {bridge.networks}
                 </p>
-                <p className="text-sm text-muted-light mt-2">
+                <p className="text-sm text-slate-300 mt-2">
                   {bridge.unifiedLiquidity || 'Unified liquidity layer across chains'}
                 </p>
               </div>
@@ -119,16 +119,16 @@ export function MultichainBridge() {
             
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="text-center md:text-right">
-                <div className="text-sm text-muted-light mb-1">Status</div>
-                <Badge className="bg-green-500/20 text-green-600 border-green-500/30 text-lg px-4 py-2">
+                <div className="text-sm text-slate-300 mb-1">Status</div>
+                <Badge className="bg-green-500/20 text-green-400 border-green-500/30 text-lg px-4 py-2">
                   <CheckCircle2 className="w-4 h-4 mr-2" />
                   {bridge.status}
                 </Badge>
               </div>
               
               <div className="text-center md:text-right">
-                <div className="text-sm text-muted-light mb-1">Transaction Time</div>
-                <div className="text-2xl font-bold text-amber-600">
+                <div className="text-sm text-slate-300 mb-1">Transaction Time</div>
+                <div className="text-2xl font-bold text-[#F3E5AB]">
                   {bridge.time}
                 </div>
               </div>
