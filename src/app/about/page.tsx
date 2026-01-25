@@ -60,7 +60,7 @@ export default function AboutPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="bg-white border-gold-200 hover:border-gold-300 transition-all duration-300">
+              <Card key={index} className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-amber-500/30 transition-all duration-300">
                 <CardHeader>
                   <div className="flex items-center space-x-3">
                     <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-gold-500 to-gold-600 flex items-center justify-center">
@@ -98,7 +98,7 @@ export default function AboutPage() {
 
         {/* Mission Statement */}
         <section className="text-center">
-          <Card className="bg-gradient-to-br from-gold-500/10 to-gold-600/5 border-gold-200">
+          <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-amber-500/30 transition-all duration-300">
             <CardHeader>
               <CardTitle className="text-2xl text-light-bg">{t('about.missionTitle')}</CardTitle>
             </CardHeader>

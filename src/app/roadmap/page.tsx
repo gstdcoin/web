@@ -106,8 +106,8 @@ export default function RoadmapPage() {
               <div key={phase.id} className="relative">
                 {/* Timeline Line - removed for first 3 sections */}
                 
-                <Card className={`bg-white border-gold-200 hover:border-gold-300 transition-all duration-300 ${
-                  phase.status === 'current' ? 'ring-2 ring-gold-500/20' : ''
+                <Card className={`bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-amber-500/30 transition-all duration-300 ${
+                  phase.status === 'current' ? 'ring-2 ring-amber-500/20' : ''
                 }`}>
                   <CardHeader>
                     <div className="flex items-start justify-between">
@@ -150,7 +150,7 @@ export default function RoadmapPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {milestones.map((milestone, index) => (
-              <Card key={index} className="bg-white border-gold-200 hover:border-gold-300 transition-all duration-300 text-center">
+              <Card key={index} className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-amber-500/30 transition-all duration-300 text-center">
                 <CardHeader>
                   <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 flex items-center justify-center">
                     <milestone.icon className="w-8 h-8 text-white" />
@@ -169,7 +169,7 @@ export default function RoadmapPage() {
 
         {/* Progress Overview */}
         <section>
-          <Card className="bg-gradient-to-br from-gold-500/10 to-gold-600/5 border-gold-200">
+          <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-amber-500/30 transition-all duration-300">
             <CardHeader className="text-center">
               <CardTitle className="text-2xl text-light-bg">{t('roadmap.developmentProgress')}</CardTitle>
               <CardDescription className="text-muted-light">

@@ -35,14 +35,14 @@ export default {
   // What We Build
   whatWeBuildTitle: 'What we are building',
   whatWeBuildBullets: [
-    'Risk-first lending with dynamic LTV and circuit breakers',
-    'Senior/Junior LP vaults with Insurance reserve',
-    'Self-repaying mode (budgeted) for great UX',
+    'Wallet-as-Node Infrastructure',
+    'Escrow 2.0 & Treasury',
+    'Real-Time Gold Backing',
   ],
   whatWeBuildDescriptions: [
-    'Advanced risk management with dynamic loan-to-value ratios and automatic circuit breakers.',
-    'Sophisticated vault system with insurance reserves for maximum security.',
-    'Self-repaying loans with budgeted payments for seamless user experience.',
+    'One-click mining infrastructure. Your wallet becomes your node. Launch worker directly in Telegram bot and monetize your device\'s idle capacity.',
+    'Task budget protection (95% in Escrow) and automatic fee conversion to gold. 5% of fees and unused capacity remainders are converted to XAUt daily.',
+    'Mathematically guaranteed backing for every PFLOPS of computing power. Each GSDT token is backed by a growing gold reserve created through DePIN operations.',
   ],
 
   // Token Section
@@ -199,7 +199,7 @@ export default {
   roadmap: {
     title: 'Development Cycle',
     subtitle: 'GSDT Protocol Evolution',
-    description: 'Our comprehensive development roadmap outlines the key milestones and features we plan to deliver to build the most advanced DeFi lending platform.',
+    description: 'Our comprehensive development roadmap outlines the key milestones and features we plan to deliver to build the most advanced Global DePIN Computing Network with gold backing.',
     phases: [
       'Launch',
       'Enhanced Features',
@@ -220,7 +220,7 @@ export default {
     scalableGrowth: 'Scalable Growth',
     scalableGrowthDescription: 'Sustainable growth with innovative features and partnerships',
     developmentProgress: 'Development Progress',
-    developmentProgressDescription: 'Track our progress as we build the future of DeFi lending',
+    developmentProgressDescription: 'Track our progress as we build the future of Global DePIN Computing Network with gold backing',
     phaseComplete: 'Phase 1 Complete',
     phaseProgress: 'Phase 2 Progress',
     phasePlanning: 'Phase 3 Planning',
@@ -298,8 +298,8 @@ export default {
   investors: {
     title: 'Core Protocol',
     subtitle: 'GSDT Protocol Core Components',
-    description: 'We are building not just a lending service but a new standard in decentralized finance, where every loan is backed by gold and the GSTD token.',
-    summary: '⚡️ GSTD Lending is not just about loans — it\'s a fair and transparent system where liquidity providers earn interest and borrowers access credit secured by gold. Join the future where gold meets Web3.',
+    description: 'GSTD is a decentralized supercomputer that transforms your device\'s computing power into gold-backed liquidity. Lending is the financial layer that allows extracting liquidity from accumulated gold backing without selling computing capacity.',
+    summary: '⚡️ GSTD is a decentralized supercomputer where every computation generates protocol revenue, 70% of which converts into physical gold. This gold reserve creates a financial layer — low-interest lending (1.5% APY) — allowing you to extract liquidity from accumulated gold backing without selling your computing power. Join the future where distributed computing meets gold-backed finance.',
     advantagesTitle: 'Key Advantages',
     advantages: {
       reliability: {
@@ -551,6 +551,10 @@ export default {
         question: 'Why is gold important for DePIN?',
         answer: 'Gold (XAUt) creates a "price floor" for GSDT token. While other DePIN tokens depend only on hype, GSDT grows with the platform\'s physical gold reserve. 5% of fees and unused capacity remainders are converted to XAUt daily.',
       },
+      {
+        question: 'How does physical gold enter the reserve?',
+        answer: 'The Treasury smart contract collects 70% of net profit from computations every 24 hours and converts it to XAUt through DEX aggregators. Gold is stored in audited vaults, and Proof-of-Reserve is updated in real-time through Oracle.',
+      },
     ],
   },
 
@@ -610,7 +614,7 @@ export default {
         },
         {
           title: 'Earn Gold',
-          description: 'Your earned fees are instantly directed to Gold Reserve, increasing your GSDT value',
+          description: 'Your earned fees are instantly directed to Gold Reserve. Your income in GSDT is not just tokens — it\'s a share in the growing gold reserve. Network capacity growth = Gold growth = Your GSDT price growth.',
         },
       ],
     },
