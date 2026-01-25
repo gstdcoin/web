@@ -116,7 +116,7 @@ export function Navbar() {
                     href={item.href}
                     className={cn(
                       "block px-3 py-3 text-sm font-medium rounded-lg transition-all duration-300 touch-manipulation",
-                      "glass-institutional border-gradient-gold",
+                      "glass-institutional border-[#D4AF37]/20",
                       "text-[#FAEBD7] hover:text-[#D4AF37]",
                       "hover:border-[#D4AF37]/40 hover:shadow-[0_0_20px_rgba(212,175,55,0.1)]",
                       "active:scale-95"

@@ -28,7 +28,7 @@ export default function InvestorsPage() {
       icon: Eye,
       title: t('investors.advantages.transparency.title'),
       description: t('investors.advantages.transparency.description'),
-      color: 'bg-blue-500',
+      color: 'bg-[#D4AF37]',
     },
     {
       icon: TrendingUp,

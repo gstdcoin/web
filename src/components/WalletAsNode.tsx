@@ -46,7 +46,7 @@ export function WalletAsNode() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="glass-institutional border-gradient-gold hover:border-[#D4AF37]/30 text-center h-full card-mobile-full">
+                <Card className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 rounded-2xl text-center h-full card-mobile-full">
                   <CardContent className="pt-6">
                     <div className="w-12 h-12 mx-auto mb-3 rounded-lg bg-gradient-to-r from-[#D4AF37] to-[#B8860B] flex items-center justify-center">
                       <IconComponent className="w-6 h-6 text-[#0A0A0A]" />

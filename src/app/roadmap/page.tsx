@@ -26,7 +26,7 @@ export default function RoadmapPage() {
       icon: Clock,
       description: t('roadmap.phaseDescriptions')[1],
       features: t('roadmap.phaseFeatures')[1] as unknown as string[],
-      color: 'bg-gold-500',
+      color: 'bg-[#D4AF37]',
     },
     {
       id: 3,
