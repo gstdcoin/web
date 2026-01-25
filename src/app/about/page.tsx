@@ -48,7 +48,7 @@ export default function AboutPage() {
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="text-gradient-gold">{t('about.title')}</span>
           </h1>
-          <p className="text-xl text-muted-light max-w-3xl mx-auto">
+          <p className="text-sm md:text-base text-slate-200 max-w-3xl mx-auto">
             {t('about.description')}
           </p>
         </section>
@@ -60,17 +60,17 @@ export default function AboutPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-amber-500/30 transition-all duration-300">
+              <Card key={index} className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-all duration-300 card-mobile-full">
                 <CardHeader>
                   <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-gold-500 to-gold-600 flex items-center justify-center">
-                      <feature.icon className="w-6 h-6 text-white" />
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#D4AF37] to-[#B8860B] flex items-center justify-center">
+                      <feature.icon className="w-6 h-6 text-[#0A0A0A]" />
                     </div>
-                    <CardTitle className="text-xl text-light-bg">{feature.title}</CardTitle>
+                    <CardTitle className="text-xl text-slate-100">{feature.title}</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-muted-light leading-relaxed">
+                  <CardDescription className="text-slate-300 leading-relaxed">
                     {feature.description}
                   </CardDescription>
                 </CardContent>
@@ -86,11 +86,11 @@ export default function AboutPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {(t('about.buildBullets') as string[]).map((bullet, index) => (
-              <div key={index} className="flex items-start space-x-3 p-4 bg-slate-50 rounded-lg">
-                <div className="w-6 h-6 rounded-full bg-gold-500 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <span className="text-white text-sm font-bold">{index + 1}</span>
+              <div key={index} className="flex items-start space-x-3 p-4 glass-institutional border-[#D4AF37]/20 rounded-lg">
+                <div className="w-6 h-6 rounded-full bg-[#D4AF37] flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-[#0A0A0A] text-sm font-bold">{index + 1}</span>
                 </div>
-                <p className="text-muted-light">{bullet}</p>
+                <p className="text-slate-300">{bullet}</p>
               </div>
             ))}
           </div>
@@ -98,12 +98,12 @@ export default function AboutPage() {
 
         {/* Mission Statement */}
         <section className="text-center">
-          <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-amber-500/30 transition-all duration-300">
+          <Card className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-all duration-300 card-mobile-full">
             <CardHeader>
-              <CardTitle className="text-2xl text-light-bg">{t('about.missionTitle')}</CardTitle>
+              <CardTitle className="text-2xl text-slate-100">{t('about.missionTitle')}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-lg text-muted-light leading-relaxed">
+              <p className="text-sm md:text-base text-slate-300 leading-relaxed">
                 {t('about.missionDescription')}
               </p>
             </CardContent>

@@ -33,8 +33,8 @@ export function EscrowTreasury() {
             <Card className="glass-institutional border-gradient-gold hover:border-[#D4AF37]/30 h-full card-mobile-full">
               <CardHeader>
                 <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center">
-                    <Shield className="w-6 h-6 text-white" />
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#D4AF37] to-[#B8860B] flex items-center justify-center">
+                    <Shield className="w-6 h-6 text-[#0A0A0A]" />
                   </div>
                   <CardTitle className="text-2xl text-slate-100">
                     {escrowTreasury?.escrow?.title || 'Escrow: Защита бюджета'}

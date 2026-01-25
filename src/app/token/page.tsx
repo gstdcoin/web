@@ -41,7 +41,7 @@ export default function TokenPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-b from-[#0A0A0A] via-[#1a1a1a] to-[#0A0A0A]">
       <PageHeader 
         title={t('tokenSectionTitle')} 
         subtitle={t('tokenBullets')[0]}
@@ -50,49 +50,49 @@ export default function TokenPage() {
       <main className="container mx-auto px-4 py-12">
         {/* Token Overview */}
         <section className="mb-16">
-          <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-gold">
+          <Card className="glass-institutional border-[#D4AF37]/20 shadow-gold card-mobile-full">
             <CardHeader>
-              <CardTitle className="text-3xl text-gold-600 flex items-center gap-2">
+              <CardTitle className="text-3xl text-[#D4AF37] flex items-center gap-2">
                 {t('tokenSectionTitle')}
-                <Badge className="bg-gold-500 text-white">{TOKEN_INFO.symbol}</Badge>
+                <Badge className="bg-[#D4AF37] text-[#0A0A0A]">{TOKEN_INFO.symbol}</Badge>
               </CardTitle>
-              <CardDescription className="text-muted-light text-lg">
+              <CardDescription className="text-slate-300 text-lg">
                 {t('tokenBullets')[0]}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               {/* Token Info Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="text-center p-4 bg-slate-50 rounded-lg">
-                  <p className="text-sm text-muted-light mb-1">{t('tokenInfo.network')}</p>
-                  <p className="font-semibold text-gold-600">{TOKEN_INFO.network}</p>
+                <div className="text-center p-4 glass-institutional border-[#D4AF37]/20 rounded-lg">
+                  <p className="text-sm text-slate-300 mb-1">{t('tokenInfo.network')}</p>
+                  <p className="font-semibold text-[#D4AF37]">{TOKEN_INFO.network}</p>
                 </div>
-                <div className="text-center p-4 bg-slate-50 rounded-lg">
-                  <p className="text-sm text-muted-light mb-1">{t('tokenInfo.decimals')}</p>
-                  <p className="font-semibold text-gold-600">{TOKEN_INFO.decimals}</p>
+                <div className="text-center p-4 glass-institutional border-[#D4AF37]/20 rounded-lg">
+                  <p className="text-sm text-slate-300 mb-1">{t('tokenInfo.decimals')}</p>
+                  <p className="font-semibold text-[#D4AF37]">{TOKEN_INFO.decimals}</p>
                 </div>
-                <div className="text-center p-4 bg-slate-50 rounded-lg">
-                  <p className="text-sm text-muted-light mb-1">{t('tokenInfo.totalSupply')}</p>
-                  <p className="font-semibold text-gold-600">{TOKEN_INFO.totalSupply}</p>
+                <div className="text-center p-4 glass-institutional border-[#D4AF37]/20 rounded-lg">
+                  <p className="text-sm text-slate-300 mb-1">{t('tokenInfo.totalSupply')}</p>
+                  <p className="font-semibold text-[#D4AF37]">{TOKEN_INFO.totalSupply}</p>
                 </div>
-                <div className="text-center p-4 bg-slate-50 rounded-lg">
-                  <p className="text-sm text-muted-light mb-1">{t('tokenInfo.utility')}</p>
-                  <p className="font-semibold text-gold-600">{t('tokenInfo.utilityValue')}</p>
+                <div className="text-center p-4 glass-institutional border-[#D4AF37]/20 rounded-lg">
+                  <p className="text-sm text-slate-300 mb-1">{t('tokenInfo.utility')}</p>
+                  <p className="font-semibold text-[#D4AF37]">{t('tokenInfo.utilityValue')}</p>
                 </div>
               </div>
 
               {/* Contract Address */}
               <div>
-                <p className="text-sm text-muted-light mb-2">{t('tokenInfo.contractAddress')}</p>
-                <div className="flex items-center space-x-2 p-3 bg-slate-50 rounded-lg border border-gold-200">
-                  <code className="flex-1 text-sm font-mono text-gold-600 break-all">
+                <p className="text-sm text-slate-300 mb-2">{t('tokenInfo.contractAddress')}</p>
+                <div className="flex items-center space-x-2 p-3 glass-institutional border-[#D4AF37]/20 rounded-lg">
+                  <code className="flex-1 text-sm font-mono text-[#D4AF37] break-all">
                     {TOKEN_INFO.contractAddress}
                   </code>
                   <Button
                     size="sm"
                     variant="ghost"
                     onClick={handleCopyContract}
-                    className="text-gold-600 hover:bg-gold-50"
+                    className="text-[#D4AF37] hover:bg-[#D4AF37]/10"
                   >
                     <Copy className="h-4 w-4" />
                   </Button>
@@ -101,13 +101,13 @@ export default function TokenPage() {
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button className="btn-gold flex-1" asChild>
+                <Button className="bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30 hover:border-green-500/50 flex-1" asChild>
                   <a href={LINKS.buyGSDT} target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="w-4 h-4 mr-2" />
                     {t('tokenInfo.buyGSTD')}
                   </a>
                 </Button>
-                <Button variant="outline" className="btn-outline-gold flex-1" asChild>
+                <Button variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30 hover:border-green-500/50 flex-1" asChild>
                   <Link href="/advantages">
                     <ExternalLink className="w-4 h-4 mr-2" />
                     {t('tokenInfo.advantages')}
@@ -125,17 +125,17 @@ export default function TokenPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {tokenFeatures.map((feature, index) => (
-              <Card key={index} className="bg-white/40 backdrop-blur-md border-white/10 hover:border-amber-500/30 transition-all duration-300">
+              <Card key={index} className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-all duration-300 card-mobile-full">
                 <CardHeader>
                   <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-gold-500 to-gold-600 flex items-center justify-center">
-                      <feature.icon className="w-6 h-6 text-white" />
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#D4AF37] to-[#B8860B] flex items-center justify-center">
+                      <feature.icon className="w-6 h-6 text-[#0A0A0A]" />
                     </div>
-                    <CardTitle className="text-xl text-light-bg">{feature.title}</CardTitle>
+                    <CardTitle className="text-xl text-slate-100">{feature.title}</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-muted-light leading-relaxed">
+                  <CardDescription className="text-slate-300 leading-relaxed">
                     {feature.description}
                   </CardDescription>
                 </CardContent>
@@ -146,63 +146,63 @@ export default function TokenPage() {
 
         {/* Proof of Reserve */}
         <section className="mb-16">
-          <Card className="bg-white/60 backdrop-blur-md border-white/20 hover:border-amber-500/40 shadow-lg">
+          <Card className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 shadow-lg card-mobile-full">
             <CardHeader>
-              <CardTitle className="text-2xl text-light-bg flex items-center gap-2">
-                <Shield className="w-6 h-6 text-amber-600" />
+              <CardTitle className="text-2xl text-slate-100 flex items-center gap-2">
+                <Shield className="w-6 h-6 text-[#D4AF37]" />
                 {t('tokenInfo.proofOfReserve')}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <p className="text-muted-light leading-relaxed" style={{ lineHeight: '1.7' }}>
+                <p className="text-slate-300 leading-relaxed" style={{ lineHeight: '1.7' }}>
                   {t('tokenInfo.proofOfReserveDescription')}
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-white/30 rounded-lg border border-white/20">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 glass-institutional border-[#D4AF37]/20 rounded-lg">
                   <div className="text-center relative">
-                    <div className="text-2xl font-bold text-amber-600 mb-1">{PROOF_OF_RESERVE.goldBackingRatio.toFixed(2)}%</div>
-                    <div className="text-sm text-muted-light mb-2">
+                    <div className="text-2xl font-bold text-[#D4AF37] mb-1">{PROOF_OF_RESERVE.goldBackingRatio.toFixed(2)}%</div>
+                    <div className="text-sm text-slate-300 mb-2">
                       {t('tokenInfo.goldBackingRatio') || 'Коэффициент золотого обеспечения'}
                     </div>
                     <div className="flex items-center justify-center gap-1.5 mt-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs text-green-600">{t('tokenInfo.verifiedViaOracle')}</span>
+                      <span className="text-xs text-green-400">{t('tokenInfo.verifiedViaOracle')}</span>
                     </div>
                   </div>
                   <div className="text-center relative">
-                    <div className="text-2xl font-bold text-amber-600 mb-1">{PROOF_OF_RESERVE.physicalGoldReserveOz.toLocaleString('en-US', { maximumFractionDigits: 1 })} oz</div>
-                    <div className="text-sm text-muted-light mb-2">
+                    <div className="text-2xl font-bold text-[#D4AF37] mb-1">{PROOF_OF_RESERVE.physicalGoldReserveOz.toLocaleString('en-US', { maximumFractionDigits: 1 })} oz</div>
+                    <div className="text-sm text-slate-300 mb-2">
                       {t('tokenInfo.physicalGoldReserve') || 'Физический золотой резерв'}
                     </div>
                     <div className="flex items-center justify-center gap-1.5 mt-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs text-green-600">{t('tokenInfo.verifiedViaOracle')}</span>
+                      <span className="text-xs text-green-400">{t('tokenInfo.verifiedViaOracle')}</span>
                     </div>
                   </div>
                   <div className="text-center relative">
-                    <div className="text-2xl font-bold text-amber-600 mb-1">
+                    <div className="text-2xl font-bold text-[#D4AF37] mb-1">
                       ${(PROOF_OF_RESERVE.reserveValueUSD / 1000000).toFixed(2)}M
                     </div>
-                    <div className="text-sm text-muted-light mb-2">
+                    <div className="text-sm text-slate-300 mb-2">
                       {t('tokenInfo.reserveValue') || 'Стоимость резерва (USD)'}
                     </div>
                     <div className="flex items-center justify-center gap-1.5 mt-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs text-green-600">{t('tokenInfo.verifiedViaOracle')}</span>
+                      <span className="text-xs text-green-400">{t('tokenInfo.verifiedViaOracle')}</span>
                     </div>
                   </div>
                 </div>
                 <div className="space-y-3">
-                  <div className="p-3 bg-white/20 border border-white/10 rounded-lg">
-                    <p className="text-xs font-semibold text-amber-600 mb-1">
+                  <div className="p-3 glass-institutional border-[#D4AF37]/20 rounded-lg">
+                    <p className="text-xs font-semibold text-[#D4AF37] mb-1">
                       {t('tokenInfo.proofOfReserveAuditor') || 'Independent Custodian Audit (Tether Gold Support)'}
                     </p>
-                    <p className="text-xs text-muted-light" style={{ lineHeight: '1.7' }}>
+                    <p className="text-xs text-slate-300" style={{ lineHeight: '1.7' }}>
                       {t('tokenInfo.proofOfReserveUpdate') || 'Обновляется каждые 24 часа. Все активы верифицированы в сетях TON, Solana и XRPL.'}
                     </p>
                   </div>
-                  <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg">
-                    <p className="text-sm text-muted-light italic" style={{ lineHeight: '1.7' }}>
+                  <div className="p-3 bg-[#D4AF37]/10 border border-[#D4AF37]/20 rounded-lg">
+                    <p className="text-sm text-slate-300 italic" style={{ lineHeight: '1.7' }}>
                       {t('tokenInfo.proofOfReserveNote')}
                     </p>
                   </div>
@@ -218,79 +218,79 @@ export default function TokenPage() {
             <span className="text-gradient-gold">{t('tokenInfo.tokenEconomics')}</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="bg-white/40 backdrop-blur-md border-white/10 hover:border-amber-500/30">
+            <Card className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 card-mobile-full">
               <CardHeader>
-                <CardTitle className="text-lg text-light-bg">{t('tokenInfo.supplyDistribution')}</CardTitle>
+                <CardTitle className="text-lg text-slate-100">{t('tokenInfo.supplyDistribution')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
                   <div className="flex justify-between">
-                    <span className="text-muted-light">{t('tokenInfo.liquidity')}</span>
-                    <span className="font-semibold text-gold-600">30%</span>
+                    <span className="text-slate-300">{t('tokenInfo.liquidity')}</span>
+                    <span className="font-semibold text-[#D4AF37]">30%</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-light">{t('tokenInfo.community')}</span>
-                    <span className="font-semibold text-gold-600">40%</span>
+                    <span className="text-slate-300">{t('tokenInfo.community')}</span>
+                    <span className="font-semibold text-[#D4AF37]">40%</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-light">{t('tokenInfo.team')}</span>
-                    <span className="font-semibold text-gold-600">20%</span>
+                    <span className="text-slate-300">{t('tokenInfo.team')}</span>
+                    <span className="font-semibold text-[#D4AF37]">20%</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-light">{t('tokenInfo.reserve')}</span>
-                    <span className="font-semibold text-gold-600">10%</span>
+                    <span className="text-slate-300">{t('tokenInfo.reserve')}</span>
+                    <span className="font-semibold text-[#D4AF37]">10%</span>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="bg-white/40 backdrop-blur-md border-white/10 hover:border-amber-500/30">
+            <Card className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 card-mobile-full">
               <CardHeader>
-                <CardTitle className="text-lg text-light-bg">{t('tokenInfo.useCases')}</CardTitle>
+                <CardTitle className="text-lg text-slate-100">{t('tokenInfo.useCases')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-gold-500 rounded-full"></div>
-                    <span className="text-muted-light">{t('tokenInfo.collateralForLoans')}</span>
+                    <div className="w-2 h-2 bg-[#D4AF37] rounded-full"></div>
+                    <span className="text-slate-300">{t('tokenInfo.collateralForLoans')}</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-gold-500 rounded-full"></div>
-                    <span className="text-muted-light">{t('tokenInfo.governanceVoting')}</span>
+                    <div className="w-2 h-2 bg-[#D4AF37] rounded-full"></div>
+                    <span className="text-slate-300">{t('tokenInfo.governanceVoting')}</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-gold-500 rounded-full"></div>
-                    <span className="text-muted-light">{t('tokenInfo.feeDiscounts')}</span>
+                    <div className="w-2 h-2 bg-[#D4AF37] rounded-full"></div>
+                    <span className="text-slate-300">{t('tokenInfo.feeDiscounts')}</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-gold-500 rounded-full"></div>
-                    <span className="text-muted-light">{t('tokenInfo.stakingRewards')}</span>
+                    <div className="w-2 h-2 bg-[#D4AF37] rounded-full"></div>
+                    <span className="text-slate-300">{t('tokenInfo.stakingRewards')}</span>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="bg-white/40 backdrop-blur-md border-white/10 hover:border-amber-500/30">
+            <Card className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 card-mobile-full">
               <CardHeader>
-                <CardTitle className="text-lg text-light-bg">{t('tokenInfo.keyMetrics')}</CardTitle>
+                <CardTitle className="text-lg text-slate-100">{t('tokenInfo.keyMetrics')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
                   <div className="flex justify-between">
-                    <span className="text-muted-light">{t('tokenInfo.maxSupply')}</span>
-                    <span className="font-semibold text-gold-600">{t('tokenInfo.maxSupplyValue')}</span>
+                    <span className="text-slate-300">{t('tokenInfo.maxSupply')}</span>
+                    <span className="font-semibold text-[#D4AF37]">{t('tokenInfo.maxSupplyValue')}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-light">{t('tokenInfo.solana')}</span>
-                    <span className="font-semibold text-gold-600">{t('tokenInfo.solanaValue')}</span>
+                    <span className="text-slate-300">{t('tokenInfo.solana')}</span>
+                    <span className="font-semibold text-[#D4AF37]">{t('tokenInfo.solanaValue')}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-light">{t('tokenInfo.xrpl')}</span>
-                    <span className="font-semibold text-gold-600">{t('tokenInfo.xrplValue')}</span>
+                    <span className="text-slate-300">{t('tokenInfo.xrpl')}</span>
+                    <span className="font-semibold text-[#D4AF37]">{t('tokenInfo.xrplValue')}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-light">{t('tokenInfo.network')}</span>
-                    <span className="font-semibold text-gold-600">{t('tokenInfo.multichain')}</span>
+                    <span className="text-slate-300">{t('tokenInfo.network')}</span>
+                    <span className="font-semibold text-[#D4AF37]">{t('tokenInfo.multichain')}</span>
                   </div>
                 </div>
               </CardContent>

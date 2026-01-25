@@ -129,7 +129,7 @@ export function Navbar() {
               </div>
               {/* CTA Button in Grid */}
               <div className="mt-3">
-                <Button className="btn-gold w-full" size="sm" asChild>
+                <Button className="bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30 hover:border-green-500/50 w-full" size="sm" asChild>
                   <Link href={LINKS.getGSDT} onClick={() => setIsOpen(false)}>
                     {t('ctaPrimary')}
                   </Link>

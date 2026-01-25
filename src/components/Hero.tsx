@@ -70,7 +70,7 @@ export function Hero() {
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
-              <Button variant="outline" className="btn-outline-gold w-full sm:w-auto" asChild>
+              <Button variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30 hover:border-green-500/50 w-full sm:w-auto" asChild>
                 <a href={LINKS.launchNodes} target="_blank" rel="noopener noreferrer">
                   {t('ctaSecondary')}
                 </a>

@@ -95,7 +95,7 @@ export function WalletAsNode() {
 
         {/* CTA */}
         <div className="text-center">
-          <Button size="lg" className="btn-gold" asChild>
+          <Button size="lg" className="bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30 hover:border-green-500/50" asChild>
             <a href={LINKS.telegram} target="_blank" rel="noopener noreferrer">
               {walletAsNode?.cta || 'Подключить кошелек'}
               <ArrowRight className="ml-2 h-4 w-4" />

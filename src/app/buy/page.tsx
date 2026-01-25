@@ -31,7 +31,7 @@ export default function BuyPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-b from-[#0A0A0A] via-[#1a1a1a] to-[#0A0A0A]">
       <PageHeader 
         title={t('buyTitle')} 
         subtitle={t('buy.subtitle')}
@@ -40,23 +40,23 @@ export default function BuyPage() {
       <main className="container mx-auto px-4 py-12">
         {/* Quick Buy Section */}
         <section className="mb-16">
-          <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-[#D4AF37]/30 transition-all duration-300">
+          <Card className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-all duration-300 card-mobile-full">
             <CardHeader className="text-center">
-              <CardTitle className="text-3xl text-light-bg mb-4">
+              <CardTitle className="text-3xl text-slate-100 mb-4">
                 <span className="text-gradient-gold">{t('buy.quickBuyTitle')}</span>
               </CardTitle>
-              <CardDescription className="text-muted-light text-lg">
+              <CardDescription className="text-slate-300 text-lg">
                 {t('buy.quickBuyDescription')}
               </CardDescription>
             </CardHeader>
             <CardContent className="text-center">
-              <Button size="lg" className="btn-gold mb-4" asChild>
+              <Button size="lg" className="bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30 hover:border-green-500/50 mb-4" asChild>
                 <a href={LINKS.buyGSDT} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="w-5 h-5 mr-2" />
                   {t('buy.buyButtonText')}
                 </a>
               </Button>
-              <p className="text-sm text-muted-light">
+              <p className="text-sm text-slate-300">
                 {t('buy.poweredBy')}
               </p>
             </CardContent>
@@ -73,15 +73,15 @@ export default function BuyPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
-              <Card key={index} className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-[#D4AF37]/30 transition-all duration-300 text-center">
+              <Card key={index} className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-all duration-300 text-center card-mobile-full">
                 <CardHeader>
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 flex items-center justify-center">
-                    <benefit.icon className="w-8 h-8 text-white" />
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-[#D4AF37] to-[#B8860B] flex items-center justify-center">
+                    <benefit.icon className="w-8 h-8 text-[#0A0A0A]" />
                   </div>
-                  <CardTitle className="text-xl text-light-bg">{benefit.title}</CardTitle>
+                  <CardTitle className="text-xl text-slate-100">{benefit.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-muted-light leading-relaxed">
+                  <CardDescription className="text-slate-300 leading-relaxed">
                     {benefit.description}
                   </CardDescription>
                 </CardContent>
@@ -97,11 +97,11 @@ export default function BuyPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {(t('buy.features') as string[]).map((feature, index) => (
-              <div key={index} className="flex items-start space-x-3 p-4 bg-slate-50 rounded-lg">
-                <div className="w-6 h-6 rounded-full bg-gold-500 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <span className="text-white text-sm font-bold">✓</span>
+              <div key={index} className="flex items-start space-x-3 p-4 glass-institutional border-[#D4AF37]/20 rounded-lg">
+                <div className="w-6 h-6 rounded-full bg-[#D4AF37] flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-[#0A0A0A] text-sm font-bold">✓</span>
                 </div>
-                <p className="text-muted-light">{feature}</p>
+                <p className="text-slate-300">{feature}</p>
               </div>
             ))}
           </div>
@@ -113,15 +113,15 @@ export default function BuyPage() {
             <span className="text-gradient-gold">{t('buyPage.additionalResources')}</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-[#D4AF37]/30 transition-all duration-300">
+            <Card className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-all duration-300 card-mobile-full">
               <CardHeader>
-                <CardTitle className="text-lg text-light-bg">{t('buyPage.advantages')}</CardTitle>
+                <CardTitle className="text-lg text-slate-100">{t('buyPage.advantages')}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-light mb-4">
+                <p className="text-slate-300 mb-4">
                   {t('buyPage.advantagesDescription')}
                 </p>
-                <Button variant="outline" className="btn-outline-gold" asChild>
+                <Button variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30 hover:border-green-500/50" asChild>
                   <Link href={LINKS.docs}>
                     <ExternalLink className="w-4 h-4 mr-2" />
                     {t('buyPage.readDetails')}
@@ -130,15 +130,15 @@ export default function BuyPage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-[#D4AF37]/30 transition-all duration-300">
+            <Card className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-all duration-300 card-mobile-full">
               <CardHeader>
-                <CardTitle className="text-lg text-light-bg">{t('buyPage.community')}</CardTitle>
+                <CardTitle className="text-lg text-slate-100">{t('buyPage.community')}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-light mb-4">
+                <p className="text-slate-300 mb-4">
                   {t('buyPage.communityDescription')}
                 </p>
-                <Button variant="outline" className="btn-outline-gold" asChild>
+                <Button variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30 hover:border-green-500/50" asChild>
                   <a href={LINKS.telegram} target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="w-4 h-4 mr-2" />
                     {t('buyPage.joinTelegram')}

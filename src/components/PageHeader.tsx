@@ -50,7 +50,7 @@ export function PageHeader({ title, subtitle, showBackButton = true }: PageHeade
           {/* Actions */}
           <div className="flex items-center space-x-1 min-w-0">
             <LanguageSwitcher />
-            <Button className="btn-gold hidden sm:inline-flex" size="sm" asChild>
+            <Button className="bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30 hover:border-green-500/50 hidden sm:inline-flex" size="sm" asChild>
               <Link href={LINKS.getGSDT}>
                 {t('ctaPrimary')}
               </Link>

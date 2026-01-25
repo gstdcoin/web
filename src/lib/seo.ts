@@ -6,7 +6,7 @@ export const defaultMetadata: Metadata = {
     default: SITE.name,
     template: `%s | ${SITE.name}`,
   },
-  description: 'GSTD: Global Supercomputer with Gold Backing. First DePIN network on TON that turns your smartphone power into gold. Wallet-as-Node, Pay-for-Result, Distributed computing.',
+  description: 'Global Supercomputer with Gold Backing. First DePIN network on TON that turns your smartphone power into gold. Wallet-as-Node, Pay-for-Result, Distributed computing.',
   keywords: ['GSTD', 'DePIN', 'TON ecosystem', 'Distributed computing', 'Gold backed RWA', 'AI training on blockchain', 'Wallet-as-Node', 'Pay-for-Result', 'Global supercomputer', 'DePIN 2.0'],
   authors: [{ name: 'GSTD Team' }],
   creator: 'GSTD',

@@ -16,7 +16,7 @@ export function MultichainBridge() {
   const bridge = (t('multichain.bridge') as any) || { status: 'Operational', networks: 'TON ↔ SOL ↔ XRPL', time: '~2-5 минут' };
 
   const networkColors = {
-    TON: 'from-blue-500 to-blue-600',
+    TON: 'from-[#D4AF37] to-[#B8860B]',
     Solana: 'from-purple-500 to-purple-600',
     XRPL: 'from-green-500 to-green-600',
   };

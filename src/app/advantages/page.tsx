@@ -75,7 +75,7 @@ export default function InvestorsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-b from-[#0A0A0A] via-[#1a1a1a] to-[#0A0A0A]">
       <PageHeader 
         title={t('investors.title')} 
         subtitle={t('investors.subtitle')}
@@ -87,11 +87,11 @@ export default function InvestorsPage() {
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="text-gradient-gold">{t('investors.title')}</span>
           </h1>
-          <p className="text-xl text-muted-light max-w-4xl mx-auto mb-8">
+          <p className="text-sm md:text-base text-slate-200 max-w-4xl mx-auto mb-8">
             {t('investors.description')}
           </p>
-          <div className="bg-gradient-to-r from-gold-500/10 to-gold-600/5 border border-gold-200 rounded-2xl p-8 max-w-4xl mx-auto">
-            <p className="text-lg text-muted-light leading-relaxed">
+          <div className="glass-institutional border-[#D4AF37]/20 rounded-2xl p-8 max-w-4xl mx-auto">
+            <p className="text-sm md:text-base text-slate-300 leading-relaxed">
               {t('investors.summary')}
             </p>
           </div>
@@ -104,17 +104,17 @@ export default function InvestorsPage() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 px-4">
             {advantages.map((advantage, index) => (
-              <Card key={index} className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-amber-500/30 transition-all duration-300">
+              <Card key={index} className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-all duration-300 card-mobile-full">
                 <CardHeader>
                   <div className="flex items-center space-x-3">
-                    <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg ${advantage.color} flex items-center justify-center flex-shrink-0`}>
-                      <advantage.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r from-[#D4AF37] to-[#B8860B] flex items-center justify-center flex-shrink-0">
+                      <advantage.icon className="w-5 h-5 sm:w-6 sm:h-6 text-[#0A0A0A]" />
                     </div>
-                    <CardTitle className="text-lg sm:text-xl text-light-bg">{advantage.title}</CardTitle>
+                    <CardTitle className="text-lg sm:text-xl text-slate-100">{advantage.title}</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-muted-light leading-relaxed">
+                  <CardDescription className="text-slate-300 leading-relaxed">
                     {advantage.description}
                   </CardDescription>
                 </CardContent>
@@ -130,10 +130,10 @@ export default function InvestorsPage() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 px-4">
             {sections.map((section, index) => (
-              <Card key={index} className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-amber-500/30 transition-all duration-300">
+              <Card key={index} className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-all duration-300 card-mobile-full">
                 <CardHeader>
-                  <CardTitle className="text-lg sm:text-xl text-light-bg mb-2">{section.title}</CardTitle>
-                  <CardDescription className="text-muted-light text-sm sm:text-base">
+                  <CardTitle className="text-lg sm:text-xl text-slate-100 mb-2">{section.title}</CardTitle>
+                  <CardDescription className="text-slate-300 text-sm sm:text-base">
                     {section.description}
                   </CardDescription>
                 </CardHeader>
@@ -141,8 +141,8 @@ export default function InvestorsPage() {
                   <ul className="space-y-3">
                     {section.items.map((item, itemIndex) => (
                       <li key={itemIndex} className="flex items-start space-x-2">
-                        <div className="w-2 h-2 bg-gold-500 rounded-full flex-shrink-0 mt-2"></div>
-                        <span className="text-muted-light">{item}</span>
+                        <div className="w-2 h-2 bg-[#D4AF37] rounded-full flex-shrink-0 mt-2"></div>
+                        <span className="text-slate-300">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -154,15 +154,15 @@ export default function InvestorsPage() {
 
         {/* Call to Action */}
         <section className="text-center">
-          <div className="bg-gradient-to-r from-gold-500/10 to-gold-600/5 border border-gold-200 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-light-bg mb-4">
+          <div className="glass-institutional border-[#D4AF37]/20 rounded-2xl p-8">
+            <h3 className="text-2xl font-bold text-slate-100 mb-4">
               {t('investors.cta.title')}
             </h3>
-            <p className="text-muted-light mb-6 max-w-2xl mx-auto">
+            <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
               {t('investors.cta.description')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="btn-gold" asChild>
+              <Button className="bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30 hover:border-green-500/50" asChild>
                 <a href={LINKS.buyGSDT} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="w-4 h-4 mr-2" />
                   {t('investors.cta.badge')}

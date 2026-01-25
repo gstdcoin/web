@@ -35,7 +35,7 @@ export default function RoadmapPage() {
       icon: Target,
       description: t('roadmap.phaseDescriptions')[2],
       features: t('roadmap.phaseFeatures')[2] as unknown as string[],
-      color: 'bg-blue-500',
+      color: 'bg-[#D4AF37]',
     },
     {
       id: 4,
@@ -73,7 +73,7 @@ export default function RoadmapPage() {
       case 'current':
         return <Badge className="bg-gold-500 text-white">{t('roadmap.inProgress')}</Badge>;
       case 'upcoming':
-        return <Badge className="bg-blue-500 text-white">{t('roadmap.upcoming')}</Badge>;
+        return <Badge className="bg-[#D4AF37] text-[#0A0A0A]">{t('roadmap.upcoming')}</Badge>;
       case 'future':
         return <Badge className="bg-purple-500 text-white">{t('roadmap.future')}</Badge>;
       default:
@@ -82,7 +82,7 @@ export default function RoadmapPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-b from-[#0A0A0A] via-[#1a1a1a] to-[#0A0A0A]">
       <PageHeader 
         title={t('roadmap.title')} 
         subtitle={t('roadmap.subtitle')}
@@ -94,7 +94,7 @@ export default function RoadmapPage() {
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="text-gradient-gold">{t('roadmap.title')}</span>
           </h1>
-          <p className="text-xl text-muted-light max-w-3xl mx-auto">
+          <p className="text-sm md:text-base text-slate-200 max-w-3xl mx-auto">
             {t('roadmap.description')}
           </p>
         </section>
@@ -106,21 +106,21 @@ export default function RoadmapPage() {
               <div key={phase.id} className="relative">
                 {/* Timeline Line - removed for first 3 sections */}
                 
-                <Card className={`bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-amber-500/30 transition-all duration-300 ${
-                  phase.status === 'current' ? 'ring-2 ring-amber-500/20' : ''
+                <Card className={`glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-all duration-300 card-mobile-full ${
+                  phase.status === 'current' ? 'ring-2 ring-[#D4AF37]/20' : ''
                 }`}>
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div className="flex items-center space-x-4">
-                        <div className={`w-16 h-16 rounded-full ${phase.color} flex items-center justify-center`}>
-                          <phase.icon className="w-8 h-8 text-white" />
+                        <div className="w-16 h-16 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#B8860B] flex items-center justify-center">
+                          <phase.icon className="w-8 h-8 text-[#0A0A0A]" />
                         </div>
                         <div>
-                          <CardTitle className="text-2xl text-light-bg flex items-center gap-3">
+                          <CardTitle className="text-2xl text-slate-100 flex items-center gap-3">
                             {phase.title}
                             {getStatusBadge(phase.status)}
                           </CardTitle>
-                          <CardDescription className="text-muted-light text-lg mt-2">
+                          <CardDescription className="text-slate-300 text-lg mt-2">
                             {phase.description}
                           </CardDescription>
                         </div>
@@ -131,8 +131,8 @@ export default function RoadmapPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {phase.features.map((feature, featureIndex) => (
                         <div key={featureIndex} className="flex items-start space-x-3 p-3 bg-transparent rounded-lg">
-                          <div className={`w-2 h-2 rounded-full ${phase.color} flex-shrink-0 mt-2`}></div>
-                          <p className="text-muted-light">{feature}</p>
+                          <div className="w-2 h-2 rounded-full bg-[#D4AF37] flex-shrink-0 mt-2"></div>
+                          <p className="text-slate-300">{feature}</p>
                         </div>
                       ))}
                     </div>
@@ -150,15 +150,15 @@ export default function RoadmapPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {milestones.map((milestone, index) => (
-              <Card key={index} className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-amber-500/30 transition-all duration-300 text-center">
+              <Card key={index} className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-all duration-300 text-center card-mobile-full">
                 <CardHeader>
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 flex items-center justify-center">
-                    <milestone.icon className="w-8 h-8 text-white" />
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-[#D4AF37] to-[#B8860B] flex items-center justify-center">
+                    <milestone.icon className="w-8 h-8 text-[#0A0A0A]" />
                   </div>
-                  <CardTitle className="text-xl text-light-bg">{milestone.title}</CardTitle>
+                  <CardTitle className="text-xl text-slate-100">{milestone.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-muted-light leading-relaxed">
+                  <CardDescription className="text-slate-300 leading-relaxed">
                     {milestone.description}
                   </CardDescription>
                 </CardContent>
@@ -169,30 +169,30 @@ export default function RoadmapPage() {
 
         {/* Progress Overview */}
         <section>
-          <Card className="bg-white/40 backdrop-blur-md border-white/10 shadow-xl hover:border-amber-500/30 transition-all duration-300">
+          <Card className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-all duration-300 card-mobile-full">
             <CardHeader className="text-center">
-              <CardTitle className="text-2xl text-light-bg">{t('roadmap.developmentProgress')}</CardTitle>
-              <CardDescription className="text-muted-light">
+              <CardTitle className="text-2xl text-slate-100">{t('roadmap.developmentProgress')}</CardTitle>
+              <CardDescription className="text-slate-300">
                 {t('roadmap.developmentProgressDescription')}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-gold-600 mb-2">100%</div>
-                  <div className="text-sm text-muted-light">{t('roadmap.phaseComplete')}</div>
+                  <div className="text-3xl font-bold text-[#D4AF37] mb-2">100%</div>
+                  <div className="text-sm text-slate-300">{t('roadmap.phaseComplete')}</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-gold-600 mb-2">100%</div>
-                  <div className="text-sm text-muted-light">{t('roadmap.phaseProgress')}</div>
+                  <div className="text-3xl font-bold text-[#D4AF37] mb-2">100%</div>
+                  <div className="text-sm text-slate-300">{t('roadmap.phaseProgress')}</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-gold-600 mb-2">25%</div>
-                  <div className="text-sm text-muted-light">{t('roadmap.phasePlanning')}</div>
+                  <div className="text-3xl font-bold text-[#D4AF37] mb-2">25%</div>
+                  <div className="text-sm text-slate-300">{t('roadmap.phasePlanning')}</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-gold-600 mb-2">0%</div>
-                  <div className="text-sm text-muted-light">{t('roadmap.phaseResearch')}</div>
+                  <div className="text-3xl font-bold text-[#D4AF37] mb-2">0%</div>
+                  <div className="text-sm text-slate-300">{t('roadmap.phaseResearch')}</div>
                 </div>
               </div>
             </CardContent>

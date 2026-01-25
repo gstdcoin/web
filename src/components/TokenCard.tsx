@@ -76,13 +76,13 @@ export function TokenCard() {
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-3">
-          <Button className="btn-gold flex-1" asChild>
+          <Button className="bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30 hover:border-green-500/50 flex-1" asChild>
             <a href={LINKS.buyGSDT} target="_blank" rel="noopener noreferrer">
               <ExternalLink className="w-4 h-4 mr-2" />
               {t('tokenInfo.buyGSTD')}
             </a>
           </Button>
-          <Button variant="outline" className="btn-outline-gold flex-1" asChild>
+          <Button variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30 hover:border-green-500/50 flex-1" asChild>
             <Link href="/advantages">
               <ExternalLink className="w-4 h-4 mr-2" />
               {t('tokenInfo.advantages')}

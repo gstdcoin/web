@@ -13,7 +13,7 @@ export default {
   // Hero Section
   hero: {
     badge: 'Wallet-as-Node • Pay-for-Result • Gold Backed',
-    title: 'GSTD: Global Supercomputer with Gold Backing',
+    title: 'Global Supercomputer with Gold Backing',
     subtitle: 'The first DePIN network on TON that turns your smartphone power into gold. Mathematical guarantee of task execution and institutional protection of your assets.',
   },
 
