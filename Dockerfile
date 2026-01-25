@@ -3,7 +3,7 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 # Set memory limits for build process
-ENV NODE_OPTIONS="--max-old-space-size=512"
+ENV NODE_OPTIONS="--max-old-space-size=1024"
 
 # Install dependencies first for better caching
 COPY package.json package-lock.json ./
@@ -27,7 +27,7 @@ RUN adduser --system --uid 1001 nextjs
 # Set production environment with memory limits
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
-ENV NODE_OPTIONS="--max-old-space-size=256 --max-semi-space-size=64"
+ENV NODE_OPTIONS="--max-old-space-size=512 --max-semi-space-size=128"
 
 # Copy built application
 COPY --from=builder /app/public ./public

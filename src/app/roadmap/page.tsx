@@ -22,7 +22,7 @@ export default function RoadmapPage() {
     {
       id: 2,
       title: t('roadmap.phases')[1],
-      status: 'current',
+      status: 'completed',
       icon: Clock,
       description: t('roadmap.phaseDescriptions')[1],
       features: t('roadmap.phaseFeatures')[1] as unknown as string[],
@@ -31,7 +31,7 @@ export default function RoadmapPage() {
     {
       id: 3,
       title: t('roadmap.phases')[2],
-      status: 'upcoming',
+      status: 'current',
       icon: Target,
       description: t('roadmap.phaseDescriptions')[2],
       features: t('roadmap.phaseFeatures')[2] as unknown as string[],
@@ -104,10 +104,7 @@ export default function RoadmapPage() {
           <div className="space-y-8">
             {phases.map((phase, index) => (
               <div key={phase.id} className="relative">
-                {/* Timeline Line */}
-                {index < phases.length - 1 && (
-                  <div className="absolute left-8 top-16 w-0.5 h-16 bg-gray-200"></div>
-                )}
+                {/* Timeline Line - removed for first 3 sections */}
                 
                 <Card className={`bg-white border-gold-200 hover:border-gold-300 transition-all duration-300 ${
                   phase.status === 'current' ? 'ring-2 ring-gold-500/20' : ''
@@ -133,7 +130,7 @@ export default function RoadmapPage() {
                   <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {phase.features.map((feature, featureIndex) => (
-                        <div key={featureIndex} className="flex items-start space-x-3 p-3 bg-slate-50 rounded-lg">
+                        <div key={featureIndex} className="flex items-start space-x-3 p-3 bg-transparent rounded-lg">
                           <div className={`w-2 h-2 rounded-full ${phase.color} flex-shrink-0 mt-2`}></div>
                           <p className="text-muted-light">{feature}</p>
                         </div>
@@ -186,7 +183,7 @@ export default function RoadmapPage() {
                   <div className="text-sm text-muted-light">{t('roadmap.phaseComplete')}</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-gold-600 mb-2">75%</div>
+                  <div className="text-3xl font-bold text-gold-600 mb-2">100%</div>
                   <div className="text-sm text-muted-light">{t('roadmap.phaseProgress')}</div>
                 </div>
                 <div className="text-center">

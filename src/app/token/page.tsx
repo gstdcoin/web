@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useLanguage } from '@/components/LanguageProvider';
 import { PageHeader } from '@/components/PageHeader';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -107,10 +108,10 @@ export default function TokenPage() {
                   </a>
                 </Button>
                 <Button variant="outline" className="btn-outline-gold flex-1" asChild>
-                  <a href="https://gstdtoken.com/advantages" target="_blank" rel="noopener noreferrer">
+                  <Link href="/advantages">
                     <ExternalLink className="w-4 h-4 mr-2" />
                     {t('tokenInfo.advantages')}
-                  </a>
+                  </Link>
                 </Button>
               </div>
             </CardContent>

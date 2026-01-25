@@ -5,15 +5,15 @@ services:
     restart: unless-stopped
     networks:
       - gstd-network
-    # Resource limits optimized for 1GB RAM VPS
+    # Resource limits optimized for 2GB RAM VPS
     deploy:
       resources:
         limits:
-          memory: 400M
-          cpus: '0.8'
+          memory: 800M
+          cpus: '1.5'
         reservations:
-          memory: 200M
-          cpus: '0.3'
+          memory: 400M
+          cpus: '0.5'
     # Health check - optimized for quick startup
     healthcheck:
       test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/api/health"]
@@ -49,15 +49,15 @@ services:
       - caddy_config:/config
     networks:
       - gstd-network
-    # Resource limits optimized for 1GB RAM VPS
+    # Resource limits optimized for 2GB RAM VPS
     deploy:
       resources:
         limits:
+          memory: 200M
+          cpus: '0.4'
+        reservations:
           memory: 100M
           cpus: '0.2'
-        reservations:
-          memory: 50M
-          cpus: '0.1'
     # Health check - optimized for quick startup
     healthcheck:
       test: ["CMD", "caddy", "version"]

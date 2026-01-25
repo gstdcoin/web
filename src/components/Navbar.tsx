@@ -20,7 +20,7 @@ export function Navbar() {
     { key: 'token', href: '/token' },
     { key: 'buy', href: '/buy' },
     { key: 'roadmap', href: '/roadmap' },
-    { key: 'docs', href: LINKS.docs, external: true },
+    { key: 'docs', href: LINKS.docs },
     { key: 'legal', href: '/legal' },
   ];
 
@@ -44,14 +44,12 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center justify-between w-full max-w-4xl mx-auto px-8">
             {navItems.map((item) => (
               <Link
                 key={item.key}
                 href={item.href}
-                target={item.external ? '_blank' : undefined}
-                rel={item.external ? 'noopener noreferrer' : undefined}
-                className="text-sm font-medium text-slate-600 hover:text-gold-600 transition-colors"
+                className="text-sm font-medium text-slate-600 hover:text-gold-600 transition-colors whitespace-nowrap"
               >
                 {t(`nav.${item.key}`)}
               </Link>
@@ -90,8 +88,6 @@ export function Navbar() {
                 <Link
                   key={item.key}
                   href={item.href}
-                  target={item.external ? '_blank' : undefined}
-                  rel={item.external ? 'noopener noreferrer' : undefined}
                   className="block px-3 py-3 text-base font-medium text-slate-600 hover:text-gold-600 hover:bg-gold-50 rounded-md transition-colors touch-manipulation"
                   onClick={() => setIsOpen(false)}
                 >

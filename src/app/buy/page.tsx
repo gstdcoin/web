@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useLanguage } from '@/components/LanguageProvider';
 import { PageHeader } from '@/components/PageHeader';
 import { HowToSteps } from '@/components/HowToSteps';
@@ -121,10 +122,10 @@ export default function BuyPage() {
                   {t('buyPage.advantagesDescription')}
                 </p>
                 <Button variant="outline" className="btn-outline-gold" asChild>
-                  <a href={LINKS.docs} target="_blank" rel="noopener noreferrer">
+                  <Link href={LINKS.docs}>
                     <ExternalLink className="w-4 h-4 mr-2" />
                     {t('buyPage.readDetails')}
-                  </a>
+                  </Link>
                 </Button>
               </CardContent>
             </Card>

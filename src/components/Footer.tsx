@@ -13,7 +13,7 @@ export function Footer() {
     { key: 'token', href: '/token' },
     { key: 'buy', href: '/buy' },
     { key: 'roadmap', href: '/roadmap' },
-    { key: 'docs', href: LINKS.docs, external: true },
+    { key: 'docs', href: LINKS.docs },
     { key: 'legal', href: '/legal' },
   ];
 
@@ -55,8 +55,6 @@ export function Footer() {
                 <li key={link.key}>
                   <Link
                     href={link.href}
-                    target={link.external ? '_blank' : undefined}
-                    rel={link.external ? 'noopener noreferrer' : undefined}
                     className="text-muted-dark hover:text-gold-400 transition-colors"
                   >
                     {t(`nav.${link.key}`)}
