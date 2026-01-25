@@ -20,14 +20,14 @@ export function Hero() {
   return (
     <section className="relative min-h-[85vh] md:min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-[#0A0A0A] via-[#1a1a1a] to-[#2a2a2a]">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#F3E5AB]/5 to-[#F3E5AB]/10 opacity-30" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/5 to-[#D4AF37]/10 opacity-30" />
       
       {/* Animated Background Elements - Right Side */}
       <div className="absolute inset-0 hidden md:block">
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-[#F3E5AB]/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/6 w-[500px] h-[500px] bg-[#F3E5AB]/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/6 w-[500px] h-[500px] bg-[#D4AF37]/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
         {/* Abstract 3D gradient representing supercomputer */}
-        <div className="absolute top-1/2 right-0 w-[600px] h-[600px] bg-gradient-to-l from-[#F3E5AB]/20 via-transparent to-transparent rounded-full blur-3xl opacity-50" />
+        <div className="absolute top-1/2 right-0 w-[600px] h-[600px] bg-gradient-to-l from-[#D4AF37]/20 via-transparent to-transparent rounded-full blur-3xl opacity-50" />
       </div>
 
       <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10 max-w-7xl">
@@ -47,7 +47,7 @@ export function Hero() {
             </div>
 
             {/* Badge */}
-            <div className="inline-flex items-center px-4 py-1.5 rounded-full glass-institutional border-[#F3E5AB]/30 text-[#F3E5AB] text-xs md:text-sm font-medium mb-6 animate-fade-in">
+            <div className="inline-flex items-center px-4 py-1.5 rounded-full glass-institutional border-[#D4AF37]/30 text-[#D4AF37] text-xs md:text-sm font-medium mb-6 animate-fade-in">
               <Zap className="w-3 h-3 md:w-4 md:h-4 mr-2" />
               {t('hero.badge')}
             </div>
@@ -82,7 +82,7 @@ export function Hero() {
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className="flex items-center px-3 py-1.5 rounded-full glass-institutional border-[#F3E5AB]/20 text-[#F3E5AB] text-xs md:text-sm"
+                  className="flex items-center px-3 py-1.5 rounded-full glass-institutional border-[#D4AF37]/20 text-[#D4AF37] text-xs md:text-sm"
                 >
                   <feature.icon className="w-3 h-3 md:w-4 md:h-4 mr-2 flex-shrink-0" />
                   <span className="font-medium">{feature.text}</span>
@@ -95,8 +95,8 @@ export function Hero() {
           <div className="hidden md:flex items-center justify-center relative h-full min-h-[500px]">
             <div className="relative w-full h-full">
               {/* Animated gradient mesh */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#F3E5AB]/20 via-transparent to-transparent rounded-3xl blur-2xl animate-pulse" />
-              <div className="absolute inset-0 bg-gradient-to-tl from-[#F3E5AB]/10 via-transparent to-transparent rounded-3xl blur-2xl" style={{ animationDelay: '1s' }} />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/20 via-transparent to-transparent rounded-3xl blur-2xl animate-pulse" />
+              <div className="absolute inset-0 bg-gradient-to-tl from-[#D4AF37]/10 via-transparent to-transparent rounded-3xl blur-2xl" style={{ animationDelay: '1s' }} />
               {/* Grid pattern overlay */}
               <div className="absolute inset-0 opacity-10" style={{
                 backgroundImage: 'linear-gradient(rgba(243, 229, 171, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(243, 229, 171, 0.1) 1px, transparent 1px)',

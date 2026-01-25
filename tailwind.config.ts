@@ -56,7 +56,7 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Institutional colors
+        // Institutional colors - Real Gold Palette
         gold: {
           50: '#fffbeb',
           100: '#fef3c7',
@@ -64,11 +64,13 @@ const config: Config = {
           300: '#fcd34d',
           400: '#fbbf24',
           500: '#f59e0b',
-          600: '#C9A961', // Champagne Soft - приглушенный золотой
-          700: '#b45309',
+          600: '#D4AF37', // Classic Gold - основной реальный золотой
+          700: '#B8860B', // Dark Goldenrod - темный золотой для градиентов
           800: '#92400e',
           900: '#78350f',
-          champagne: '#F3E5AB', // Champagne Gold
+          classic: '#D4AF37', // Classic Gold - основной
+          dark: '#B8860B', // Dark Goldenrod - темный
+          light: '#F4C430', // Saffron Gold - светлый акцент
         },
         obsidian: {
           DEFAULT: '#0A0A0A', // Deep Obsidian

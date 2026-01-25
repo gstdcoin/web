@@ -19,13 +19,13 @@ export function FeatureCards() {
       icon: Shield,
       title: 'Gold-Backed Liquidity',
       description: '70% комиссий автоматически конвертируются в физическое золото (XAUT), формируя прозрачный резерв для кредитной линии платформы.',
-      gradient: 'from-yellow-500 to-yellow-600',
+      gradient: 'from-[#D4AF37] to-[#B8860B]',
     },
     {
       icon: TrendingUp,
       title: 'Low-Interest Access',
       description: 'Держатели GSDT получают доступ к займам под ~1.5% годовых, обеспеченным растущим золотым пулом.',
-      gradient: 'from-yellow-500 via-cyan-500 to-yellow-600',
+      gradient: 'from-[#D4AF37] via-[#F4C430] to-[#B8860B]',
     },
   ];
 
@@ -52,13 +52,13 @@ export function FeatureCards() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <Card
-                className="group hover:shadow-gold-lg transition-all duration-300 glass-institutional border-gradient-gold hover:border-[#F3E5AB]/40 card-mobile-full"
+                className="group hover:shadow-gold-lg transition-all duration-300 glass-institutional border-gradient-gold hover:border-[#D4AF37]/40 card-mobile-full"
               >
               <CardHeader className="text-center">
                 <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r ${feature.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                   <feature.icon className="w-8 h-8 text-white" />
                 </div>
-                <CardTitle className="text-xl font-bold group-hover:text-[#F3E5AB] transition-colors text-slate-100">
+                <CardTitle className="text-xl font-bold group-hover:text-[#D4AF37] transition-colors text-slate-100">
                   {feature.title}
                 </CardTitle>
               </CardHeader>

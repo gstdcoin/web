@@ -31,19 +31,19 @@
     --card-foreground: 15 23 42; /* slate-900 */
     --popover: 255 255 255;
     --popover-foreground: 15 23 42;
-    --primary: 217 119 6; /* amber-600 - gold color */
+    --primary: 212 175 55; /* #D4AF37 - Classic Gold */
     --primary-foreground: 255 255 255; /* white text on gold */
     --secondary: 245 245 245; /* neutral-100 - light gray */
     --secondary-foreground: 15 23 42; /* slate-900 */
     --muted: 245 245 245; /* neutral-100 */
     --muted-foreground: 100 116 139; /* slate-500 - medium gray */
-    --accent: 217 119 6; /* amber-600 - gold accent */
+    --accent: 212 175 55; /* #D4AF37 - Classic Gold */
     --accent-foreground: 255 255 255;
     --destructive: 239 68 68; /* red-500 */
     --destructive-foreground: 255 255 255;
     --border: 229 229 229; /* neutral-200 - light borders */
     --input: 229 229 229; /* neutral-200 */
-    --ring: 217 119 6; /* amber-600 - gold ring */
+    --ring: 212 175 55; /* #D4AF37 - Classic Gold */
     --radius: 0.75rem; /* 12px */
   }
 
@@ -60,13 +60,13 @@
     --secondary-foreground: 248 250 252; /* slate-50 */
     --muted: 51 65 85; /* slate-700 */
     --muted-foreground: 148 163 184; /* slate-400 - lighter gray for dark mode */
-    --accent: 217 119 6; /* amber-600 - gold accent */
+    --accent: 212 175 55; /* #D4AF37 - Classic Gold */
     --accent-foreground: 255 255 255;
     --destructive: 239 68 68; /* red-500 */
     --destructive-foreground: 255 255 255;
     --border: 51 65 85; /* slate-700 - darker borders */
     --input: 51 65 85; /* slate-700 */
-    --ring: 217 119 6; /* amber-600 - gold ring */
+    --ring: 212 175 55; /* #D4AF37 - Classic Gold */
   }
 }
 
@@ -122,13 +122,13 @@
 }
 
 @layer components {
-  /* Gold gradient */
+  /* Real Gold gradient */
   .gradient-gold {
-    background: linear-gradient(135deg, rgba(217, 119, 6, 0.1), rgba(180, 83, 9, 0.05));
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(184, 134, 11, 0.05));
   }
   
   .text-gradient-gold {
-    background: linear-gradient(135deg, #F3E5AB 0%, #C9A961 100%);
+    background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -138,7 +138,7 @@
   .glass-institutional {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(16px);
-    border: 1px solid rgba(243, 229, 171, 0.15);
+    border: 1px solid rgba(212, 175, 55, 0.15);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   }
   
@@ -187,28 +187,28 @@
   /* Institutional button styles - compact with glow */
   .btn-gold {
     @apply border-2 bg-transparent;
-    @apply hover:shadow-[0_0_30px_rgba(243,229,171,0.3)] transition-all duration-300;
+    @apply hover:shadow-[0_0_30px_rgba(212,175,55,0.3)] transition-all duration-300;
     @apply h-10 px-6 text-sm font-medium;
-    border-color: #F3E5AB;
-    color: #F3E5AB;
+    border-color: #D4AF37;
+    color: #D4AF37;
     backdrop-filter: blur(8px);
   }
   
   .btn-gold:hover {
-    background-color: rgba(243, 229, 171, 0.1);
+    background-color: rgba(212, 175, 55, 0.1);
   }
   
   .btn-outline-gold {
     @apply border-2;
-    @apply hover:shadow-[0_0_30px_rgba(243,229,171,0.3)] transition-all duration-300;
+    @apply hover:shadow-[0_0_30px_rgba(212,175,55,0.3)] transition-all duration-300;
     @apply h-10 px-6 text-sm font-medium;
-    border-color: #F3E5AB;
-    color: #F3E5AB;
+    border-color: #D4AF37;
+    color: #D4AF37;
     backdrop-filter: blur(8px);
   }
   
   .btn-outline-gold:hover {
-    background-color: rgba(243, 229, 171, 0.1);
+    background-color: rgba(212, 175, 55, 0.1);
   }
   
   /* Gradient border utility */
@@ -225,24 +225,24 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, rgba(243, 229, 171, 0.3), rgba(243, 229, 171, 0.1));
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(184, 134, 11, 0.1));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
   }
   
-  /* Champagne Gold color */
-  .champagne-gold {
-    color: #F3E5AB;
+  /* Classic Gold color */
+  .classic-gold {
+    color: #D4AF37;
   }
   
-  .bg-champagne-gold {
-    background-color: #F3E5AB;
+  .bg-classic-gold {
+    background-color: #D4AF37;
   }
   
-  .border-champagne-gold {
-    border-color: #F3E5AB;
+  .border-classic-gold {
+    border-color: #D4AF37;
   }
   
   /* Text contrast utilities */

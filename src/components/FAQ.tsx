@@ -32,7 +32,7 @@ export function FAQ() {
             return (
               <Card
                 key={index}
-                className="glass-institutional border-gradient-gold hover:border-[#F3E5AB]/40 transition-all duration-300 card-mobile-full"
+                className="glass-institutional border-gradient-gold hover:border-[#D4AF37]/40 transition-all duration-300 card-mobile-full"
               >
                 <CardHeader
                   className="cursor-pointer"
@@ -44,9 +44,9 @@ export function FAQ() {
                     </CardTitle>
                     <div className="flex-shrink-0">
                       {isOpen ? (
-                        <ChevronUp className="w-5 h-5 text-[#F3E5AB]" />
+                        <ChevronUp className="w-5 h-5 text-[#D4AF37]" />
                       ) : (
-                        <ChevronDown className="w-5 h-5 text-[#F3E5AB]" />
+                        <ChevronDown className="w-5 h-5 text-[#D4AF37]" />
                       )}
                     </div>
                   </div>

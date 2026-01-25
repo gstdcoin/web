@@ -63,7 +63,7 @@ export function CloudComparison() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5 }}
           >
-            <Card className="glass-institutional border-[#F3E5AB]/30 hover:border-[#F3E5AB]/50 shadow-lg h-full card-mobile-full">
+            <Card className="glass-institutional border-[#D4AF37]/30 hover:border-[#D4AF37]/50 shadow-lg h-full card-mobile-full">
               <CardHeader>
                 <CardTitle className="text-2xl text-slate-100 flex items-center justify-between">
                   {comparison?.gstd?.title || 'GSTD Network'}
@@ -71,7 +71,7 @@ export function CloudComparison() {
                     {comparison?.gstd?.savings || 'Экономия 70%'}
                   </Badge>
                 </CardTitle>
-                <div className="text-3xl font-bold text-[#F3E5AB] mt-4">
+                <div className="text-3xl font-bold text-[#D4AF37] mt-4">
                   {comparison?.gstd?.price || '~$0.03/результат'}
                 </div>
               </CardHeader>

@@ -18,7 +18,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-[#0A0A0A] border-t border-[#F3E5AB]/10">
+    <footer className="bg-[#0A0A0A] border-t border-[#D4AF37]/10">
       <div className="container mx-auto px-4 py-12 sm:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
           {/* Brand */}
@@ -38,7 +38,7 @@ export function Footer() {
 
             {/* Social Links */}
             <div>
-              <h3 className="text-sm font-semibold text-[#F3E5AB] mb-4">
+              <h3 className="text-sm font-semibold text-[#D4AF37] mb-4">
                 {t('footer.followUs')}
               </h3>
               <SocialLinks />
@@ -47,7 +47,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-sm font-semibold text-[#F3E5AB] mb-4">
+            <h3 className="text-sm font-semibold text-[#D4AF37] mb-4">
               {t('footer.quickLinks')}
             </h3>
             <ul className="space-y-3">
@@ -55,7 +55,7 @@ export function Footer() {
                 <li key={link.key}>
                   <Link
                     href={link.href}
-                    className="text-slate-300 hover:text-[#F3E5AB] transition-colors"
+                    className="text-slate-300 hover:text-[#D4AF37] transition-colors"
                   >
                     {t(`nav.${link.key}`)}
                   </Link>
@@ -66,7 +66,7 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-sm font-semibold text-[#F3E5AB] mb-4">
+            <h3 className="text-sm font-semibold text-[#D4AF37] mb-4">
               {t('footer.contact')}
             </h3>
             <div className="space-y-3 text-slate-300">
@@ -78,7 +78,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-[#F3E5AB]/10 mt-12 pt-8">
+        <div className="border-t border-[#D4AF37]/10 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-slate-300 text-sm">
               © 2025 {SITE.name}. {t('footer.allRightsReserved')}.
@@ -86,13 +86,13 @@ export function Footer() {
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link
                 href="/legal"
-                className="text-slate-300 hover:text-[#F3E5AB] text-sm transition-colors"
+                className="text-slate-300 hover:text-[#D4AF37] text-sm transition-colors"
               >
                 {t('footer.privacyPolicy')}
               </Link>
               <Link
                 href="/legal"
-                className="text-slate-300 hover:text-[#F3E5AB] text-sm transition-colors"
+                className="text-slate-300 hover:text-[#D4AF37] text-sm transition-colors"
               >
                 {t('footer.termsOfService')}
               </Link>

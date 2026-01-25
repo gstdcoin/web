@@ -123,9 +123,9 @@ export function LiveNetworkStatus() {
       value: `${metrics.hashrate.value.toFixed(1)} ${metrics.hashrate.unit}`,
       change: `+${metrics.hashrate.change}%`,
       changeType: 'positive' as const,
-      color: 'from-[#F3E5AB] to-[#C9A961]',
-      bgColor: 'bg-amber-500/10',
-      borderColor: 'border-amber-500/20',
+      color: 'from-[#D4AF37] to-[#B8860B]',
+      bgColor: 'bg-[#D4AF37]/10',
+      borderColor: 'border-[#D4AF37]/20',
       sparklineData: generateSparklineData(metrics.hashrate.value, metrics.hashrate.change),
     },
     {
@@ -135,9 +135,9 @@ export function LiveNetworkStatus() {
       subValue: `$${formatNumber(metrics.goldPool.usd)}`,
       change: `+${metrics.goldPool.changeOz.toFixed(2)} ${metricLabels?.goldPool?.unitOz || 'oz'} (+$${formatNumber(metrics.goldPool.changeUsd)})`,
       changeType: 'positive' as const,
-      color: 'from-[#F3E5AB] to-[#C9A961]',
-      bgColor: 'bg-amber-500/10',
-      borderColor: 'border-amber-500/20',
+      color: 'from-[#D4AF37] to-[#B8860B]',
+      bgColor: 'bg-[#D4AF37]/10',
+      borderColor: 'border-[#D4AF37]/20',
       sparklineData: generateSparklineData(metrics.goldPool.oz, metrics.goldPool.changeOz),
     },
     {
@@ -157,9 +157,9 @@ export function LiveNetworkStatus() {
       subValue: `${metrics.nodes.uptime}% ${(t('networkStatus.uptime') as string) || 'uptime'}`,
       change: `${metrics.nodes.countries} ${(t('networkStatus.countries') as string) || 'countries'}`,
       changeType: 'neutral' as const,
-      color: 'from-[#F3E5AB] to-[#C9A961]',
-      bgColor: 'bg-amber-500/10',
-      borderColor: 'border-amber-500/20',
+      color: 'from-[#D4AF37] to-[#B8860B]',
+      bgColor: 'bg-[#D4AF37]/10',
+      borderColor: 'border-[#D4AF37]/20',
     },
     {
       icon: TrendingUp,
@@ -167,9 +167,9 @@ export function LiveNetworkStatus() {
       value: `$${formatNumber(metrics.tvl.value)}`,
       change: `+${metrics.tvl.change}%`,
       changeType: 'positive' as const,
-      color: 'from-[#F3E5AB] to-[#C9A961]',
-      bgColor: 'bg-amber-500/10',
-      borderColor: 'border-amber-500/20',
+      color: 'from-[#D4AF37] to-[#B8860B]',
+      bgColor: 'bg-[#D4AF37]/10',
+      borderColor: 'border-[#D4AF37]/20',
       sparklineData: generateSparklineData(metrics.tvl.value, metrics.tvl.change),
     },
     {
@@ -179,9 +179,9 @@ export function LiveNetworkStatus() {
       subValue: (t('networkStatus.perToken') as string) || 'per token',
       change: `+${metrics.goldBackingRatio.change}%`,
       changeType: 'positive' as const,
-      color: 'from-[#F3E5AB] to-[#C9A961]',
-      bgColor: 'bg-amber-500/10',
-      borderColor: 'border-amber-500/20',
+      color: 'from-[#D4AF37] to-[#B8860B]',
+      bgColor: 'bg-[#D4AF37]/10',
+      borderColor: 'border-[#D4AF37]/20',
       sparklineData: generateSparklineData(metrics.goldBackingRatio.value, metrics.goldBackingRatio.change),
     },
   ];
@@ -206,7 +206,7 @@ export function LiveNetworkStatus() {
             return (
               <Card
                 key={index}
-                className={`group hover:shadow-gold-lg transition-all duration-300 glass-institutional border-gradient-gold hover:border-[#F3E5AB]/40 card-mobile-full min-w-[280px] md:min-w-0 ${index === 0 || index === 4 ? 'md:col-span-2' : ''}`}
+                className={`group hover:shadow-gold-lg transition-all duration-300 glass-institutional border-gradient-gold hover:border-[#D4AF37]/40 card-mobile-full min-w-[280px] md:min-w-0 ${index === 0 || index === 4 ? 'md:col-span-2' : ''}`}
               >
                 <CardHeader>
                   <div className="flex items-center justify-between mb-4">
@@ -243,7 +243,7 @@ export function LiveNetworkStatus() {
                         </div>
                       )}
                       {(metric as any).sparklineData && (
-                        <Sparkline data={(metric as any).sparklineData} color="#F3E5AB" />
+                        <Sparkline data={(metric as any).sparklineData} color="#D4AF37" />
                       )}
                     </div>
                   </div>
@@ -255,8 +255,8 @@ export function LiveNetworkStatus() {
 
         {/* Live indicator */}
         <div className="mt-8 text-center">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#F3E5AB]/10 border border-[#F3E5AB]/20 text-[#F3E5AB] text-sm">
-            <div className="w-2 h-2 bg-amber-500 rounded-full mr-2 animate-pulse"></div>
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/20 text-[#D4AF37] text-sm">
+            <div className="w-2 h-2 bg-[#D4AF37] rounded-full mr-2 animate-pulse"></div>
             Обновление в реальном времени • Последнее обновление: только что
           </div>
         </div>

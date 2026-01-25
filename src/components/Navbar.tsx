@@ -38,7 +38,7 @@ export function Navbar() {
     <nav 
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
-        "border-b border-[#F3E5AB]/10",
+        "border-b border-[#D4AF37]/10",
         "glass-institutional",
         isScrolled 
           ? "bg-[#0A0A0A]/90 backdrop-blur-xl" 
@@ -70,8 +70,8 @@ export function Navbar() {
                 href={item.href}
                 className={cn(
                   "text-sm font-medium transition-all duration-300 whitespace-nowrap",
-                  "text-[#FAEBD7] hover:text-[#F3E5AB]",
-                  "border-b border-transparent hover:border-[#F3E5AB]/30",
+                  "text-[#FAEBD7] hover:text-[#D4AF37]",
+                  "border-b border-transparent hover:border-[#D4AF37]/30",
                   "pb-1 hover:pb-0.5"
                 )}
               >
@@ -97,7 +97,7 @@ export function Navbar() {
               variant="ghost"
               size="sm"
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden min-w-0 px-2 text-[#FAEBD7] hover:text-[#F3E5AB] hover:bg-[#F3E5AB]/10"
+              className="md:hidden min-w-0 px-2 text-[#FAEBD7] hover:text-[#D4AF37] hover:bg-[#D4AF37]/10"
             >
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
@@ -107,7 +107,7 @@ export function Navbar() {
         {/* Mobile Navigation - Bento Style Grid */}
         {isOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-4 pb-4 border-t border-[#F3E5AB]/10">
+            <div className="px-2 pt-4 pb-4 border-t border-[#D4AF37]/10">
               {/* Bento Grid Layout */}
               <div className="grid grid-cols-2 gap-2">
                 {navItems.map((item) => (
@@ -117,8 +117,8 @@ export function Navbar() {
                     className={cn(
                       "block px-3 py-3 text-sm font-medium rounded-lg transition-all duration-300 touch-manipulation",
                       "glass-institutional border-gradient-gold",
-                      "text-[#FAEBD7] hover:text-[#F3E5AB]",
-                      "hover:border-[#F3E5AB]/40 hover:shadow-[0_0_20px_rgba(243,229,171,0.1)]",
+                      "text-[#FAEBD7] hover:text-[#D4AF37]",
+                      "hover:border-[#D4AF37]/40 hover:shadow-[0_0_20px_rgba(212,175,55,0.1)]",
                       "active:scale-95"
                     )}
                     onClick={() => setIsOpen(false)}

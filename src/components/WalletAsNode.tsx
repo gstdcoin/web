@@ -46,9 +46,9 @@ export function WalletAsNode() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="glass-institutional border-gradient-gold hover:border-[#F3E5AB]/30 text-center h-full card-mobile-full">
+                <Card className="glass-institutional border-gradient-gold hover:border-[#D4AF37]/30 text-center h-full card-mobile-full">
                   <CardContent className="pt-6">
-                    <div className="w-12 h-12 mx-auto mb-3 rounded-lg bg-gradient-to-r from-[#F3E5AB] to-[#C9A961] flex items-center justify-center">
+                    <div className="w-12 h-12 mx-auto mb-3 rounded-lg bg-gradient-to-r from-[#D4AF37] to-[#B8860B] flex items-center justify-center">
                       <IconComponent className="w-6 h-6 text-[#0A0A0A]" />
                     </div>
                     <p className="text-sm text-slate-300">{benefit}</p>
@@ -73,9 +73,9 @@ export function WalletAsNode() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="glass-institutional border-gradient-gold hover:border-[#F3E5AB]/30 h-full card-mobile-full">
+                <Card className="glass-institutional border-gradient-gold hover:border-[#D4AF37]/30 h-full card-mobile-full">
                   <CardHeader>
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#1a1a1a] to-[#2a2a2a] flex items-center justify-center text-[#F3E5AB] font-bold text-xl mb-4">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#1a1a1a] to-[#2a2a2a] flex items-center justify-center text-[#D4AF37] font-bold text-xl mb-4">
                       {index + 1}
                     </div>
                     <CardTitle className="text-lg text-slate-100 mb-2">

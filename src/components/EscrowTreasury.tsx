@@ -30,7 +30,7 @@ export function EscrowTreasury() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5 }}
           >
-            <Card className="glass-institutional border-gradient-gold hover:border-[#F3E5AB]/30 h-full card-mobile-full">
+            <Card className="glass-institutional border-gradient-gold hover:border-[#D4AF37]/30 h-full card-mobile-full">
               <CardHeader>
                 <div className="flex items-center space-x-3 mb-4">
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center">
@@ -48,7 +48,7 @@ export function EscrowTreasury() {
                 <ul className="space-y-3">
                   {(escrowTreasury?.escrow?.features || []).map((feature: string, index: number) => (
                     <li key={index} className="flex items-start space-x-2">
-                      <div className="w-1.5 h-1.5 bg-[#F3E5AB] rounded-full flex-shrink-0 mt-2"></div>
+                      <div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full flex-shrink-0 mt-2"></div>
                       <span className="text-slate-300">{feature}</span>
                     </li>
                   ))}
@@ -64,10 +64,10 @@ export function EscrowTreasury() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5 }}
           >
-            <Card className="glass-institutional border-gradient-gold hover:border-[#F3E5AB]/30 h-full card-mobile-full">
+            <Card className="glass-institutional border-gradient-gold hover:border-[#D4AF37]/30 h-full card-mobile-full">
               <CardHeader>
                 <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#F3E5AB] to-[#C9A961] flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#D4AF37] to-[#B8860B] flex items-center justify-center">
                     <Coins className="w-6 h-6 text-[#0A0A0A]" />
                   </div>
                   <CardTitle className="text-2xl text-slate-100">
@@ -82,7 +82,7 @@ export function EscrowTreasury() {
                 <ul className="space-y-3">
                   {(escrowTreasury?.treasury?.features || []).map((feature: string, index: number) => (
                     <li key={index} className="flex items-start space-x-2">
-                      <div className="w-1.5 h-1.5 bg-[#F3E5AB] rounded-full flex-shrink-0 mt-2"></div>
+                      <div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full flex-shrink-0 mt-2"></div>
                       <span className="text-slate-300">{feature}</span>
                     </li>
                   ))}
@@ -99,7 +99,7 @@ export function EscrowTreasury() {
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.5 }}
         >
-          <Card className="glass-institutional border-[#F3E5AB]/30 shadow-lg max-w-3xl mx-auto card-mobile-full">
+          <Card className="glass-institutional border-[#D4AF37]/30 shadow-lg max-w-3xl mx-auto card-mobile-full">
             <CardHeader>
               <div className="flex items-center space-x-3">
                 <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-purple-500 to-purple-600 flex items-center justify-center">

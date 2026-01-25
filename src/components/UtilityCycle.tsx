@@ -17,10 +17,10 @@ export function UtilityCycle() {
   const steps = (t('utilityCycle.steps') as any) || [];
 
   const iconColors = [
-    'from-[#F3E5AB] to-[#C9A961]', // Champagne Gold gradient
-    'from-[#F3E5AB] to-[#C9A961]',
-    'from-[#F3E5AB] to-[#C9A961]',
-    'from-[#F3E5AB] to-[#C9A961]',
+    'from-[#D4AF37] to-[#B8860B]', // Classic Gold gradient
+    'from-[#D4AF37] to-[#B8860B]',
+    'from-[#D4AF37] to-[#B8860B]',
+    'from-[#D4AF37] to-[#B8860B]',
   ];
 
   return (
@@ -37,7 +37,7 @@ export function UtilityCycle() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 relative">
           {/* Connection arrows - hidden on mobile, visible on desktop */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 opacity-30 -translate-y-1/2" style={{ marginTop: '60px' }} />
+          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-[#D4AF37] via-[#F4C430] to-[#D4AF37] opacity-30 -translate-y-1/2" style={{ marginTop: '60px' }} />
           
           {steps.map((step: any, index: number) => {
             const IconComponent = icons[step.icon as keyof typeof icons] || Network;
@@ -52,24 +52,24 @@ export function UtilityCycle() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="group hover:shadow-gold-lg transition-all duration-300 glass-institutional border-gradient-gold hover:border-[#F3E5AB]/30 h-full card-mobile-full">
+                <Card className="group hover:shadow-gold-lg transition-all duration-300 glass-institutional border-gradient-gold hover:border-[#D4AF37]/30 h-full card-mobile-full">
                   <CardHeader className="text-center">
                     {/* Step Number Badge */}
-                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-[#1a1a1a] to-[#2a2a2a] flex items-center justify-center text-[#F3E5AB] font-bold text-xl group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-[#1a1a1a] to-[#2a2a2a] flex items-center justify-center text-[#D4AF37] font-bold text-xl group-hover:scale-110 transition-transform duration-300">
                       {step.number}
                     </div>
                     
                     {/* Icon */}
-                    <div className="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-[#F3E5AB] to-[#C9A961] flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <div className="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-[#D4AF37] to-[#B8860B] flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
                       <IconComponent className="w-10 h-10 text-[#0A0A0A]" />
                     </div>
                     
-                    <CardTitle className="text-xl font-bold group-hover:text-[#F3E5AB] transition-colors text-slate-100 mb-2">
+                    <CardTitle className="text-xl font-bold group-hover:text-[#D4AF37] transition-colors text-slate-100 mb-2">
                       {step.title}
                     </CardTitle>
                     
                     {/* Metric Badge */}
-                    <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#F3E5AB]/10 border border-[#F3E5AB]/20 text-[#F3E5AB] text-xs font-medium">
+                    <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/20 text-[#D4AF37] text-xs font-medium">
                       {step.metric}
                     </div>
                   </CardHeader>
@@ -84,8 +84,8 @@ export function UtilityCycle() {
                 {/* Arrow between steps - hidden on mobile */}
                 {!isLast && (
                   <div className="hidden lg:flex absolute top-1/2 -right-4 items-center justify-center z-10">
-                    <div className="w-8 h-8 rounded-full bg-white border-2 border-gold-300 flex items-center justify-center shadow-lg">
-                      <ArrowRight className="w-4 h-4 text-[#F3E5AB]" />
+                    <div className="w-8 h-8 rounded-full bg-[#1a1a1a] border-2 border-[#D4AF37]/30 flex items-center justify-center shadow-lg">
+                      <ArrowRight className="w-4 h-4 text-[#D4AF37]" />
                     </div>
                   </div>
                 )}
@@ -96,8 +96,8 @@ export function UtilityCycle() {
 
         {/* Protocol layers indicator */}
         <div className="mt-12 text-center">
-          <div className="inline-flex items-center px-6 py-3 rounded-full glass-institutional border-[#F3E5AB]/20 text-slate-300 text-sm">
-            <div className="w-2 h-2 bg-[#F3E5AB] rounded-full mr-2 animate-pulse"></div>
+          <div className="inline-flex items-center px-6 py-3 rounded-full glass-institutional border-[#D4AF37]/20 text-slate-300 text-sm">
+            <div className="w-2 h-2 bg-[#D4AF37] rounded-full mr-2 animate-pulse"></div>
             {t('utilityCycle.protocolIndicator') || 'Institutional-Grade Protocol • Three-Tier Utility Model'}
           </div>
         </div>

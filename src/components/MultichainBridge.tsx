@@ -55,7 +55,7 @@ export function MultichainBridge() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <Card
-                  className="group hover:shadow-gold-lg transition-all duration-300 glass-institutional border-gradient-gold hover:border-[#F3E5AB]/30 card-mobile-full"
+                  className="group hover:shadow-gold-lg transition-all duration-300 glass-institutional border-gradient-gold hover:border-[#D4AF37]/30 card-mobile-full"
                 >
                   <CardHeader>
                     <div className="flex items-center justify-between mb-4">
@@ -85,7 +85,7 @@ export function MultichainBridge() {
                     <ul className="space-y-2">
                       {(Array.isArray(network.features) ? network.features : []).map((feature: string, featureIndex: number) => (
                         <li key={featureIndex} className="flex items-start space-x-2">
-                          <div className="w-1.5 h-1.5 bg-[#F3E5AB] rounded-full flex-shrink-0 mt-2"></div>
+                          <div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full flex-shrink-0 mt-2"></div>
                           <span className="text-slate-300 text-sm">{feature}</span>
                         </li>
                       ))}
@@ -98,10 +98,10 @@ export function MultichainBridge() {
         </div>
 
         {/* Bridge Status */}
-        <div className="glass-institutional border-[#F3E5AB]/20 rounded-2xl p-8 shadow-lg">
+        <div className="glass-institutional border-[#D4AF37]/20 rounded-2xl p-8 shadow-lg">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center space-x-4">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-[#F3E5AB] to-[#C9A961] flex items-center justify-center shadow-lg">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-[#D4AF37] to-[#B8860B] flex items-center justify-center shadow-lg">
                 <ArrowLeftRight className="w-8 h-8 text-[#0A0A0A]" />
               </div>
               <div>
@@ -128,7 +128,7 @@ export function MultichainBridge() {
               
               <div className="text-center md:text-right">
                 <div className="text-sm text-slate-300 mb-1">Transaction Time</div>
-                <div className="text-2xl font-bold text-[#F3E5AB]">
+                <div className="text-2xl font-bold text-[#D4AF37]">
                   {bridge.time}
                 </div>
               </div>

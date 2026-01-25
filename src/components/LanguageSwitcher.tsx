@@ -16,7 +16,7 @@ export function LanguageSwitcher() {
       variant="outline"
       size="sm"
       onClick={toggleLocale}
-      className="border-[#F3E5AB]/30 text-[#FAEBD7] hover:text-[#F3E5AB] hover:bg-[#F3E5AB]/10 hover:border-[#F3E5AB]/50 transition-all duration-300"
+      className="border-[#D4AF37]/30 text-[#FAEBD7] hover:text-[#D4AF37] hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/50 transition-all duration-300"
     >
       {language === 'en' ? 'RU' : 'EN'}
     </Button>

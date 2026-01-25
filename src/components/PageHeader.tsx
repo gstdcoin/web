@@ -21,7 +21,7 @@ export function PageHeader({ title, subtitle, showBackButton = true }: PageHeade
   const subtitleText = subtitle ? (Array.isArray(subtitle) ? subtitle[0] : subtitle) : undefined;
 
   return (
-    <header className="bg-[#0A0A0A]/60 backdrop-blur-md border-b border-[#F3E5AB]/10">
+    <header className="bg-[#0A0A0A]/60 backdrop-blur-md border-b border-[#D4AF37]/10">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
