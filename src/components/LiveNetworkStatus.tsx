@@ -257,7 +257,7 @@ export function LiveNetworkStatus() {
         <div className="mt-8 text-center">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/20 text-[#D4AF37] text-sm">
             <div className="w-2 h-2 bg-[#D4AF37] rounded-full mr-2 animate-pulse"></div>
-            Обновление в реальном времени • Последнее обновление: только что
+            {t('networkStatus.liveUpdate')} • {t('networkStatus.lastUpdate')}
           </div>
         </div>
       </div>

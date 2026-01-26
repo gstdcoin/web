@@ -34,10 +34,10 @@ export function FeatureCards() {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-10 md:mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4">
-            <span className="text-gradient-gold">Ключевые особенности</span>
+            <span className="text-gradient-gold">{t('featureSection.title')}</span>
           </h2>
           <p className="text-sm md:text-base text-slate-200 max-w-3xl mx-auto">
-            DePIN-платформа, создающая золотую ликвидность через каждую транзакцию
+            {t('featureSection.subtitle')}
           </p>
         </div>
 

@@ -464,6 +464,8 @@ export default {
   networkStatus: {
     title: 'Статус сети в реальном времени',
     subtitle: 'Актуальные метрики платформы GSDT',
+    liveUpdate: 'Обновление в реальном времени',
+    lastUpdate: 'Последнее обновление: только что',
     metrics: {
       hashrate: {
         label: 'Хешрейт сети',
@@ -508,6 +510,11 @@ export default {
     perToken: 'на токен',
     active: 'Активен',
     operational: 'Работает',
+  },
+  
+  featureSection: {
+    title: 'Ключевые особенности',
+    subtitle: 'DePIN-платформа, создающая золотую ликвидность через каждую транзакцию',
   },
 
   // FAQ Section

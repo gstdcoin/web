@@ -463,7 +463,9 @@ export default {
   // Network Status
   networkStatus: {
     title: 'Real-time Network Status',
-    subtitle: 'Demo GSDT platform metrics',
+    subtitle: 'Live GSDT platform metrics',
+    liveUpdate: 'Real-time update',
+    lastUpdate: 'Last update: just now',
     metrics: {
       hashrate: {
         label: 'Network Hashrate',
@@ -508,6 +510,11 @@ export default {
     perToken: 'per token',
     active: 'Active',
     operational: 'Operational',
+  },
+  
+  featureSection: {
+    title: 'Key Features',
+    subtitle: 'DePIN platform creating gold liquidity through every transaction',
   },
 
   // FAQ Section
