@@ -14,9 +14,9 @@ export const LINKS = {
     "https://app.ston.fi/swap?ft=TON&tt=EQDv6cYW9nNiKjN3Nwl8D6ABjUiH1gYfWVGZhfP7-9tZskTO&amount=1",
   tonContract: "EQDv6cYW9nNiKjN3Nwl8D6ABjUiH1gYfWVGZhfP7-9tZskTO",
   // CTA Links - легко заменяемые на внутренний dApp
-  getGSDT: "/about#how-it-works", // Ведет на раздел "Как это работает"
+  getGSDT: "https://app.ston.fi/swap?ft=TON&tt=EQDv6cYW9nNiKjN3Nwl8D6ABjUiH1gYfWVGZhfP7-9tZskTO&amount=1", // StonFi swap для обмена
   buyGSDT: "https://app.ston.fi/swap?ft=TON&tt=EQDv6cYW9nNiKjN3Nwl8D6ABjUiH1gYfWVGZhfP7-9tZskTO&amount=1", // StonFi swap для покупки
-  launchNodes: "https://t.me/goldstandardcoin", // Telegram (placeholder)
+  launchNodes: "https://t.me/goldstandardcoin", // Telegram сообщество
 };
 
 export const TOKEN_INFO = {

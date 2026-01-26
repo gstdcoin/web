@@ -47,29 +47,27 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex h-14 items-center justify-between">
-          {/* Logo */}
+          {/* Logo - скрыт на главной, показывается на других страницах */}
           <Link href="/" className="flex items-center space-x-2 group">
-            <div className="flex items-center space-x-2">
-              <Image
-                src="/logogstd.png"
-                alt={t('tokenInfo.logoAlt') as string}
-                width={32}
-                height={32}
-                className="h-8 w-8 transition-transform group-hover:scale-110"
-                priority
-                unoptimized
-              />
-            </div>
+            <Image
+              src="/logogstd.png"
+              alt={t('tokenInfo.logoAlt') as string}
+              width={40}
+              height={40}
+              className="h-10 w-10 transition-transform group-hover:scale-110"
+              priority
+              unoptimized
+            />
           </Link>
 
           {/* Desktop Navigation - Classic Gold Stroke */}
-          <div className="hidden md:flex items-center justify-between w-full max-w-4xl mx-auto px-8">
+          <div className="hidden md:flex items-center justify-center flex-1 gap-6 lg:gap-8 px-4">
             {navItems.map((item) => (
               <Link
                 key={item.key}
                 href={item.href}
                 className={cn(
-                  "text-sm font-medium transition-all duration-300 whitespace-nowrap",
+                  "text-base font-medium transition-all duration-300 whitespace-nowrap",
                   "text-[#FAEBD7] hover:text-[#D4AF37]",
                   "border-b border-transparent hover:border-[#D4AF37]/30",
                   "pb-1 hover:pb-0.5"
@@ -83,10 +81,10 @@ export function Navbar() {
           {/* Language Switcher & CTA */}
           <div className="hidden md:flex items-center space-x-4">
             <LanguageSwitcher />
-            <Button className="btn-gold" size="sm" asChild>
-              <Link href={LINKS.getGSDT}>
+            <Button className="bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30 hover:border-green-500/50" size="sm" asChild>
+              <a href={LINKS.getGSDT} target="_blank" rel="noopener noreferrer">
                 {t('ctaPrimary')}
-              </Link>
+              </a>
             </Button>
           </div>
 
@@ -130,9 +128,9 @@ export function Navbar() {
               {/* CTA Button in Grid */}
               <div className="mt-3">
                 <Button className="bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30 hover:border-green-500/50 w-full" size="sm" asChild>
-                  <Link href={LINKS.getGSDT} onClick={() => setIsOpen(false)}>
+                  <a href={LINKS.getGSDT} target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
                     {t('ctaPrimary')}
-                  </Link>
+                  </a>
                 </Button>
               </div>
             </div>

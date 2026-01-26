@@ -22,10 +22,10 @@ export function CTA() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button size="lg" className="bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30 hover:border-green-500/50 group" asChild>
-              <Link href={LINKS.getGSDT}>
+              <a href={LINKS.getGSDT} target="_blank" rel="noopener noreferrer">
                 {t('ctaPrimary')}
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </a>
             </Button>
             <Button size="lg" variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30 hover:border-green-500/50" asChild>
               <a href={LINKS.telegram} target="_blank" rel="noopener noreferrer">

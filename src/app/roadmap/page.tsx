@@ -187,7 +187,7 @@ export default function RoadmapPage() {
                   <div className="text-sm text-slate-300">{t('roadmap.phaseProgress')}</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-[#D4AF37] mb-2">25%</div>
+                  <div className="text-3xl font-bold text-[#D4AF37] mb-2">75%</div>
                   <div className="text-sm text-slate-300">{t('roadmap.phasePlanning')}</div>
                 </div>
                 <div className="text-center">

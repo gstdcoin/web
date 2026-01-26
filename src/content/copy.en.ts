@@ -27,7 +27,7 @@ export default {
 
   // CTA
   ctaPrimary: 'Get GSDT',
-  ctaSecondary: 'Explore Protocol',
+  ctaSecondary: 'Community',
   backToHome: 'Back to Home',
   ctaTitle: 'Ready to Get Started?',
   ctaDescription: 'Join the GSDT DePIN platform. Launch a node, become a liquidity provider, or gain access to low-interest loans.',
@@ -244,10 +244,10 @@ export default {
         'Regulatory compliance framework',
         'Publication of the White Paper',
         'Launch of gold liquidity insurance pools',
-        'Launch of the lending platform',
+        'Launch of DePIN network',
       ],
       [
-        'Launch of a gold-backed fund',
+        'Launch of the lending platform',
         'Integration of multi-chain liquidity pools and validators',
         'Partnership with major financial institutions',
         'Global expansion',
@@ -463,7 +463,7 @@ export default {
   // Network Status
   networkStatus: {
     title: 'Real-time Network Status',
-    subtitle: 'Live GSDT platform metrics',
+    subtitle: 'Demo GSDT platform metrics',
     metrics: {
       hashrate: {
         label: 'Network Hashrate',

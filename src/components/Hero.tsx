@@ -34,17 +34,6 @@ export function Hero() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Left: Content */}
           <div className="text-left space-y-6 md:space-y-8">
-            {/* Logo */}
-            <div className="flex justify-start mb-6 animate-fade-in">
-              <Image
-                src="/logogstd.png"
-                alt={t('tokenInfo.logoAlt') as string}
-                width={80}
-                height={80}
-                className="h-12 w-12 md:h-16 md:w-16"
-                priority
-              />
-            </div>
 
             {/* Badge */}
             <div className="inline-flex items-center px-4 py-1.5 rounded-full glass-institutional border-[#D4AF37]/30 text-[#D4AF37] text-xs md:text-sm font-medium mb-6 animate-fade-in">
@@ -64,14 +53,14 @@ export function Hero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-8 md:mb-12 animate-slide-up" style={{ animationDelay: '0.4s' }}>
-              <Button className="btn-gold group w-full sm:w-auto" asChild>
-                <Link href={LINKS.getGSDT}>
+              <Button className="bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30 hover:border-green-500/50 group w-full sm:w-auto" asChild>
+                <a href={LINKS.getGSDT} target="_blank" rel="noopener noreferrer">
                   {t('ctaPrimary')}
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
+                </a>
               </Button>
               <Button variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30 hover:border-green-500/50 w-full sm:w-auto" asChild>
-                <a href={LINKS.launchNodes} target="_blank" rel="noopener noreferrer">
+                <a href={LINKS.telegram} target="_blank" rel="noopener noreferrer">
                   {t('ctaSecondary')}
                 </a>
               </Button>
