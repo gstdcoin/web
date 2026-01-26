@@ -120,7 +120,7 @@ export function MultichainBridge() {
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="text-center md:text-right">
                 <div className="text-sm text-slate-300 mb-1">Status</div>
-                <Badge className="bg-green-500/20 text-green-400 border-green-500/30 text-lg px-4 py-2">
+                <Badge className="bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30 text-lg px-4 py-2">
                   <CheckCircle2 className="w-4 h-4 mr-2" />
                   {bridge.status}
                 </Badge>

@@ -80,7 +80,7 @@ export default {
     reserve: 'Reserve',
     collateralForLoans: 'Collateral for loans',
     governanceVoting: 'Governance voting',
-    feeDiscounts: 'Fee discounts',
+    feeDiscounts: 'Task Launch',
     stakingRewards: 'Staking rewards',
     maxSupply: 'Max Supply',
     maxSupplyValue: '1B (TON)',
@@ -452,7 +452,7 @@ export default {
       },
     ],
     bridge: {
-      status: 'Operational',
+      status: 'In Development',
       networks: 'TON ↔ SOL ↔ XRPL',
       time: '~2-5 minutes',
       title: 'Interoperability Hub',

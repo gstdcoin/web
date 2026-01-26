@@ -9,9 +9,40 @@ import { Button } from '@/components/ui/button';
 import { Copy, ExternalLink, Coins, Shield, Zap, TrendingUp } from 'lucide-react';
 import { TOKEN_INFO, LINKS, PROOF_OF_RESERVE } from '@/content/config';
 import { copyToClipboard } from '@/lib/utils';
+import { useEffect, useState } from 'react';
 
 export default function TokenPage() {
   const { t } = useLanguage();
+  const [proofData, setProofData] = useState(PROOF_OF_RESERVE);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Fetch Proof of Reserve data from StonFi pool
+    const fetchProofData = async () => {
+      try {
+        const response = await fetch('/api/stonfi-pool');
+        const result = await response.json();
+        
+        if (result.success && result.data) {
+          setProofData({
+            goldBackingRatio: result.data.goldBackingRatio || PROOF_OF_RESERVE.goldBackingRatio,
+            physicalGoldReserveOz: result.data.physicalGoldReserveOz || PROOF_OF_RESERVE.physicalGoldReserveOz,
+            reserveValueUSD: result.data.reserveValueUSD || PROOF_OF_RESERVE.reserveValueUSD,
+          });
+        }
+      } catch (error) {
+        console.error('Error fetching proof data:', error);
+        // Keep default values on error
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchProofData();
+    // Refresh every 5 minutes
+    const interval = setInterval(fetchProofData, 5 * 60 * 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleCopyContract = async () => {
     await copyToClipboard(TOKEN_INFO.contractAddress);
@@ -160,35 +191,47 @@ export default function TokenPage() {
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 glass-institutional border-[#D4AF37]/20 rounded-lg">
                   <div className="text-center relative">
-                    <div className="text-2xl font-bold text-[#D4AF37] mb-1">{PROOF_OF_RESERVE.goldBackingRatio.toFixed(2)}%</div>
+                    {isLoading ? (
+                      <div className="text-2xl font-bold text-[#D4AF37] mb-1">...</div>
+                    ) : (
+                      <div className="text-2xl font-bold text-[#D4AF37] mb-1">{proofData.goldBackingRatio.toFixed(2)}%</div>
+                    )}
                     <div className="text-sm text-slate-300 mb-2">
                       {t('tokenInfo.goldBackingRatio') || 'Коэффициент золотого обеспечения'}
                     </div>
                     <div className="flex items-center justify-center gap-1.5 mt-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs text-green-400">{t('tokenInfo.verifiedViaOracle')}</span>
+                      <span className="text-xs text-green-400">{t('tokenInfo.verifiedViaOracle') || 'Verified via Oracle'}</span>
                     </div>
                   </div>
                   <div className="text-center relative">
-                    <div className="text-2xl font-bold text-[#D4AF37] mb-1">{PROOF_OF_RESERVE.physicalGoldReserveOz.toLocaleString('en-US', { maximumFractionDigits: 1 })} oz</div>
+                    {isLoading ? (
+                      <div className="text-2xl font-bold text-[#D4AF37] mb-1">...</div>
+                    ) : (
+                      <div className="text-2xl font-bold text-[#D4AF37] mb-1">{proofData.physicalGoldReserveOz.toLocaleString('en-US', { maximumFractionDigits: 1 })} oz</div>
+                    )}
                     <div className="text-sm text-slate-300 mb-2">
                       {t('tokenInfo.physicalGoldReserve') || 'Физический золотой резерв'}
                     </div>
                     <div className="flex items-center justify-center gap-1.5 mt-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs text-green-400">{t('tokenInfo.verifiedViaOracle')}</span>
+                      <span className="text-xs text-green-400">{t('tokenInfo.verifiedViaOracle') || 'Verified via Oracle'}</span>
                     </div>
                   </div>
                   <div className="text-center relative">
-                    <div className="text-2xl font-bold text-[#D4AF37] mb-1">
-                      ${(PROOF_OF_RESERVE.reserveValueUSD / 1000000).toFixed(2)}M
-                    </div>
+                    {isLoading ? (
+                      <div className="text-2xl font-bold text-[#D4AF37] mb-1">...</div>
+                    ) : (
+                      <div className="text-2xl font-bold text-[#D4AF37] mb-1">
+                        ${(proofData.reserveValueUSD / 1000000).toFixed(2)}M
+                      </div>
+                    )}
                     <div className="text-sm text-slate-300 mb-2">
                       {t('tokenInfo.reserveValue') || 'Стоимость резерва (USD)'}
                     </div>
                     <div className="flex items-center justify-center gap-1.5 mt-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs text-green-400">{t('tokenInfo.verifiedViaOracle')}</span>
+                      <span className="text-xs text-green-400">{t('tokenInfo.verifiedViaOracle') || 'Verified via Oracle'}</span>
                     </div>
                   </div>
                 </div>

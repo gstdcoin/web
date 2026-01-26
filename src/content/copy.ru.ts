@@ -80,7 +80,7 @@ export default {
     reserve: 'Резерв',
     collateralForLoans: 'Залог для займов',
     governanceVoting: 'Голосование в управлении',
-    feeDiscounts: 'Скидки на комиссии',
+    feeDiscounts: 'Запуск задач',
     stakingRewards: 'Награды за стейкинг',
     maxSupply: 'Максимальное предложение',
     maxSupplyValue: '1B (TON)',
@@ -452,7 +452,7 @@ export default {
       },
     ],
     bridge: {
-      status: 'Работает',
+      status: 'В разработке',
       networks: 'TON ↔ SOL ↔ XRPL',
       time: '~2-5 минут',
       title: 'Хаб совместимости',
