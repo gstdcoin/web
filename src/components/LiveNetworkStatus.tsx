@@ -211,7 +211,7 @@ export function LiveNetworkStatus() {
                 <CardHeader>
                   <div className="flex items-center justify-between mb-4">
                     <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${metric.color} flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300`}>
-                      <IconComponent className="w-6 h-6 text-white" />
+                      <IconComponent className="w-6 h-6 text-[#0A0A0A]" />
                     </div>
                     {metric.changeType === 'positive' && (
                       <Badge className="bg-green-500/20 text-green-600 border-green-500/30">
@@ -221,12 +221,12 @@ export function LiveNetworkStatus() {
                     )}
                   </div>
                   
-                  <CardTitle className="text-sm font-medium text-muted-light mb-2">
+                  <CardTitle className="text-sm font-medium text-slate-300 mb-2">
                     {metric.title}
                   </CardTitle>
                   
                   <div className="space-y-1">
-                    <div className="text-2xl font-bold text-light-bg">
+                    <div className="text-2xl font-bold text-slate-100">
                       {metric.value}
                     </div>
                     {metric.subValue && (

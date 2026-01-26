@@ -25,6 +25,30 @@
   }
   
   :root {
+    --background: 10 10 10; /* #0A0A0A - dark background (default for this site) */
+    --foreground: 248 250 252; /* slate-50 - light text on dark */
+    --card: 30 41 59; /* slate-800 - dark cards */
+    --card-foreground: 248 250 252; /* slate-50 */
+    --popover: 30 41 59; /* slate-800 */
+    --popover-foreground: 248 250 252; /* slate-50 */
+    --primary: 212 175 55; /* #D4AF37 - Classic Gold */
+    --primary-foreground: 10 10 10; /* dark text on gold */
+    --secondary: 51 65 85; /* slate-700 */
+    --secondary-foreground: 248 250 252; /* slate-50 */
+    --muted: 51 65 85; /* slate-700 */
+    --muted-foreground: 148 163 184; /* slate-400 - lighter gray for dark mode */
+    --accent: 212 175 55; /* #D4AF37 - Classic Gold */
+    --accent-foreground: 10 10 10; /* dark text on gold */
+    --destructive: 239 68 68; /* red-500 */
+    --destructive-foreground: 255 255 255;
+    --border: 51 65 85; /* slate-700 - darker borders */
+    --input: 51 65 85; /* slate-700 */
+    --ring: 212 175 55; /* #D4AF37 - Classic Gold */
+    --radius: 0.75rem; /* 12px */
+  }
+
+  /* Light mode override (if needed in future) */
+  .light {
     --background: 255 255 255; /* white background */
     --foreground: 15 23 42; /* slate-900 - dark text on light */
     --card: 255 255 255; /* white cards */
@@ -32,40 +56,17 @@
     --popover: 255 255 255;
     --popover-foreground: 15 23 42;
     --primary: 212 175 55; /* #D4AF37 - Classic Gold */
-    --primary-foreground: 255 255 255; /* white text on gold */
+    --primary-foreground: 10 10 10; /* dark text on gold */
     --secondary: 245 245 245; /* neutral-100 - light gray */
     --secondary-foreground: 15 23 42; /* slate-900 */
     --muted: 245 245 245; /* neutral-100 */
     --muted-foreground: 100 116 139; /* slate-500 - medium gray */
     --accent: 212 175 55; /* #D4AF37 - Classic Gold */
-    --accent-foreground: 255 255 255;
+    --accent-foreground: 10 10 10; /* dark text on gold */
     --destructive: 239 68 68; /* red-500 */
     --destructive-foreground: 255 255 255;
     --border: 229 229 229; /* neutral-200 - light borders */
     --input: 229 229 229; /* neutral-200 */
-    --ring: 212 175 55; /* #D4AF37 - Classic Gold */
-    --radius: 0.75rem; /* 12px */
-  }
-
-  .dark {
-    --background: 15 23 42; /* slate-900 - dark background */
-    --foreground: 248 250 252; /* slate-50 - light text on dark */
-    --card: 30 41 59; /* slate-800 - dark cards */
-    --card-foreground: 248 250 252; /* slate-50 */
-    --popover: 30 41 59; /* slate-800 */
-    --popover-foreground: 248 250 252; /* slate-50 */
-    --primary: 212 175 55; /* #D4AF37 - Classic Gold */
-    --primary-foreground: 255 255 255;
-    --secondary: 51 65 85; /* slate-700 */
-    --secondary-foreground: 248 250 252; /* slate-50 */
-    --muted: 51 65 85; /* slate-700 */
-    --muted-foreground: 148 163 184; /* slate-400 - lighter gray for dark mode */
-    --accent: 212 175 55; /* #D4AF37 - Classic Gold */
-    --accent-foreground: 255 255 255;
-    --destructive: 239 68 68; /* red-500 */
-    --destructive-foreground: 255 255 255;
-    --border: 51 65 85; /* slate-700 - darker borders */
-    --input: 51 65 85; /* slate-700 */
     --ring: 212 175 55; /* #D4AF37 - Classic Gold */
   }
 }
@@ -76,6 +77,8 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-color: #0A0A0A; /* Explicit dark background for browser compatibility */
+    color: #F8FAFC; /* Explicit light text for browser compatibility */
     font-feature-settings: "rlig" 1, "calt" 1;
     line-height: 1.6;
   }
@@ -136,10 +139,18 @@
   
   /* Institutional glass effect */
   .glass-institutional {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(10, 10, 10, 0.6);
     backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px); /* Safari support */
     border: 1px solid rgba(212, 175, 55, 0.15);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+  
+  /* Fallback for browsers that don't support backdrop-filter */
+  @supports not (backdrop-filter: blur(16px)) {
+    .glass-institutional {
+      background: rgba(10, 10, 10, 0.95);
+    }
   }
   
   /* Mobile full-width cards */
@@ -294,12 +305,12 @@ html {
 /* Improved contrast for accessibility */
 @media (prefers-contrast: high) {
   :root {
-    --border: 100 116 139; /* slate-500 - higher contrast */
-    --muted-foreground: 71 85 105; /* slate-600 - higher contrast */
+    --border: 71 85 105; /* slate-600 - higher contrast for dark theme */
+    --muted-foreground: 203 213 225; /* slate-300 - higher contrast for dark theme */
   }
   
-  .dark {
-    --border: 71 85 105; /* slate-600 - higher contrast */
-    --muted-foreground: 148 163 184; /* slate-400 - higher contrast */
+  .light {
+    --border: 100 116 139; /* slate-500 - higher contrast for light theme */
+    --muted-foreground: 71 85 105; /* slate-600 - higher contrast for light theme */
   }
 }

@@ -56,7 +56,7 @@ export function FeatureCards() {
               >
               <CardHeader className="text-center">
                 <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r ${feature.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                  <feature.icon className="w-8 h-8 text-white" />
+                  <feature.icon className="w-8 h-8 text-[#0A0A0A]" />
                 </div>
                 <CardTitle className="text-xl font-bold group-hover:text-[#D4AF37] transition-colors text-slate-100">
                   {feature.title}
