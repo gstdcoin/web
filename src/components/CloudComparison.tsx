@@ -14,7 +14,7 @@ export function CloudComparison() {
     <section className="py-12 md:py-16 bg-gradient-to-b from-[#0A0A0A] via-[#1a1a1a] to-[#0A0A0A]" style={{ '--section-padding': '5rem' } as React.CSSProperties}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">
             <span className="text-gradient-gold">{comparison?.title || 'Технологическое превосходство'}</span>
           </h2>
           <p className="text-sm md:text-base text-slate-200 max-w-3xl mx-auto mb-4">
@@ -33,13 +33,13 @@ export function CloudComparison() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5 }}
           >
-            <Card className="glass-institutional border-[#D4AF37]/20 hover:border-red-500/30 rounded-2xl h-full card-mobile-full">
+            <Card className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 rounded-2xl h-full card-mobile-full">
               <CardHeader>
-                <CardTitle className="text-2xl text-slate-100 flex items-center justify-between">
+                <CardTitle className="text-xl md:text-2xl text-slate-100 flex flex-wrap gap-2 items-center justify-between">
                   {comparison?.cloud?.title || 'Облачные провайдеры'}
-                  <Badge className="bg-red-500/20 text-red-400 border-red-500/30">Дорого</Badge>
+                  <Badge className="bg-orange-500/30 text-orange-200 border-orange-500/50 font-semibold whitespace-nowrap">{comparison?.cloud?.expensive || 'Expensive'}</Badge>
                 </CardTitle>
-                <div className="text-3xl font-bold text-red-400 mt-4">
+                <div className="text-3xl font-bold text-orange-200 mt-4">
                   {comparison?.cloud?.price || '~$0.10/час'}
                 </div>
               </CardHeader>
@@ -47,8 +47,8 @@ export function CloudComparison() {
                 <ul className="space-y-3">
                   {(comparison?.cloud?.features || []).map((feature: string, index: number) => (
                     <li key={index} className="flex items-start space-x-2">
-                      <X className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-slate-300">{feature}</span>
+                      <X className="w-5 h-5 text-orange-300 flex-shrink-0 mt-0.5" />
+                      <span className="text-slate-200">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -65,9 +65,9 @@ export function CloudComparison() {
           >
             <Card className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 rounded-2xl shadow-lg h-full card-mobile-full">
               <CardHeader>
-                <CardTitle className="text-2xl text-slate-100 flex items-center justify-between">
+                <CardTitle className="text-xl md:text-2xl text-slate-100 flex flex-wrap gap-2 items-center justify-between">
                   {comparison?.gstd?.title || 'GSTD Network'}
-                  <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
+                  <Badge className="bg-green-500/20 text-green-400 border-green-500/30 whitespace-nowrap">
                     {comparison?.gstd?.savings || 'Экономия 70%'}
                   </Badge>
                 </CardTitle>
@@ -80,7 +80,7 @@ export function CloudComparison() {
                   {(comparison?.gstd?.features || []).map((feature: string, index: number) => (
                     <li key={index} className="flex items-start space-x-2">
                       <Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-slate-300">{feature}</span>
+                      <span className="text-slate-200">{feature}</span>
                     </li>
                   ))}
                 </ul>

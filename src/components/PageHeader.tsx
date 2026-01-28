@@ -43,7 +43,7 @@ export function PageHeader({ title, subtitle, showBackButton = true }: PageHeade
           <div className="flex-1 text-center px-2 min-w-0">
             <h1 className="text-base sm:text-lg font-semibold text-slate-100 truncate">{titleText}</h1>
             {subtitleText && (
-              <p className="text-xs sm:text-sm text-slate-300 truncate">{subtitleText}</p>
+              <p className="text-xs sm:text-sm text-slate-200 truncate">{subtitleText}</p>
             )}
           </div>
 

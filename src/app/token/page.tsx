@@ -87,7 +87,7 @@ export default function TokenPage() {
                 {t('tokenSectionTitle')}
                 <Badge className="bg-[#D4AF37] text-[#0A0A0A]">{TOKEN_INFO.symbol}</Badge>
               </CardTitle>
-              <CardDescription className="text-slate-300 text-lg">
+              <CardDescription className="text-slate-200 text-lg">
                 {t('tokenBullets')[0]}
               </CardDescription>
             </CardHeader>
@@ -95,26 +95,26 @@ export default function TokenPage() {
               {/* Token Info Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div className="text-center p-4 glass-institutional border-[#D4AF37]/20 rounded-lg">
-                  <p className="text-sm text-slate-300 mb-1">{t('tokenInfo.network')}</p>
+                  <p className="text-sm text-slate-200 mb-1 font-medium">{t('tokenInfo.network')}</p>
                   <p className="font-semibold text-[#D4AF37]">{TOKEN_INFO.network}</p>
                 </div>
                 <div className="text-center p-4 glass-institutional border-[#D4AF37]/20 rounded-lg">
-                  <p className="text-sm text-slate-300 mb-1">{t('tokenInfo.decimals')}</p>
+                  <p className="text-sm text-slate-200 mb-1 font-medium">{t('tokenInfo.decimals')}</p>
                   <p className="font-semibold text-[#D4AF37]">{TOKEN_INFO.decimals}</p>
                 </div>
                 <div className="text-center p-4 glass-institutional border-[#D4AF37]/20 rounded-lg">
-                  <p className="text-sm text-slate-300 mb-1">{t('tokenInfo.totalSupply')}</p>
+                  <p className="text-sm text-slate-200 mb-1 font-medium">{t('tokenInfo.totalSupply')}</p>
                   <p className="font-semibold text-[#D4AF37]">{TOKEN_INFO.totalSupply}</p>
                 </div>
                 <div className="text-center p-4 glass-institutional border-[#D4AF37]/20 rounded-lg">
-                  <p className="text-sm text-slate-300 mb-1">{t('tokenInfo.utility')}</p>
+                  <p className="text-sm text-slate-200 mb-1 font-medium">{t('tokenInfo.utility')}</p>
                   <p className="font-semibold text-[#D4AF37]">{t('tokenInfo.utilityValue')}</p>
                 </div>
               </div>
 
               {/* Contract Address */}
               <div>
-                <p className="text-sm text-slate-300 mb-2">{t('tokenInfo.contractAddress')}</p>
+                <p className="text-sm text-slate-200 mb-2 font-medium">{t('tokenInfo.contractAddress')}</p>
                 <div className="flex items-center space-x-2 p-3 glass-institutional border-[#D4AF37]/20 rounded-lg">
                   <code className="flex-1 text-sm font-mono text-[#D4AF37] break-all">
                     {TOKEN_INFO.contractAddress}
@@ -156,9 +156,9 @@ export default function TokenPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {tokenFeatures.map((feature, index) => (
-              <Card key={index} className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-all duration-300 card-mobile-full">
-                <CardHeader>
-                  <div className="flex items-center space-x-3">
+              <Card key={index} className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-all duration-300 card-mobile-full text-center">
+                <CardHeader className="text-center">
+                  <div className="flex flex-col items-center space-y-3">
                     <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#D4AF37] to-[#B8860B] flex items-center justify-center">
                       <feature.icon className="w-6 h-6 text-[#0A0A0A]" />
                     </div>
@@ -166,7 +166,7 @@ export default function TokenPage() {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-slate-300 leading-relaxed">
+                  <CardDescription className="text-slate-200 leading-relaxed text-center">
                     {feature.description}
                   </CardDescription>
                 </CardContent>
@@ -186,7 +186,7 @@ export default function TokenPage() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <p className="text-slate-300 leading-relaxed" style={{ lineHeight: '1.7' }}>
+                <p className="text-slate-200 leading-relaxed" style={{ lineHeight: '1.7' }}>
                   {t('tokenInfo.proofOfReserveDescription')}
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 glass-institutional border-[#D4AF37]/20 rounded-lg">
@@ -196,12 +196,12 @@ export default function TokenPage() {
                     ) : (
                       <div className="text-2xl font-bold text-[#D4AF37] mb-1">{proofData.goldBackingRatio.toFixed(2)}%</div>
                     )}
-                    <div className="text-sm text-slate-300 mb-2">
+                    <div className="text-sm text-slate-200 mb-2 font-medium">
                       {t('tokenInfo.goldBackingRatio') || 'Коэффициент золотого обеспечения'}
                     </div>
                     <div className="flex items-center justify-center gap-1.5 mt-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs text-green-400">{t('tokenInfo.verifiedViaOracle') || 'Verified via Oracle'}</span>
+                      <span className="text-xs text-green-400 font-medium">{t('tokenInfo.verifiedViaOracle') || 'Verified via Oracle'}</span>
                     </div>
                   </div>
                   <div className="text-center relative">
@@ -210,12 +210,12 @@ export default function TokenPage() {
                     ) : (
                       <div className="text-2xl font-bold text-[#D4AF37] mb-1">{proofData.physicalGoldReserveOz.toLocaleString('en-US', { maximumFractionDigits: 1 })} oz</div>
                     )}
-                    <div className="text-sm text-slate-300 mb-2">
+                    <div className="text-sm text-slate-200 mb-2 font-medium">
                       {t('tokenInfo.physicalGoldReserve') || 'Физический золотой резерв'}
                     </div>
                     <div className="flex items-center justify-center gap-1.5 mt-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs text-green-400">{t('tokenInfo.verifiedViaOracle') || 'Verified via Oracle'}</span>
+                      <span className="text-xs text-green-400 font-medium">{t('tokenInfo.verifiedViaOracle') || 'Verified via Oracle'}</span>
                     </div>
                   </div>
                   <div className="text-center relative">
@@ -226,7 +226,7 @@ export default function TokenPage() {
                         ${(proofData.reserveValueUSD / 1000000).toFixed(2)}M
                       </div>
                     )}
-                    <div className="text-sm text-slate-300 mb-2">
+                    <div className="text-sm text-slate-200 mb-2 font-medium">
                       {t('tokenInfo.reserveValue') || 'Стоимость резерва (USD)'}
                     </div>
                     <div className="flex items-center justify-center gap-1.5 mt-2">
@@ -240,12 +240,12 @@ export default function TokenPage() {
                     <p className="text-xs font-semibold text-[#D4AF37] mb-1">
                       {t('tokenInfo.proofOfReserveAuditor') || 'Independent Custodian Audit (Tether Gold Support)'}
                     </p>
-                    <p className="text-xs text-slate-300" style={{ lineHeight: '1.7' }}>
+                    <p className="text-xs text-slate-200" style={{ lineHeight: '1.7' }}>
                       {t('tokenInfo.proofOfReserveUpdate') || 'Обновляется каждые 24 часа. Все активы верифицированы в сетях TON, Solana и XRPL.'}
                     </p>
                   </div>
                   <div className="p-3 bg-[#D4AF37]/10 border border-[#D4AF37]/20 rounded-lg">
-                    <p className="text-sm text-slate-300 italic" style={{ lineHeight: '1.7' }}>
+                    <p className="text-sm text-slate-200 italic" style={{ lineHeight: '1.7' }}>
                       {t('tokenInfo.proofOfReserveNote')}
                     </p>
                   </div>
@@ -268,19 +268,19 @@ export default function TokenPage() {
               <CardContent>
                 <div className="space-y-3">
                   <div className="flex justify-between">
-                    <span className="text-slate-300">{t('tokenInfo.liquidity')}</span>
+                    <span className="text-slate-200">{t('tokenInfo.liquidity')}</span>
                     <span className="font-semibold text-[#D4AF37]">30%</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-300">{t('tokenInfo.community')}</span>
+                    <span className="text-slate-200">{t('tokenInfo.community')}</span>
                     <span className="font-semibold text-[#D4AF37]">40%</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-300">{t('tokenInfo.team')}</span>
+                    <span className="text-slate-200">{t('tokenInfo.team')}</span>
                     <span className="font-semibold text-[#D4AF37]">20%</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-300">{t('tokenInfo.reserve')}</span>
+                    <span className="text-slate-200">{t('tokenInfo.reserve')}</span>
                     <span className="font-semibold text-[#D4AF37]">10%</span>
                   </div>
                 </div>
@@ -295,19 +295,19 @@ export default function TokenPage() {
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-[#D4AF37] rounded-full"></div>
-                    <span className="text-slate-300">{t('tokenInfo.collateralForLoans')}</span>
+                    <span className="text-slate-200">{t('tokenInfo.collateralForLoans')}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-[#D4AF37] rounded-full"></div>
-                    <span className="text-slate-300">{t('tokenInfo.governanceVoting')}</span>
+                    <span className="text-slate-200">{t('tokenInfo.governanceVoting')}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-[#D4AF37] rounded-full"></div>
-                    <span className="text-slate-300">{t('tokenInfo.feeDiscounts')}</span>
+                    <span className="text-slate-200">{t('tokenInfo.feeDiscounts')}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-[#D4AF37] rounded-full"></div>
-                    <span className="text-slate-300">{t('tokenInfo.stakingRewards')}</span>
+                    <span className="text-slate-200">{t('tokenInfo.stakingRewards')}</span>
                   </div>
                 </div>
               </CardContent>
@@ -320,19 +320,19 @@ export default function TokenPage() {
               <CardContent>
                 <div className="space-y-3">
                   <div className="flex justify-between">
-                    <span className="text-slate-300">{t('tokenInfo.maxSupply')}</span>
+                    <span className="text-slate-200">{t('tokenInfo.maxSupply')}</span>
                     <span className="font-semibold text-[#D4AF37]">{t('tokenInfo.maxSupplyValue')}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-300">{t('tokenInfo.solana')}</span>
+                    <span className="text-slate-200">{t('tokenInfo.solana')}</span>
                     <span className="font-semibold text-[#D4AF37]">{t('tokenInfo.solanaValue')}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-300">{t('tokenInfo.xrpl')}</span>
+                    <span className="text-slate-200">{t('tokenInfo.xrpl')}</span>
                     <span className="font-semibold text-[#D4AF37]">{t('tokenInfo.xrplValue')}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-300">{t('tokenInfo.network')}</span>
+                    <span className="text-slate-200">{t('tokenInfo.network')}</span>
                     <span className="font-semibold text-[#D4AF37]">{t('tokenInfo.multichain')}</span>
                   </div>
                 </div>

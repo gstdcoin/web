@@ -51,7 +51,7 @@ export function WalletAsNode() {
                     <div className="w-12 h-12 mx-auto mb-3 rounded-lg bg-gradient-to-r from-[#D4AF37] to-[#B8860B] flex items-center justify-center">
                       <IconComponent className="w-6 h-6 text-[#0A0A0A]" />
                     </div>
-                    <p className="text-sm text-slate-300">{benefit}</p>
+                    <p className="text-sm text-slate-200">{benefit}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -83,7 +83,7 @@ export function WalletAsNode() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-slate-300" style={{ lineHeight: '1.7' }}>
+                    <CardDescription className="text-slate-200" style={{ lineHeight: '1.7' }}>
                       {step.description}
                     </CardDescription>
                   </CardContent>

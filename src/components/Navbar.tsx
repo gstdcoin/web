@@ -68,7 +68,7 @@ export function Navbar() {
                 href={item.href}
                 className={cn(
                   "text-base font-medium transition-all duration-300 whitespace-nowrap",
-                  "text-[#FAEBD7] hover:text-[#D4AF37]",
+                  "text-slate-100 hover:text-[#D4AF37]",
                   "border-b border-transparent hover:border-[#D4AF37]/30",
                   "pb-1 hover:pb-0.5"
                 )}
@@ -95,7 +95,7 @@ export function Navbar() {
               variant="ghost"
               size="sm"
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden min-w-0 px-2 text-[#FAEBD7] hover:text-[#D4AF37] hover:bg-[#D4AF37]/10"
+              className="md:hidden min-w-0 px-2 text-slate-100 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10"
             >
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
@@ -115,7 +115,7 @@ export function Navbar() {
                     className={cn(
                       "block px-3 py-3 text-sm font-medium rounded-lg transition-all duration-300 touch-manipulation",
                       "glass-institutional border-[#D4AF37]/20",
-                      "text-[#FAEBD7] hover:text-[#D4AF37]",
+                      "text-slate-100 hover:text-[#D4AF37]",
                       "hover:border-[#D4AF37]/40 hover:shadow-[0_0_20px_rgba(212,175,55,0.1)]",
                       "active:scale-95"
                     )}

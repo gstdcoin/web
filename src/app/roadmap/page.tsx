@@ -44,7 +44,7 @@ export default function RoadmapPage() {
       icon: Zap,
       description: t('roadmap.phaseDescriptions')[3],
       features: t('roadmap.phaseFeatures')[3] as unknown as string[],
-      color: 'bg-purple-500',
+      color: 'bg-blue-500',
     },
   ];
 
@@ -75,7 +75,7 @@ export default function RoadmapPage() {
       case 'upcoming':
         return <Badge className="bg-[#D4AF37] text-[#0A0A0A]">{t('roadmap.upcoming')}</Badge>;
       case 'future':
-        return <Badge className="bg-purple-500 text-white">{t('roadmap.future')}</Badge>;
+        return <Badge className="bg-blue-500 text-white">{t('roadmap.future')}</Badge>;
       default:
         return null;
     }

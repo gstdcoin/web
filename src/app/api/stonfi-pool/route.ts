@@ -49,51 +49,57 @@ export async function GET() {
       });
     }
 
-    // Extract pool data
-    const reserve0 = parseFloat(gstdPool.reserve0 || gstdPool.token0_reserve || '0');
-    const reserve1 = parseFloat(gstdPool.reserve1 || gstdPool.token1_reserve || '0');
-    const token0Decimals = parseInt(gstdPool.token0?.decimals || '9');
-    const token1Decimals = parseInt(gstdPool.token1?.decimals || '9');
+    // Extract pool data - StonFi returns reserves in basic token units
+    const reserve0 = parseFloat(gstdPool.reserve0 || gstdPool.token0_reserve || gstdPool[0] || '0');
+    const reserve1 = parseFloat(gstdPool.reserve1 || gstdPool.token1_reserve || gstdPool[1] || '0');
+    const token0Decimals = parseInt(gstdPool.token0?.decimals || gstdPool.decimals0 || '9');
+    const token1Decimals = parseInt(gstdPool.token1?.decimals || gstdPool.decimals1 || '9');
     
-    // Calculate TVL (Total Value Locked)
-    // Assuming token0 is GSTD and token1 is TON or XAUT
+    // Calculate actual token amounts
     const gstdAmount = reserve0 / Math.pow(10, token0Decimals);
     const otherTokenAmount = reserve1 / Math.pow(10, token1Decimals);
     
     // Get token prices (simplified - in production should fetch from price oracle)
-    // For now, estimate based on pool reserves
     const tonPrice = 5; // Approximate TON price in USD
-    const estimatedTVL = (gstdAmount * 0.1) + (otherTokenAmount * tonPrice); // Rough estimate
+    const gstdPrice = otherTokenAmount > 0 && gstdAmount > 0 
+      ? (otherTokenAmount * tonPrice) / gstdAmount 
+      : 0.1; // Fallback price estimate
     
-    // Calculate gold backing metrics
-    // If pool is GSTD/XAUT, use XAUT amount directly
-    // If pool is GSTD/TON, estimate based on protocol conversion rate
-    const isXAUTPool = gstdPool.token1_address?.includes('XAUT') || 
-                       gstdPool.token1?.symbol === 'XAUT' ||
-                       gstdPool.token0_address?.includes('XAUT') ||
-                       gstdPool.token0?.symbol === 'XAUT';
+    // Calculate TVL (Total Value Locked) based on actual reserves
+    const estimatedTVL = (gstdAmount * gstdPrice) + (otherTokenAmount * tonPrice);
     
-    let physicalGoldReserveOz = 0;
-    let reserveValueUSD = 0;
+    // Calculate gold backing metrics based on actual pool data from StonFi
+    // Protocol converts 70% of Net Protocol Revenue to XAUT
+    // Calculate based on actual pool reserves
     
-    if (isXAUTPool) {
-      // Direct XAUT pool - 1 XAUT = 1 oz gold
-      physicalGoldReserveOz = otherTokenAmount;
-      reserveValueUSD = physicalGoldReserveOz * GOLD_PRICE_PER_OZ;
-    } else {
-      // GSTD/TON pool - estimate based on protocol's gold conversion
-      // Protocol converts 70% of revenue to XAUT
-      // Estimate: assume 2.85% of total supply is backed by gold
-      const totalSupply = 1000000000; // 1B GSTD
-      const goldBackedSupply = totalSupply * 0.0285; // 2.85% backing
-      physicalGoldReserveOz = (goldBackedSupply * 0.1) / GOLD_PRICE_PER_OZ; // Rough estimate
-      reserveValueUSD = physicalGoldReserveOz * GOLD_PRICE_PER_OZ;
-    }
+    const protocolConversionRate = 0.70; // 70% of revenue converts to gold
+    const totalSupply = 1000000000; // 1B GSTD total supply
     
-    // Calculate gold backing ratio
-    const totalSupply = 1000000000; // 1B GSTD
-    const goldBackingRatio = totalSupply > 0 
-      ? (reserveValueUSD / (totalSupply * 0.1)) * 100 
+    // Calculate based on actual pool reserves
+    // If pool has significant liquidity, use it to estimate gold reserve
+    // Otherwise, use protocol's accumulated gold from DePIN operations
+    
+    // Estimate protocol revenue from pool activity
+    // Pool TVL represents locked liquidity, protocol revenue comes from fees
+    const estimatedDailyVolume = estimatedTVL * 0.1; // Rough estimate: 10% of TVL as daily volume
+    const estimatedDailyFees = estimatedDailyVolume * 0.003; // 0.3% fee on swaps
+    const estimatedDailyGoldRevenue = estimatedDailyFees * protocolConversionRate;
+    
+    // Estimate accumulated gold reserve (assuming protocol has been running)
+    // This should ideally come from on-chain data or oracle
+    const daysOfOperation = 30; // Rough estimate - should be from actual protocol data
+    const accumulatedGoldUSD = estimatedDailyGoldRevenue * daysOfOperation;
+    const physicalGoldReserveOz = accumulatedGoldUSD / GOLD_PRICE_PER_OZ;
+    const reserveValueUSD = accumulatedGoldUSD;
+    
+    // Calculate gold backing ratio based on current market cap
+    // Use pool price to estimate market cap
+    const estimatedGSTDPrice = otherTokenAmount > 0 && gstdAmount > 0
+      ? (otherTokenAmount * tonPrice) / gstdAmount
+      : 0.1; // Fallback price estimate
+    const totalMarketCap = totalSupply * estimatedGSTDPrice;
+    const goldBackingRatio = totalMarketCap > 0 
+      ? (reserveValueUSD / totalMarketCap) * 100 
       : 2.85;
 
     return NextResponse.json({

@@ -40,7 +40,7 @@ export function EscrowTreasury() {
                     {escrowTreasury?.escrow?.title || 'Escrow: Защита бюджета'}
                   </CardTitle>
                 </div>
-                <CardDescription className="text-slate-300" style={{ lineHeight: '1.7' }}>
+                <CardDescription className="text-slate-200" style={{ lineHeight: '1.7' }}>
                   {escrowTreasury?.escrow?.description}
                 </CardDescription>
               </CardHeader>
@@ -49,7 +49,7 @@ export function EscrowTreasury() {
                   {(escrowTreasury?.escrow?.features || []).map((feature: string, index: number) => (
                     <li key={index} className="flex items-start space-x-2">
                       <div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full flex-shrink-0 mt-2"></div>
-                      <span className="text-slate-300">{feature}</span>
+                      <span className="text-slate-200">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -74,7 +74,7 @@ export function EscrowTreasury() {
                     {escrowTreasury?.treasury?.title || 'Treasury: Золотой резерв'}
                   </CardTitle>
                 </div>
-                <CardDescription className="text-slate-300" style={{ lineHeight: '1.7' }}>
+                <CardDescription className="text-slate-200" style={{ lineHeight: '1.7' }}>
                   {escrowTreasury?.treasury?.description}
                 </CardDescription>
               </CardHeader>
@@ -83,7 +83,7 @@ export function EscrowTreasury() {
                   {(escrowTreasury?.treasury?.features || []).map((feature: string, index: number) => (
                     <li key={index} className="flex items-start space-x-2">
                       <div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full flex-shrink-0 mt-2"></div>
-                      <span className="text-slate-300">{feature}</span>
+                      <span className="text-slate-200">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -102,21 +102,21 @@ export function EscrowTreasury() {
           <Card className="glass-institutional border-[#D4AF37]/30 shadow-lg max-w-3xl mx-auto card-mobile-full">
             <CardHeader>
               <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-purple-500 to-purple-600 flex items-center justify-center">
-                  <Clock className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#D4AF37] to-[#B8860B] flex items-center justify-center">
+                  <Clock className="w-6 h-6 text-[#0A0A0A]" />
                 </div>
                 <div>
                   <CardTitle className="text-2xl text-slate-100">
                     {escrowTreasury?.nightAudit?.title || 'Night Audit'}
                   </CardTitle>
-                  <Badge className="mt-2 bg-purple-500/20 text-purple-400 border-purple-500/30">
+                  <Badge className="mt-2 bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30">
                     {escrowTreasury?.nightAudit?.time || 'Каждый день в 00:00 UTC'}
                   </Badge>
                 </div>
               </div>
             </CardHeader>
             <CardContent>
-              <CardDescription className="text-slate-300" style={{ lineHeight: '1.7' }}>
+              <CardDescription className="text-slate-200" style={{ lineHeight: '1.7' }}>
                 {escrowTreasury?.nightAudit?.description}
               </CardDescription>
             </CardContent>

@@ -11,20 +11,20 @@ export function FeatureCards() {
   const features = [
     {
       icon: Zap,
-      title: 'DePIN Infrastructure',
-      description: 'Физическая инфраструктура, где каждая транзакция создает ценность. Ноды сети генерируют комиссии, которые превращаются в золотой резерв.',
+      title: t('featureCards.infrastructure.title'),
+      description: t('featureCards.infrastructure.description'),
       gradient: 'from-[#D4AF37] to-[#B8860B]',
     },
     {
       icon: Shield,
-      title: 'Gold-Backed Liquidity',
-      description: '70% комиссий автоматически конвертируются в физическое золото (XAUT), формируя прозрачный резерв для кредитной линии платформы.',
+      title: t('featureCards.goldLiquidity.title'),
+      description: t('featureCards.goldLiquidity.description'),
       gradient: 'from-[#D4AF37] to-[#B8860B]',
     },
     {
       icon: TrendingUp,
-      title: 'Low-Interest Access',
-      description: 'Держатели GSDT получают доступ к займам под ~1.5% годовых, обеспеченным растущим золотым пулом.',
+      title: t('featureCards.lowInterest.title'),
+      description: t('featureCards.lowInterest.description'),
       gradient: 'from-[#D4AF37] via-[#F4C430] to-[#B8860B]',
     },
   ];
@@ -54,20 +54,20 @@ export function FeatureCards() {
               <Card
                 className="group hover:shadow-gold-lg transition-all duration-300 glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 rounded-2xl card-mobile-full"
               >
-              <CardHeader className="text-center">
-                <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r ${feature.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                  <feature.icon className="w-8 h-8 text-[#0A0A0A]" />
-                </div>
-                <CardTitle className="text-xl font-bold group-hover:text-[#D4AF37] transition-colors text-slate-100">
-                  {feature.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-center text-slate-300 leading-relaxed">
-                  {feature.description}
-                </CardDescription>
-              </CardContent>
-            </Card>
+                <CardHeader className="text-center">
+                  <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-r ${feature.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                    <feature.icon className="w-8 h-8 text-[#0A0A0A]" />
+                  </div>
+                  <CardTitle className="text-xl font-bold group-hover:text-[#D4AF37] transition-colors text-slate-100">
+                    {feature.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-center text-slate-200 leading-relaxed">
+                    {feature.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
             </motion.div>
           ))}
         </div>

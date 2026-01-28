@@ -25,6 +25,22 @@ export default {
     scalable: 'Multichain',
   },
 
+  // Feature Cards (Bento Grid)
+  featureCards: {
+    infrastructure: {
+      title: 'DePIN Infrastructure',
+      description: 'Physical infrastructure where every transaction creates value. Network nodes generate fees that turn into a gold reserve.',
+    },
+    goldLiquidity: {
+      title: 'Gold-Backed Liquidity',
+      description: '70% of fees are automatically converted into physical gold (XAUT), forming a transparent reserve for the platform\'s credit line.',
+    },
+    lowInterest: {
+      title: 'Low-Interest Access',
+      description: 'GSDT holders gain access to loans at ~1.5% APY, backed by a growing gold pool.',
+    },
+  },
+
   // CTA
   ctaPrimary: 'Get GSDT',
   ctaSecondary: 'Community',
@@ -463,7 +479,7 @@ export default {
   // Network Status
   networkStatus: {
     title: 'Real-time Network Status',
-    subtitle: 'Live GSDT platform metrics',
+    subtitle: 'Demo Live GSDT platform metrics',
     liveUpdate: 'Real-time update',
     lastUpdate: 'Last update: just now',
     metrics: {
@@ -511,7 +527,7 @@ export default {
     active: 'Active',
     operational: 'Operational',
   },
-  
+
   featureSection: {
     title: 'Key Features',
     subtitle: 'DePIN platform creating gold liquidity through every transaction',
@@ -572,6 +588,7 @@ export default {
     description: 'GSTD offers distributed computing 70% cheaper than cloud providers, with payment only for completed work.',
     cloud: {
       title: 'Cloud Providers',
+      expensive: 'Expensive',
       features: [
         'Pay for usage time',
         'High prices',

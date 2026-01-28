@@ -52,7 +52,7 @@ export function UtilityCycle() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="group hover:shadow-gold-lg transition-all duration-300 glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 rounded-2xl h-full card-mobile-full">
+                <Card className="group hover:shadow-gold-lg transition-all duration-300 glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 rounded-2xl h-full card-mobile-full text-center">
                   <CardHeader className="text-center">
                     {/* Step Number Badge */}
                     <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-[#1a1a1a] to-[#2a2a2a] flex items-center justify-center text-[#D4AF37] font-bold text-xl group-hover:scale-110 transition-transform duration-300">
@@ -69,13 +69,13 @@ export function UtilityCycle() {
                     </CardTitle>
                     
                     {/* Metric Badge */}
-                    <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/20 text-[#D4AF37] text-xs font-medium">
+                    <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/40 text-[#D4AF37] text-sm font-semibold">
                       {step.metric}
                     </div>
                   </CardHeader>
                   
                   <CardContent>
-                    <CardDescription className="text-center text-slate-300 leading-relaxed">
+                    <CardDescription className="text-center text-slate-200 leading-relaxed">
                       {step.description}
                     </CardDescription>
                   </CardContent>
@@ -96,7 +96,7 @@ export function UtilityCycle() {
 
         {/* Protocol layers indicator */}
         <div className="mt-12 text-center">
-          <div className="inline-flex items-center px-6 py-3 rounded-full glass-institutional border-[#D4AF37]/20 text-slate-300 text-sm">
+          <div className="inline-flex items-center px-6 py-3 rounded-full glass-institutional border-[#D4AF37]/20 text-slate-200 text-sm">
             <div className="w-2 h-2 bg-[#D4AF37] rounded-full mr-2 animate-pulse"></div>
             {t('utilityCycle.protocolIndicator') || 'Institutional-Grade Protocol • Three-Tier Utility Model'}
           </div>

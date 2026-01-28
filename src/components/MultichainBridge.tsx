@@ -17,7 +17,7 @@ export function MultichainBridge() {
 
   const networkColors = {
     TON: 'from-[#D4AF37] to-[#B8860B]',
-    Solana: 'from-purple-500 to-purple-600',
+    Solana: 'from-blue-500 to-blue-600',
     XRPL: 'from-green-500 to-green-600',
   };
 
@@ -73,10 +73,10 @@ export function MultichainBridge() {
                     <CardTitle className="text-xl font-bold text-slate-100 mb-2">
                       {network.name}
                     </CardTitle>
-                    <CardDescription className="text-slate-300 font-medium mb-2">
+                    <CardDescription className="text-slate-200 font-medium mb-2">
                       {network.title}
                     </CardDescription>
-                    <CardDescription className="text-slate-300 text-sm">
+                    <CardDescription className="text-slate-200 text-sm">
                       {network.description}
                     </CardDescription>
                   </CardHeader>
@@ -86,7 +86,7 @@ export function MultichainBridge() {
                       {(Array.isArray(network.features) ? network.features : []).map((feature: string, featureIndex: number) => (
                         <li key={featureIndex} className="flex items-start space-x-2">
                           <div className="w-1.5 h-1.5 bg-[#D4AF37] rounded-full flex-shrink-0 mt-2"></div>
-                          <span className="text-slate-300 text-sm">{feature}</span>
+                          <span className="text-slate-200 text-sm">{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -108,10 +108,10 @@ export function MultichainBridge() {
                 <h3 className="text-2xl font-bold text-slate-100 mb-2">
                   {bridge.title || 'Interoperability Hub'}
                 </h3>
-                <p className="text-slate-300">
+                <p className="text-slate-200">
                   {bridge.networks}
                 </p>
-                <p className="text-sm text-slate-300 mt-2">
+                <p className="text-sm text-slate-200 mt-2">
                   {bridge.unifiedLiquidity || 'Unified liquidity layer across chains'}
                 </p>
               </div>
@@ -119,7 +119,7 @@ export function MultichainBridge() {
             
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="text-center md:text-right">
-                <div className="text-sm text-slate-300 mb-1">Status</div>
+                <div className="text-sm text-slate-200 mb-1">Status</div>
                 <Badge className="bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30 text-lg px-4 py-2">
                   <CheckCircle2 className="w-4 h-4 mr-2" />
                   {bridge.status}
@@ -127,7 +127,7 @@ export function MultichainBridge() {
               </div>
               
               <div className="text-center md:text-right">
-                <div className="text-sm text-slate-300 mb-1">Transaction Time</div>
+                <div className="text-sm text-slate-200 mb-1">Transaction Time</div>
                 <div className="text-2xl font-bold text-[#D4AF37]">
                   {bridge.time}
                 </div>

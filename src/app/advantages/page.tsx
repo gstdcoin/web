@@ -34,7 +34,7 @@ export default function InvestorsPage() {
       icon: TrendingUp,
       title: t('investors.advantages.dca.title'),
       description: t('investors.advantages.dca.description'),
-      color: 'bg-purple-500',
+      color: 'bg-blue-500',
     },
     {
       icon: Users,
@@ -104,17 +104,17 @@ export default function InvestorsPage() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 px-4">
             {advantages.map((advantage, index) => (
-              <Card key={index} className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-all duration-300 card-mobile-full">
-                <CardHeader>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-r from-[#D4AF37] to-[#B8860B] flex items-center justify-center flex-shrink-0">
-                      <advantage.icon className="w-5 h-5 sm:w-6 sm:h-6 text-[#0A0A0A]" />
+              <Card key={index} className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-all duration-300 card-mobile-full text-center">
+                <CardHeader className="text-center">
+                  <div className="flex flex-col items-center space-y-3">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#D4AF37] to-[#B8860B] flex items-center justify-center">
+                      <advantage.icon className="w-6 h-6 text-[#0A0A0A]" />
                     </div>
                     <CardTitle className="text-lg sm:text-xl text-slate-100">{advantage.title}</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-slate-300 leading-relaxed">
+                  <CardDescription className="text-slate-200 leading-relaxed text-center">
                     {advantage.description}
                   </CardDescription>
                 </CardContent>
@@ -130,19 +130,19 @@ export default function InvestorsPage() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 px-4">
             {sections.map((section, index) => (
-              <Card key={index} className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-all duration-300 card-mobile-full">
-                <CardHeader>
+              <Card key={index} className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-all duration-300 card-mobile-full text-center">
+                <CardHeader className="text-center">
                   <CardTitle className="text-lg sm:text-xl text-slate-100 mb-2">{section.title}</CardTitle>
-                  <CardDescription className="text-slate-300 text-sm sm:text-base">
+                  <CardDescription className="text-slate-200 text-sm sm:text-base">
                     {section.description}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3">
                     {section.items.map((item, itemIndex) => (
-                      <li key={itemIndex} className="flex items-start space-x-2">
+                      <li key={itemIndex} className="flex items-start justify-center space-x-2">
                         <div className="w-2 h-2 bg-[#D4AF37] rounded-full flex-shrink-0 mt-2"></div>
-                        <span className="text-slate-300">{item}</span>
+                        <span className="text-slate-200">{item}</span>
                       </li>
                     ))}
                   </ul>

@@ -221,7 +221,7 @@ export function LiveNetworkStatus() {
                     )}
                   </div>
                   
-                  <CardTitle className="text-sm font-medium text-slate-300 mb-2">
+                  <CardTitle className="text-sm font-medium text-slate-200 mb-2">
                     {metric.title}
                   </CardTitle>
                   
@@ -230,14 +230,14 @@ export function LiveNetworkStatus() {
                       {metric.value}
                     </div>
                     {metric.subValue && (
-                      <div className="text-sm text-slate-300">
+                      <div className="text-sm text-slate-200">
                         {metric.subValue}
                       </div>
                     )}
                     <div className="flex items-center justify-between mt-2">
                       {metric.change && (
                         <div className={`text-xs font-medium ${
-                          metric.changeType === 'positive' ? 'text-green-400' : 'text-slate-300'
+                          metric.changeType === 'positive' ? 'text-green-400' : 'text-slate-200'
                         }`}>
                           {metric.change}
                         </div>

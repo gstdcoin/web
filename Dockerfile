@@ -7,7 +7,7 @@ ENV NODE_OPTIONS="--max-old-space-size=1024"
 
 # Install dependencies first for better caching
 COPY package.json package-lock.json ./
-RUN npm ci --silent --no-audit --no-fund
+RUN npm ci --silent --no-audit --no-fund --legacy-peer-deps
 
 # Copy source code and build with memory optimization
 COPY . .
