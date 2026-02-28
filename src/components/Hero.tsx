@@ -21,7 +21,7 @@ export function Hero() {
     <section className="relative min-h-[85vh] md:min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-[#0A0A0A] via-[#1a1a1a] to-[#2a2a2a]">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/5 to-[#D4AF37]/10 opacity-30" />
-      
+
       {/* Animated Background Elements - Right Side */}
       <div className="absolute inset-0 hidden md:block">
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-3xl animate-pulse" />
@@ -53,15 +53,15 @@ export function Hero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-8 md:mb-12 animate-slide-up" style={{ animationDelay: '0.4s' }}>
-              <Button className="bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30 hover:border-green-500/50 group w-full sm:w-auto" asChild>
-                <a href={LINKS.getGSDT} target="_blank" rel="noopener noreferrer">
-                  {t('ctaPrimary')}
+              <Button className="bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30 hover:bg-[#D4AF37]/30 hover:border-[#D4AF37]/50 group w-full sm:w-auto hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]" asChild>
+                <a href={LINKS.app} target="_blank" rel="noopener noreferrer">
+                  {t('ecosystem.launchApp')}
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>
-              <Button variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30 hover:border-green-500/50 w-full sm:w-auto" asChild>
-                <a href={LINKS.telegram} target="_blank" rel="noopener noreferrer">
-                  {t('ctaSecondary')}
+              <Button variant="outline" className="border-white/10 text-white/70 hover:bg-white/5 hover:text-white w-full sm:w-auto" asChild>
+                <a href={LINKS.chat} target="_blank" rel="noopener noreferrer">
+                  {t('ecosystem.chat.title')}
                 </a>
               </Button>
             </div>
@@ -79,7 +79,7 @@ export function Hero() {
               ))}
             </div>
           </div>
-          
+
           {/* Right: Abstract Animation (Desktop only) */}
           <div className="hidden md:flex items-center justify-center relative h-full min-h-[500px]">
             <div className="relative w-full h-full">

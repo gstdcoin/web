@@ -2,12 +2,31 @@ export default {
   // Navigation
   nav: {
     home: 'Home',
+    app: 'Platform',
+    chat: 'AI Chat',
+    monitor: 'Network',
     about: 'About',
-    token: 'Token',
-    buy: 'Buy',
     roadmap: 'Development Cycle',
     docs: 'Core Protocol',
     legal: 'Legal',
+  },
+
+  ecosystem: {
+    title: 'The GSTD Ecosystem',
+    subtitle: 'A unified triad of Sovereign Intelligence, Computing, and Monitoring',
+    launchApp: 'Launch App',
+    app: {
+      title: 'GSTD Platform',
+      description: 'The core decentralized compute platform. Provide resources as a worker or use the ultimate swarm compute for AI operations.',
+    },
+    monitor: {
+      title: 'Network Monitor',
+      description: 'Real-time DePIN statistics, compute loads, and intelligence indexing across the global GSTD network.',
+    },
+    chat: {
+      title: 'Sovereign Chat',
+      description: 'Interact with un-censored, advanced LLMs. Access private reasoning nodes fueled by the GSTD compute grid.',
+    }
   },
 
   // Hero Section

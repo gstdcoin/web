@@ -10,11 +10,11 @@ export function Footer() {
   const { t } = useLanguage();
 
   const footerLinks = [
-    { key: 'token', href: '/token' },
-    { key: 'buy', href: '/buy' },
+    { key: 'app', href: LINKS.app, external: true },
+    { key: 'chat', href: LINKS.chat, external: true },
+    { key: 'monitor', href: LINKS.monitor, external: true },
     { key: 'roadmap', href: '/roadmap' },
-    { key: 'docs', href: LINKS.docs },
-    { key: 'legal', href: '/legal' },
+    { key: 'about', href: '/about' },
   ];
 
   return (
@@ -55,6 +55,7 @@ export function Footer() {
                 <li key={link.key}>
                   <Link
                     href={link.href}
+                    {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                     className="text-slate-300 hover:text-[#D4AF37] transition-colors"
                   >
                     {t(`nav.${link.key}`)}

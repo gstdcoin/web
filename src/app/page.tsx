@@ -1,4 +1,5 @@
 import { Hero } from '@/components/Hero';
+import { Ecosystem } from '@/components/Ecosystem';
 import { UtilityCycle } from '@/components/UtilityCycle';
 import { CloudComparison } from '@/components/CloudComparison';
 import { WalletAsNode } from '@/components/WalletAsNode';
@@ -18,6 +19,7 @@ export default function HomePage() {
       <Navbar />
       <main className="flex-1">
         <Hero />
+        <Ecosystem />
         <CloudComparison />
         <WalletAsNode />
         <EscrowTreasury />

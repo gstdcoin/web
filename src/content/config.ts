@@ -10,13 +10,16 @@ export const LINKS = {
   twitter: "https://x.com/gstdtoken",
   github: "https://github.com/gstdcoin",
   docs: "/advantages",
+  app: "https://app.gstdtoken.com/",
+  monitor: "https://monitor.gstdtoken.com/",
+  chat: "https://chat.gstdtoken.com/chat",
   stonfiSwap:
     "https://app.ston.fi/swap?ft=TON&tt=EQDv6cYW9nNiKjN3Nwl8D6ABjUiH1gYfWVGZhfP7-9tZskTO&amount=1",
   tonContract: "EQDv6cYW9nNiKjN3Nwl8D6ABjUiH1gYfWVGZhfP7-9tZskTO",
-  // CTA Links - легко заменяемые на внутренний dApp
-  getGSDT: "https://app.ston.fi/swap?ft=TON&tt=EQDv6cYW9nNiKjN3Nwl8D6ABjUiH1gYfWVGZhfP7-9tZskTO&amount=1", // StonFi swap для обмена
-  buyGSDT: "https://app.ston.fi/swap?ft=TON&tt=EQDv6cYW9nNiKjN3Nwl8D6ABjUiH1gYfWVGZhfP7-9tZskTO&amount=1", // StonFi swap для покупки
-  launchNodes: "https://t.me/goldstandardcoin", // Telegram сообщество
+  // CTA Links 
+  getGSDT: "https://app.ston.fi/swap?ft=TON&tt=EQDv6cYW9nNiKjN3Nwl8D6ABjUiH1gYfWVGZhfP7-9tZskTO&amount=1",
+  buyGSDT: "https://app.ston.fi/swap?ft=TON&tt=EQDv6cYW9nNiKjN3Nwl8D6ABjUiH1gYfWVGZhfP7-9tZskTO&amount=1",
+  launchNodes: "https://app.gstdtoken.com/",
 };
 
 export const TOKEN_INFO = {
@@ -27,15 +30,10 @@ export const TOKEN_INFO = {
   contractAddress: "EQDv6cYW9nNiKjN3Nwl8D6ABjUiH1gYfWVGZhfP7-9tZskTO"
 };
 
-// Proof of Reserve metrics - будут подвязаны к API
 export const PROOF_OF_RESERVE = {
-  goldBackingRatio: 2.85, // процент
-  physicalGoldReserveOz: 1247.5, // унций
-  reserveValueUSD: 2850000, // USD
-  // В будущем эти значения будут загружаться из API
-  // goldBackingRatio: await fetchReserveRatio(),
-  // physicalGoldReserveOz: await fetchGoldReserve(),
-  // reserveValueUSD: await fetchReserveValue(),
+  goldBackingRatio: 2.85,
+  physicalGoldReserveOz: 1247.5,
+  reserveValueUSD: 2850000,
 };
 
 export const SOCIAL_LINKS = {

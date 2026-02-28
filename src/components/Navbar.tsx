@@ -26,22 +26,21 @@ export function Navbar() {
 
   const navItems = [
     { key: 'home', href: '/' },
+    { key: 'app', href: LINKS.app, external: true },
+    { key: 'chat', href: LINKS.chat, external: true },
+    { key: 'monitor', href: LINKS.monitor, external: true },
     { key: 'about', href: '/about' },
-    { key: 'token', href: '/token' },
-    { key: 'buy', href: '/buy' },
     { key: 'roadmap', href: '/roadmap' },
-    { key: 'docs', href: LINKS.docs },
-    { key: 'legal', href: '/legal' },
   ];
 
   return (
-    <nav 
+    <nav
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
         "border-b border-[#D4AF37]/10",
         "glass-institutional",
-        isScrolled 
-          ? "bg-[#0A0A0A]/90 backdrop-blur-xl" 
+        isScrolled
+          ? "bg-[#0A0A0A]/90 backdrop-blur-xl"
           : "bg-[#0A0A0A]/60 backdrop-blur-md"
       )}
     >
@@ -66,6 +65,7 @@ export function Navbar() {
               <Link
                 key={item.key}
                 href={item.href}
+                {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className={cn(
                   "text-base font-medium transition-all duration-300 whitespace-nowrap",
                   "text-slate-100 hover:text-[#D4AF37]",
@@ -81,9 +81,9 @@ export function Navbar() {
           {/* Language Switcher & CTA */}
           <div className="hidden md:flex items-center space-x-4">
             <LanguageSwitcher />
-            <Button className="bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30 hover:border-green-500/50" size="sm" asChild>
-              <a href={LINKS.getGSDT} target="_blank" rel="noopener noreferrer">
-                {t('ctaPrimary')}
+            <Button className="bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30 hover:bg-[#D4AF37]/30 hover:border-[#D4AF37]/50" size="sm" asChild>
+              <a href={LINKS.app} target="_blank" rel="noopener noreferrer">
+                {t('ecosystem.launchApp')}
               </a>
             </Button>
           </div>
@@ -112,6 +112,7 @@ export function Navbar() {
                   <Link
                     key={item.key}
                     href={item.href}
+                    {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                     className={cn(
                       "block px-3 py-3 text-sm font-medium rounded-lg transition-all duration-300 touch-manipulation",
                       "glass-institutional border-[#D4AF37]/20",
@@ -127,9 +128,9 @@ export function Navbar() {
               </div>
               {/* CTA Button in Grid */}
               <div className="mt-3">
-                <Button className="bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30 hover:border-green-500/50 w-full" size="sm" asChild>
-                  <a href={LINKS.getGSDT} target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
-                    {t('ctaPrimary')}
+                <Button className="bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30 hover:bg-[#D4AF37]/30 hover:border-[#D4AF37]/50 w-full" size="sm" asChild>
+                  <a href={LINKS.app} target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
+                    {t('ecosystem.launchApp')}
                   </a>
                 </Button>
               </div>

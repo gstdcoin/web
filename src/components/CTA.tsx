@@ -21,13 +21,13 @@ export function CTA() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30 hover:border-green-500/50 group" asChild>
-              <a href={LINKS.getGSDT} target="_blank" rel="noopener noreferrer">
-                {t('ctaPrimary')}
+            <Button size="lg" className="bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30 hover:bg-[#D4AF37]/30 hover:border-[#D4AF37]/50 group hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]" asChild>
+              <a href={LINKS.app} target="_blank" rel="noopener noreferrer">
+                {t('ecosystem.launchApp')}
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
-            <Button size="lg" variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30 hover:bg-green-500/30 hover:border-green-500/50" asChild>
+            <Button size="lg" variant="outline" className="border-white/10 text-white/70 hover:bg-white/5 hover:text-white" asChild>
               <a href={LINKS.telegram} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="mr-2 h-4 w-4" />
                 {t('ctaSecondary')}
