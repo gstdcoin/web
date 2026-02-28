@@ -6,7 +6,7 @@ const withNextIntl = createNextIntlPlugin('./src/lib/i18n.ts');
 const nextConfig = {
   // Enable standalone output for Docker optimization
   output: 'standalone',
-  
+
   // Optimize for low-resource environments
   experimental: {
     // Reduce memory usage
@@ -14,7 +14,7 @@ const nextConfig = {
     // Optimize build process
     optimizePackageImports: ['lucide-react'],
   },
-  
+
   // Optimize images for low memory
   images: {
     domains: ['localhost'],
@@ -23,20 +23,18 @@ const nextConfig = {
     dangerouslyAllowSVG: false,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
-  
+
   // Environment variables
   env: {
     NEXT_PUBLIC_PLAUSIBLE_DOMAIN: process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || 'gstdtoken.com',
   },
-  
+
   // Compression and performance
   compress: true,
   poweredByHeader: false,
   generateEtags: false,
-  
+
   // Memory optimization
-  swcMinify: true,
-  
   // Webpack optimizations for low memory
   webpack: (config, { isServer, dev }) => {
     // Reduce memory usage during build
@@ -48,7 +46,7 @@ const nextConfig = {
         tls: false,
       };
     }
-    
+
     // Optimize for production builds
     if (!dev) {
       config.optimization = {
@@ -71,7 +69,7 @@ const nextConfig = {
         },
       };
     }
-    
+
     return config;
   },
 };

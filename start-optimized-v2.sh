@@ -150,11 +150,7 @@ start_docker() {
     
     # Build and start with resource limits
     log "Building and starting containers..."
-    docker compose up --build -d
-    
-    # Wait for services to be healthy
-    log "Waiting for services to start..."
-    sleep 15
+    docker compose up --build -d --wait
     
     # Check if services are running
     if docker compose ps | grep -q "healthy\|running"; then
@@ -246,8 +242,6 @@ main() {
     
     # Try Docker first, fallback to Node.js
     if start_docker; then
-        echo ""
-        health_check
         echo ""
         success "🎉 GSTD Token Site is now running with Docker!"
     elif start_nodejs; then

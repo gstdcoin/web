@@ -2,8 +2,9 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
 
-# Set memory limits for build process
+# Set memory limits and performance tweaks for build process
 ENV NODE_OPTIONS="--max-old-space-size=1024"
+ENV NEXT_TELEMETRY_DISABLED=1
 
 # Install dependencies first for better caching
 COPY package.json package-lock.json ./
