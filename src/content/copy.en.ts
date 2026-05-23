@@ -553,6 +553,21 @@ export default {
     operational: 'Operational',
   },
 
+  // Node Install Section
+  nodeInstall: {
+    badge: 'One-line install',
+    title: 'Run a Node in 60 Seconds',
+    subtitle: 'Deploy on any Linux, macOS, or Windows (WSL) machine. The node auto-starts, self-updates, and earns GSTD for every AI task it completes.',
+    requirements: 'Requires: Node.js ≥ 20 · Linux / macOS / Windows WSL · Raspberry Pi supported',
+    ctaGithub: 'View on GitHub',
+    ctaTelegram: 'Node Operators Chat',
+    modes: [
+      { title: 'Cloud AI', desc: 'Instant start. Uses Groq cloud. Free. Default mode.', badge: 'Default' },
+      { title: 'Hybrid', desc: 'Local models + cloud fallback. Better privacy.', badge: 'Balanced' },
+      { title: 'Sovereign', desc: 'Fully local. ~10 GB. Maximum privacy.', badge: 'Advanced' },
+    ],
+  },
+
   featureSection: {
     title: 'Key Features',
     subtitle: 'A node network that earns fees, buys gold, and replaces your bank',

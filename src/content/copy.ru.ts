@@ -553,6 +553,21 @@ export default {
     operational: 'Работает',
   },
 
+  // Node Install Section
+  nodeInstall: {
+    badge: 'Установка в одну команду',
+    title: 'Запустите ноду за 60 секунд',
+    subtitle: 'Разворачивайте на любом Linux, macOS или Windows (WSL). Нода автозапускается, обновляется сама и зарабатывает GSTD за каждый выполненный ИИ-запрос.',
+    requirements: 'Требования: Node.js ≥ 20 · Linux / macOS / Windows WSL · Raspberry Pi поддерживается',
+    ctaGithub: 'Открыть GitHub',
+    ctaTelegram: 'Чат операторов нод',
+    modes: [
+      { title: 'Cloud AI', desc: 'Мгновенный старт. Groq-облако. Бесплатно. Режим по умолчанию.', badge: 'По умолчанию' },
+      { title: 'Hybrid', desc: 'Локальные модели + облако. Лучше приватность.', badge: 'Balanced' },
+      { title: 'Sovereign', desc: 'Полностью локально. ~10 ГБ. Максимальная приватность.', badge: 'Продвинутый' },
+    ],
+  },
+
   featureSection: {
     title: 'Ключевые особенности',
     subtitle: 'Сеть нод, которая зарабатывает комиссии, покупает золото и заменяет банк',
