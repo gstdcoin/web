@@ -4,9 +4,6 @@ const withNextIntl = createNextIntlPlugin('./src/lib/i18n.ts');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable standalone output for Docker optimization
-  output: 'standalone',
-
   // Optimize for low-resource environments
   experimental: {
     // Reduce memory usage
