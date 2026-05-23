@@ -10,6 +10,8 @@ export const LINKS = {
   twitter: "https://x.com/gstdtoken",
   github: "https://github.com/gstdcoin",
   docs: "/advantages",
+  platform: "https://app.gstdtoken.com",
+  aiChat: "https://app.gstdtoken.com",
   // Node deployment repos (apps deploy from source, nodes = decentralized app)
   app: "https://github.com/gstdcoin/gstdbot",
   monitor: "https://github.com/gstdcoin",
