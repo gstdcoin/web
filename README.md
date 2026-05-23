@@ -1,68 +1,79 @@
-# GSTD Token — Website
+# GSTD — Decentralized AI & Blockchain Infrastructure
 
-Marketing website for **GSTD Token** — a decentralized node network backed by tokenized gold.
+> The landing page for [gstdtoken.com](https://gstdtoken.com)  
+> Built with Next.js 15, Tailwind CSS, deployed on Vercel.
 
-Live: [gstdtoken.com](https://gstdtoken.com)
+---
 
-## About the Project
+## What is GSTD?
 
-GSTD is a decentralized network of nodes that:
-- Processes AI requests and shares computing resources
-- Supports blockchain validator nodes (TON · Solana · XRPL)
-- Automatically converts 70% of network fees into tokenized gold (XAUT)
-- Enables near-zero interest loans (1.5% APY) backed by the gold reserve
-- Replaces traditional banking for payments and credit
+GSTD is an open-source, community-owned network where anyone can:
+
+- **Run a node** and earn GSTD tokens by serving AI requests and hosting blockchain nodes
+- **Use AI** for free or at cost — powered by the node network, not centralized servers
+- **Bridge tokens** between TON, Solana, and XRPL with no custodians
+- **Govern the protocol** — every parameter is controlled by GSTD holders via on-chain DAO
+
+The network is unstoppable by design. There are no admin keys, no central servers, no kill switch. Smart contracts on TON handle all economics. Nodes are run by independent operators worldwide. The platform (Vercel) is just a thin coordination layer — the nodes are the actual backend.
+
+---
+
+## Why GSTD is Unique
+
+### 1. GSTD as the Base Settlement Asset
+Every service payment in the network is routed through the `SettlementRouter` contract, which converts any token (TON, USDT, SOL, XRP) into GSTD before settling. This means every service use creates structural buy pressure on GSTD — automatically, on-chain, with no human intervention.
+
+### 2. Real Revenue, Real Backing
+- **85%** of every payment goes directly to node operators
+- **10%** flows to the TreasuryGold contract, accumulating real assets that back GSTD
+- **5%** buys GSTD on the open market and burns it permanently
+
+### 3. Run a Node, Own the Network
+The node software (gstdbot) is open-source and runs on any machine. Operators are incentivized by real earnings, not promises. The more nodes run, the more decentralized and resilient the network becomes.
+
+### 4. Multi-Chain by Design
+Bridge validators run on TON, Solana, and XRPL simultaneously. Users can hold and use GSTD on any chain. The bridge uses MPC threshold signatures — no single party can control or steal funds.
+
+### 5. Fully On-Chain Governance
+All protocol parameters — revenue splits, staking tiers, slash conditions, base rates — are controlled by DAOVoting on TON. A proposal needs 10% quorum and passes only after a 48-hour timelock. Not even the original developers can make unilateral changes.
+
+---
 
 ## Stack
 
-- **Next.js 15** (App Router, TypeScript)
-- **Tailwind CSS** + shadcn/ui components
-- **Framer Motion** for animations
-- **Custom i18n** — English and Russian (client-side via LanguageProvider)
-- **Vercel** for deployment
+| Layer | Technology |
+|---|---|
+| Frontend | Next.js 15 (App Router), TypeScript |
+| Styling | Tailwind CSS, shadcn/ui, Framer Motion |
+| i18n | English + Russian |
+| Hosting | Vercel (free tier) |
+| Network stats | Live from `app.gstdtoken.com/api/v1/stats` |
+
+---
 
 ## Development
 
 ```bash
+git clone https://github.com/gstdcoin/web
+cd web
 npm install
-npm run dev       # http://localhost:3000
-npm run build     # production build
-npm run type-check
+npm run dev
+# → http://localhost:3000
 ```
 
-## Environment Variables
+---
 
-Copy `.env.production` values into Vercel → Settings → Environment Variables.
+## Ecosystem
 
-| Variable | Description |
+| Repo | Description |
 |---|---|
-| `NEXT_PUBLIC_SITE_URL` | Site URL |
-| `NEXT_PUBLIC_TELEGRAM` | Telegram community link |
-| `NEXT_PUBLIC_TWITTER` | Twitter/X link |
-| `NEXT_PUBLIC_GITHUB` | GitHub org link |
-| `NEXT_PUBLIC_STONFI` | STON.fi swap link |
-| `NEXT_PUBLIC_TON_CONTRACT` | GSTD contract address on TON |
+| **gstdcoin/web** | **This repo — landing page** |
+| [gstdcoin/ai](https://github.com/gstdcoin/ai) | Dashboard + Vercel API |
+| [gstdcoin/gstdbot](https://github.com/gstdcoin/gstdbot) | Node OS software |
+| [gstdcoin/contracts](https://github.com/gstdcoin/contracts) | TON smart contracts |
+| [gstdcoin/gstd-bridge](https://github.com/gstdcoin/gstd-bridge) | Cross-chain bridge |
 
-## Pages
-
-| Route | Description |
-|---|---|
-| `/` | Homepage — hero, ecosystem, node install, features, tokenomics, FAQ |
-| `/about` | Project mission, architecture, bank-replacement vision |
-| `/token` | Token details, contract address, proof of reserve |
-| `/buy` | How to buy GSTD on STON.fi |
-| `/roadmap` | Development phases |
-| `/legal` | Terms, privacy, disclaimers |
-
-## Run a Node
-
-To join the GSTD network as a node operator:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/gstdcoin/gstdbot/main/install.sh | bash
-```
-
-See [gstdcoin/gstdbot](https://github.com/gstdcoin/gstdbot) for full documentation.
+---
 
 ## License
 
