@@ -6,17 +6,18 @@ import { Badge } from '@/components/ui/badge';
 import { Activity, Coins, Network, Server, TrendingUp, CheckCircle2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-// Mock data - в будущем заменить на реальные API вызовы
+const PLATFORM_API = 'https://app.gstdtoken.com/api/v1';
+
 const mockMetrics = {
   hashrate: { value: 1247.5, change: 5.2, unit: 'TH/s' },
   goldPool: { oz: 1247.5, usd: 2850000, changeOz: 12.5, changeUsd: 28500 },
   bridge: { status: 'operational', lastTx: '2 min ago' },
-  nodes: { count: 247, uptime: 99.9, countries: 12 },
+  nodes: { count: 0, uptime: 99.9, countries: 1 },
   tvl: { value: 12500000, change: 3.5, unit: 'USD' },
   goldBackingRatio: { value: 2.85, change: 0.15 },
   computationalPressure: { value: 68.5, change: 2.3, unit: '%' },
   pflopsPower: { value: 12.47, change: 0.52, unit: 'PFLOPS' },
-  activeWorkers: { count: 12475, change: 247 },
+  activeWorkers: { count: 0, change: 0 },
 };
 
 function formatNumber(num: number): string {
@@ -76,12 +77,32 @@ function Sparkline({ data, color = '#D4AF37' }: { data: number[]; color?: string
 export function LiveNetworkStatus() {
   const { t } = useLanguage();
   const [metrics, setMetrics] = useState(mockMetrics);
-  
+
   // Get network status translations
   const networkStatusTitle = t('networkStatus.title') as string;
   const networkStatusSubtitle = t('networkStatus.subtitle') as string;
 
-  // Simulate real-time updates
+  // Fetch real node count from platform API
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const res = await fetch(`${PLATFORM_API}/stats`, { cache: 'no-store' });
+        if (res.ok) {
+          const data = await res.json();
+          setMetrics(prev => ({
+            ...prev,
+            nodes: { ...prev.nodes, count: data.nodes_online || 0 },
+            activeWorkers: { ...prev.activeWorkers, count: data.nodes_online || 0 },
+          }));
+        }
+      } catch (_e) {}
+    };
+    fetchStats();
+    const statsInterval = setInterval(fetchStats, 60_000);
+    return () => clearInterval(statsInterval);
+  }, []);
+
+  // Simulate real-time updates for non-live fields
   useEffect(() => {
     const interval = setInterval(() => {
       setMetrics((prev) => ({
