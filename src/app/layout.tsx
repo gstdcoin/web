@@ -4,8 +4,8 @@ import './globals.css';
 import { defaultMetadata } from '@/lib/seo';
 import { LanguageProvider } from '@/components/LanguageProvider';
 
-const inter = Inter({ 
-  subsets: ['latin'],
+const inter = Inter({
+  subsets: ['latin', 'cyrillic'],
   variable: '--font-inter',
 });
 
@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="ru" suppressHydrationWarning className={`${inter.variable} ${playfair.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -31,8 +31,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "GSTD Token",
-              "url": "https://gstdtoken.net",
-              "logo": "https://gstdtoken.net/logogstd.png",
+              "url": "https://gstdtoken.com",
+              "logo": "https://gstdtoken.com/logogstd.png",
               "description": "Global Supercomputer with Gold Backing. First DePIN network on TON that turns your smartphone power into gold.",
               "sameAs": [
                 "https://t.me/goldstandardcoin",
@@ -49,11 +49,11 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "GSTD Token",
-              "url": "https://gstdtoken.net",
+              "url": "https://gstdtoken.com",
               "description": "Global Supercomputer with Gold Backing. First DePIN network on TON that turns your smartphone power into gold.",
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://gstdtoken.net/search?q={search_term_string}",
+                "target": "https://gstdtoken.com/search?q={search_term_string}",
                 "query-input": "required name=search_term_string"
               }
             })

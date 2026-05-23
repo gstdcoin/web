@@ -31,32 +31,32 @@ export default {
 
   // Hero Section
   hero: {
-    badge: 'Wallet-as-Node • Pay-for-Result • Gold Backed',
+    badge: 'Node Network • AI Compute • Gold Backing • Zero-Interest Loans',
     title: 'Global Supercomputer with Gold Backing',
-    subtitle: 'The first DePIN network on TON that turns your smartphone power into gold. Mathematical guarantee of task execution and institutional protection of your assets.',
+    subtitle: 'A decentralized network of nodes that processes AI requests, validates blockchains, and shares computing resources. Network fees automatically purchase tokenized gold — backing your token and enabling near-zero interest loans to replace traditional banking.',
   },
 
   // Features
   features: {
-    lightningFast: 'DePIN Infrastructure',
+    lightningFast: 'Node Network',
     secure: 'Gold-Backed',
-    communityDriven: 'Low-Interest Lending',
+    communityDriven: 'Replace Your Bank',
     scalable: 'Multichain',
   },
 
   // Feature Cards (Bento Grid)
   featureCards: {
     infrastructure: {
-      title: 'DePIN Infrastructure',
-      description: 'Physical infrastructure where every transaction creates value. Network nodes generate fees that turn into a gold reserve.',
+      title: 'Decentralized Node Network',
+      description: 'Users deploy nodes with their own resources to process AI requests, validate blockchains, and share computing power — earning fees for every task completed.',
     },
     goldLiquidity: {
-      title: 'Gold-Backed Liquidity',
-      description: '70% of fees are automatically converted into physical gold (XAUT), forming a transparent reserve for the platform\'s credit line.',
+      title: 'Gold-Backed by Design',
+      description: '70% of all network fees automatically purchase tokenized gold (XAUT), creating a transparent reserve that grows with every AI query processed.',
     },
     lowInterest: {
-      title: 'Low-Interest Access',
-      description: 'GSDT holders gain access to loans at ~1.5% APY, backed by a growing gold pool.',
+      title: 'Replace Your Bank',
+      description: 'Use GSTD as collateral for stablecoin loans at near-zero interest (1.5% APY). Pay for purchases, send money globally — no bank required.',
     },
   },
 
@@ -65,7 +65,7 @@ export default {
   ctaSecondary: 'Community',
   backToHome: 'Back to Home',
   ctaTitle: 'Ready to Get Started?',
-  ctaDescription: 'Join the GSDT DePIN platform. Launch a node, become a liquidity provider, or gain access to low-interest loans.',
+  ctaDescription: 'Join the GSTD node network. Launch a node and earn from AI compute, or use GSTD as collateral for near-zero interest loans and everyday purchases — without a bank.',
 
   // What We Build
   whatWeBuildTitle: 'What we are building',
@@ -150,29 +150,29 @@ export default {
   // About Page
   about: {
     title: 'About GSDT',
-    subtitle: 'DePIN platform with gold reserve',
-    description: 'GSDT is not just a token, it\'s a DePIN platform creating physical infrastructure. Every transaction and network fee is directed to purchasing physical gold, forming "Gold Liquidity" for low-interest loans.',
+    subtitle: 'Decentralized node network backed by gold',
+    description: 'GSDT is a decentralized network of nodes deployed by users with their own resources. Nodes process AI requests, validate blockchain transactions, and share computing power — earning fees that automatically purchase tokenized gold to back the token.',
     featuresTitle: 'Key Features',
     features: [
-      'DePIN Infrastructure',
-      'Gold-Backed Liquidity',
-      'Multichain Architecture',
-      'Low-Interest Lending',
+      'Decentralized Node Network',
+      'Gold-Backed by Design',
+      'Multichain: TON · Solana · XRPL',
+      'Replace Your Bank',
     ],
     featureDescriptions: [
-      'GSDT infrastructure generates revenue through: Data Processing (encrypted data processing in decentralized network), Network Validating (transaction confirmation in cross-chain hub), Compute Resources (computing power provision for AI models).',
-      '70% of Net Protocol Revenue is automatically converted into physical gold (XAUT), forming a transparent reserve for the credit line.',
-      'Multichain architecture: TON for mass access, Solana for speed, XRPL for institutions.',
-      'GSDT holders gain access to loans in stablecoins (USDT/USDC) at 1.5% APY. LTV up to 60% of GSDT market value. Rate is fixed because gold in reserve is not a volatile speculative asset, but acts as a "liquidity anchor".',
+      'Users deploy nodes with their resources to process AI requests, validate blockchain networks, and provide computing power — earning GSTD fees for every task completed.',
+      '70% of all network fees are automatically converted into physical gold (XAUT), creating a growing transparent reserve that increases with every AI query and blockchain validation.',
+      'TON for mass access via Telegram, Solana for ultra-fast AI compute trading, XRPL for institutional cross-border payments and gold asset management.',
+      'Use GSTD as collateral to borrow stablecoins at 1.5% APY (near-zero interest). Pay for purchases anywhere, send money globally, take interest-free loans — the token replaces traditional banking.',
     ],
     buildBullets: [
-      'DePIN Operations: Network processes transactions through Data Processing, Network Validating and Compute Resources, generating protocol revenue',
-      'Gold Accumulation: 70% of Net Protocol Revenue is automatically converted into physical gold (XAUT)',
-      'Liquidity Provision: Gold reserve forms the collateral pool for the platform\'s credit line',
-      'Low-Interest Lending: GSDT holders receive loans in stablecoins at 1.5% APY with LTV up to 60%, backed by the gold pool',
+      'Node Network: Users deploy nodes that process AI requests, validate blockchains, and share compute — generating protocol fees',
+      'Gold Accumulation: 70% of all network fees automatically purchase tokenized gold (XAUT), growing the reserve with every transaction',
+      'Token Backing: The gold reserve backs every GSTD token, creating a price floor independent of speculation',
+      'Bank Replacement: GSDT holders borrow stablecoins at 1.5% APY (LTV up to 60%) to pay for purchases and access credit — without banks',
     ],
     missionTitle: 'Our Mission',
-    missionDescription: 'Create a DePIN platform where every transaction increases the gold reserve, providing a stable foundation for low-interest loans. We turn network activity into real liquidity and access to cheap capital for GSDT holders.',
+    missionDescription: 'Build a decentralized alternative to traditional banking. Our node network earns fees processing AI requests and validating blockchains — 70% automatically buys tokenized gold. This gold reserve backs the token and enables near-zero interest loans, so people can pay for purchases and access credit without ever needing a bank.',
   },
 
   // Buy Page
@@ -333,8 +333,8 @@ export default {
   investors: {
     title: 'Core Protocol',
     subtitle: 'GSDT Protocol Core Components',
-    description: 'GSTD is a decentralized supercomputer that transforms your device\'s computing power into gold-backed liquidity. Lending is the financial layer that allows extracting liquidity from accumulated gold backing without selling computing capacity.',
-    summary: '⚡️ GSTD is a decentralized supercomputer where every computation generates protocol revenue, 70% of which converts into physical gold. This gold reserve creates a financial layer — low-interest lending (1.5% APY) — allowing you to extract liquidity from accumulated gold backing without selling your computing power. Join the future where distributed computing meets gold-backed finance.',
+    description: 'GSTD is a decentralized node network where users share computing resources for AI requests and blockchain validation. Network fees buy tokenized gold — backing the token and enabling near-zero interest loans that replace traditional banks.',
+    summary: '⚡️ GSTD is a decentralized network of nodes: users provide computing resources, process AI requests, and support validator nodes. 70% of network fees automatically buy tokenized gold — growing the reserve with every query. This reserve backs the token and funds a lending layer where you can borrow stablecoins at 1.5% APY to pay for purchases — without a single bank involved.',
     advantagesTitle: 'Key Advantages',
     advantages: {
       reliability: {
@@ -408,7 +408,7 @@ export default {
 
   // Footer
   footer: {
-    description: 'DePIN platform with gold reserve. Infrastructure that creates value through every transaction.',
+    description: 'Decentralized node network backed by gold. AI compute, blockchain validation, and near-zero interest loans — the future of banking.',
     followUs: 'Follow us',
     quickLinks: 'Quick Links',
     contact: 'Contact',
@@ -549,7 +549,7 @@ export default {
 
   featureSection: {
     title: 'Key Features',
-    subtitle: 'DePIN platform creating gold liquidity through every transaction',
+    subtitle: 'A node network that earns fees, buys gold, and replaces your bank',
   },
 
   // FAQ Section

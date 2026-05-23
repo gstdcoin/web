@@ -4,11 +4,7 @@ const withNextIntl = createNextIntlPlugin('./src/lib/i18n.ts');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Optimize for low-resource environments
   experimental: {
-    // Reduce memory usage
-    memoryBasedWorkersCount: true,
-    // Optimize build process
     optimizePackageImports: ['lucide-react'],
   },
 
@@ -26,10 +22,7 @@ const nextConfig = {
     NEXT_PUBLIC_PLAUSIBLE_DOMAIN: process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || 'gstdtoken.com',
   },
 
-  // Compression and performance
-  compress: true,
   poweredByHeader: false,
-  generateEtags: false,
 
   // Memory optimization
   // Webpack optimizations for low memory
