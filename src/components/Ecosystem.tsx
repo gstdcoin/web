@@ -4,7 +4,6 @@ import { useLanguage } from './LanguageProvider';
 import { ArrowUpRight, Cpu, Activity, MessageSquare } from 'lucide-react';
 import { LINKS } from '@/content/config';
 import { cn } from '@/lib/utils';
-import Image from 'next/image';
 
 export function Ecosystem() {
     const { t } = useLanguage();
@@ -13,6 +12,7 @@ export function Ecosystem() {
         {
             title: t('ecosystem.app.title'),
             description: t('ecosystem.app.description'),
+            cta: t('ecosystem.app.cta') as string,
             url: LINKS.app,
             icon: Cpu,
             color: "from-blue-500/20 to-cyan-500/20",
@@ -22,6 +22,7 @@ export function Ecosystem() {
         {
             title: t('ecosystem.monitor.title'),
             description: t('ecosystem.monitor.description'),
+            cta: t('ecosystem.monitor.cta') as string,
             url: LINKS.monitor,
             icon: Activity,
             color: "from-[#D4AF37]/20 to-yellow-500/20",
@@ -31,6 +32,7 @@ export function Ecosystem() {
         {
             title: t('ecosystem.chat.title'),
             description: t('ecosystem.chat.description'),
+            cta: t('ecosystem.chat.cta') as string,
             url: LINKS.chat,
             icon: MessageSquare,
             color: "from-purple-500/20 to-pink-500/20",
@@ -67,7 +69,7 @@ export function Ecosystem() {
                             )}
                             style={{ animationDelay: `${index * 0.15 + 0.2}s` }}
                         >
-                            {/* Animated Glow Target */}
+                            {/* Animated Glow */}
                             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out pointer-events-none">
                                 <div className={cn("absolute inset-x-0 -top-px h-px w-full bg-gradient-to-r from-transparent via-current to-transparent", app.textColor)} />
                                 <div className={cn("absolute -inset-1 blur-2xl opacity-20 bg-gradient-to-r", app.color)} />
@@ -87,7 +89,7 @@ export function Ecosystem() {
                                 </p>
 
                                 <div className="mt-auto flex items-center text-sm font-semibold tracking-wide uppercase text-white/50 group-hover:text-white transition-colors duration-300">
-                                    {t('ecosystem.launchApp')}
+                                    {app.cta}
                                     <ArrowUpRight className="w-4 h-4 ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
                                 </div>
                             </div>

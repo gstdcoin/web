@@ -26,10 +26,9 @@ export function Navbar() {
 
   const navItems = [
     { key: 'home', href: '/' },
-    { key: 'app', href: LINKS.app, external: true },
-    { key: 'chat', href: LINKS.chat, external: true },
-    { key: 'monitor', href: LINKS.monitor, external: true },
     { key: 'about', href: '/about' },
+    { key: 'token', href: '/token' },
+    { key: 'buy', href: '/buy' },
     { key: 'roadmap', href: '/roadmap' },
   ];
 
@@ -82,8 +81,8 @@ export function Navbar() {
           <div className="hidden md:flex items-center space-x-4">
             <LanguageSwitcher />
             <Button className="bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30 hover:bg-[#D4AF37]/30 hover:border-[#D4AF37]/50" size="sm" asChild>
-              <a href={LINKS.app} target="_blank" rel="noopener noreferrer">
-                {t('ecosystem.launchApp')}
+              <a href={LINKS.stonfiSwap} target="_blank" rel="noopener noreferrer">
+                {t('ctaPrimary')}
               </a>
             </Button>
           </div>
@@ -129,8 +128,8 @@ export function Navbar() {
               {/* CTA Button in Grid */}
               <div className="mt-3">
                 <Button className="bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30 hover:bg-[#D4AF37]/30 hover:border-[#D4AF37]/50 w-full" size="sm" asChild>
-                  <a href={LINKS.app} target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
-                    {t('ecosystem.launchApp')}
+                  <a href={LINKS.stonfiSwap} target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
+                    {t('ctaPrimary')}
                   </a>
                 </Button>
               </div>

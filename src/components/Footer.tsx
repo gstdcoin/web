@@ -10,11 +10,11 @@ export function Footer() {
   const { t } = useLanguage();
 
   const footerLinks = [
-    { key: 'app', href: LINKS.app, external: true },
-    { key: 'chat', href: LINKS.chat, external: true },
-    { key: 'monitor', href: LINKS.monitor, external: true },
-    { key: 'roadmap', href: '/roadmap' },
     { key: 'about', href: '/about' },
+    { key: 'token', href: '/token' },
+    { key: 'buy', href: '/buy' },
+    { key: 'roadmap', href: '/roadmap' },
+    { key: 'legal', href: '/legal' },
   ];
 
   return (

@@ -22,8 +22,8 @@ export function CTA() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button size="lg" className="bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30 hover:bg-[#D4AF37]/30 hover:border-[#D4AF37]/50 group hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]" asChild>
-              <a href={LINKS.app} target="_blank" rel="noopener noreferrer">
-                {t('ecosystem.launchApp')}
+              <a href={LINKS.stonfiSwap} target="_blank" rel="noopener noreferrer">
+                {t('ctaPrimary')}
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>

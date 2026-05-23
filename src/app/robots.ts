@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/_next/', '/admin/'],
     },
-    sitemap: 'https://gstdtoken.net/sitemap.xml',
+    sitemap: 'https://gstdtoken.com/sitemap.xml',
   };
 }

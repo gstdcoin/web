@@ -54,14 +54,14 @@ export function Hero() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-8 md:mb-12 animate-slide-up" style={{ animationDelay: '0.4s' }}>
               <Button className="bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30 hover:bg-[#D4AF37]/30 hover:border-[#D4AF37]/50 group w-full sm:w-auto hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]" asChild>
-                <a href={LINKS.app} target="_blank" rel="noopener noreferrer">
-                  {t('ecosystem.launchApp')}
+                <a href={LINKS.stonfiSwap} target="_blank" rel="noopener noreferrer">
+                  {t('ctaPrimary')}
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </a>
               </Button>
               <Button variant="outline" className="border-white/10 text-white/70 hover:bg-white/5 hover:text-white w-full sm:w-auto" asChild>
-                <a href={LINKS.chat} target="_blank" rel="noopener noreferrer">
-                  {t('ecosystem.chat.title')}
+                <a href={LINKS.github} target="_blank" rel="noopener noreferrer">
+                  {t('hero.deployNode')}
                 </a>
               </Button>
             </div>

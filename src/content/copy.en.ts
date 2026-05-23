@@ -6,6 +6,8 @@ export default {
     chat: 'AI Chat',
     monitor: 'Network',
     about: 'About',
+    token: 'Token',
+    buy: 'Buy GSTD',
     roadmap: 'Development Cycle',
     docs: 'Core Protocol',
     legal: 'Legal',
@@ -13,19 +15,22 @@ export default {
 
   ecosystem: {
     title: 'The GSTD Ecosystem',
-    subtitle: 'A unified triad of Sovereign Intelligence, Computing, and Monitoring',
-    launchApp: 'Launch App',
+    subtitle: 'Deploy nodes, process AI requests, earn gold — all from open-source repositories',
+    launchApp: 'Open',
     app: {
-      title: 'GSTD Platform',
-      description: 'The core decentralized compute platform. Provide resources as a worker or use the ultimate swarm compute for AI operations.',
+      title: 'GSTD Node OS',
+      description: 'Deploy your own node from the open-source repository. Share computing resources, process AI requests, support validator nodes — earn GSTD fees for every completed task.',
+      cta: 'Deploy Node',
     },
     monitor: {
-      title: 'Network Monitor',
-      description: 'Real-time DePIN statistics, compute loads, and intelligence indexing across the global GSTD network.',
+      title: 'Open Source',
+      description: 'All platform components are open-source and deployable from GitHub. No central servers — the network is the nodes.',
+      cta: 'GitHub',
     },
     chat: {
-      title: 'Sovereign Chat',
-      description: 'Interact with un-censored, advanced LLMs. Access private reasoning nodes fueled by the GSTD compute grid.',
+      title: 'Community',
+      description: 'Join the GSTD community on Telegram. Get support, follow network updates, and coordinate with other node operators.',
+      cta: 'Join Telegram',
     }
   },
 
@@ -34,6 +39,7 @@ export default {
     badge: 'Node Network • AI Compute • Gold Backing • Zero-Interest Loans',
     title: 'Global Supercomputer with Gold Backing',
     subtitle: 'A decentralized network of nodes that processes AI requests, validates blockchains, and shares computing resources. Network fees automatically purchase tokenized gold — backing your token and enabling near-zero interest loans to replace traditional banking.',
+    deployNode: 'Deploy a Node',
   },
 
   // Features
