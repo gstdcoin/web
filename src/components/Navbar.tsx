@@ -64,7 +64,6 @@ export function Navbar() {
               <Link
                 key={item.key}
                 href={item.href}
-                {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className={cn(
                   "text-base font-medium transition-all duration-300 whitespace-nowrap",
                   "text-slate-100 hover:text-[#D4AF37]",
@@ -111,7 +110,6 @@ export function Navbar() {
                   <Link
                     key={item.key}
                     href={item.href}
-                    {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                     className={cn(
                       "block px-3 py-3 text-sm font-medium rounded-lg transition-all duration-300 touch-manipulation",
                       "glass-institutional border-[#D4AF37]/20",
