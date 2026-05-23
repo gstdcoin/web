@@ -55,7 +55,6 @@ export function Footer() {
                 <li key={link.key}>
                   <Link
                     href={link.href}
-                    {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                     className="text-slate-300 hover:text-[#D4AF37] transition-colors"
                   >
                     {t(`nav.${link.key}`)}
