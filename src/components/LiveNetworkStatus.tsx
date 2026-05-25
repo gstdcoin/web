@@ -86,7 +86,7 @@ export function LiveNetworkStatus() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await fetch(`${PLATFORM_API}/stats`, { cache: 'no-store' });
+        const res = await fetch(`${PLATFORM_API}/stats/public`, { cache: 'no-store' });
         if (res.ok) {
           const data = await res.json();
           setMetrics(prev => ({
