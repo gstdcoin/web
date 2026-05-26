@@ -25,6 +25,7 @@ export default function TokenPage() {
         
         if (result.success && result.data) {
           setProofData({
+            ...PROOF_OF_RESERVE,
             goldBackingRatio: result.data.goldBackingRatio || PROOF_OF_RESERVE.goldBackingRatio,
             physicalGoldReserveOz: result.data.physicalGoldReserveOz || PROOF_OF_RESERVE.physicalGoldReserveOz,
             reserveValueUSD: result.data.reserveValueUSD || PROOF_OF_RESERVE.reserveValueUSD,

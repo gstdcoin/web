@@ -35,9 +35,13 @@ export const TOKEN_INFO = {
 };
 
 export const PROOF_OF_RESERVE = {
-  goldBackingRatio: 2.85,
-  physicalGoldReserveOz: 1247.5,
-  reserveValueUSD: 2850000,
+  // Phase 1 Bootstrap: gold accumulation mechanism in development
+  // Values will be updated from oracle when reserve mechanism launches
+  goldBackingRatio: 0,
+  physicalGoldReserveOz: 0,
+  reserveValueUSD: 0,
+  phase: 'building' as const,
+  note: 'Gold reserve mechanism in development. Live data coming with Phase 2.',
 };
 
 export const SOCIAL_LINKS = {

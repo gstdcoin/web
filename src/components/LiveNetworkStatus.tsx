@@ -1,286 +1,197 @@
 'use client';
 
 import { useLanguage } from './LanguageProvider';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Activity, Coins, Network, Server, TrendingUp, CheckCircle2 } from 'lucide-react';
+import { Server, Coins, Globe, ExternalLink, Copy } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { TOKEN_INFO, LINKS } from '@/content/config';
 
 const PLATFORM_API = 'https://app.gstdtoken.com/api/v1';
 
-const mockMetrics = {
-  hashrate: { value: 1247.5, change: 5.2, unit: 'TH/s' },
-  goldPool: { oz: 1247.5, usd: 2850000, changeOz: 12.5, changeUsd: 28500 },
-  bridge: { status: 'operational', lastTx: '2 min ago' },
-  nodes: { count: 0, uptime: 99.9, countries: 1 },
-  tvl: { value: 12500000, change: 3.5, unit: 'USD' },
-  goldBackingRatio: { value: 2.85, change: 0.15 },
-  computationalPressure: { value: 68.5, change: 2.3, unit: '%' },
-  pflopsPower: { value: 12.47, change: 0.52, unit: 'PFLOPS' },
-  activeWorkers: { count: 0, change: 0 },
-};
-
-function formatNumber(num: number): string {
-  if (num >= 1000000) {
-    return (num / 1000000).toFixed(2) + 'M';
-  }
-  if (num >= 1000) {
-    return (num / 1000).toFixed(2) + 'K';
-  }
-  return num.toFixed(2);
-}
-
-// Generate sparkline data (mock trend)
-function generateSparklineData(value: number, change: number): number[] {
-  const points = 20;
-  const data: number[] = [];
-  const baseValue = value * (1 - Math.abs(change) / 100);
-  
-  for (let i = 0; i < points; i++) {
-    const progress = i / (points - 1);
-    const variation = (Math.random() - 0.5) * 0.1;
-    data.push(baseValue * (1 + progress * (change / 100) + variation));
-  }
-  
-  return data;
-}
-
-// Render sparkline SVG
-function Sparkline({ data, color = '#D4AF37' }: { data: number[]; color?: string }) {
-  const width = 60;
-  const height = 20;
-  const padding = 2;
-  const max = Math.max(...data);
-  const min = Math.min(...data);
-  const range = max - min || 1;
-  
-  const points = data.map((value, index) => {
-    const x = padding + (index / (data.length - 1)) * (width - padding * 2);
-    const y = height - padding - ((value - min) / range) * (height - padding * 2);
-    return `${x},${y}`;
-  }).join(' ');
-  
+function CopyButton({ text }: { text: string }) {
+  const [copied, setCopied] = useState(false);
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(text).catch(() => {});
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
   return (
-    <svg width={width} height={height} className="opacity-70">
-      <polyline
-        points={points}
-        fill="none"
-        stroke={color}
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+    <button
+      onClick={handleCopy}
+      className="ml-1 text-[#D4AF37]/50 hover:text-[#D4AF37] transition-colors"
+      title="Copy"
+    >
+      {copied
+        ? <span className="text-emerald-400 text-[10px] font-bold">Copied!</span>
+        : <Copy className="w-3 h-3" />
+      }
+    </button>
   );
 }
 
 export function LiveNetworkStatus() {
   const { t } = useLanguage();
-  const [metrics, setMetrics] = useState(mockMetrics);
+  const [nodesOnline, setNodesOnline] = useState<number | null>(null);
+  const [fetchedAt, setFetchedAt] = useState<string | null>(null);
 
-  // Get network status translations
-  const networkStatusTitle = t('networkStatus.title') as string;
-  const networkStatusSubtitle = t('networkStatus.subtitle') as string;
-
-  // Fetch real node count from platform API
   useEffect(() => {
     const fetchStats = async () => {
       try {
         const res = await fetch(`${PLATFORM_API}/stats/public`, { cache: 'no-store' });
         if (res.ok) {
           const data = await res.json();
-          setMetrics(prev => ({
-            ...prev,
-            nodes: { ...prev.nodes, count: data.nodes_online || 0 },
-            activeWorkers: { ...prev.activeWorkers, count: data.nodes_online || 0 },
-          }));
+          setNodesOnline(data.nodes_online ?? data.active_workers ?? 0);
+          setFetchedAt(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
         }
       } catch (_e) {}
     };
     fetchStats();
-    const statsInterval = setInterval(fetchStats, 60_000);
-    return () => clearInterval(statsInterval);
-  }, []);
-
-  // Simulate real-time updates for non-live fields
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setMetrics((prev) => ({
-        ...prev,
-        hashrate: {
-          ...prev.hashrate,
-          value: prev.hashrate.value + (Math.random() - 0.5) * 10,
-        },
-        goldPool: {
-          ...prev.goldPool,
-          oz: prev.goldPool.oz + Math.random() * 0.5,
-          usd: prev.goldPool.usd + Math.random() * 1000,
-        },
-        computationalPressure: {
-          ...prev.computationalPressure,
-          value: Math.max(0, Math.min(100, prev.computationalPressure.value + (Math.random() - 0.5) * 2)),
-        },
-        pflopsPower: {
-          ...prev.pflopsPower,
-          value: prev.pflopsPower.value + (Math.random() - 0.5) * 0.1,
-        },
-        activeWorkers: {
-          ...prev.activeWorkers,
-          count: prev.activeWorkers.count + Math.floor((Math.random() - 0.5) * 10),
-        },
-      }));
-    }, 5000);
-
+    const interval = setInterval(fetchStats, 60_000);
     return () => clearInterval(interval);
   }, []);
 
-  // Get metric labels from translations
-  const metricLabels = t('networkStatus.metrics') as any;
-  
-  const metricsCards = [
-    {
-      icon: Activity,
-      title: metricLabels?.hashrate?.label || 'Network Hashrate',
-      value: `${metrics.hashrate.value.toFixed(1)} ${metrics.hashrate.unit}`,
-      change: `+${metrics.hashrate.change}%`,
-      changeType: 'positive' as const,
-      color: 'from-[#D4AF37] to-[#B8860B]',
-      bgColor: 'bg-[#D4AF37]/10',
-      borderColor: 'border-[#D4AF37]/20',
-      sparklineData: generateSparklineData(metrics.hashrate.value, metrics.hashrate.change),
-    },
-    {
-      icon: Coins,
-      title: metricLabels?.goldPool?.label || 'Gold Pool',
-      value: `${metrics.goldPool.oz.toFixed(2)} ${metricLabels?.goldPool?.unitOz || 'oz'}`,
-      subValue: `$${formatNumber(metrics.goldPool.usd)}`,
-      change: `+${metrics.goldPool.changeOz.toFixed(2)} ${metricLabels?.goldPool?.unitOz || 'oz'} (+$${formatNumber(metrics.goldPool.changeUsd)})`,
-      changeType: 'positive' as const,
-      color: 'from-[#D4AF37] to-[#B8860B]',
-      bgColor: 'bg-[#D4AF37]/10',
-      borderColor: 'border-[#D4AF37]/20',
-      sparklineData: generateSparklineData(metrics.goldPool.oz, metrics.goldPool.changeOz),
-    },
-    {
-      icon: Network,
-      title: metricLabels?.bridge?.label || 'Bridge Status',
-      value: metrics.bridge.status,
-      subValue: `${(t('networkStatus.lastTx') as string) || 'Last TX'}: ${metrics.bridge.lastTx}`,
-      changeType: 'positive' as const,
-      color: 'from-green-500 to-green-600',
-      bgColor: 'bg-green-500/10',
-      borderColor: 'border-green-500/20',
-    },
-    {
-      icon: Server,
-      title: metricLabels?.nodes?.label || 'Active Nodes',
-      value: metrics.nodes.count.toString(),
-      subValue: `${metrics.nodes.uptime}% ${(t('networkStatus.uptime') as string) || 'uptime'}`,
-      change: `${metrics.nodes.countries} ${(t('networkStatus.countries') as string) || 'countries'}`,
-      changeType: 'neutral' as const,
-      color: 'from-[#D4AF37] to-[#B8860B]',
-      bgColor: 'bg-[#D4AF37]/10',
-      borderColor: 'border-[#D4AF37]/20',
-    },
-    {
-      icon: TrendingUp,
-      title: metricLabels?.tvl?.label || 'Total Value Locked',
-      value: `$${formatNumber(metrics.tvl.value)}`,
-      change: `+${metrics.tvl.change}%`,
-      changeType: 'positive' as const,
-      color: 'from-[#D4AF37] to-[#B8860B]',
-      bgColor: 'bg-[#D4AF37]/10',
-      borderColor: 'border-[#D4AF37]/20',
-      sparklineData: generateSparklineData(metrics.tvl.value, metrics.tvl.change),
-    },
-    {
-      icon: Coins,
-      title: metricLabels?.goldBackingRatio?.label || 'Gold Backing Ratio',
-      value: `${metrics.goldBackingRatio.value}%`,
-      subValue: (t('networkStatus.perToken') as string) || 'per token',
-      change: `+${metrics.goldBackingRatio.change}%`,
-      changeType: 'positive' as const,
-      color: 'from-[#D4AF37] to-[#B8860B]',
-      bgColor: 'bg-[#D4AF37]/10',
-      borderColor: 'border-[#D4AF37]/20',
-      sparklineData: generateSparklineData(metrics.goldBackingRatio.value, metrics.goldBackingRatio.change),
-    },
+  const networkStatusTitle = t('networkStatus.title') as string;
+
+  const CHAINS = [
+    { name: 'TON', status: 'active', detail: 'Primary Chain' },
+    { name: 'Solana', status: 'active', detail: '60K tokens' },
+    { name: 'XRPL', status: 'active', detail: '20K tokens' },
   ];
 
+  const PROTOCOL_STAGES = [
+    { label: 'Node Network', status: 'live', badge: 'Live' },
+    { label: 'TON Token', status: 'live', badge: 'Tradeable' },
+    { label: 'Gold Accumulation', status: 'building', badge: 'Building' },
+    { label: 'Lending Layer', status: 'roadmap', badge: 'Roadmap' },
+  ];
+
+  const stageColor = (s: string) =>
+    s === 'live' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30'
+    : s === 'building' ? 'bg-amber-500/20 text-amber-400 border-amber-500/30'
+    : 'bg-slate-500/20 text-slate-400 border-slate-500/30';
+
   return (
-    <section className="py-12 md:py-16 bg-gradient-to-b from-[#0A0A0A] via-[#1a1a1a] to-[#2a2a2a]" style={{ '--section-padding': '5rem' } as React.CSSProperties}>
+    <section className="py-12 md:py-16 bg-[#0A0A0A] border-y border-[#D4AF37]/10">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-10 md:mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4">
-            <span className="text-gradient-gold">{networkStatusTitle}</span>
-          </h2>
-          <p className="text-sm md:text-base text-slate-200 max-w-3xl mx-auto">
-            {networkStatusSubtitle}
-          </p>
-        </div>
 
-        {/* Bento Grid Layout - Horizontal scroll on mobile */}
-        <div className="scroll-horizontal md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          {metricsCards.map((metric, index) => {
-            const IconComponent = metric.icon;
-            
-            return (
-              <Card
-                key={index}
-                className={`group hover:shadow-gold-lg transition-all duration-300 glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 rounded-2xl card-mobile-full min-w-[280px] md:min-w-0 ${index === 0 || index === 4 ? 'md:col-span-2' : ''}`}
-              >
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${metric.color} flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300`}>
-                      <IconComponent className="w-6 h-6 text-[#0A0A0A]" />
-                    </div>
-                    {metric.changeType === 'positive' && (
-                      <Badge className="bg-green-500/20 text-green-600 border-green-500/30">
-                        <CheckCircle2 className="w-3 h-3 mr-1" />
-                        Live
-                      </Badge>
-                    )}
-                  </div>
-                  
-                  <CardTitle className="text-sm font-medium text-slate-200 mb-2">
-                    {metric.title}
-                  </CardTitle>
-                  
-                  <div className="space-y-1">
-                    <div className="text-2xl font-bold text-slate-100">
-                      {metric.value}
-                    </div>
-                    {metric.subValue && (
-                      <div className="text-sm text-slate-200">
-                        {metric.subValue}
-                      </div>
-                    )}
-                    <div className="flex items-center justify-between mt-2">
-                      {metric.change && (
-                        <div className={`text-xs font-medium ${
-                          metric.changeType === 'positive' ? 'text-green-400' : 'text-slate-200'
-                        }`}>
-                          {metric.change}
-                        </div>
-                      )}
-                      {(metric as any).sparklineData && (
-                        <Sparkline data={(metric as any).sparklineData} color="#D4AF37" />
-                      )}
-                    </div>
-                  </div>
-                </CardHeader>
-              </Card>
-            );
-          })}
-        </div>
-
-        {/* Live indicator */}
-        <div className="mt-8 text-center">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/20 text-[#D4AF37] text-sm">
-            <div className="w-2 h-2 bg-[#D4AF37] rounded-full mr-2 animate-pulse"></div>
-            {t('networkStatus.liveUpdate')} • {t('networkStatus.lastUpdate')}
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-100">
+              {networkStatusTitle}
+            </h2>
+            <p className="text-sm text-slate-400 mt-1">
+              Real-time protocol metrics &mdash; Bootstrap Phase
+            </p>
+          </div>
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full glass-institutional border-[#D4AF37]/20 text-xs text-[#D4AF37]">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4AF37] opacity-60" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#D4AF37]" />
+            </span>
+            Live{fetchedAt ? ` · ${fetchedAt}` : ''}
           </div>
         </div>
+
+        {/* Main metrics row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+
+          {/* Active Nodes — REAL data */}
+          <div className="glass-institutional rounded-2xl border border-[#D4AF37]/20 p-5">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-8 h-8 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center">
+                <Server className="w-4 h-4 text-[#D4AF37]" />
+              </div>
+              <span className="text-xs text-slate-400 uppercase tracking-wide">Active Nodes</span>
+            </div>
+            <div className="text-3xl font-black text-[#D4AF37] mb-1">
+              {nodesOnline !== null ? nodesOnline : '—'}
+            </div>
+            <div className="text-xs text-slate-500">Bootstrap phase · 1 country</div>
+          </div>
+
+          {/* Token Supply — real from config */}
+          <div className="glass-institutional rounded-2xl border border-[#D4AF37]/20 p-5">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-8 h-8 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center">
+                <Coins className="w-4 h-4 text-[#D4AF37]" />
+              </div>
+              <span className="text-xs text-slate-400 uppercase tracking-wide">Max Supply</span>
+            </div>
+            <div className="text-2xl font-black text-slate-100 mb-1">
+              1,000,000,000
+            </div>
+            <div className="text-xs text-slate-500">{TOKEN_INFO.symbol} · {TOKEN_INFO.decimals} decimals · {TOKEN_INFO.network}</div>
+          </div>
+
+          {/* Cross-chain — real from config */}
+          <div className="glass-institutional rounded-2xl border border-[#D4AF37]/20 p-5">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-8 h-8 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center">
+                <Globe className="w-4 h-4 text-[#D4AF37]" />
+              </div>
+              <span className="text-xs text-slate-400 uppercase tracking-wide">Networks</span>
+            </div>
+            <div className="space-y-1.5 mt-1">
+              {CHAINS.map((chain) => (
+                <div key={chain.name} className="flex items-center justify-between">
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                    <span className="text-xs font-semibold text-slate-200">{chain.name}</span>
+                  </div>
+                  <span className="text-[10px] text-slate-500">{chain.detail}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Protocol Stage — honest transparency */}
+          <div className="glass-institutional rounded-2xl border border-[#D4AF37]/20 p-5">
+            <div className="text-xs text-slate-400 uppercase tracking-wide mb-3">Protocol Stages</div>
+            <div className="space-y-2">
+              {PROTOCOL_STAGES.map((stage) => (
+                <div key={stage.label} className="flex items-center justify-between gap-2">
+                  <span className="text-xs text-slate-300 truncate">{stage.label}</span>
+                  <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border flex-shrink-0 ${stageColor(stage.status)}`}>
+                    {stage.badge}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Contract Address row */}
+        <div className="glass-institutional rounded-2xl border border-[#D4AF37]/15 p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 min-w-0 flex-1">
+            <span className="text-xs text-slate-500 uppercase tracking-wide flex-shrink-0">Contract (TON)</span>
+            <div className="flex items-center gap-1 min-w-0">
+              <code className="font-mono text-xs text-[#D4AF37]/80 truncate">
+                {TOKEN_INFO.contractAddress}
+              </code>
+              <CopyButton text={TOKEN_INFO.contractAddress} />
+            </div>
+          </div>
+          <div className="flex gap-2 flex-shrink-0">
+            <a
+              href={`https://tonviewer.com/${TOKEN_INFO.contractAddress}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 text-xs text-[#D4AF37] hover:text-[#D4AF37]/80 transition-colors border border-[#D4AF37]/20 rounded-lg px-3 py-1.5"
+            >
+              <ExternalLink className="w-3 h-3" /> TON Viewer
+            </a>
+            <a
+              href={LINKS.stonfiSwap}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 text-xs font-semibold text-[#0A0A0A] bg-[#D4AF37] hover:bg-[#B8860B] transition-colors rounded-lg px-3 py-1.5"
+            >
+              Buy GSTD →
+            </a>
+          </div>
+        </div>
+
       </div>
     </section>
   );

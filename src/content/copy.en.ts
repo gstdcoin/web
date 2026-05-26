@@ -36,9 +36,9 @@ export default {
 
   // Hero Section
   hero: {
-    badge: 'Node Network • AI Compute • Gold Backing • Zero-Interest Loans',
-    title: 'Global Supercomputer with Gold Backing',
-    subtitle: 'A decentralized network of nodes that processes AI requests, validates blockchains, and shares computing resources. Network fees automatically purchase tokenized gold — backing your token and enabling near-zero interest loans to replace traditional banking.',
+    badge: 'DePIN · AI Compute · Gold-Backed · TON Blockchain',
+    title: 'Gold-Backed AI Compute Network',
+    subtitle: 'A decentralized node network that processes AI requests and validates blockchains. 70% of all network fees automatically purchase physical gold — creating a growing reserve that backs every token and enables near-zero interest loans.',
     deployNode: 'Deploy a Node',
   },
 
@@ -67,7 +67,7 @@ export default {
   },
 
   // CTA
-  ctaPrimary: 'Get GSDT',
+  ctaPrimary: 'Get GSTD',
   ctaSecondary: 'Community',
   backToHome: 'Back to Home',
   ctaTitle: 'Ready to Get Started?',
