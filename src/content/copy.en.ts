@@ -15,11 +15,11 @@ export default {
 
   ecosystem: {
     title: 'The GSTD Ecosystem',
-    subtitle: 'Deploy nodes, process AI requests, earn gold — all from open-source repositories',
+    subtitle: 'Deploy nodes, process AI requests, earn GSTD — all from open-source repositories',
     launchApp: 'Open',
     app: {
-      title: 'GSTD Node OS',
-      description: 'Deploy your own node from the open-source repository. Share computing resources, process AI requests, support validator nodes — earn GSTD fees for every completed task.',
+      title: 'GSTD Node',
+      description: 'Deploy your own node from the open-source repository. Share computing resources, process AI requests — earn GSTD fees for every completed task.',
       cta: 'Deploy Node',
     },
     monitor: {
@@ -36,17 +36,17 @@ export default {
 
   // Hero Section
   hero: {
-    badge: 'DePIN · AI Compute · Gold-Backed · TON Blockchain',
-    title: 'Gold-Backed AI Compute Network',
-    subtitle: 'A decentralized node network that processes AI requests and validates blockchains. 70% of all network fees automatically purchase physical gold — creating a growing reserve that backs every token and enables near-zero interest loans.',
+    badge: 'DePIN · AI Compute · TON Blockchain · Listed on STON.fi',
+    title: 'Decentralized AI Compute Network',
+    subtitle: 'A permissionless node network that routes AI inference requests to operators running Ollama. Pay GSTD for compute. Run a node, earn 90% of every fee.',
     deployNode: 'Deploy a Node',
   },
 
   // Features
   features: {
     lightningFast: 'Node Network',
-    secure: 'Gold-Backed',
-    communityDriven: 'Replace Your Bank',
+    secure: 'Utility Token',
+    communityDriven: 'Open Source',
     scalable: 'Multichain',
   },
 
@@ -54,15 +54,15 @@ export default {
   featureCards: {
     infrastructure: {
       title: 'Decentralized Node Network',
-      description: 'Users deploy nodes with their own resources to process AI requests, validate blockchains, and share computing power — earning fees for every task completed.',
+      description: 'Users deploy nodes with their own hardware to process AI requests and share computing power — earning GSTD fees for every task completed.',
     },
     goldLiquidity: {
-      title: 'Gold-Backed by Design',
-      description: '70% of all network fees automatically purchase tokenized gold (XAUT), creating a transparent reserve that grows with every AI query processed.',
+      title: 'Pay-for-Compute Model',
+      description: 'Users pay GSTD for AI inference. Node operators earn 90% of every fee. 10% goes to the ecosystem treasury for buybacks and development.',
     },
     lowInterest: {
-      title: 'Replace Your Bank',
-      description: 'Use GSTD as collateral for stablecoin loans at near-zero interest (1.5% APY). Pay for purchases, send money globally — no bank required.',
+      title: 'Listed on STON.fi',
+      description: 'GSTD is a live utility token on the TON blockchain. Trade it on STON.fi DEX. Use it to pay for AI compute on the network.',
     },
   },
 
@@ -71,32 +71,32 @@ export default {
   ctaSecondary: 'Community',
   backToHome: 'Back to Home',
   ctaTitle: 'Ready to Get Started?',
-  ctaDescription: 'Join the GSTD node network. Launch a node and earn from AI compute, or use GSTD as collateral for near-zero interest loans and everyday purchases — without a bank.',
+  ctaDescription: 'Join the GSTD node network. Launch a node with Ollama and earn from AI compute requests, or pay GSTD to access AI models on the network.',
 
   // What We Build
   whatWeBuildTitle: 'What we are building',
   whatWeBuildBullets: [
-    'Wallet-as-Node Infrastructure',
-    'Escrow 2.0 & Treasury',
-    'Real-Time Gold Backing',
+    'Decentralized AI Inference',
+    'Node Operator Earnings',
+    'Ecosystem Treasury',
   ],
   whatWeBuildDescriptions: [
-    'One-click mining infrastructure. Your wallet becomes your node. Launch worker directly in Telegram bot and monetize your device\'s idle capacity.',
-    'Task budget protection (95% in Escrow) and automatic fee conversion to gold. 5% of fees and unused capacity remainders are converted to XAUt daily.',
-    'Mathematically guaranteed backing for every PFLOPS of computing power. Each GSDT token is backed by a growing gold reserve created through DePIN operations.',
+    'Route AI inference requests to node operators running Ollama. Any device — Raspberry Pi, laptop, server — can join and earn.',
+    'Node operators earn 90% of every inference fee paid in GSTD. The more requests your node handles, the more you earn.',
+    '10% of all inference fees go to the ecosystem treasury. Used for GSTD buybacks, development, and ecosystem grants.',
   ],
 
   // Token Section
   tokenSectionTitle: 'Token',
   tokenBullets: [
-    'Utility: collateral for lending and protocol access',
+    'Utility: payment for AI inference on the network',
   ],
   tokenInfo: {
     network: 'Network',
     decimals: 'Decimals',
     totalSupply: 'Total Supply',
     utility: 'Utility',
-    utilityValue: 'Collateral & Access',
+    utilityValue: 'AI Compute Payment',
     contractAddress: 'Contract Address',
     buyGSTD: 'Buy GSTD',
     advantages: 'Advantages',
@@ -104,25 +104,25 @@ export default {
     supplyDistribution: 'Supply Distribution',
     useCases: 'Use Cases',
     keyMetrics: 'Key Metrics',
-    proofOfReserve: 'Proof of Reserve',
-    proofOfReserveTitle: 'Gold Backing Transparency',
-    proofOfReserveDescription: 'Every GSDT token is backed by physical gold stored in audited vaults.',
-    proofOfReserveNote: 'Smart contract or gold audit link will be available here',
-    proofOfReserveAuditor: 'Independent Custodian Audit (Tether Gold Support)',
-    proofOfReserveUpdate: 'Updated every 24 hours. All assets verified on TON, Solana and XRPL networks.',
-    verifiedViaOracle: 'Verified via Oracle',
-    goldBackingRatio: 'Gold Backing Ratio',
-    physicalGoldReserve: 'Physical Gold Reserve',
-    reserveValue: 'Reserve Value (USD)',
+    proofOfReserve: 'Network Stats',
+    proofOfReserveTitle: 'Live Network Metrics',
+    proofOfReserveDescription: 'Real-time stats from the GSTD node network.',
+    proofOfReserveNote: 'Data sourced from the live node registry',
+    proofOfReserveAuditor: 'On-chain verifiable',
+    proofOfReserveUpdate: 'Updated every heartbeat. All nodes verified on TON network.',
+    verifiedViaOracle: 'Live Network Data',
+    goldBackingRatio: 'Nodes Online',
+    physicalGoldReserve: 'Active Nodes',
+    reserveValue: 'Requests Served',
     logoAlt: 'GSTD Token Logo',
     liquidity: 'Liquidity',
     community: 'Community',
     team: 'Team',
-    reserve: 'Reserve',
-    collateralForLoans: 'Collateral for loans',
+    reserve: 'Treasury',
+    collateralForLoans: 'AI Compute Payment',
     governanceVoting: 'Governance voting',
     feeDiscounts: 'Task Launch',
-    stakingRewards: 'Staking rewards',
+    stakingRewards: 'Node Earnings',
     maxSupply: 'Max Supply',
     maxSupplyValue: '1B (TON)',
     solana: 'Solana',
@@ -130,55 +130,54 @@ export default {
     xrpl: 'XRPL',
     xrplValue: '20K',
     multichain: 'Multichain',
-    // Lending details
-    lendingStablecoins: 'Loans in stablecoins (USDT/USDC)',
-    lendingLTV: 'LTV (Loan-to-Value): Up to 60% of GSDT market value',
-    lendingRate: '1.5% Rate: Fixed because gold in reserve is not a volatile speculative asset, but acts as a "liquidity anchor"',
-    whyLowRate: 'Why is the rate so low?',
-    whyLowRateAnswer: 'Gold backing of the platform reduces liquidation risks and capital acquisition costs.',
+    lendingStablecoins: 'Pay for AI inference (GSTD)',
+    lendingLTV: 'Node operators earn 90% of every fee',
+    lendingRate: 'Treasury receives 10% for buybacks and development',
+    whyLowRate: 'How does the treasury work?',
+    whyLowRateAnswer: '10% of all inference fees accumulate in the ecosystem treasury, used for GSTD buybacks and network development.',
   },
   token: {
     featuresTitle: 'Token Features',
     features: [
-      'Collateral for Loans',
+      'Pay for AI Compute',
       'Protocol Access',
       'Fee Discounts',
-      'Staking Rewards',
+      'Node Earnings',
     ],
     featureDescriptions: [
-      'Use GSTD as collateral to borrow against your holdings without selling them.',
-      'Access premium features and participate in governance decisions.',
+      'Use GSTD to pay for AI inference on the decentralized node network.',
+      'Access premium models and priority routing on the network.',
       'Benefit from reduced fees and priority access to new features.',
-      'Stake GSTD to earn rewards and support network security.',
+      'Run a node and earn GSTD for every AI request you process.',
     ],
   },
 
   // About Page
   about: {
-    title: 'About GSDT',
-    subtitle: 'Decentralized node network backed by gold',
-    description: 'GSDT is a decentralized network of nodes deployed by users with their own resources. Nodes process AI requests, validate blockchain transactions, and share computing power — earning fees that automatically purchase tokenized gold to back the token.',
+    title: 'About GSTD',
+    subtitle: 'Decentralized AI compute network on TON',
+    description: 'GSTD is a permissionless DePIN network. Node operators run Ollama on their hardware, register on the platform, and earn 90% of every AI inference fee paid in GSTD.',
     featuresTitle: 'Key Features',
     features: [
       'Decentralized Node Network',
-      'Gold-Backed by Design',
+      'Utility Token — Not Investment',
       'Multichain: TON · Solana · XRPL',
-      'Replace Your Bank',
+      'Open Source',
     ],
     featureDescriptions: [
-      'Users deploy nodes with their resources to process AI requests, validate blockchain networks, and provide computing power — earning GSTD fees for every task completed.',
-      '70% of all network fees are automatically converted into physical gold (XAUT), creating a growing transparent reserve that increases with every AI query and blockchain validation.',
-      'TON for mass access via Telegram, Solana for ultra-fast AI compute trading, XRPL for institutional cross-border payments and gold asset management.',
-      'Use GSTD as collateral to borrow stablecoins at 1.5% APY (near-zero interest). Pay for purchases anywhere, send money globally, take interest-free loans — the token replaces traditional banking.',
+      'Users deploy nodes with their hardware to process AI inference requests — earning GSTD fees for every task completed.',
+      'GSTD is a payment token for AI compute. Earnings come from real usage — not staking, not gold, not promises.',
+      'TON for mass access via Telegram, Solana for ultra-fast trading, XRPL for institutional cross-border payments.',
+      'All platform components are open-source. Deploy from GitHub, verify on-chain.',
     ],
     buildBullets: [
-      'Node Network: Users deploy nodes that process AI requests, validate blockchains, and share compute — generating protocol fees',
-      'Gold Accumulation: 70% of all network fees automatically purchase tokenized gold (XAUT), growing the reserve with every transaction',
-      'Token Backing: The gold reserve backs every GSTD token, creating a price floor independent of speculation',
-      'Bank Replacement: GSDT holders borrow stablecoins at 1.5% APY (LTV up to 60%) to pay for purchases and access credit — without banks',
+      'Node Network: Users deploy Ollama nodes that process AI inference requests, generating protocol fees',
+      'Fee Distribution: Node operators earn 90% of every inference fee paid in GSTD',
+      'Treasury: 10% of all fees accumulate for buybacks and ecosystem development',
+      'Open Access: Any device (laptop, Pi, server) can join and start earning',
     ],
     missionTitle: 'Our Mission',
-    missionDescription: 'Build a decentralized alternative to traditional banking. Our node network earns fees processing AI requests and validating blockchains — 70% automatically buys tokenized gold. This gold reserve backs the token and enables near-zero interest loans, so people can pay for purchases and access credit without ever needing a bank.',
+    missionDescription: 'Build a decentralized AI inference network where anyone can run a node and earn GSTD by serving AI requests. No gatekeepers, no centralized servers — just a permissionless compute market.',
   },
 
   // Buy Page
@@ -239,8 +238,8 @@ export default {
   // Roadmap
   roadmap: {
     title: 'Development Cycle',
-    subtitle: 'GSDT Protocol Evolution',
-    description: 'Our comprehensive development roadmap outlines the key milestones and features we plan to deliver to build the most advanced Global DePIN Computing Network with gold backing.',
+    subtitle: 'GSTD Protocol Evolution',
+    description: 'Our development roadmap outlines the key milestones and features we plan to deliver to build the most advanced Global DePIN AI Compute Network.',
     phases: [
       'Launch',
       'Enhanced Features',
@@ -261,7 +260,7 @@ export default {
     scalableGrowth: 'Scalable Growth',
     scalableGrowthDescription: 'Sustainable growth with innovative features and partnerships',
     developmentProgress: 'Development Progress',
-    developmentProgressDescription: 'Track our progress as we build the future of Global DePIN Computing Network with gold backing',
+    developmentProgressDescription: 'Track our progress as we build the future of Global DePIN AI Compute Network',
     phaseComplete: 'Phase 1 Complete',
     phaseProgress: 'Phase 2 Progress',
     phasePlanning: 'Phase 3 Planning',
@@ -277,20 +276,20 @@ export default {
         'Launch of the project website and publication of the roadmap',
       ],
       [
-        'Launch of the staking program and DAO voting',
+        'Node registry and heartbeat system',
         'Token listing and verification in TON network wallets',
-        'Launch of the lending platform on the test network',
+        'AI inference routing to Ollama nodes',
       ],
       [
         'Regulatory compliance framework',
         'Publication of the White Paper',
-        'Launch of gold liquidity insurance pools',
-        'Launch of DePIN network',
+        'Model marketplace — browse available AI models',
+        'Launch of DePIN node network v2',
       ],
       [
-        'Launch of the lending platform',
-        'Integration of multi-chain liquidity pools and validators',
-        'Partnership with major financial institutions',
+        'On-chain fee settlement (GSTD Jetton transfers)',
+        'Integration of multi-chain liquidity pools',
+        'Partnership with major AI providers',
         'Global expansion',
       ],
     ],
@@ -310,12 +309,12 @@ export default {
     sectionDescriptions: [
       'Terms and conditions for using the GSTD platform and services.',
       'How we collect, use, and protect your personal information.',
-      'Legal disclaimers and risk warnings for cryptocurrency investments.',
+      'Legal disclaimers and risk warnings for cryptocurrency usage.',
       'Important risk factors and considerations for users.',
     ],
     importantNotice: 'Important Notice',
     riskWarning: 'Risk Warning:',
-    riskWarningText: 'Cryptocurrency investments are subject to high market risk. Please make your investments cautiously. GSTD is not responsible for any financial losses.',
+    riskWarningText: 'GSTD is a utility token for paying for AI compute — not an investment. Cryptocurrency carries significant risk. Nothing on this site is financial or investment advice.',
     regulatoryNotice: 'Regulatory Notice:',
     regulatoryNoticeText: 'The regulatory status of digital assets and related services is uncertain in many jurisdictions. Users should ensure compliance with local laws and regulations.',
     noFinancialAdvice: 'No Financial Advice:',
@@ -335,41 +334,41 @@ export default {
     developmentTeam: 'Development and Integration Team',
   },
 
-  // Investors Page
+  // Core Protocol / formerly Investors
   investors: {
     title: 'Core Protocol',
-    subtitle: 'GSDT Protocol Core Components',
-    description: 'GSTD is a decentralized node network where users share computing resources for AI requests and blockchain validation. Network fees buy tokenized gold — backing the token and enabling near-zero interest loans that replace traditional banks.',
-    summary: '⚡️ GSTD is a decentralized network of nodes: users provide computing resources, process AI requests, and support validator nodes. 70% of network fees automatically buy tokenized gold — growing the reserve with every query. This reserve backs the token and funds a lending layer where you can borrow stablecoins at 1.5% APY to pay for purchases — without a single bank involved.',
+    subtitle: 'GSTD Protocol Core Components',
+    description: 'GSTD is a decentralized AI inference network. Node operators run Ollama on their hardware and earn 90% of every fee paid in GSTD by users requesting AI compute.',
+    summary: '⚡️ GSTD is a DePIN AI network: users pay GSTD for AI inference, node operators earn 90% of fees, and 10% funds the ecosystem treasury. No gold promises. No APY. Earnings come from real compute usage.',
     advantagesTitle: 'Key Advantages',
     advantages: {
       reliability: {
-        title: 'Reliability and Gold-Backed Security',
-        description: 'Each loan is supported by real assets: 50% of liquidity is directed into gold (XAUT) and another 25% into the insurance fund. This ensures stability and minimizes risks.',
+        title: 'Real Earnings from Compute',
+        description: 'Node operators earn GSTD for every AI request they process. Earnings scale directly with network usage — the more requests, the more earned.',
       },
       interest: {
-        title: 'Ultra-Low Interest Rates for Borrowers',
-        description: 'The interest rate is minimal and partially repaid automatically, making lending accessible and transparent.',
+        title: 'Low Barrier to Entry',
+        description: 'Any hardware can join — Raspberry Pi, laptop, or server. Install Ollama, register your node, start earning. No minimum stake required.',
       },
       transparency: {
         title: 'Web3 Transparency',
-        description: 'All operations are executed through smart contracts — no intermediaries only trust in code.',
+        description: 'All operations are on-chain. Node registry, fee distribution, and treasury balance are publicly verifiable.',
       },
       dca: {
-        title: 'Auto-DCA Strategy',
-        description: 'A portion of the collateral is automatically converted into gold and the insurance fund reducing volatility and strengthening liquidity.',
+        title: 'Treasury Buyback Loop',
+        description: '10% of all inference fees accumulate in the ecosystem treasury and are used for GSTD buybacks — creating sustainable demand tied to real network usage.',
       },
       antiwhale: {
-        title: 'Anti-Whale Protection 🐋',
-        description: 'Loan limits and liquidity distribution mechanisms create fair conditions for all participants preventing manipulation by large players.',
+        title: 'Permissionless Access',
+        description: 'No gatekeepers. Any wallet can pay for AI compute. Any device can serve requests and earn fees.',
       },
       income: {
-        title: 'Income for Liquidity Providers 💧',
-        description: 'Those who supply liquidity (USDT/TON/GSTD) form the backbone of the platform. Their funds are used for issuing loans and the interest from borrowers is distributed directly to liquidity providers. The more loans issued through your liquidity the higher your income. This is true passive income based on a functioning lending model not inflationary rewards.',
+        title: 'Node Operator Rewards',
+        description: 'Node operators earn 90% of every inference fee routed to their node. Income is proportional to compute served — not inflationary token emissions.',
       },
       growth: {
-        title: 'Shared Growth',
-        description: 'GSTD token holders and liquidity providers together create an ecosystem where income and token value grow side by side.',
+        title: 'Utility-Driven Growth',
+        description: 'Network value grows with real usage. More AI requests = more fees = more treasury buybacks = stronger GSTD utility.',
       },
     },
     sectionsTitle: 'Documentation & Resources',
@@ -406,15 +405,15 @@ export default {
       },
     },
     cta: {
-      title: 'Join the Future of DeFi',
-      description: 'Be part of the revolution where traditional gold meets cutting-edge blockchain technology.',
+      title: 'Join the GSTD Network',
+      description: 'Run a node and earn from real AI compute demand — or pay GSTD to access models on the network.',
       badge: 'Get GSTD',
     },
   },
 
   // Footer
   footer: {
-    description: 'Decentralized node network backed by gold. AI compute, blockchain validation, and near-zero interest loans — the future of banking.',
+    description: 'Decentralized AI compute network on TON. Pay GSTD for inference. Run a node, earn 90% of fees.',
     followUs: 'Follow us',
     quickLinks: 'Quick Links',
     contact: 'Contact',
@@ -426,37 +425,37 @@ export default {
   // Utility Cycle
   utilityCycle: {
     title: 'Protocol Utility',
-    subtitle: 'Three tiers of GSDT functionality',
+    subtitle: 'How GSTD flows through the network',
     steps: [
       {
         number: 1,
-        title: 'Asset Backing',
-        description: 'GSDT as a physical gold index. Each token is backed by a growing gold reserve created through DePIN operations.',
-        metric: 'Gold Backing Ratio',
+        title: 'Pay for AI Compute',
+        description: 'Users pay GSTD to request AI inference from models like Llama, Mistral, and others running on decentralized nodes.',
+        metric: 'Pay per inference',
         icon: 'Coins',
       },
       {
         number: 2,
-        title: 'Borrowing Power',
-        description: 'GSDT as collateral for stablecoin loans (USDT/USDC) at 1.5% APY. LTV up to 60% of GSDT market value. Rate is fixed because gold in reserve acts as a "liquidity anchor", reducing liquidation risks and capital acquisition costs.',
-        metric: 'Lending Rate: 1.5% APY, LTV up to 60%',
+        title: 'Node Operators Earn',
+        description: 'Node operators running Ollama receive 90% of every fee. The more requests routed to your node, the more GSTD you earn.',
+        metric: '90% of every fee',
         icon: 'CreditCard',
       },
       {
         number: 3,
-        title: 'Infrastructure Yield',
-        description: 'Revenue from network fees. 70% of Net Protocol Revenue from DePIN operations (Data Processing, Network Validating, Compute Resources) is automatically converted into physical gold, increasing backing.',
-        metric: 'Network Fee Conversion',
+        title: 'Treasury Buyback Loop',
+        description: '10% of all inference fees flow to the ecosystem treasury — used for GSTD buybacks, development, and ecosystem grants. This creates sustainable demand tied to real usage.',
+        metric: '10% → Treasury → Buybacks',
         icon: 'Network',
       },
     ],
-    protocolIndicator: 'Institutional-Grade Protocol • Three-Tier Utility Model',
+    protocolIndicator: 'Utility Protocol • Pay-for-Compute Model',
   },
 
   // Multichain
   multichain: {
     title: 'Cross-Chain Interoperability Hub',
-    subtitle: 'GSDT as the liquidity bridge connecting TON, Solana, and XRPL',
+    subtitle: 'GSTD as the liquidity bridge connecting TON, Solana, and XRPL',
     networks: [
       {
         name: 'TON',
@@ -483,7 +482,7 @@ export default {
       {
         name: 'XRPL',
         title: 'Institutional level',
-        description: 'Your bank — security and large transfers. Cross-border payments and gold asset management. Regulatory compliance.',
+        description: 'Cross-border payments and asset management. Regulatory compliance for institutional access.',
         features: [
           'CBDC compatibility',
           'Institutional access',
@@ -504,17 +503,17 @@ export default {
   // Network Status
   networkStatus: {
     title: 'Real-time Network Status',
-    subtitle: 'Demo Live GSDT platform metrics',
+    subtitle: 'Live GSTD platform metrics',
     liveUpdate: 'Real-time update',
     lastUpdate: 'Last update: just now',
     metrics: {
       hashrate: {
-        label: 'Network Hashrate',
-        unit: 'TH/s',
+        label: 'Network Compute',
+        unit: 'PFLOPS',
       },
       goldPool: {
-        label: 'Gold Pool',
-        unitOz: 'oz',
+        label: 'Treasury Balance',
+        unitOz: 'GSTD',
         unitUsd: 'USD',
       },
       bridge: {
@@ -524,15 +523,15 @@ export default {
         label: 'Active Nodes',
       },
       tvl: {
-        label: 'Total Value Locked',
-        unit: 'USD',
+        label: 'Requests Served',
+        unit: '',
       },
       goldBackingRatio: {
-        label: 'Gold Backing Ratio',
-        unit: '%',
+        label: 'Nodes Online',
+        unit: '',
       },
       computationalPressure: {
-        label: 'Computational Pressure',
+        label: 'Network Load',
         unit: '%',
       },
       pflopsPower: {
@@ -544,7 +543,6 @@ export default {
         unit: '',
       },
     },
-    // Additional labels for LiveNetworkStatus
     lastTx: 'Last TX',
     uptime: 'uptime',
     countries: 'countries',
@@ -562,61 +560,61 @@ export default {
     ctaGithub: 'View on GitHub',
     ctaTelegram: 'Node Operators Chat',
     modes: [
-      { title: 'Cloud AI', desc: 'Instant start. Uses Groq cloud. Free. Default mode.', badge: 'Default' },
+      { title: 'Cloud AI', desc: 'Instant start. Uses cloud inference. Free. Default mode.', badge: 'Default' },
       { title: 'Hybrid', desc: 'Local models + cloud fallback. Better privacy.', badge: 'Balanced' },
-      { title: 'Sovereign', desc: 'Fully local. ~10 GB. Maximum privacy.', badge: 'Advanced' },
+      { title: 'Sovereign', desc: 'Fully local via Ollama. ~10 GB. Maximum privacy.', badge: 'Advanced' },
     ],
   },
 
   featureSection: {
     title: 'Key Features',
-    subtitle: 'A node network that earns fees, buys gold, and replaces your bank',
+    subtitle: 'A permissionless compute network where nodes earn fees for serving AI inference',
   },
 
   // FAQ Section
   faq: {
     title: 'Frequently Asked Questions',
-    subtitle: 'Answers to key questions about GSDT',
+    subtitle: 'Answers to key questions about GSTD',
     items: [
       {
-        question: 'How is GSDT connected to gold?',
-        answer: '70% of DePIN network profit buys gold, which is stored in reserve and increases the "price floor" of the token. Each GSDT token is backed by a growing gold reserve created through DePIN operations (Data Processing, Network Validating, Compute Resources).',
+        question: 'What is GSTD?',
+        answer: 'GSTD is a utility token for paying for AI inference on the decentralized node network. It is NOT an investment product. Earnings come from real compute usage — no staking rewards, no APY promises.',
       },
       {
-        question: 'Can I lose my GSDT when taking a loan?',
-        answer: 'Only if the value of your collateral falls below the liquidation threshold (40% LTV). The gold reserve is designed to minimize such fluctuations, acting as a "liquidity anchor" and reducing volatility.',
+        question: 'How do node operators earn?',
+        answer: 'Node operators run Ollama on their hardware, register on the platform, and receive 90% of every GSTD fee paid for AI requests routed to their node. Earnings scale with usage.',
       },
       {
-        question: 'Why is the lending rate so low (1.5%)?',
-        answer: 'Gold backing of the platform reduces liquidation risks and capital acquisition costs. Gold in reserve is not a volatile speculative asset, but acts as a stable "liquidity anchor", allowing for institutional rates.',
+        question: 'How does the treasury work?',
+        answer: '10% of all inference fees accumulate in the ecosystem treasury. These funds are used for GSTD buybacks on STON.fi, network development, and ecosystem grants.',
       },
       {
-        question: 'How does fee conversion to gold work?',
-        answer: '70% of Net Protocol Revenue from all DePIN operations is automatically converted into physical gold (XAUT) through smart contracts. The process is transparent and verifiable on the blockchain.',
+        question: 'Why is GSTD a utility token?',
+        answer: 'GSTD is the payment currency for AI compute on the network — similar to how ETH pays for Ethereum gas. There are no promises of returns, no gold backing per token, and no lending products.',
       },
       {
         question: 'Why is multichain architecture needed?',
-        answer: 'TON — your wallet in Telegram (entry point), Solana — your trading terminal (exchange speed), XRPL — your bank (security and large transfers). GSDT unites all three networks into a single liquidity ecosystem.',
+        answer: 'TON — your wallet in Telegram (entry point), Solana — ultra-fast trading layer, XRPL — institutional cross-border payments. GSTD unites all three networks into a single compute ecosystem.',
       },
       {
-        question: 'What types of DePIN operations generate revenue?',
-        answer: 'GSDT infrastructure generates revenue through: Data Processing (encrypted data processing in decentralized network), Network Validating (transaction confirmation in cross-chain hub), Compute Resources (computing power provision for AI models).',
+        question: 'What AI models can I use?',
+        answer: 'Any model available via Ollama — Llama 3, Mistral, Qwen, DeepSeek, and more. The network routes your request to the best available node that has the model loaded.',
       },
       {
         question: 'What is GSTD (Guaranteed Service Time Depth)?',
-        answer: 'It is a mathematical standard guaranteeing the execution of your task in the network. If the task is not completed — you don\'t pay. 95% of task budget is protected in Escrow and paid only for valid Proof-of-Work.',
+        answer: 'A mathematical standard guaranteeing the execution of your task in the network. If the task is not completed — you don\'t pay. 95% of task budget is protected in Escrow and paid only for valid Proof-of-Work.',
       },
       {
         question: 'How does browser mining work?',
-        answer: 'Our Wallet-as-Node technology uses your browser or Telegram bot resources for small computations (SLM/AI), turning your device into part of a global supercomputer. No software download needed — launch worker directly in Telegram bot.',
+        answer: 'Our Wallet-as-Node technology uses your browser or Telegram bot resources for small computations, turning your device into part of a global compute network. Launch worker directly in the Telegram bot.',
       },
       {
-        question: 'Why is gold important for DePIN?',
-        answer: 'Gold (XAUt) creates a "price floor" for GSDT token. While other DePIN tokens depend only on hype, GSDT grows with the platform\'s physical gold reserve. 5% of fees and unused capacity remainders are converted to XAUt daily.',
+        question: 'Is there a free tier?',
+        answer: 'Yes. Basic tier users get 50 free inference requests per day on lightweight models (3B parameters). No GSTD needed to start — just connect a wallet and try.',
       },
       {
-        question: 'How does physical gold enter the reserve?',
-        answer: 'The Treasury smart contract collects 70% of net profit from computations every 24 hours and converts it to XAUt through DEX aggregators. Gold is stored in audited vaults, and Proof-of-Reserve is updated in real-time through Oracle.',
+        question: 'What hardware do I need to run a node?',
+        answer: 'Any device that can run Ollama: Raspberry Pi 4, laptop, desktop, or server. More RAM and a GPU means you can run larger models and earn more per request.',
       },
     ],
   },
@@ -625,7 +623,7 @@ export default {
   cloudComparison: {
     title: 'Technological Superiority',
     subtitle: 'Why pay Amazon for time when you can pay GSTD for results?',
-    description: 'GSTD offers distributed computing 70% cheaper than cloud providers, with payment only for completed work.',
+    description: 'GSTD offers distributed AI compute significantly cheaper than cloud providers, with payment only for completed inference.',
     cloud: {
       title: 'Cloud Providers',
       expensive: 'Expensive',
@@ -641,12 +639,12 @@ export default {
       title: 'GSTD Network',
       features: [
         'Pay only for results',
-        'Save up to 70%',
+        'Competitive pricing',
         'Decentralized network',
         'Mathematical execution guarantee',
       ],
-      price: '~$0.03/result',
-      savings: '70% Savings',
+      price: '~$0.003/result',
+      savings: 'Up to 70% cheaper',
     },
   },
 
@@ -659,7 +657,7 @@ export default {
       'Your Wallet = Node',
       'One-click launch via Telegram',
       'Monetize idle capacity',
-      'Fees instantly to Gold Reserve',
+      'Earn GSTD per request',
     ],
     flow: {
       title: 'How it works',
@@ -674,11 +672,11 @@ export default {
         },
         {
           title: 'Execute Tasks',
-          description: 'Your device processes computations (SLM/AI) and receives fees',
+          description: 'Your device processes AI inference requests and receives GSTD fees',
         },
         {
-          title: 'Earn Gold',
-          description: 'Your earned fees are instantly directed to Gold Reserve. Your income in GSDT is not just tokens — it\'s a share in the growing gold reserve. Network capacity growth = Gold growth = Your GSDT price growth.',
+          title: 'Earn GSTD',
+          description: 'Earn 90% of every inference fee routed to your node. Withdraw GSTD anytime to your TON wallet.',
         },
       ],
     },
@@ -700,19 +698,19 @@ export default {
       ],
     },
     treasury: {
-      title: 'Treasury: Gold Reserve',
-      description: '5% of fees and unused capacity remainders are converted to XAUt (Tether Gold) daily.',
+      title: 'Treasury: Ecosystem Fund',
+      description: '10% of all inference fees accumulate in the ecosystem treasury. Used for GSTD buybacks and development.',
       features: [
-        '5% fees → XAUt',
-        'Unused capacity → XAUt',
-        'Daily conversion',
-        'Transparent process',
+        '10% of fees → Treasury',
+        'GSTD buybacks on STON.fi',
+        'Network development funding',
+        'Transparent on-chain balance',
       ],
     },
     nightAudit: {
-      title: 'Night Audit',
-      description: 'Daily public verification of gold reserves. All transactions are verified on blockchain.',
-      time: 'Every day at 00:00 UTC',
+      title: 'Daily Stats',
+      description: 'Daily public stats on network activity. All transactions are verifiable on blockchain.',
+      time: 'Updated every heartbeat',
     },
   },
 };
