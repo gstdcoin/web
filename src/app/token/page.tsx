@@ -6,42 +6,41 @@ import { PageHeader } from '@/components/PageHeader';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Copy, ExternalLink, Coins, Shield, Zap, TrendingUp } from 'lucide-react';
-import { TOKEN_INFO, LINKS, PROOF_OF_RESERVE } from '@/content/config';
+import { Copy, ExternalLink, Coins, Shield, Zap, TrendingUp, Server, Activity } from 'lucide-react';
+import { TOKEN_INFO, LINKS } from '@/content/config';
 import { copyToClipboard } from '@/lib/utils';
 import { useEffect, useState } from 'react';
 
+interface NetworkStats {
+  gstdPriceUSD: number;
+  poolTVL: number;
+  nodesOnline: number;
+  requestsServed: number;
+  treasuryBalance: number;
+}
+
 export default function TokenPage() {
   const { t } = useLanguage();
-  const [proofData, setProofData] = useState(PROOF_OF_RESERVE);
+  const [stats, setStats] = useState<NetworkStats | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch Proof of Reserve data from StonFi pool
-    const fetchProofData = async () => {
+    const fetchStats = async () => {
       try {
         const response = await fetch('/api/stonfi-pool');
         const result = await response.json();
-        
-        if (result.success && result.data) {
-          setProofData({
-            ...PROOF_OF_RESERVE,
-            goldBackingRatio: result.data.goldBackingRatio || PROOF_OF_RESERVE.goldBackingRatio,
-            physicalGoldReserveOz: result.data.physicalGoldReserveOz || PROOF_OF_RESERVE.physicalGoldReserveOz,
-            reserveValueUSD: result.data.reserveValueUSD || PROOF_OF_RESERVE.reserveValueUSD,
-          });
+        if (result.data) {
+          setStats(result.data);
         }
-      } catch (error) {
-        console.error('Error fetching proof data:', error);
-        // Keep default values on error
+      } catch (_e) {
+        // silent
       } finally {
         setIsLoading(false);
       }
     };
 
-    fetchProofData();
-    // Refresh every 5 minutes
-    const interval = setInterval(fetchProofData, 5 * 60 * 1000);
+    fetchStats();
+    const interval = setInterval(fetchStats, 5 * 60 * 1000);
     return () => clearInterval(interval);
   }, []);
 
@@ -72,13 +71,16 @@ export default function TokenPage() {
     },
   ];
 
+  const statValue = (val: number | undefined, format: (n: number) => string) =>
+    isLoading ? '...' : val !== undefined && val > 0 ? format(val) : '—';
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0A0A0A] via-[#1a1a1a] to-[#0A0A0A]">
-      <PageHeader 
-        title={t('tokenSectionTitle')} 
+      <PageHeader
+        title={t('tokenSectionTitle')}
         subtitle={t('tokenBullets')[0]}
       />
-      
+
       <main className="container mx-auto px-4 py-12">
         {/* Token Overview */}
         <section className="mb-16">
@@ -176,12 +178,12 @@ export default function TokenPage() {
           </div>
         </section>
 
-        {/* Proof of Reserve */}
+        {/* Live Network Stats */}
         <section className="mb-16">
           <Card className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 shadow-lg card-mobile-full">
             <CardHeader>
               <CardTitle className="text-2xl text-slate-100 flex items-center gap-2">
-                <Shield className="w-6 h-6 text-[#D4AF37]" />
+                <Activity className="w-6 h-6 text-[#D4AF37]" />
                 {t('tokenInfo.proofOfReserve')}
               </CardTitle>
             </CardHeader>
@@ -191,58 +193,52 @@ export default function TokenPage() {
                   {t('tokenInfo.proofOfReserveDescription')}
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 glass-institutional border-[#D4AF37]/20 rounded-lg">
-                  <div className="text-center relative">
-                    {isLoading ? (
-                      <div className="text-2xl font-bold text-[#D4AF37] mb-1">...</div>
-                    ) : (
-                      <div className="text-2xl font-bold text-[#D4AF37] mb-1">{proofData.goldBackingRatio.toFixed(2)}%</div>
-                    )}
-                    <div className="text-sm text-slate-200 mb-2 font-medium">
-                      {t('tokenInfo.goldBackingRatio') || 'Коэффициент золотого обеспечения'}
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-[#D4AF37] mb-1">
+                      {statValue(stats?.nodesOnline, n => n.toString())}
+                    </div>
+                    <div className="text-sm text-slate-200 mb-2 font-medium flex items-center justify-center gap-1">
+                      <Server className="w-4 h-4" />
+                      {t('tokenInfo.physicalGoldReserve')}
                     </div>
                     <div className="flex items-center justify-center gap-1.5 mt-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs text-green-400 font-medium">{t('tokenInfo.verifiedViaOracle') || 'Verified via Oracle'}</span>
+                      <span className="text-xs text-green-400 font-medium">{t('tokenInfo.verifiedViaOracle')}</span>
                     </div>
                   </div>
-                  <div className="text-center relative">
-                    {isLoading ? (
-                      <div className="text-2xl font-bold text-[#D4AF37] mb-1">...</div>
-                    ) : (
-                      <div className="text-2xl font-bold text-[#D4AF37] mb-1">{proofData.physicalGoldReserveOz.toLocaleString('en-US', { maximumFractionDigits: 1 })} oz</div>
-                    )}
-                    <div className="text-sm text-slate-200 mb-2 font-medium">
-                      {t('tokenInfo.physicalGoldReserve') || 'Физический золотой резерв'}
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-[#D4AF37] mb-1">
+                      {statValue(stats?.gstdPriceUSD, n => `$${n.toFixed(8)}`)}
+                    </div>
+                    <div className="text-sm text-slate-200 mb-2 font-medium flex items-center justify-center gap-1">
+                      <TrendingUp className="w-4 h-4" />
+                      GSTD / USD
                     </div>
                     <div className="flex items-center justify-center gap-1.5 mt-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs text-green-400 font-medium">{t('tokenInfo.verifiedViaOracle') || 'Verified via Oracle'}</span>
+                      <span className="text-xs text-green-400 font-medium">Live · STON.fi</span>
                     </div>
                   </div>
-                  <div className="text-center relative">
-                    {isLoading ? (
-                      <div className="text-2xl font-bold text-[#D4AF37] mb-1">...</div>
-                    ) : (
-                      <div className="text-2xl font-bold text-[#D4AF37] mb-1">
-                        ${(proofData.reserveValueUSD / 1000000).toFixed(2)}M
-                      </div>
-                    )}
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-[#D4AF37] mb-1">
+                      {statValue(stats?.requestsServed, n => n.toLocaleString())}
+                    </div>
                     <div className="text-sm text-slate-200 mb-2 font-medium">
-                      {t('tokenInfo.reserveValue') || 'Стоимость резерва (USD)'}
+                      {t('tokenInfo.reserveValue')}
                     </div>
                     <div className="flex items-center justify-center gap-1.5 mt-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs text-green-400">{t('tokenInfo.verifiedViaOracle') || 'Verified via Oracle'}</span>
+                      <span className="text-xs text-green-400">{t('tokenInfo.verifiedViaOracle')}</span>
                     </div>
                   </div>
                 </div>
                 <div className="space-y-3">
                   <div className="p-3 glass-institutional border-[#D4AF37]/20 rounded-lg">
                     <p className="text-xs font-semibold text-[#D4AF37] mb-1">
-                      {t('tokenInfo.proofOfReserveAuditor') || 'Independent Custodian Audit (Tether Gold Support)'}
+                      {t('tokenInfo.proofOfReserveAuditor')}
                     </p>
                     <p className="text-xs text-slate-200" style={{ lineHeight: '1.7' }}>
-                      {t('tokenInfo.proofOfReserveUpdate') || 'Обновляется каждые 24 часа. Все активы верифицированы в сетях TON, Solana и XRPL.'}
+                      {t('tokenInfo.proofOfReserveUpdate')}
                     </p>
                   </div>
                   <div className="p-3 bg-[#D4AF37]/10 border border-[#D4AF37]/20 rounded-lg">
@@ -340,6 +336,29 @@ export default function TokenPage() {
               </CardContent>
             </Card>
           </div>
+        </section>
+
+        {/* Fee Distribution */}
+        <section className="mt-12">
+          <Card className="glass-institutional border-[#D4AF37]/20 card-mobile-full">
+            <CardHeader>
+              <CardTitle className="text-lg text-slate-100">{t('tokenInfo.lendingStablecoins')}</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="flex justify-between items-start">
+                <span className="text-slate-200 flex-1">{t('tokenInfo.lendingLTV')}</span>
+              </div>
+              <div className="flex justify-between items-start">
+                <span className="text-slate-200 flex-1">{t('tokenInfo.lendingRate')}</span>
+              </div>
+              <div className="p-3 glass-institutional border-[#D4AF37]/20 rounded-lg mt-2">
+                <p className="text-xs font-semibold text-[#D4AF37] mb-1">{t('tokenInfo.whyLowRate')}</p>
+                <p className="text-xs text-slate-200" style={{ lineHeight: '1.7' }}>
+                  {t('tokenInfo.whyLowRateAnswer')}
+                </p>
+              </div>
+            </CardContent>
+          </Card>
         </section>
       </main>
     </div>

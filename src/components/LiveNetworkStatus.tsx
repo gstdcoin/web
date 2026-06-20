@@ -61,8 +61,8 @@ export function LiveNetworkStatus() {
   const PROTOCOL_STAGES = [
     { label: 'Node Network', status: 'live', badge: 'Live' },
     { label: 'TON Token', status: 'live', badge: 'Tradeable' },
-    { label: 'Gold Accumulation', status: 'building', badge: 'Building' },
-    { label: 'Lending Layer', status: 'roadmap', badge: 'Roadmap' },
+    { label: 'Model Marketplace', status: 'building', badge: 'Building' },
+    { label: 'On-chain Settlement', status: 'roadmap', badge: 'Roadmap' },
   ];
 
   const stageColor = (s: string) =>

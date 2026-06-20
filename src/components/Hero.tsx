@@ -9,8 +9,8 @@ import Link from 'next/link';
 const STATUS_ITEMS = [
   { icon: CheckCircle, color: 'text-emerald-400', label: 'Node Network', sub: 'Live on Mainnet' },
   { icon: CheckCircle, color: 'text-emerald-400', label: 'TON Token (STON.fi)', sub: 'Tradeable' },
-  { icon: Clock, color: 'text-amber-400', label: 'Gold Reserve Mechanism', sub: 'In Development' },
-  { icon: Circle, color: 'text-slate-500', label: 'Lending Layer', sub: 'Roadmap' },
+  { icon: Clock, color: 'text-amber-400', label: 'Model Marketplace', sub: 'In Development' },
+  { icon: Circle, color: 'text-slate-500', label: 'On-chain Settlement', sub: 'Roadmap' },
 ];
 
 export function Hero() {

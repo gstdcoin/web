@@ -33,7 +33,7 @@ export default function RootLayout({
               "name": "GSTD Token",
               "url": "https://gstdtoken.com",
               "logo": "https://gstdtoken.com/logogstd.png",
-              "description": "Global Supercomputer with Gold Backing. First DePIN network on TON that turns your smartphone power into gold.",
+              "description": "Decentralized AI compute network on TON. Pay GSTD for AI inference. Run a node, earn 90% of fees.",
               "sameAs": [
                 "https://t.me/goldstandardcoin",
                 "https://x.com/gstdtoken",
@@ -50,7 +50,7 @@ export default function RootLayout({
               "@type": "WebSite",
               "name": "GSTD Token",
               "url": "https://gstdtoken.com",
-              "description": "Global Supercomputer with Gold Backing. First DePIN network on TON that turns your smartphone power into gold.",
+              "description": "Decentralized AI compute network on TON. Pay GSTD for AI inference. Run a node, earn 90% of fees.",
               "potentialAction": {
                 "@type": "SearchAction",
                 "target": "https://gstdtoken.com/search?q={search_term_string}",
