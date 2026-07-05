@@ -35,8 +35,8 @@ export function FeatureCards() {
     },
     {
       icon: Brain,
-      title: 'Fine-Tuning Marketplace',
-      description: 'Submit your dataset. Distributed nodes train a LoRA adapter using QLoRA — 10× cheaper than cloud. Quality-gated by MetaCognitive scoring.',
+      title: t('ecosystem.finetune.title'),
+      description: t('ecosystem.finetune.description'),
       gradient: 'from-violet-500 to-indigo-600',
       href: 'https://app.gstdtoken.com/training',
       badge: '✨ Live',

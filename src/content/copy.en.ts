@@ -31,7 +31,12 @@ export default {
       title: 'Community',
       description: 'Join the GSTD community on Telegram. Get support, follow network updates, and coordinate with other node operators.',
       cta: 'Join Telegram',
-    }
+    },
+    finetune: {
+      title: 'Fine-Tuning Marketplace',
+      description: 'Submit your dataset. Distributed nodes train a LoRA adapter using QLoRA — 10–30× cheaper than cloud. Quality-gated by MetaCognitive scoring.',
+      cta: 'Start fine-tuning',
+    },
   },
 
   // Hero Section

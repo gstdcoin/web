@@ -40,9 +40,9 @@ export function Ecosystem() {
             textColor: "text-purple-400"
         },
         {
-            title: 'Fine-Tuning Marketplace',
-            description: 'Submit your dataset. Distributed nodes train a LoRA adapter using QLoRA — 10–30× cheaper than cloud. Quality-gated by MetaCognitive scoring.',
-            cta: 'Start fine-tuning',
+            title: t('ecosystem.finetune.title'),
+            description: t('ecosystem.finetune.description'),
+            cta: t('ecosystem.finetune.cta') as string,
             url: 'https://app.gstdtoken.com/training',
             icon: Brain,
             color: "from-violet-500/20 to-indigo-500/20",
