@@ -81,7 +81,7 @@ export function Footer() {
         <div className="border-t border-[#D4AF37]/10 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-slate-300 text-sm">
-              © 2025 {SITE.name}. {t('footer.allRightsReserved')}.
+              © 2025–2026 {SITE.name}. {t('footer.allRightsReserved')}.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link

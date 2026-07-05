@@ -115,7 +115,7 @@ export function Hero() {
                   </div>
                   <div>
                     <div className="font-bold text-white text-sm">GSTD Token</div>
-                    <div className="text-xs text-[#D4AF37]/80">Gold Standard Token</div>
+                    <div className="text-xs text-[#D4AF37]/80">DePIN · AI Compute</div>
                   </div>
                 </div>
                 <span className="text-[10px] font-bold px-2 py-1 rounded-full bg-[#D4AF37]/15 text-[#D4AF37] border border-[#D4AF37]/20 uppercase tracking-wide">

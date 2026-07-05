@@ -161,12 +161,12 @@ export default function LegalPage() {
                 <div>
                   <h3 className="font-semibold text-slate-100 mb-2">{t('legal.supportProjectInquiries')}</h3>
                   <p className="text-slate-300">{t('legal.telegramCommunity')}</p>
-                  <p className="text-slate-300">https://t.me/gstdtoken</p>
+                  <p className="text-slate-300">https://t.me/goldstandardcoin</p>
                   <p className="text-slate-300">{t('legal.responseTime')}</p>
                 </div>
                 <div>
                   <h3 className="font-semibold text-slate-100 mb-2">{t('legal.developmentTeam')}</h3>
-                  <p className="text-slate-300">Telegram: https://t.me/ipgoldenbit</p>
+                  <p className="text-slate-300">Telegram: https://t.me/goldstandardcoin</p>
                   <p className="text-slate-300">{t('legal.responseTime')}</p>
                 </div>
               </div>

@@ -61,7 +61,7 @@ export function LiveNetworkStatus() {
   const PROTOCOL_STAGES = [
     { label: 'Node Network', status: 'live', badge: 'Live' },
     { label: 'TON Token', status: 'live', badge: 'Tradeable' },
-    { label: 'Model Marketplace', status: 'building', badge: 'Building' },
+    { label: 'Fine-Tuning Marketplace', status: 'live', badge: 'Live' },
     { label: 'On-chain Settlement', status: 'roadmap', badge: 'Roadmap' },
   ];
 
@@ -81,7 +81,7 @@ export function LiveNetworkStatus() {
               {networkStatusTitle}
             </h2>
             <p className="text-sm text-slate-400 mt-1">
-              Real-time protocol metrics &mdash; Bootstrap Phase
+              Real-time protocol metrics &mdash; Mainnet
             </p>
           </div>
           <div className="flex items-center gap-2 px-3 py-1.5 rounded-full glass-institutional border-[#D4AF37]/20 text-xs text-[#D4AF37]">
@@ -107,7 +107,7 @@ export function LiveNetworkStatus() {
             <div className="text-3xl font-black text-[#D4AF37] mb-1">
               {nodesOnline !== null ? nodesOnline : '—'}
             </div>
-            <div className="text-xs text-slate-500">Bootstrap phase · 1 country</div>
+            <div className="text-xs text-slate-500">Mainnet · distributed</div>
           </div>
 
           {/* Token Supply — real from config */}

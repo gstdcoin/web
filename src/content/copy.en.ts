@@ -263,7 +263,7 @@ export default {
     developmentProgressDescription: 'Track our progress as we build the future of Global DePIN AI Compute Network',
     phaseComplete: 'Phase 1 Complete',
     phaseProgress: 'Phase 2 Progress',
-    phasePlanning: 'Phase 3 Planning',
+    phasePlanning: 'Phase 3 In Progress',
     phaseResearch: 'Phase 4 Research',
     completed: 'Completed',
     inProgress: 'In Progress',
@@ -283,8 +283,8 @@ export default {
       [
         'Regulatory compliance framework',
         'Publication of the White Paper',
-        'Model marketplace — browse available AI models',
-        'Launch of DePIN node network v2',
+        'Fine-Tuning Marketplace — live at app.gstdtoken.com/training (LoRA adapter training via QLoRA)',
+        'DePIN node network v2 — launched, nodes operating on mainnet',
       ],
       [
         'On-chain fee settlement (GSTD Jetton transfers)',
@@ -321,7 +321,7 @@ export default {
     noFinancialAdviceText: 'The information provided on this platform is for informational purposes only and should not be considered as financial, investment, or legal advice.',
     complianceSecurity: 'Compliance & Security',
     securityAudits: 'Security Audits',
-    securityAuditsDescription: 'All smart contracts undergo comprehensive security audits by leading blockchain security firms.',
+    securityAuditsDescription: 'Smart contracts are reviewed for security before deployment. All contract code is open-source and publicly verifiable.',
     legalCompliance: 'Legal Compliance',
     legalComplianceDescription: 'We work with legal experts to ensure compliance with applicable laws and regulations.',
     transparency: 'Transparency',
@@ -605,12 +605,12 @@ export default {
         answer: 'A mathematical standard guaranteeing the execution of your task in the network. If the task is not completed — you don\'t pay. 95% of task budget is protected in Escrow and paid only for valid Proof-of-Work.',
       },
       {
-        question: 'How does browser mining work?',
-        answer: 'Our Wallet-as-Node technology uses your browser or Telegram bot resources for small computations, turning your device into part of a global compute network. Launch worker directly in the Telegram bot.',
+        question: 'How does Fine-Tuning Marketplace work?',
+        answer: 'Submit your dataset to app.gstdtoken.com/training. Distributed GSTD nodes train a custom LoRA adapter on your data using QLoRA — quality-gated by MetaCognitive scoring. Result is 10–30× cheaper than cloud services. Download your fine-tuned model when done.',
       },
       {
-        question: 'Is there a free tier?',
-        answer: 'Yes. Basic tier users get 50 free inference requests per day on lightweight models (3B parameters). No GSTD needed to start — just connect a wallet and try.',
+        question: 'What hardware do I need to run a training node?',
+        answer: 'Any device that can run Ollama: Raspberry Pi 4, laptop, desktop, or server. The node automatically picks up fine-tuning tasks from the queue and trains LoRA shards. More RAM enables larger base models.',
       },
       {
         question: 'What hardware do I need to run a node?',

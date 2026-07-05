@@ -92,7 +92,7 @@ export function NodeInstall() {
           className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10"
         >
           {(ni?.modes || [
-            { title: 'Cloud AI', desc: 'Instant. Uses Groq cloud. Free. Default.', badge: 'Default' },
+            { title: 'Cloud AI', desc: 'Instant. Uses cloud inference. Free. Default.', badge: 'Default' },
             { title: 'Hybrid', desc: 'Local + cloud. Better privacy.', badge: 'Balanced' },
             { title: 'Sovereign', desc: 'Fully local. ~10 GB. Max privacy.', badge: 'Advanced' },
           ]).map((mode: any, i: number) => (
