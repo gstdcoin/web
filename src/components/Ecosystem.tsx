@@ -1,7 +1,7 @@
 'use client';
 
 import { useLanguage } from './LanguageProvider';
-import { ArrowUpRight, Cpu, Activity, MessageSquare } from 'lucide-react';
+import { ArrowUpRight, Cpu, Activity, MessageSquare, Brain } from 'lucide-react';
 import { LINKS } from '@/content/config';
 import { cn } from '@/lib/utils';
 
@@ -38,6 +38,17 @@ export function Ecosystem() {
             color: "from-purple-500/20 to-pink-500/20",
             borderColor: "group-hover:border-purple-500/50",
             textColor: "text-purple-400"
+        },
+        {
+            title: 'Fine-Tuning Marketplace',
+            description: 'Submit your dataset. Distributed nodes train a LoRA adapter using QLoRA — 10–30× cheaper than cloud. Quality-gated by MetaCognitive scoring.',
+            cta: 'Start fine-tuning',
+            url: 'https://app.gstdtoken.com/training',
+            icon: Brain,
+            color: "from-violet-500/20 to-indigo-500/20",
+            borderColor: "group-hover:border-violet-500/50",
+            textColor: "text-violet-400",
+            badge: '✨ New',
         }
     ];
 
@@ -55,7 +66,7 @@ export function Ecosystem() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
                     {apps.map((app, index) => (
                         <a
                             key={index}
@@ -80,9 +91,16 @@ export function Ecosystem() {
                                     <app.icon className={cn("w-8 h-8", app.textColor)} />
                                 </div>
 
-                                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-400 transition-all duration-300">
-                                    {app.title}
-                                </h3>
+                                <div className="flex items-center gap-3 mb-3">
+                                    <h3 className="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-400 transition-all duration-300">
+                                        {app.title}
+                                    </h3>
+                                    {(app as any).badge && (
+                                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-violet-500/20 text-violet-400 border border-violet-500/30">
+                                            {(app as any).badge}
+                                        </span>
+                                    )}
+                                </div>
 
                                 <p className="text-slate-400 text-sm md:text-base mb-8 leading-relaxed flex-grow">
                                     {app.description}

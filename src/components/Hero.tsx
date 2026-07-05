@@ -9,7 +9,7 @@ import Link from 'next/link';
 const STATUS_ITEMS = [
   { icon: CheckCircle, color: 'text-emerald-400', label: 'Node Network', sub: 'Live on Mainnet' },
   { icon: CheckCircle, color: 'text-emerald-400', label: 'TON Token (STON.fi)', sub: 'Tradeable' },
-  { icon: Clock, color: 'text-amber-400', label: 'Model Marketplace', sub: 'In Development' },
+  { icon: CheckCircle, color: 'text-emerald-400', label: 'Fine-Tuning Marketplace', sub: 'Live · app.gstdtoken.com' },
   { icon: Circle, color: 'text-slate-500', label: 'On-chain Settlement', sub: 'Roadmap' },
 ];
 
