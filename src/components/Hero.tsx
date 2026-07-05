@@ -74,7 +74,7 @@ export function Hero() {
               >
                 <a href="https://app.gstdtoken.com/training" target="_blank" rel="noopener noreferrer">
                   <Brain className="mr-2 h-4 w-4" />
-                  Fine-Tune Models
+                  {t('hero.fineTuneModels')}
                   <span className="ml-2 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-violet-500/30 text-violet-300">New</span>
                 </a>
               </Button>

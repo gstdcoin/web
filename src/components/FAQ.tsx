@@ -20,7 +20,7 @@ export function FAQ() {
             <span className="text-gradient-gold">{faqData?.title || 'Часто задаваемые вопросы'}</span>
           </h2>
           <p className="text-sm md:text-base text-slate-200 max-w-3xl mx-auto">
-            {faqData?.subtitle || 'Ответы на ключевые вопросы о GSDT'}
+            {faqData?.subtitle || 'Ответы на ключевые вопросы о GSTD'}
           </p>
         </div>
 

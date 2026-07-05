@@ -45,6 +45,7 @@ export default {
     title: 'Decentralized AI Compute & Fine-Tuning Network',
     subtitle: 'A permissionless node network: route AI inference to earn GSTD, or submit your dataset and distributed nodes fine-tune your custom LoRA adapter — 10× cheaper than cloud.',
     deployNode: 'Deploy a Node',
+    fineTuneModels: 'Fine-Tune Models',
   },
 
   // Features

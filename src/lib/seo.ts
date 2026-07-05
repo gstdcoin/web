@@ -6,8 +6,8 @@ export const defaultMetadata: Metadata = {
     default: SITE.name,
     template: `%s | ${SITE.name}`,
   },
-  description: 'Global Supercomputer with Gold Backing. First DePIN network on TON that turns your smartphone power into gold. Wallet-as-Node, Pay-for-Result, Distributed computing.',
-  keywords: ['GSTD', 'DePIN', 'TON ecosystem', 'Distributed computing', 'Gold backed RWA', 'AI training on blockchain', 'Wallet-as-Node', 'Pay-for-Result', 'Global supercomputer', 'DePIN 2.0'],
+  description: 'Decentralized AI Compute & Fine-Tuning Network on TON. Run a node, earn GSTD, fine-tune open-source models 10× cheaper than cloud.',
+  keywords: ['GSTD', 'DePIN', 'TON ecosystem', 'Distributed AI computing', 'AI fine-tuning', 'QLoRA training', 'Wallet-as-Node', 'Pay-for-Result', 'decentralized LLM', 'AI inference network'],
   authors: [{ name: 'GSTD Team' }],
   creator: 'GSTD',
   publisher: 'GSTD',
@@ -26,7 +26,7 @@ export const defaultMetadata: Metadata = {
   },
   openGraph: {
     title: SITE.name,
-    description: 'GSTD: Global Supercomputer with Gold Backing. First DePIN network on TON that turns your smartphone power into gold.',
+    description: 'GSTD: Decentralized AI Compute & Fine-Tuning Network on TON. Run a node, earn GSTD, fine-tune AI models 10× cheaper than cloud.',
     url: SITE.url,
     siteName: SITE.name,
     images: [
@@ -43,7 +43,7 @@ export const defaultMetadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: SITE.name,
-    description: 'GSTD: Global Supercomputer with Gold Backing. First DePIN network on TON that turns your smartphone power into gold.',
+    description: 'GSTD: Decentralized AI Compute & Fine-Tuning Network on TON. Run a node, earn GSTD, fine-tune AI models 10× cheaper than cloud.',
     images: ['/og-image.png'],
     creator: '@gstdtoken',
   },

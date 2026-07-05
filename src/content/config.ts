@@ -14,7 +14,7 @@ export const LINKS = {
   aiChat: "https://app.gstdtoken.com",
   // Node deployment repos (apps deploy from source, nodes = decentralized app)
   app: "https://github.com/gstdcoin/gstdbot",
-  monitor: "https://github.com/gstdcoin",
+  monitor: "https://github.com/gstdcoin/gstdbot",
   chat: "https://t.me/goldstandardcoin",
   stonfiSwap:
     "https://app.ston.fi/swap?ft=TON&tt=EQDv6cYW9nNiKjN3Nwl8D6ABjUiH1gYfWVGZhfP7-9tZskTO&amount=1",
