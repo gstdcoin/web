@@ -2,7 +2,7 @@
 
 import { useLanguage } from './LanguageProvider';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Zap, Shield, Network, TrendingUp, CheckCircle, Clock, Circle } from 'lucide-react';
+import { ArrowRight, Zap, Shield, Network, TrendingUp, CheckCircle, Clock, Circle, Brain } from 'lucide-react';
 import { LINKS, TOKEN_INFO } from '@/content/config';
 import Link from 'next/link';
 
@@ -57,7 +57,7 @@ export function Hero() {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3">
               <Button
                 className="bg-[#D4AF37] text-[#0A0A0A] hover:bg-[#B8860B] font-semibold group w-full sm:w-auto shadow-[0_0_24px_rgba(212,175,55,0.3)] hover:shadow-[0_0_32px_rgba(212,175,55,0.5)] transition-all"
                 asChild
@@ -65,6 +65,17 @@ export function Hero() {
                 <a href={LINKS.stonfiSwap} target="_blank" rel="noopener noreferrer">
                   {t('ctaPrimary')}
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </Button>
+              <Button
+                className="bg-violet-600/20 border border-violet-500/40 text-violet-300 hover:bg-violet-600/30 hover:border-violet-500/60 font-semibold group w-full sm:w-auto transition-all"
+                variant="outline"
+                asChild
+              >
+                <a href="https://app.gstdtoken.com/training" target="_blank" rel="noopener noreferrer">
+                  <Brain className="mr-2 h-4 w-4" />
+                  Fine-Tune Models
+                  <span className="ml-2 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-violet-500/30 text-violet-300">New</span>
                 </a>
               </Button>
               <Button

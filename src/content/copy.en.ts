@@ -36,9 +36,9 @@ export default {
 
   // Hero Section
   hero: {
-    badge: 'DePIN · AI Compute · TON Blockchain · Listed on STON.fi',
-    title: 'Decentralized AI Compute Network',
-    subtitle: 'A permissionless node network that routes AI inference requests to operators running Ollama. Pay GSTD for compute. Run a node, earn 90% of every fee.',
+    badge: 'DePIN · AI Compute · Fine-Tuning Marketplace · TON Blockchain · STON.fi',
+    title: 'Decentralized AI Compute & Fine-Tuning Network',
+    subtitle: 'A permissionless node network: route AI inference to earn GSTD, or submit your dataset and distributed nodes fine-tune your custom LoRA adapter — 10× cheaper than cloud.',
     deployNode: 'Deploy a Node',
   },
 
@@ -568,7 +568,7 @@ export default {
 
   featureSection: {
     title: 'Key Features',
-    subtitle: 'A permissionless compute network where nodes earn fees for serving AI inference',
+    subtitle: 'A permissionless compute network where nodes earn fees for AI inference and model fine-tuning',
   },
 
   // FAQ Section
