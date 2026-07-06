@@ -83,13 +83,15 @@ export default {
   whatWeBuildTitle: 'What we are building',
   whatWeBuildBullets: [
     'Decentralized AI Inference',
+    'Fine-Tuning Marketplace',
     'Node Operator Earnings',
     'Ecosystem Treasury',
   ],
   whatWeBuildDescriptions: [
-    'Route AI inference requests to node operators running Ollama. Any device — Raspberry Pi, laptop, server — can join and earn.',
-    'Node operators earn 90% of every inference fee paid in GSTD. The more requests your node handles, the more you earn.',
-    '10% of all inference fees go to the ecosystem treasury. Used for GSTD buybacks, development, and ecosystem grants.',
+    'ThermalRouter dispatches each inference request to the statistically optimal node using information entropy. No round-robin, no guessing — pure math.',
+    'Submit your dataset. Distributed nodes train a LoRA adapter using QLoRA — quality-gated by MetaCognitive scoring. 10–30× cheaper than cloud fine-tuning.',
+    'Node operators earn 90% of every fee paid in GSTD. The more requests your node handles, the more you earn.',
+    '10% of all fees go to the ecosystem treasury. Used for GSTD buybacks, development, and ecosystem grants.',
   ],
 
   // Token Section
