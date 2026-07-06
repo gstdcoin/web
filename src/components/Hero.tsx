@@ -83,7 +83,7 @@ export function Hero() {
                 className="border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/50 w-full sm:w-auto"
                 asChild
               >
-                <a href={LINKS.github} target="_blank" rel="noopener noreferrer">
+                <a href={LINKS.launchNodes} target="_blank" rel="noopener noreferrer">
                   {t('hero.deployNode')}
                 </a>
               </Button>
