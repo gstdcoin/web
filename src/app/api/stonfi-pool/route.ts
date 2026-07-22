@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
+import { GSTD_TON_CONTRACT } from '../../../content/config';
 
-const GSTD_CONTRACT = 'EQDv6cYW9nNiKjN3Nwl8D6ABjUiH1gYfWVGZhfP7-9tZskTO';
 const STONFI_API_BASE = 'https://api.ston.fi';
 const NODE_API_BASE = 'https://app.gstdtoken.com/api/v1';
 
@@ -27,10 +27,10 @@ export async function GET() {
       const poolsData = await poolsResponse.value.json();
       const gstdPool = Array.isArray(poolsData)
         ? poolsData.find((pool: any) =>
-            pool.token0_address === GSTD_CONTRACT ||
-            pool.token1_address === GSTD_CONTRACT ||
-            pool.token0?.address === GSTD_CONTRACT ||
-            pool.token1?.address === GSTD_CONTRACT
+            pool.token0_address === GSTD_TON_CONTRACT ||
+            pool.token1_address === GSTD_TON_CONTRACT ||
+            pool.token0?.address === GSTD_TON_CONTRACT ||
+            pool.token1?.address === GSTD_TON_CONTRACT
           )
         : null;
 

@@ -1,3 +1,6 @@
+export const GSTD_TON_CONTRACT =
+  process.env.NEXT_PUBLIC_TON_CONTRACT || "EQDv6cYW9nNiKjN3Nwl8D6ABjUiH1gYfWVGZhfP7-9tZskTO";
+
 export const SITE = {
   name: "GSTD Token",
   url: "https://gstdtoken.com",
@@ -16,12 +19,12 @@ export const LINKS = {
   monitor: "https://app.gstdtoken.com/nodes",
   chat: "https://t.me/gstdcoin",
   stonfiSwap:
-    "https://app.ston.fi/swap?ft=TON&tt=EQDv6cYW9nNiKjN3Nwl8D6ABjUiH1gYfWVGZhfP7-9tZskTO&amount=1",
-  tonContract: "EQDv6cYW9nNiKjN3Nwl8D6ABjUiH1gYfWVGZhfP7-9tZskTO",
+    `https://app.ston.fi/swap?ft=TON&tt=${GSTD_TON_CONTRACT}&amount=1`,
+  tonContract: GSTD_TON_CONTRACT,
   getGSDT:
-    "https://app.ston.fi/swap?ft=TON&tt=EQDv6cYW9nNiKjN3Nwl8D6ABjUiH1gYfWVGZhfP7-9tZskTO&amount=1",
+    `https://app.ston.fi/swap?ft=TON&tt=${GSTD_TON_CONTRACT}&amount=1`,
   buyGSDT:
-    "https://app.ston.fi/swap?ft=TON&tt=EQDv6cYW9nNiKjN3Nwl8D6ABjUiH1gYfWVGZhfP7-9tZskTO&amount=1",
+    `https://app.ston.fi/swap?ft=TON&tt=${GSTD_TON_CONTRACT}&amount=1`,
   launchNodes: "https://app.gstdtoken.com/nodes",
 };
 
@@ -30,7 +33,7 @@ export const TOKEN_INFO = {
   network: "TON",
   decimals: "9",
   totalSupply: "1,000,000,000",
-  contractAddress: "EQDv6cYW9nNiKjN3Nwl8D6ABjUiH1gYfWVGZhfP7-9tZskTO"
+  contractAddress: GSTD_TON_CONTRACT
 };
 
 
