@@ -35,7 +35,7 @@ export default function RootLayout({
               "logo": "https://gstdtoken.com/logogstd.png",
               "description": "Decentralized AI compute network on TON. Pay GSTD for AI inference. Run a node, earn 90% of fees.",
               "sameAs": [
-                "https://t.me/goldstandardcoin",
+                "https://t.me/gstdtoken",
                 "https://x.com/gstdtoken",
                 "https://github.com/gstdcoin"
               ]

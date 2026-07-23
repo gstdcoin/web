@@ -133,11 +133,6 @@ export default {
     stakingRewards: 'Node Earnings',
     maxSupply: 'Max Supply',
     maxSupplyValue: '1B (TON)',
-    solana: 'Solana',
-    solanaValue: '60K',
-    xrpl: 'XRPL',
-    xrplValue: '20K',
-    multichain: 'Multichain',
     lendingStablecoins: 'Pay for AI inference (GSTD)',
     lendingLTV: 'Node operators earn 90% of every fee',
     lendingRate: 'Treasury receives 10% for buybacks and development',
@@ -169,13 +164,13 @@ export default {
     features: [
       'Decentralized Node Network',
       'Utility Token — Not Investment',
-      'Multichain: TON · Solana · XRPL',
+      'Multichain Roadmap: TON Live, Solana & XRPL Planned',
       'Open Source',
     ],
     featureDescriptions: [
       'Users deploy nodes with their hardware to process AI inference requests — earning GSTD fees for every task completed.',
       'GSTD is a payment token for AI compute. Earnings come from real usage — not staking, not gold, not promises.',
-      'TON for mass access via Telegram, Solana for ultra-fast trading, XRPL for institutional cross-border payments.',
+      'GSTD runs on TON today for mass access via Telegram. A cross-chain bridge to Solana and XRPL is in active development, not yet live.',
       'All platform components are open-source. Deploy from GitHub, verify on-chain.',
     ],
     buildBullets: [
@@ -602,7 +597,7 @@ export default {
       },
       {
         question: 'Why is multichain architecture needed?',
-        answer: 'TON — your wallet in Telegram (entry point), Solana — ultra-fast trading layer, XRPL — institutional cross-border payments. GSTD unites all three networks into a single compute ecosystem.',
+        answer: 'TON is the live network today — your wallet in Telegram is the entry point. A bridge to Solana (fast trading) and XRPL (institutional cross-border payments) is planned and in active development, so GSTD can eventually reach users on each chain natively — but it is not live yet.',
       },
       {
         question: 'What AI models can I use?',

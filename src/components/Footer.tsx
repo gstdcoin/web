@@ -70,7 +70,7 @@ export function Footer() {
               {t('footer.contact')}
             </h3>
             <div className="space-y-3 text-slate-300">
-              <p>Telegram: @goldstandardcoin</p>
+              <p>Telegram: @gstdtoken</p>
               <p>X: @gstdtoken</p>
               <p>GitHub: @gstdcoin</p>
             </div>

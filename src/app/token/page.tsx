@@ -321,16 +321,8 @@ export default function TokenPage() {
                     <span className="font-semibold text-[#D4AF37]">{t('tokenInfo.maxSupplyValue')}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-200">{t('tokenInfo.solana')}</span>
-                    <span className="font-semibold text-[#D4AF37]">{t('tokenInfo.solanaValue')}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-slate-200">{t('tokenInfo.xrpl')}</span>
-                    <span className="font-semibold text-[#D4AF37]">{t('tokenInfo.xrplValue')}</span>
-                  </div>
-                  <div className="flex justify-between">
                     <span className="text-slate-200">{t('tokenInfo.network')}</span>
-                    <span className="font-semibold text-[#D4AF37]">{t('tokenInfo.multichain')}</span>
+                    <span className="font-semibold text-[#D4AF37]">TON</span>
                   </div>
                 </div>
               </CardContent>

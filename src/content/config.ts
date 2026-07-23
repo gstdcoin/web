@@ -9,7 +9,7 @@ export const SITE = {
 };
 
 export const LINKS = {
-  telegram: "https://t.me/gstdcoin",
+  telegram: "https://t.me/gstdtoken",
   twitter: "https://x.com/gstdtoken",
   github: "https://github.com/gstdcoin",
   docs: "/advantages",
@@ -17,7 +17,7 @@ export const LINKS = {
   aiChat: "https://app.gstdtoken.com",
   app: "https://app.gstdtoken.com/nodes",
   monitor: "https://app.gstdtoken.com/nodes",
-  chat: "https://t.me/gstdcoin",
+  chat: "https://t.me/gstdtoken",
   stonfiSwap:
     `https://app.ston.fi/swap?ft=TON&tt=${GSTD_TON_CONTRACT}&amount=1`,
   tonContract: GSTD_TON_CONTRACT,
@@ -38,7 +38,7 @@ export const TOKEN_INFO = {
 
 
 export const SOCIAL_LINKS = {
-  telegram: "https://t.me/gstdcoin",
+  telegram: "https://t.me/gstdtoken",
   twitter: "https://x.com/gstdtoken",
   github: "https://github.com/gstdcoin",
   docs: "/advantages"
