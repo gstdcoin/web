@@ -292,7 +292,7 @@ export default function TokenPage() {
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-[#D4AF37] rounded-full"></div>
-                    <span className="text-slate-200">{t('tokenInfo.collateralForLoans')}</span>
+                    <span className="text-slate-200">{t('tokenInfo.computePayment')}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-[#D4AF37] rounded-full"></div>
@@ -334,14 +334,14 @@ export default function TokenPage() {
         <section className="mt-12">
           <Card className="glass-institutional border-[#D4AF37]/20 card-mobile-full">
             <CardHeader>
-              <CardTitle className="text-lg text-slate-100">{t('tokenInfo.lendingStablecoins')}</CardTitle>
+              <CardTitle className="text-lg text-slate-100">{t('tokenInfo.useCaseInference')}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
               <div className="flex justify-between items-start">
-                <span className="text-slate-200 flex-1">{t('tokenInfo.lendingLTV')}</span>
+                <span className="text-slate-200 flex-1">{t('tokenInfo.useCaseNodeShare')}</span>
               </div>
               <div className="flex justify-between items-start">
-                <span className="text-slate-200 flex-1">{t('tokenInfo.lendingRate')}</span>
+                <span className="text-slate-200 flex-1">{t('tokenInfo.useCaseTreasuryShare')}</span>
               </div>
               <div className="p-3 glass-institutional border-[#D4AF37]/20 rounded-lg mt-2">
                 <p className="text-xs font-semibold text-[#D4AF37] mb-1">{t('tokenInfo.whyLowRate')}</p>
