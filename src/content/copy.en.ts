@@ -322,6 +322,10 @@ export default {
     regulatoryNoticeText: 'The regulatory status of digital assets and related services is uncertain in many jurisdictions. Users should ensure compliance with local laws and regulations.',
     noFinancialAdvice: 'No Financial Advice:',
     noFinancialAdviceText: 'The information provided on this platform is for informational purposes only and should not be considered as financial, investment, or legal advice.',
+    noWarrantyNotice: 'No Warranty:',
+    noWarrantyNoticeText: 'The Platform, including its website, node software, and smart contracts, is provided "as is" and "as available" with no warranty of any kind. We do not guarantee uninterrupted, secure, or error-free operation.',
+    userResponsibilityNotice: 'Your Responsibility:',
+    userResponsibilityNoticeText: 'You are solely responsible for the security of your wallet and private keys, for verifying transactions before submitting them, and for complying with the laws that apply to you. We cannot reverse blockchain transactions or recover lost keys.',
     complianceSecurity: 'Compliance & Security',
     securityAudits: 'Security Audits',
     securityAuditsDescription: 'Smart contracts are reviewed for security before deployment. All contract code is open-source and publicly verifiable.',
@@ -335,6 +339,174 @@ export default {
     telegramCommunity: 'Telegram community',
     responseTime: 'Response time: 24–48 hours',
     developmentTeam: 'Development and Integration Team',
+    fullDocsTitle: 'Full Legal Documents',
+    fullDocsSubtitle: 'The summaries above are an index. The full text of each document is below — please read it before using the Platform.',
+    lastUpdated: 'Last updated: July 23, 2026',
+    termsOfService: {
+      title: 'Terms of Service',
+      sections: [
+        {
+          heading: '1. Acceptance of Terms',
+          body: 'By accessing or using the GSTD website, node software, Telegram bot, or any related service (collectively, the "Platform"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree, do not use the Platform. You confirm that you have the legal capacity and authority to enter into this agreement under the laws of your jurisdiction.',
+        },
+        {
+          heading: '2. Description of Service',
+          body: 'The Platform is open-source, permissionless software that connects node operators (who provide compute resources for AI inference) with users who pay for that compute using GSTD, a utility token on the TON blockchain. The Platform does not operate, own, or control the compute hardware, the TON blockchain, or any third-party exchange. We provide software and infrastructure only; we do not act as a custodian, broker, exchange, or financial intermediary.',
+        },
+        {
+          heading: '3. Nature of GSTD — Not a Security, Not an Investment',
+          body: 'GSTD is a utility token designed solely to pay for AI compute on the network, comparable to how gas tokens pay for computation on other blockchains. GSTD is not a security, share, bond, deposit, or any other form of regulated financial instrument in any jurisdiction. Purchasing, holding, earning, or using GSTD carries no expectation of profit derived from the efforts of others, no dividend, no interest, and no guarantee of value, liquidity, or future price. Nothing on the Platform is an offer or solicitation to buy or sell any security in any jurisdiction where such an offer would be unlawful.',
+        },
+        {
+          heading: '4. Eligibility and Compliance',
+          body: 'You are solely responsible for determining whether your use of the Platform, holding of GSTD, or operation of a node is lawful in your jurisdiction. You represent that you are not located in, and are not a citizen or resident of, any jurisdiction where use of the Platform or GSTD would violate applicable law, and that you are not on any sanctions or restricted-party list. We reserve the right to restrict access to the Platform for any user or jurisdiction at our discretion, without notice.',
+        },
+        {
+          heading: '5. Your Responsibilities',
+          body: 'You are solely responsible for: (a) the security of your wallet, private keys, seed phrases, and any device used to access the Platform; (b) all activity that occurs through your wallet address, node, or account; (c) verifying the accuracy of any transaction before submitting it, as blockchain transactions cannot be reversed; and (d) complying with all tax, reporting, and regulatory obligations that apply to you. We have no ability to recover lost private keys, reverse confirmed transactions, or restore access to a wallet you no longer control.',
+        },
+        {
+          heading: '6. Running a Node',
+          body: 'Operating a node is entirely voluntary and undertaken at your own risk and expense. We do not guarantee any level of earnings, uptime, task volume, or compensation for running a node. Node rewards depend on network demand, your hardware, your connectivity, and factors entirely outside our control, and may be zero. You are responsible for the electricity, hardware, bandwidth, and any other costs of node operation, and for ensuring your use of your own hardware to run a node complies with any applicable terms from your hardware or connectivity providers.',
+        },
+        {
+          heading: '7. Loans and Collateral',
+          body: 'Any lending or credit feature on the Platform allows you to lock GSTD as collateral in exchange for credit, subject to a loan-to-value ratio and accruing interest as displayed at the time of the transaction. If the value of your collateral falls, or accrued interest raises your debt relative to your collateral, your collateral may be liquidated automatically and without further notice to repay the debt. You accept this risk entirely. We do not guarantee any specific liquidation threshold, price feed, or execution outcome.',
+        },
+        {
+          heading: '8. No Warranties',
+          body: 'THE PLATFORM IS PROVIDED "AS IS" AND "AS AVAILABLE," WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, NON-INFRINGEMENT, OR THAT THE PLATFORM WILL BE UNINTERRUPTED, SECURE, ERROR-FREE, OR FREE OF HARMFUL COMPONENTS. Open-source code, including smart contracts and node software, may contain bugs or vulnerabilities despite reasonable review, and we do not warrant otherwise.',
+        },
+        {
+          heading: '9. Limitation of Liability',
+          body: 'TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT WILL THE GSTD PROJECT, ITS CONTRIBUTORS, OR ANY AFFILIATED INDIVIDUAL OR ENTITY BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS, REVENUE, DATA, OR DIGITAL ASSETS, ARISING FROM OR RELATED TO YOUR USE OF THE PLATFORM, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. TO THE EXTENT ANY LIABILITY CANNOT BE EXCLUDED UNDER APPLICABLE LAW, OUR TOTAL AGGREGATE LIABILITY IS LIMITED TO THE GREATER OF (A) THE FEES YOU PAID TO USE THE PLATFORM IN THE 3 MONTHS PRECEDING THE CLAIM, OR (B) 100 USD EQUIVALENT IN GSTD. Nothing in these Terms excludes liability that cannot be excluded under applicable law (for example, liability for fraud).',
+        },
+        {
+          heading: '10. Assumption of Risk',
+          body: 'You acknowledge and accept, on your own behalf, the full range of risks described in the Risk Disclaimers and Risk Warnings sections below, including but not limited to price volatility, smart contract risk, node hardware and software risk, regulatory risk, and the irreversibility of blockchain transactions. You use the Platform entirely at your own risk.',
+        },
+        {
+          heading: '11. Indemnification',
+          body: 'You agree to indemnify, defend, and hold harmless the GSTD project, its contributors, and any affiliated individual or entity from and against any claims, damages, losses, liabilities, and expenses (including reasonable legal fees) arising out of or related to: your use of the Platform; your violation of these Terms; your violation of any applicable law; or your violation of any right of a third party.',
+        },
+        {
+          heading: '12. Termination',
+          body: 'Because the Platform is decentralized and permissionless, we cannot "terminate" your ability to run open-source node software or hold a self-custodied wallet. We may, however, restrict, suspend, or discontinue any centrally-operated service (such as the website, the Telegram bot, or a particular API endpoint) at any time, for any reason, without liability to you.',
+        },
+        {
+          heading: '13. Governing Law and Dispute Resolution',
+          body: 'These Terms are governed by the laws applicable in the jurisdiction of the operating entity, without regard to conflict-of-law principles, except where mandatory local consumer-protection law provides otherwise. Any dispute arising from these Terms or your use of the Platform shall first be attempted to be resolved informally by contacting us; unresolved disputes shall be subject to binding arbitration or the courts of competent jurisdiction, to the extent permitted by applicable law.',
+        },
+        {
+          heading: '14. Changes to These Terms',
+          body: 'We may update these Terms at any time by posting a revised version on this page. Continued use of the Platform after a change is posted constitutes acceptance of the revised Terms. We encourage you to review this page periodically.',
+        },
+        {
+          heading: '15. Force Majeure',
+          body: 'We are not liable for any failure or delay in performance resulting from causes beyond our reasonable control, including but not limited to blockchain network congestion or failure, internet or infrastructure outages, acts of government, natural disasters, or force majeure events.',
+        },
+      ],
+    },
+    privacyPolicy: {
+      title: 'Privacy Policy',
+      sections: [
+        {
+          heading: '1. Information We Collect',
+          body: 'Depending on how you use the Platform, we may process: your public TON wallet address; node metadata (name, capabilities, uptime, IP-derived approximate location for routing); Telegram user ID and username if you use the Telegram bot; and standard technical data such as browser type, device type, and pages visited. We do not require or collect government ID, name, or physical address to use the core Platform.',
+        },
+        {
+          heading: '2. Blockchain Data Is Public and Permanent',
+          body: 'Transactions you make using GSTD or any TON-based wallet are recorded on a public, immutable blockchain. Wallet addresses and transaction amounts are visible to anyone and cannot be deleted, altered, or made private by us or by you, at any time, for any reason. Do not treat any on-chain transaction as private.',
+        },
+        {
+          heading: '3. How We Use Information',
+          body: 'We use the information described above to operate the Platform (route tasks to nodes, calculate rewards, display balances), to prevent fraud and abuse, to improve the Platform, and to communicate with you (for example, Telegram bot replies or security notices). We do not use your data to make automated decisions with legal effect on you.',
+        },
+        {
+          heading: '4. Data Sharing and Disclosure',
+          body: 'We do not sell your personal data. We may disclose information we hold if required by law, subpoena, or governmental request, or where necessary to protect the rights, property, or safety of the Platform, its users, or the public. Because node operation and inference routing are inherently distributed, technical metadata (such as node IP addresses) is necessarily visible to the peers your node or request interacts with.',
+        },
+        {
+          heading: '5. Data Security',
+          body: 'We use reasonable technical and organizational measures to protect information under our control, but no method of transmission or storage is completely secure. We cannot guarantee absolute security and are not liable for unauthorized access resulting from circumstances outside our reasonable control, including compromise of your own device, wallet, or credentials.',
+        },
+        {
+          heading: '6. Cookies and Analytics',
+          body: 'The website may use minimal, privacy-respecting analytics to understand aggregate usage (such as page views). You can control cookies through your browser settings; disabling them may limit some website functionality but will not prevent you from using node software directly.',
+        },
+        {
+          heading: '7. Your Rights',
+          body: 'Depending on your jurisdiction, you may have rights to request access to, correction of, or deletion of personal data we hold off-chain (such as a linked Telegram username). Submit such requests via the contact details below. We cannot alter, delete, or restrict access to data that is recorded on a public blockchain, as we do not control it.',
+        },
+        {
+          heading: '8. Children\'s Privacy',
+          body: 'The Platform is not directed at, and should not be used by, anyone under the age of 18 or the age of legal majority in their jurisdiction, whichever is higher. We do not knowingly collect data from children.',
+        },
+        {
+          heading: '9. International Users',
+          body: 'The Platform is accessed globally and information may be processed in jurisdictions other than your own, which may have different data-protection standards than your home jurisdiction. By using the Platform, you consent to this processing.',
+        },
+        {
+          heading: '10. Changes to This Policy',
+          body: 'We may update this Privacy Policy at any time by posting a revised version on this page. Continued use of the Platform after a change is posted constitutes acceptance of the revised Policy.',
+        },
+      ],
+    },
+    riskDisclaimers: {
+      title: 'Risk Disclaimers',
+      sections: [
+        {
+          heading: '1. Not Investment Advice, Not a Security',
+          body: 'Nothing published on the Platform — including this website, documentation, or any statement by a contributor — is financial, investment, tax, or legal advice, or a recommendation to buy, hold, or sell GSTD or any other asset. GSTD is not registered as a security in any jurisdiction and no regulator has reviewed or approved it.',
+        },
+        {
+          heading: '2. Extreme Price Volatility',
+          body: 'The price of GSTD, like all cryptocurrencies, can be extremely volatile and may decline to zero. Past performance, network growth, or any historical price is not indicative of future results. You should never acquire, hold, or use more GSTD than you can afford to lose entirely.',
+        },
+        {
+          heading: '3. Smart Contract and Technology Risk',
+          body: 'The Platform relies on open-source smart contracts and software that, despite reasonable review, may contain undiscovered bugs, vulnerabilities, or exploits. A successful exploit, network attack, or software failure could result in the partial or total loss of funds, tokens, or data, with no guarantee of recovery or compensation.',
+        },
+        {
+          heading: '4. Node Operation Risk',
+          body: 'Running a node exposes your hardware and network to interaction with unknown third parties and workloads. We do not vet, sandbox-guarantee, or take responsibility for the content of tasks routed to your node. Node earnings are not guaranteed and may be zero or negative after accounting for your costs.',
+        },
+        {
+          heading: '5. Loan and Liquidation Risk',
+          body: 'Using any lending feature risks automatic liquidation of your collateral if its value falls or interest accrues beyond the platform\'s thresholds, with no advance warning and no right of reinstatement after liquidation. Only lock collateral you can afford to lose entirely.',
+        },
+        {
+          heading: '6. Regulatory Risk',
+          body: 'The legal and regulatory treatment of cryptocurrencies, DePIN networks, and utility tokens is unsettled and varies by jurisdiction, and may change — potentially retroactively — in ways that restrict or prohibit your use of the Platform or GSTD. You are solely responsible for monitoring and complying with the law that applies to you.',
+        },
+        {
+          heading: '7. No Insurance or Guarantee',
+          body: 'GSTD and any balance shown on the Platform is not a bank deposit, is not insured by any government deposit insurance scheme, and carries no guarantee of value from us or any third party.',
+        },
+        {
+          heading: '8. Third-Party and Bridge Risk',
+          body: 'The Platform may reference or interoperate with third-party services (decentralized exchanges, liquidity pools, cross-chain bridges) that we do not control and are not responsible for. Any cross-chain bridge functionality referenced by the Platform that is not yet live carries additional, unaudited experimental risk once deployed, and should not be relied upon for any transfer of value until independently verified as production-ready.',
+        },
+        {
+          heading: '9. Irreversibility of Transactions',
+          body: 'Blockchain transactions, once confirmed, cannot be reversed, cancelled, or refunded by us under any circumstances, including transactions sent to an incorrect address or made in error.',
+        },
+      ],
+    },
+    riskWarnings: {
+      title: 'Risk Warnings — Read Before Using the Platform',
+      sections: [
+        { heading: '', body: 'You may lose the entire value of any GSTD you acquire, hold, or earn.' },
+        { heading: '', body: 'GSTD is not a bank deposit and is not insured by any deposit protection scheme.' },
+        { heading: '', body: 'Running a node earns no guaranteed income and may cost you more in electricity and hardware than you earn.' },
+        { heading: '', body: 'Any loan you take against locked collateral can be liquidated automatically, without notice, if collateral value falls.' },
+        { heading: '', body: 'Blockchain transactions cannot be reversed once confirmed, even if sent by mistake.' },
+        { heading: '', body: 'You alone are responsible for the security of your wallet, private keys, and seed phrase — if lost, they cannot be recovered by us.' },
+        { heading: '', body: 'The legal status of cryptocurrency varies by country and can change; compliance with local law is entirely your responsibility.' },
+        { heading: '', body: 'The Platform is provided "as is," with no guarantee of uptime, availability, or that it is free of bugs or security vulnerabilities.' },
+        { heading: '', body: 'By using the Platform, you confirm you have read, understood, and accept all risks described in these Risk Disclaimers and Risk Warnings.' },
+      ],
+    },
   },
 
   // Core Protocol / formerly Investors

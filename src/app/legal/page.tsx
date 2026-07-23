@@ -5,8 +5,44 @@ import { PageHeader } from '@/components/PageHeader';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Shield, FileText, Scale, AlertTriangle } from 'lucide-react';
 
+interface LegalDocSection {
+  heading: string;
+  body: string;
+}
+interface LegalDoc {
+  title: string;
+  sections: LegalDocSection[];
+}
+
+function LegalDocument({ doc }: { doc: LegalDoc }) {
+  return (
+    <Card className="glass-institutional border-[#D4AF37]/20 card-mobile-full">
+      <CardHeader>
+        <CardTitle className="text-2xl text-slate-100">{doc.title}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="space-y-6">
+          {doc.sections.map((section, i) => (
+            <div key={i}>
+              {section.heading && (
+                <h3 className="font-semibold text-slate-100 mb-2">{section.heading}</h3>
+              )}
+              <p className="text-slate-300 leading-relaxed text-sm">{section.body}</p>
+            </div>
+          ))}
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
 export default function LegalPage() {
   const { t } = useLanguage();
+
+  const termsOfService = t('legal.termsOfService') as unknown as LegalDoc;
+  const privacyPolicy = t('legal.privacyPolicy') as unknown as LegalDoc;
+  const riskDisclaimers = t('legal.riskDisclaimers') as unknown as LegalDoc;
+  const riskWarnings = t('legal.riskWarnings') as unknown as LegalDoc;
 
   const legalSections = [
     {
@@ -92,9 +128,34 @@ export default function LegalPage() {
                 <p>
                   <strong className="text-slate-100">{t('legal.noFinancialAdvice')}</strong> {t('legal.noFinancialAdviceText')}
                 </p>
+                <p>
+                  <strong className="text-slate-100">{t('legal.noWarrantyNotice')}</strong> {t('legal.noWarrantyNoticeText')}
+                </p>
+                <p>
+                  <strong className="text-slate-100">{t('legal.userResponsibilityNotice')}</strong> {t('legal.userResponsibilityNoticeText')}
+                </p>
               </div>
             </CardContent>
           </Card>
+        </section>
+
+        {/* Full Legal Documents */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold text-center mb-4">
+            <span className="text-gradient-gold">{t('legal.fullDocsTitle')}</span>
+          </h2>
+          <p className="text-sm text-slate-400 text-center max-w-2xl mx-auto mb-4">
+            {t('legal.fullDocsSubtitle')}
+          </p>
+          <p className="text-xs text-slate-500 text-center mb-10">
+            {t('legal.lastUpdated')}
+          </p>
+          <div className="space-y-8">
+            <LegalDocument doc={termsOfService} />
+            <LegalDocument doc={privacyPolicy} />
+            <LegalDocument doc={riskDisclaimers} />
+            <LegalDocument doc={riskWarnings} />
+          </div>
         </section>
 
         {/* Compliance Information */}
