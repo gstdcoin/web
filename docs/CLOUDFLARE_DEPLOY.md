@@ -4,17 +4,25 @@ This site runs on Cloudflare Workers via [`@opennextjs/cloudflare`](https://open
 
 Free tier covers this site comfortably: 100,000 requests/day, 10ms CPU time per request, unlimited bandwidth.
 
-## Option A — Git integration (recommended, auto-deploys on push)
+## Already deployed once
 
-1. Go to https://dash.cloudflare.com → **Workers & Pages** → **Create** → **Workers** → **Import a repository** (or **Connect to Git** for Pages — for Next.js apps with API routes, use the **Workers** flow, not classic Pages).
-2. Authorize Cloudflare's GitHub App and select `gstdcoin/web`.
-3. Build settings:
-   - **Build command**: `npx opennextjs-cloudflare build` (produces `.open-next/worker.js`; deploying itself is handled by Cloudflare's own `wrangler deploy` step using `wrangler.jsonc` from the repo — don't use `npm run cf:deploy` here, that's for manual CLI deploys in Option B)
-   - **Deploy command**: leave Cloudflare's default
-   - **Root directory**: `/` (repo root)
-4. Environment variables — add any `NEXT_PUBLIC_*` values you want baked into the build (see `.env.production` in the repo for the current list: `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_PLAUSIBLE_DOMAIN`, `NEXT_PUBLIC_TELEGRAM`, `NEXT_PUBLIC_TWITTER`, `NEXT_PUBLIC_GITHUB`, `NEXT_PUBLIC_STONFI`, `NEXT_PUBLIC_TON_CONTRACT`). These aren't secrets — they're public build-time values — so just paste them into the dashboard's "Variables and Secrets" build settings.
-5. Click **Save and Deploy**. Every push to `main` redeploys automatically, same as Vercel.
-6. **Custom domain**: in the Worker's **Settings → Domains & Routes**, add `gstdtoken.com` (and `www.gstdtoken.com` if used). If the domain's DNS is already on Cloudflare, this is one click. If it's elsewhere, Cloudflare will ask you to update nameservers or add a CNAME.
+The site was deployed directly via `wrangler deploy` and is live at:
+**https://gstd-web.gstdtoken-site.workers.dev**
+
+Verified working: homepage, `/about`, `/api/health`, `/api/stonfi-pool`, and the security headers all respond correctly in production.
+
+## Option A — GitHub Actions (recommended, auto-deploys on push)
+
+`.github/workflows/deploy.yml` is already in the repo — it builds with `opennextjs-cloudflare` and deploys with `wrangler` on every push to `main`. To activate it once the code is pushed:
+
+1. Get a Cloudflare API Token (Workers Scripts:Edit template) from https://dash.cloudflare.com/profile/api-tokens and your Account ID from the dashboard's main page.
+2. In the GitHub repo: **Settings → Secrets and variables → Actions → New repository secret**, add:
+   - `CLOUDFLARE_API_TOKEN`
+   - `CLOUDFLARE_ACCOUNT_ID`
+3. Push to `main` — the workflow builds and deploys automatically.
+4. **Custom domain**: in the Cloudflare dashboard, open the `gstd-web` Worker → **Settings → Domains & Routes** → add `gstdtoken.com` (and `www.gstdtoken.com` if used). If the domain's DNS is already on Cloudflare, this is one click; otherwise Cloudflare will prompt you to update nameservers or add a CNAME.
+
+Build-time env vars (`NEXT_PUBLIC_*`) are already baked in from `.env.production` — no extra config needed unless you change them.
 
 ## Option B — CLI deploy (manual, from your own machine)
 
