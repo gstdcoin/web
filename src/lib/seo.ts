@@ -6,8 +6,8 @@ export const defaultMetadata: Metadata = {
     default: SITE.name,
     template: `%s | ${SITE.name}`,
   },
-  description: 'Decentralized AI Compute & Fine-Tuning Network on TON. Run a node, earn GSTD, fine-tune open-source models 10× cheaper than cloud.',
-  keywords: ['GSTD', 'DePIN', 'TON ecosystem', 'Distributed AI computing', 'AI fine-tuning', 'QLoRA training', 'Wallet-as-Node', 'Pay-for-Result', 'decentralized LLM', 'AI inference network'],
+  description: 'Open AI compute network on TON. Connect your hardware, contribute compute, and earn GSTD for completed AI workloads.',
+  keywords: ['GSTD', 'open AI compute network', 'TON ecosystem', 'distributed AI computing', 'AI fine-tuning', 'run a node', 'decentralized LLM inference', 'AI inference network'],
   authors: [{ name: 'GSTD Team' }],
   creator: 'GSTD',
   publisher: 'GSTD',
@@ -26,7 +26,7 @@ export const defaultMetadata: Metadata = {
   },
   openGraph: {
     title: SITE.name,
-    description: 'GSTD: Decentralized AI Compute & Fine-Tuning Network on TON. Run a node, earn GSTD, fine-tune AI models 10× cheaper than cloud.',
+    description: 'GSTD: an open AI compute network on TON. Connect your hardware, contribute compute, and earn GSTD for completed AI workloads.',
     url: SITE.url,
     siteName: SITE.name,
     images: [
@@ -43,7 +43,7 @@ export const defaultMetadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: SITE.name,
-    description: 'GSTD: Decentralized AI Compute & Fine-Tuning Network on TON. Run a node, earn GSTD, fine-tune AI models 10× cheaper than cloud.',
+    description: 'GSTD: an open AI compute network on TON. Connect your hardware, contribute compute, and earn GSTD for completed AI workloads.',
     images: ['/og-image.png'],
     creator: '@gstdtoken',
   },
