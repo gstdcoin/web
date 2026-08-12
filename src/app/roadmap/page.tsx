@@ -1,52 +1,30 @@
 'use client';
 
 import { useLanguage } from '@/components/LanguageProvider';
-import { PageHeader } from '@/components/PageHeader';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { CheckCircle, Clock, Target, Zap, Shield, Users, TrendingUp } from 'lucide-react';
+import { Server, Network, Layers, ShieldCheck, Coins, Globe, Bot, Shield, Users, TrendingUp } from 'lucide-react';
+
+const PHASE_ICONS = [Server, Network, Layers, ShieldCheck, Coins, Globe, Bot];
+// Status is asserted here from what the repo research actually confirmed —
+// not a projection. Keep in sync with copy.*.ts roadmap.phaseFeatures.
+const PHASE_STATUS = ['completed', 'completed', 'current', 'current', 'current', 'future', 'current'] as const;
 
 export default function RoadmapPage() {
   const { t } = useLanguage();
 
-  const phases = [
-    {
-      id: 1,
-      title: t('roadmap.phases')[0],
-      status: 'completed',
-      icon: CheckCircle,
-      description: t('roadmap.phaseDescriptions')[0],
-      features: t('roadmap.phaseFeatures')[0] as unknown as string[],
-      color: 'bg-green-500',
-    },
-    {
-      id: 2,
-      title: t('roadmap.phases')[1],
-      status: 'completed',
-      icon: Clock,
-      description: t('roadmap.phaseDescriptions')[1],
-      features: t('roadmap.phaseFeatures')[1] as unknown as string[],
-      color: 'bg-[#D4AF37]',
-    },
-    {
-      id: 3,
-      title: t('roadmap.phases')[2],
-      status: 'current',
-      icon: Target,
-      description: t('roadmap.phaseDescriptions')[2],
-      features: t('roadmap.phaseFeatures')[2] as unknown as string[],
-      color: 'bg-[#D4AF37]',
-    },
-    {
-      id: 4,
-      title: t('roadmap.phases')[3],
-      status: 'future',
-      icon: Zap,
-      description: t('roadmap.phaseDescriptions')[3],
-      features: t('roadmap.phaseFeatures')[3] as unknown as string[],
-      color: 'bg-blue-500',
-    },
-  ];
+  const phaseTitles = t('roadmap.phases') as unknown as string[];
+  const phaseDescriptions = t('roadmap.phaseDescriptions') as unknown as string[];
+  const phaseFeatures = t('roadmap.phaseFeatures') as unknown as string[][];
+
+  const phases = phaseTitles.map((title, index) => ({
+    id: index + 1,
+    title,
+    status: PHASE_STATUS[index] || 'future',
+    icon: PHASE_ICONS[index] || Server,
+    description: phaseDescriptions[index],
+    features: phaseFeatures[index] || [],
+  }));
 
   const milestones = [
     {
@@ -69,13 +47,11 @@ export default function RoadmapPage() {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'completed':
-        return <Badge className="bg-green-500 text-white">{t('roadmap.completed')}</Badge>;
+        return <Badge className="bg-emerald-500 text-white">{t('roadmap.completed')}</Badge>;
       case 'current':
         return <Badge className="bg-[#D4AF37] text-[#0A0A0A]">{t('roadmap.inProgress')}</Badge>;
-      case 'upcoming':
-        return <Badge className="bg-[#D4AF37] text-[#0A0A0A]">{t('roadmap.upcoming')}</Badge>;
       case 'future':
-        return <Badge className="bg-blue-500 text-white">{t('roadmap.future')}</Badge>;
+        return <Badge className="bg-slate-600 text-white">{t('roadmap.upcoming')}</Badge>;
       default:
         return null;
     }
@@ -83,11 +59,7 @@ export default function RoadmapPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0A0A0A] via-[#1a1a1a] to-[#0A0A0A]">
-      <PageHeader 
-        title={t('roadmap.title')} 
-        subtitle={t('roadmap.subtitle')}
-      />
-      
+
       <main className="container mx-auto px-4 py-12">
         {/* Hero Section */}
         <section className="text-center mb-16">
@@ -102,21 +74,20 @@ export default function RoadmapPage() {
         {/* Roadmap Timeline */}
         <section className="mb-16">
           <div className="space-y-8">
-            {phases.map((phase, index) => (
+            {phases.map((phase) => (
               <div key={phase.id} className="relative">
-                {/* Timeline Line - removed for first 3 sections */}
-                
                 <Card className={`glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-all duration-300 card-mobile-full ${
                   phase.status === 'current' ? 'ring-2 ring-[#D4AF37]/20' : ''
                 }`}>
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div className="flex items-center space-x-4">
-                        <div className="w-16 h-16 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#B8860B] flex items-center justify-center">
+                        <div className="w-16 h-16 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#B8860B] flex items-center justify-center flex-shrink-0">
                           <phase.icon className="w-8 h-8 text-[#0A0A0A]" />
                         </div>
                         <div>
-                          <CardTitle className="text-2xl text-slate-100 flex items-center gap-3">
+                          <CardTitle className="text-2xl text-slate-100 flex items-center gap-3 flex-wrap">
+                            <span className="text-sm text-slate-500 font-mono">{`0${phase.id}`}</span>
                             {phase.title}
                             {getStatusBadge(phase.status)}
                           </CardTitle>
@@ -144,7 +115,7 @@ export default function RoadmapPage() {
         </section>
 
         {/* Key Milestones */}
-        <section className="mb-16">
+        <section>
           <h2 className="text-3xl font-bold text-center mb-12">
             <span className="text-gradient-gold">{t('roadmap.keyMilestones')}</span>
           </h2>
@@ -165,38 +136,6 @@ export default function RoadmapPage() {
               </Card>
             ))}
           </div>
-        </section>
-
-        {/* Progress Overview */}
-        <section>
-          <Card className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-all duration-300 card-mobile-full">
-            <CardHeader className="text-center">
-              <CardTitle className="text-2xl text-slate-100">{t('roadmap.developmentProgress')}</CardTitle>
-              <CardDescription className="text-slate-300">
-                {t('roadmap.developmentProgressDescription')}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-[#D4AF37] mb-2">100%</div>
-                  <div className="text-sm text-slate-300">{t('roadmap.phaseComplete')}</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-[#D4AF37] mb-2">100%</div>
-                  <div className="text-sm text-slate-300">{t('roadmap.phaseProgress')}</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-[#D4AF37] mb-2">60%</div>
-                  <div className="text-sm text-slate-300">{t('roadmap.phasePlanning')}</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-[#D4AF37] mb-2">0%</div>
-                  <div className="text-sm text-slate-300">{t('roadmap.phaseResearch')}</div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
         </section>
 
       </main>

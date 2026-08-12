@@ -2,11 +2,22 @@
 
 import { useLanguage } from './LanguageProvider';
 import { Badge } from '@/components/ui/badge';
-import { Server, Coins, Globe, ExternalLink, Copy } from 'lucide-react';
+import { Server, Coins, Globe, ExternalLink, Copy, AlertTriangle } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { TOKEN_INFO, LINKS } from '@/content/config';
 
 const PLATFORM_API = 'https://app.gstdtoken.com/api/v1';
+
+// Fields confirmed real in gstdcoin/ai frontend/src/pages/api/v1/stats/public.ts —
+// never fill these with placeholder/simulated numbers if the fetch fails.
+interface NetworkStats {
+  nodes_online: number;
+  total_registered: number;
+  total_tasks_completed: number;
+  queue_depth: number;
+  total_gstd_paid: number;
+  protocol_treasury_gstd: number;
+}
 
 function CopyButton({ text }: { text: string }) {
   const [copied, setCopied] = useState(false);
@@ -31,7 +42,8 @@ function CopyButton({ text }: { text: string }) {
 
 export function LiveNetworkStatus() {
   const { t } = useLanguage();
-  const [nodesOnline, setNodesOnline] = useState<number | null>(null);
+  const [stats, setStats] = useState<NetworkStats | null>(null);
+  const [unavailable, setUnavailable] = useState(false);
   const [fetchedAt, setFetchedAt] = useState<string | null>(null);
 
   useEffect(() => {
@@ -40,29 +52,35 @@ export function LiveNetworkStatus() {
         const res = await fetch(`${PLATFORM_API}/stats/public`, { cache: 'no-store' });
         if (res.ok) {
           const data = await res.json();
-          setNodesOnline(data.nodes_online ?? data.active_workers ?? 0);
+          setStats(data);
+          setUnavailable(false);
           setFetchedAt(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+        } else {
+          setUnavailable(true);
         }
-      } catch (_e) {}
+      } catch (_e) {
+        setUnavailable(true);
+      }
     };
     fetchStats();
     const interval = setInterval(fetchStats, 60_000);
     return () => clearInterval(interval);
   }, []);
 
+  const nodesOnline = stats?.nodes_online ?? null;
   const networkStatusTitle = t('networkStatus.title') as string;
 
   const CHAINS = [
-    { name: 'TON', status: 'active', detail: 'Primary Chain' },
-    { name: 'Solana', status: 'active', detail: '60K tokens' },
-    { name: 'XRPL', status: 'active', detail: '20K tokens' },
+    { name: 'TON', status: 'active', detail: 'Live — jetton, settlement, treasury' },
+    { name: 'Solana', status: 'building', detail: 'Bridge in development, no live vault' },
+    { name: 'XRPL', status: 'building', detail: 'Bridge in development, no live vault' },
   ];
 
   const PROTOCOL_STAGES = [
     { label: 'Node Network', status: 'live', badge: 'Live' },
-    { label: 'TON Token', status: 'live', badge: 'Tradeable' },
-    { label: 'Fine-Tuning Marketplace', status: 'live', badge: 'Live' },
-    { label: 'On-chain Settlement', status: 'roadmap', badge: 'Roadmap' },
+    { label: 'On-chain Settlement', status: 'live', badge: 'Live (85/10/5)' },
+    { label: 'Fine-Tuning Pipeline', status: 'live', badge: 'Live, limited' },
+    { label: 'Cross-chain Bridge', status: 'building', badge: 'In Development' },
   ];
 
   const stageColor = (s: string) =>
@@ -92,6 +110,15 @@ export function LiveNetworkStatus() {
             Live{fetchedAt ? ` · ${fetchedAt}` : ''}
           </div>
         </div>
+
+        {unavailable && (
+          <div className="flex items-start gap-2.5 mb-6 rounded-xl border border-amber-500/25 bg-amber-500/5 px-4 py-3">
+            <AlertTriangle className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
+            <p className="text-amber-200/90 text-sm">
+              {(t('networkStatus.unavailableNote') as string) || 'The live API is temporarily unreachable. This panel never shows simulated numbers.'}
+            </p>
+          </div>
+        )}
 
         {/* Main metrics row */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
@@ -136,7 +163,7 @@ export function LiveNetworkStatus() {
               {CHAINS.map((chain) => (
                 <div key={chain.name} className="flex items-center justify-between">
                   <div className="flex items-center gap-1.5">
-                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                    <div className={`w-1.5 h-1.5 rounded-full ${chain.status === 'active' ? 'bg-emerald-400' : 'bg-amber-400'}`} />
                     <span className="text-xs font-semibold text-slate-200">{chain.name}</span>
                   </div>
                   <span className="text-[10px] text-slate-500">{chain.detail}</span>

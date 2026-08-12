@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { useLanguage } from '@/components/LanguageProvider';
-import { PageHeader } from '@/components/PageHeader';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -76,10 +75,6 @@ export default function TokenPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0A0A0A] via-[#1a1a1a] to-[#0A0A0A]">
-      <PageHeader
-        title={t('tokenSectionTitle')}
-        subtitle={t('tokenBullets')[0]}
-      />
 
       <main className="container mx-auto px-4 py-12">
         {/* Token Overview */}

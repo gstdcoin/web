@@ -3,6 +3,8 @@ import { Inter, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import { defaultMetadata } from '@/lib/seo';
 import { LanguageProvider } from '@/components/LanguageProvider';
+import { Navbar } from '@/components/Navbar';
+import { Footer } from '@/components/Footer';
 
 const inter = Inter({
   subsets: ['latin', 'cyrillic'],
@@ -33,7 +35,7 @@ export default function RootLayout({
               "name": "GSTD Token",
               "url": "https://gstdtoken.com",
               "logo": "https://gstdtoken.com/logogstd.png",
-              "description": "Decentralized AI compute network on TON. Pay GSTD for AI inference. Run a node, earn 90% of fees.",
+              "description": "Open AI compute network on TON. Pay GSTD for AI inference. Run a node, earn 85% of fees on-chain.",
               "sameAs": [
                 "https://t.me/gstdtoken",
                 "https://x.com/gstdtoken",
@@ -50,7 +52,7 @@ export default function RootLayout({
               "@type": "WebSite",
               "name": "GSTD Token",
               "url": "https://gstdtoken.com",
-              "description": "Decentralized AI compute network on TON. Pay GSTD for AI inference. Run a node, earn 90% of fees.",
+              "description": "Open AI compute network on TON. Pay GSTD for AI inference. Run a node, earn 85% of fees on-chain.",
               "potentialAction": {
                 "@type": "SearchAction",
                 "target": "https://gstdtoken.com/search?q={search_term_string}",
@@ -62,7 +64,11 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <LanguageProvider>
-          {children}
+          <div className="min-h-screen flex flex-col">
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
         </LanguageProvider>
       </body>
     </html>

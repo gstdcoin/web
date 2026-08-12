@@ -25,11 +25,13 @@ export function Navbar() {
   }, []);
 
   const navItems = [
-    { key: 'home', href: '/' },
-    { key: 'about', href: '/about' },
+    { key: 'network', href: '/' },
+    { key: 'nodes', href: '/nodes' },
+    { key: 'ai', href: '/ai' },
     { key: 'token', href: '/token' },
-    { key: 'buy', href: '/buy' },
-    { key: 'roadmap', href: '/roadmap' },
+    { key: 'treasury', href: '/treasury' },
+    { key: 'developers', href: '/developers' },
+    { key: 'docs', href: '/docs' },
   ];
 
   return (
@@ -59,13 +61,13 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation - Classic Gold Stroke */}
-          <div className="hidden md:flex items-center justify-center flex-1 gap-6 lg:gap-8 px-4">
+          <div className="hidden md:flex items-center justify-center flex-1 gap-4 lg:gap-6 px-4">
             {navItems.map((item) => (
               <Link
                 key={item.key}
                 href={item.href}
                 className={cn(
-                  "text-base font-medium transition-all duration-300 whitespace-nowrap",
+                  "text-sm font-medium transition-all duration-300 whitespace-nowrap",
                   "text-slate-100 hover:text-[#D4AF37]",
                   "border-b border-transparent hover:border-[#D4AF37]/30",
                   "pb-1 hover:pb-0.5"
@@ -76,12 +78,17 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* Language Switcher & CTA */}
-          <div className="hidden md:flex items-center space-x-4">
+          {/* Language Switcher & CTAs */}
+          <div className="hidden md:flex items-center space-x-3">
             <LanguageSwitcher />
+            <Button variant="outline" className="border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/50" size="sm" asChild>
+              <Link href="/nodes">
+                {t('nav.runNode')}
+              </Link>
+            </Button>
             <Button className="bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30 hover:bg-[#D4AF37]/30 hover:border-[#D4AF37]/50" size="sm" asChild>
               <a href={LINKS.stonfiSwap} target="_blank" rel="noopener noreferrer">
-                {t('ctaPrimary')}
+                {t('nav.useGstd')}
               </a>
             </Button>
           </div>
@@ -123,11 +130,16 @@ export function Navbar() {
                   </Link>
                 ))}
               </div>
-              {/* CTA Button in Grid */}
-              <div className="mt-3">
+              {/* CTA Buttons in Grid */}
+              <div className="mt-3 grid grid-cols-2 gap-2">
+                <Button variant="outline" className="border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 w-full" size="sm" asChild>
+                  <Link href="/nodes" onClick={() => setIsOpen(false)}>
+                    {t('nav.runNode')}
+                  </Link>
+                </Button>
                 <Button className="bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30 hover:bg-[#D4AF37]/30 hover:border-[#D4AF37]/50 w-full" size="sm" asChild>
                   <a href={LINKS.stonfiSwap} target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
-                    {t('ctaPrimary')}
+                    {t('nav.useGstd')}
                   </a>
                 </Button>
               </div>

@@ -10,10 +10,14 @@ export function Footer() {
   const { t } = useLanguage();
 
   const footerLinks = [
-    { key: 'about', href: '/about' },
+    { key: 'nodes', href: '/nodes' },
+    { key: 'ai', href: '/ai' },
     { key: 'token', href: '/token' },
-    { key: 'buy', href: '/buy' },
+    { key: 'treasury', href: '/treasury' },
+    { key: 'developers', href: '/developers' },
+    { key: 'docs', href: '/docs' },
     { key: 'roadmap', href: '/roadmap' },
+    { key: 'about', href: '/about' },
     { key: 'legal', href: '/legal' },
   ];
 

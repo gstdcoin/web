@@ -3,7 +3,7 @@
 import { useLanguage } from './LanguageProvider';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { CheckCircle2, ArrowLeftRight } from 'lucide-react';
+import { CheckCircle2, ArrowLeftRight, Construction } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export function MultichainBridge() {
@@ -62,10 +62,15 @@ export function MultichainBridge() {
                       <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${colorClass} flex items-center justify-center text-3xl group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                         {icon}
                       </div>
-                      {network.status === 'active' && (
+                      {network.status === 'active' ? (
                         <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
                           <CheckCircle2 className="w-3 h-3 mr-1" />
                           {(t('networkStatus.active') as string) || 'Active'}
+                        </Badge>
+                      ) : (
+                        <Badge className="bg-amber-500/20 text-amber-400 border-amber-500/30">
+                          <Construction className="w-3 h-3 mr-1" />
+                          In Development
                         </Badge>
                       )}
                     </div>
@@ -120,15 +125,15 @@ export function MultichainBridge() {
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="text-center md:text-right">
                 <div className="text-sm text-slate-200 mb-1">Status</div>
-                <Badge className="bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30 text-lg px-4 py-2">
-                  <CheckCircle2 className="w-4 h-4 mr-2" />
+                <Badge className="bg-amber-500/20 text-amber-400 border-amber-500/30 text-base px-4 py-2">
+                  <Construction className="w-4 h-4 mr-2" />
                   {bridge.status}
                 </Badge>
               </div>
-              
+
               <div className="text-center md:text-right">
-                <div className="text-sm text-slate-200 mb-1">Transaction Time</div>
-                <div className="text-2xl font-bold text-[#D4AF37]">
+                <div className="text-sm text-slate-200 mb-1">Live Transfers</div>
+                <div className="text-lg font-bold text-[#D4AF37]">
                   {bridge.time}
                 </div>
               </div>

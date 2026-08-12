@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { useLanguage } from '@/components/LanguageProvider';
-import { PageHeader } from '@/components/PageHeader';
 import { HowToSteps } from '@/components/HowToSteps';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -32,10 +31,6 @@ export default function BuyPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0A0A0A] via-[#1a1a1a] to-[#0A0A0A]">
-      <PageHeader 
-        title={t('buyTitle')} 
-        subtitle={t('buy.subtitle')}
-      />
       
       <main className="container mx-auto px-4 py-12">
         {/* Quick Buy Section */}

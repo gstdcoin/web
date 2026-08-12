@@ -1,7 +1,6 @@
 'use client';
 
 import { useLanguage } from '@/components/LanguageProvider';
-import { PageHeader } from '@/components/PageHeader';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Shield, Users, Zap, Target } from 'lucide-react';
@@ -34,10 +33,6 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0A0A0A] via-[#1a1a1a] to-[#0A0A0A]">
-      <PageHeader 
-        title={t('about.title')} 
-        subtitle={t('about.subtitle')}
-      />
       
       <main className="container mx-auto px-4 py-12">
         {/* Anchor for how-it-works */}

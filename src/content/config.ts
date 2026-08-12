@@ -43,3 +43,37 @@ export const SOCIAL_LINKS = {
   github: "https://github.com/gstdcoin",
   docs: "/advantages"
 };
+
+// Verified against source (gstdcoin/gstdbot README + src/naas/hardware_profiler.ts).
+// Do not rename these tiers or invent hardware minimums — only what the repo documents.
+export const NODE_TIERS = [
+  { name: "Spark", multiplier: "×0 – 0.75", modules: 2 },
+  { name: "Flame", multiplier: "×0.75 – 1.5", modules: 4 },
+  { name: "Storm", multiplier: "×1.5 – 2.5", modules: 6 },
+  { name: "Titan", multiplier: "×2.5 – 4.0", modules: 8 },
+  { name: "Sovereign", multiplier: "×4.0+", modules: "Unlimited" },
+];
+
+// Verified: gstdcoin/gstdbot README "Supported AI Models" table (inference, via node network).
+export const INFERENCE_MODELS = [
+  "llama-3.3-70b", "llama-3.1-8b", "llama-4-scout", "qwen3-32b",
+  "kimi-k2", "gpt-oss-120b", "gpt-oss-20b", "mixtral-8x7b",
+];
+
+// Verified: gstdcoin/ai frontend/src/pages/api/v1/training/jobs.ts SUPPORTED_MODELS.
+// Only qwen2.5:0.5b is confirmed live end-to-end as of the last check.
+export const FINETUNE_MODELS = [
+  "llama3.1:8b", "llama3.2:3b", "llama3.2:1b",
+  "qwen2.5:7b", "qwen2.5:3b", "qwen2.5:0.5b",
+  "mistral:7b", "phi3:mini", "gemma2:2b",
+];
+
+// Verified on-chain: gstdcoin/contracts SettlementMaster.tact, deployed on TON mainnet.
+export const REVENUE_SPLIT = {
+  node: 85,
+  treasury: 10,
+  buybackBurn: 5,
+};
+
+export const GITHUB_ORG = "gstdcoin";
+export const GITHUB_REPOS = ["ai", "web", "gstdbot", "A2A", "gstd-bridge", "contracts"];

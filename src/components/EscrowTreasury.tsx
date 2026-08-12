@@ -3,7 +3,7 @@
 import { useLanguage } from './LanguageProvider';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Shield, Coins, Clock } from 'lucide-react';
+import { Shield, Coins, Clock, Gem } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export function EscrowTreasury() {
@@ -91,6 +91,41 @@ export function EscrowTreasury() {
             </Card>
           </motion.div>
         </div>
+
+        {/* Reserve Assets — treasury XAUt language, strictly no backing/guarantee claims */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5 }}
+          className="mb-8"
+        >
+          <Card className="glass-institutional border-[#D4AF37]/30 shadow-lg max-w-3xl mx-auto card-mobile-full">
+            <CardHeader>
+              <div className="flex items-center space-x-3">
+                <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#D4AF37] to-[#B8860B] flex items-center justify-center">
+                  <Gem className="w-6 h-6 text-[#0A0A0A]" />
+                </div>
+                <CardTitle className="text-2xl text-slate-100">
+                  {escrowTreasury?.reserveAssets?.title || 'Reserve Assets'}
+                </CardTitle>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <CardDescription className="text-slate-200" style={{ lineHeight: '1.7' }}>
+                {escrowTreasury?.reserveAssets?.description}
+              </CardDescription>
+              <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 px-4 py-3">
+                <p className="text-amber-200/90 text-sm" style={{ lineHeight: '1.6' }}>
+                  {escrowTreasury?.reserveAssets?.status}
+                </p>
+              </div>
+              <p className="text-slate-400 text-xs" style={{ lineHeight: '1.6' }}>
+                {escrowTreasury?.reserveAssets?.disclaimer}
+              </p>
+            </CardContent>
+          </Card>
+        </motion.div>
 
         {/* Night Audit */}
         <motion.div
