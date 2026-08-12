@@ -1,4 +1,7 @@
 import createNextIntlPlugin from 'next-intl/plugin';
+import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare';
+
+initOpenNextCloudflareForDev();
 
 const withNextIntl = createNextIntlPlugin('./src/lib/i18n.ts');
 
@@ -8,8 +11,10 @@ const nextConfig = {
     optimizePackageImports: ['lucide-react'],
   },
 
-  // Optimize images for low memory
+  // Unoptimized to avoid Cloudflare Images (a paid add-on); images are
+  // already pre-built as webp/svg in /public.
   images: {
+    unoptimized: true,
     domains: ['localhost'],
     formats: ['image/webp'],
     minimumCacheTTL: 60,
@@ -24,39 +29,28 @@ const nextConfig = {
 
   poweredByHeader: false,
 
-  // Memory optimization
-  // Webpack optimizations for low memory
-  webpack: (config, { isServer, dev }) => {
-    // Reduce memory usage during build
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'X-XSS-Protection', value: '1; mode=block' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+        ],
+      },
+    ];
+  },
+
+  webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {
         ...config.resolve.fallback,
         fs: false,
         net: false,
         tls: false,
-      };
-    }
-
-    // Optimize for production builds
-    if (!dev) {
-      config.optimization = {
-        ...config.optimization,
-        splitChunks: {
-          chunks: 'all',
-          cacheGroups: {
-            default: {
-              minChunks: 2,
-              priority: -20,
-              reuseExistingChunk: true,
-            },
-            vendor: {
-              test: /[\\/]node_modules[\\/]/,
-              name: 'vendors',
-              priority: -10,
-              chunks: 'all',
-            },
-          },
-        },
       };
     }
 

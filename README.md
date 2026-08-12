@@ -1,7 +1,7 @@
 # GSTD — Decentralized AI Compute & Fine-Tuning Network
 
 > The landing page for [gstdtoken.com](https://gstdtoken.com)  
-> Built with Next.js 15, Tailwind CSS, deployed on Vercel.
+> Built with Next.js 15, Tailwind CSS, deployed on Cloudflare Workers.
 
 ---
 
@@ -43,7 +43,7 @@ Bridge validators run on TON, Solana, and XRPL. The bridge uses MPC threshold si
 | Frontend | Next.js 15 (App Router), TypeScript |
 | Styling | Tailwind CSS, shadcn/ui, Framer Motion |
 | i18n | English + Russian |
-| Hosting | Vercel (free tier) |
+| Hosting | Cloudflare Workers (free tier) |
 | Network stats | Live from `app.gstdtoken.com/api/v1/stats` |
 
 ---
@@ -56,6 +56,25 @@ cd web
 npm install
 npm run dev
 # → http://localhost:3000
+```
+
+---
+
+## Deploy (Cloudflare Workers)
+
+Push to `main` → Cloudflare's Git integration auto-builds and deploys (see [docs/CLOUDFLARE_DEPLOY.md](docs/CLOUDFLARE_DEPLOY.md)).
+
+Manual deploy:
+
+```bash
+npx wrangler login   # once, opens browser auth
+npm run cf:deploy
+```
+
+Local preview of the production Worker build:
+
+```bash
+npm run cf:preview
 ```
 
 ---
