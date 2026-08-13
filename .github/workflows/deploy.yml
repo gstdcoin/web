@@ -14,7 +14,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
 
       - name: Install dependencies
@@ -31,6 +31,9 @@ jobs:
           command: deploy
           # Without this, wrangler-action installs its own default (3.90.0),
           # which doesn't read wrangler.jsonc the way OpenNext's config
-          # needs and fails with "Missing entry-point". Match package.json's
-          # wrangler ^4.86.0.
-          wranglerVersion: '4'
+          # needs and fails with "Missing entry-point". "4" alone resolved
+          # to 4.86.0, which hits a Miniflare/workerd internal SQLite crash
+          # during `opennextjs-cloudflare deploy`'s getPlatformProxy() call
+          # ("table _cf_ALARM has 3 columns but 2 values were supplied").
+          # Pin the exact version already proven working in manual deploys.
+          wranglerVersion: '4.122.0'
