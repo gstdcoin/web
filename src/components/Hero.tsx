@@ -75,9 +75,9 @@ export function Hero() {
                 className="border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/50 w-full sm:w-auto"
                 asChild
               >
-                <a href={LINKS.platform} target="_blank" rel="noopener noreferrer">
+                <Link href="/ai">
                   {t('hero.useNetwork')}
-                </a>
+                </Link>
               </Button>
               <Button
                 variant="outline"

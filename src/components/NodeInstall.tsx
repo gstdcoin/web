@@ -117,7 +117,7 @@ export function NodeInstall() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
             <Button className="bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30 hover:bg-[#D4AF37]/30 hover:border-[#D4AF37]/50 hover:shadow-[0_0_20px_rgba(212,175,55,0.3)]" asChild>
-              <a href={LINKS.app} target="_blank" rel="noopener noreferrer">
+              <a href={`${LINKS.github}/gstdbot`} target="_blank" rel="noopener noreferrer">
                 <Github className="w-4 h-4 mr-2" />
                 {ni?.ctaGithub || 'View on GitHub'}
               </a>

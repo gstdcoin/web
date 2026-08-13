@@ -38,8 +38,8 @@ export function FeatureCards() {
       title: t('ecosystem.finetune.title'),
       description: t('ecosystem.finetune.description'),
       gradient: 'from-violet-500 to-indigo-600',
-      href: 'https://app.gstdtoken.com/training',
-      badge: '✨ Live',
+      href: '/ai',
+      badge: null as string | null,
     },
   ];
 
