@@ -10,6 +10,11 @@ export const SITE = {
 
 export const LINKS = {
   telegram: "https://t.me/gstdtoken",
+  // The actual functional bot (chat, mobile-node earning, wallet) --
+  // distinct from `telegram` above, which is the announcements/discussion
+  // channel. Runs against the node network directly; stays usable even if
+  // app.gstdtoken.com is down, unlike aiChat/platform/app below.
+  telegramBot: "https://t.me/GstdAppBot",
   twitter: "https://x.com/gstdtoken",
   github: "https://github.com/gstdcoin",
   docs: "/advantages",

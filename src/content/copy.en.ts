@@ -56,6 +56,7 @@ export default {
     longDescription: 'GSTD is an open protocol for decentralized AI inference and distributed computing. Anyone can run a node, contribute compute and earn GSTD for completed workloads.',
     deployNode: 'Run a Node',
     useNetwork: 'Use the Network',
+    tryBot: 'Try it in Telegram',
     viewGithub: 'View GitHub',
     fineTuneModels: 'Fine-Tune Models',
     tags: ['Open', 'Distributed', 'AI Compute', 'Node Rewards', 'Open Source'],

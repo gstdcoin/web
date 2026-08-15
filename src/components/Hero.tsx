@@ -81,6 +81,17 @@ export function Hero() {
               </Button>
               <Button
                 variant="outline"
+                className="border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/50 w-full sm:w-auto"
+                asChild
+              >
+                {/* Runs against the node network directly -- the one entry
+                    point that keeps working even when app.gstdtoken.com doesn't. */}
+                <a href={LINKS.telegramBot} target="_blank" rel="noopener noreferrer">
+                  {t('hero.tryBot')}
+                </a>
+              </Button>
+              <Button
+                variant="outline"
                 className="border-white/15 text-white/80 hover:bg-white/5 hover:border-white/30 w-full sm:w-auto"
                 asChild
               >
