@@ -87,7 +87,7 @@ export function NodeEconomy() {
 
         <div className="text-center">
           <Button className="bg-[#D4AF37] text-[#0A0A0A] hover:bg-[#B8860B] font-semibold" asChild>
-            <a href="/nodes">{ne?.cta || 'Run a Node'}</a>
+            <a href="#install">{ne?.cta || 'Run a Node'}</a>
           </Button>
         </div>
       </div>

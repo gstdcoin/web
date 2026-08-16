@@ -23,7 +23,7 @@ export function NodeInstall() {
   const ni = t('nodeInstall') as any;
 
   return (
-    <section className="py-16 md:py-24 bg-[#0A0A0A] relative overflow-hidden">
+    <section id="install" className="py-16 md:py-24 bg-[#0A0A0A] relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#D4AF37]/5 via-transparent to-transparent pointer-events-none" />
 
