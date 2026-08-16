@@ -91,12 +91,23 @@ export async function POST(req: Request) {
   }
 
   // Every known seed failed -- try the Workers AI fallback before giving up.
+  // Streaming only: node-served responses above are already fast/local-ish
+  // relative to a browser round trip and JSON is simpler to keep correct
+  // there; this is the path actually active right now (all seeds offline),
+  // so it's the one worth the token-by-token UX.
+  const wantsStream = body.stream === true;
   try {
     const { env } = await getCloudflareContext({ async: true });
     const ai = (env as any).AI;
     if (ai) {
       for (const model of WORKERS_AI_MODELS) {
         try {
+          if (wantsStream) {
+            const stream = await ai.run(model, { messages: body.messages, stream: true });
+            return new Response(stream as ReadableStream, {
+              headers: { 'content-type': 'text/event-stream', 'x-served-by': 'fallback (no node online)', 'x-model': model },
+            });
+          }
           const result = await ai.run(model, { messages: body.messages });
           if (result?.response) {
             return NextResponse.json({
