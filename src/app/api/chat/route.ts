@@ -83,6 +83,14 @@ export async function POST(req: Request) {
         errors.push(`${nodeUrl}: HTTP ${resp.status}`);
         continue;
       }
+      // gstdbot's own /v1/chat/completions honors `stream` and returns real
+      // SSE (see gstdbot-full/src/gateway/server.ts) -- pass it straight
+      // through rather than trying to json-parse a streaming body.
+      if (resp.headers.get('content-type')?.includes('text/event-stream')) {
+        return new Response(resp.body, {
+          headers: { 'content-type': 'text/event-stream', 'x-served-by': nodeUrl },
+        });
+      }
       const data = await resp.json();
       return NextResponse.json({ ...data, _servedBy: nodeUrl });
     } catch (e) {

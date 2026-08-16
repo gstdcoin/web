@@ -36,19 +36,56 @@ export function LiveChat() {
       const resp = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ model: 'qwen2.5:0.5b', messages: next }),
+        body: JSON.stringify({ model: 'qwen2.5:0.5b', messages: next, stream: true }),
       });
-      const data = await resp.json();
 
       if (!resp.ok) {
+        const data = await resp.json().catch(() => ({}));
         setMessages([...next, { role: 'assistant', content: `⚠️ ${data.message || 'The node network is unreachable right now.'}` }]);
         setServedBy(null);
         return;
       }
 
-      const content = data.choices?.[0]?.message?.content || '(empty response)';
-      setMessages([...next, { role: 'assistant', content }]);
-      setServedBy(data._servedBy || null);
+      setServedBy(resp.headers.get('x-served-by'));
+
+      // Stream token-by-token: SSE lines of `data: {...}`, ending `data: [DONE]`.
+      // Chunk shape follows OpenAI's chat.completion.chunk format
+      // (choices[0].delta.content) -- verified live against the actual
+      // Workers AI response, not assumed from docs.
+      const reader = resp.body?.getReader();
+      if (!reader) throw new Error('No response body');
+      const decoder = new TextDecoder();
+      let buffer = '';
+      let content = '';
+      setMessages([...next, { role: 'assistant', content: '' }]);
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop() || '';
+        for (const line of lines) {
+          const trimmed = line.trim();
+          if (!trimmed.startsWith('data: ')) continue;
+          const payload = trimmed.slice(6);
+          if (payload === '[DONE]') continue;
+          try {
+            const chunk = JSON.parse(payload);
+            const delta = chunk.choices?.[0]?.delta?.content;
+            if (delta) {
+              content += delta;
+              setMessages([...next, { role: 'assistant', content }]);
+            }
+          } catch {
+            // partial/non-JSON line, skip
+          }
+        }
+      }
+
+      if (!content) {
+        setMessages([...next, { role: 'assistant', content: '(empty response)' }]);
+      }
     } catch {
       setMessages([...next, { role: 'assistant', content: '⚠️ Could not reach the node network. Try again shortly.' }]);
       setServedBy(null);
