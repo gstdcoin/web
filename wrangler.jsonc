@@ -13,5 +13,8 @@
 			"binding": "WORKER_SELF_REFERENCE",
 			"service": "gstd-web"
 		}
-	]
+	],
+	"ai": {
+		"binding": "AI"
+	}
 }

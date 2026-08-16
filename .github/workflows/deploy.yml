@@ -21,7 +21,16 @@ jobs:
         run: npm install
 
       - name: Build for Cloudflare Workers
+        # CLOUDFLARE_API_TOKEN/ACCOUNT_ID needed here (not just in the Deploy
+        # step below) because of the "ai" binding in wrangler.jsonc --
+        # next.config.mjs's initOpenNextCloudflareForDev() runs on every
+        # `next build`, and unlike KV/D1/R2, Workers AI can't be emulated
+        # locally: it opens a remote proxy session to Cloudflare even at
+        # build time, which fails without these.
         run: npx opennextjs-cloudflare build
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
       - name: Deploy
         uses: cloudflare/wrangler-action@v3

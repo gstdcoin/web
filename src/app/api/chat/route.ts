@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { getCloudflareContext } from '@opennextjs/cloudflare';
 
 // Proxies chat requests directly to a live GSTD node, bypassing
 // app.gstdtoken.com entirely. gstdtoken.com runs on Cloudflare Workers,
@@ -11,6 +12,16 @@ import { NextResponse } from 'next/server';
 // (see peers.ts) is the real source of truth once you're inside the
 // network; this is just how a browser, which isn't part of that mesh,
 // finds a first node to talk to.
+//
+// A P2P network with zero volunteer nodes online can't serve anyone --
+// that's a real gap no amount of proxy code fixes by itself. So if every
+// seed node is unreachable, this falls back to Cloudflare Workers AI
+// (same account already hosting this Worker, no new vendor/credentials).
+// Real nodes are always tried first and preferred -- this fallback exists
+// so "talk to the network" is never just dead air waiting for a volunteer
+// to come online, not to replace node-served inference as the intended
+// path.
+const WORKERS_AI_MODEL = '@cf/meta/llama-3.1-8b-instruct';
 const SEED_PEERS_URL =
   'https://raw.githubusercontent.com/gstdcoin/ai/main/gstd-seed-peers.txt';
 const NODE_TIMEOUT_MS = 20_000;
@@ -71,7 +82,28 @@ export async function POST(req: Request) {
     }
   }
 
-  // Every known seed failed -- be honest about it rather than faking a reply.
+  // Every known seed failed -- try the Workers AI fallback before giving up.
+  try {
+    const { env } = await getCloudflareContext({ async: true });
+    const ai = (env as any).AI;
+    if (ai) {
+      const result = await ai.run(WORKERS_AI_MODEL, { messages: body.messages });
+      if (result?.response) {
+        return NextResponse.json({
+          id: `chatcmpl-fallback-${Date.now()}`,
+          object: 'chat.completion',
+          created: Math.floor(Date.now() / 1000),
+          model: WORKERS_AI_MODEL,
+          choices: [{ index: 0, message: { role: 'assistant', content: result.response }, finish_reason: 'stop' }],
+          _servedBy: 'fallback (no node online)',
+        });
+      }
+    }
+  } catch (e) {
+    errors.push(`workers-ai fallback: ${e instanceof Error ? e.message : 'failed'}`);
+  }
+
+  // Fallback unavailable too -- be honest about it rather than faking a reply.
   return NextResponse.json(
     {
       error: 'all_nodes_unreachable',
