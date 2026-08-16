@@ -21,7 +21,7 @@ import { getCloudflareContext } from '@opennextjs/cloudflare';
 // so "talk to the network" is never just dead air waiting for a volunteer
 // to come online, not to replace node-served inference as the intended
 // path.
-const WORKERS_AI_MODEL = '@cf/meta/llama-3.1-8b-instruct';
+const WORKERS_AI_MODEL = '@cf/meta/llama-3.1-8b-instruct-fast';
 const SEED_PEERS_URL =
   'https://raw.githubusercontent.com/gstdcoin/ai/main/gstd-seed-peers.txt';
 const NODE_TIMEOUT_MS = 20_000;
