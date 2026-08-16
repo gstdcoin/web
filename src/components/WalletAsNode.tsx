@@ -32,6 +32,12 @@ export function WalletAsNode() {
           <p className="text-sm md:text-base text-slate-200 max-w-3xl mx-auto mb-8" style={{ lineHeight: '1.7' }}>
             {walletAsNode?.description}
           </p>
+          <a href={LINKS.telegramBot} target="_blank" rel="noopener noreferrer">
+            <Button size="lg" className="bg-gradient-to-r from-[#D4AF37] to-[#B8860B] text-[#0A0A0A] font-semibold hover:opacity-90">
+              {walletAsNode?.cta || 'Open in Telegram'}
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
+          </a>
         </div>
 
         {/* Benefits */}
