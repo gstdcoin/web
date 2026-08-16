@@ -21,7 +21,15 @@ import { getCloudflareContext } from '@opennextjs/cloudflare';
 // so "talk to the network" is never just dead air waiting for a volunteer
 // to come online, not to replace node-served inference as the intended
 // path.
-const WORKERS_AI_MODEL = '@cf/meta/llama-3.1-8b-instruct-fast';
+// Cloudflare deprecates Workers AI model IDs fairly often (already hit once:
+// llama-3.1-8b-instruct-fast turned out to alias a deprecated backend despite
+// docs listing it as current). Try a short list in order instead of betting
+// on one ID staying valid.
+const WORKERS_AI_MODELS = [
+  '@cf/meta/llama-3.2-3b-instruct',
+  '@cf/meta/llama-3.1-8b-instruct',
+  '@cf/mistralai/mistral-small-3.1-24b-instruct',
+];
 const SEED_PEERS_URL =
   'https://raw.githubusercontent.com/gstdcoin/ai/main/gstd-seed-peers.txt';
 const NODE_TIMEOUT_MS = 20_000;
@@ -87,16 +95,22 @@ export async function POST(req: Request) {
     const { env } = await getCloudflareContext({ async: true });
     const ai = (env as any).AI;
     if (ai) {
-      const result = await ai.run(WORKERS_AI_MODEL, { messages: body.messages });
-      if (result?.response) {
-        return NextResponse.json({
-          id: `chatcmpl-fallback-${Date.now()}`,
-          object: 'chat.completion',
-          created: Math.floor(Date.now() / 1000),
-          model: WORKERS_AI_MODEL,
-          choices: [{ index: 0, message: { role: 'assistant', content: result.response }, finish_reason: 'stop' }],
-          _servedBy: 'fallback (no node online)',
-        });
+      for (const model of WORKERS_AI_MODELS) {
+        try {
+          const result = await ai.run(model, { messages: body.messages });
+          if (result?.response) {
+            return NextResponse.json({
+              id: `chatcmpl-fallback-${Date.now()}`,
+              object: 'chat.completion',
+              created: Math.floor(Date.now() / 1000),
+              model,
+              choices: [{ index: 0, message: { role: 'assistant', content: result.response }, finish_reason: 'stop' }],
+              _servedBy: 'fallback (no node online)',
+            });
+          }
+        } catch (e) {
+          errors.push(`workers-ai ${model}: ${e instanceof Error ? e.message : 'failed'}`);
+        }
       }
     }
   } catch (e) {
