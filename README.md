@@ -10,29 +10,27 @@
 GSTD is a DePIN (Decentralized Physical Infrastructure Network) where anyone can:
 
 - **Run a node** — earn GSTD by serving AI inference requests and hosting blockchain RPC nodes
-- **Fine-tune models** — submit a dataset, distributed nodes train a LoRA adapter 10–30× cheaper than cloud
-- **Use AI** — pay with GSTD for inference routed via ThermalRouter to the optimal node
-- **Bridge tokens** between TON, Solana, and XRPL with no custodians
+- **Fine-tune models** — submit a dataset, a distributed node trains a LoRA adapter on it (real adapters have been produced end-to-end; base-model availability is limited)
+- **Use AI** — pay with GSTD for inference routed to available nodes on the network
+- **Bridge tokens** between TON, Solana, and XRPL — TON is live today; the Solana/XRPL bridge is early-stage, unaudited, open-source code that has never moved funds in production
 
 ---
 
 ## Why GSTD is Unique
 
-### 1. ThermalRouter — Entropy-Based AI Routing
-Every inference request is dispatched using information entropy to the statistically optimal node. Not round-robin, not random — pure math. No other DePIN network does this.
+### 1. Federated Fine-Tuning
+Submit a dataset → a distributed node trains a LoRA adapter using QLoRA → download your adapter. The pipeline has produced real, verified adapters end-to-end.
 
-### 2. Federated Fine-Tuning Marketplace
-Submit a JSONL dataset → distributed nodes train a LoRA adapter using QLoRA → quality-gated by MetaCognitive scoring → download your adapter. 10–30× cheaper than OpenAI fine-tuning.
+### 2. Real Revenue Split
+- **85%** of every fee goes directly to node operators, verified on-chain
+- **10%** flows to the protocol treasury
+- **5%** funds buyback & burn
 
-### 3. Real Revenue Split
-- **90%** of every fee goes directly to node operators
-- **10%** flows to the protocol treasury (used for buybacks and development)
+### 3. Any Hardware
+Raspberry Pi, laptop, desktop, server — any device can participate. The node scores your hardware into a tier (Spark through Sovereign) that sets a rewards multiplier. No GPU required — CPU fallback is supported for inference.
 
-### 4. Any Hardware
-Raspberry Pi, laptop, desktop, server — any device can participate. The node detects hardware and activates modules automatically. No GPU required for inference tier.
-
-### 5. Multi-Chain by Design
-Bridge validators run on TON, Solana, and XRPL. The bridge uses MPC threshold signatures — no single party can control or steal funds.
+### 4. Multi-Chain by Design (TON live, bridge in progress)
+TON is live today. A bridge to Solana and XRPL exists as open-source code but is early-stage, unaudited, and has never moved funds in production — treat it as not yet live.
 
 ---
 
