@@ -1,7 +1,10 @@
 import createNextIntlPlugin from 'next-intl/plugin';
 import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare';
 
-initOpenNextCloudflareForDev();
+// Only run wrangler dev proxy during local `next dev` — not during builds
+if (process.env.NODE_ENV === 'development') {
+  initOpenNextCloudflareForDev();
+}
 
 const withNextIntl = createNextIntlPlugin('./src/lib/i18n.ts');
 
@@ -15,7 +18,7 @@ const nextConfig = {
   // already pre-built as webp/svg in /public.
   images: {
     unoptimized: true,
-    domains: ['localhost'],
+    remotePatterns: [{ hostname: 'localhost' }],
     formats: ['image/webp'],
     minimumCacheTTL: 60,
     dangerouslyAllowSVG: false,
