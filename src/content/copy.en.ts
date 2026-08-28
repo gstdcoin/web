@@ -304,7 +304,7 @@ export default {
         '8 inference models shipped in the node client',
       ],
       [
-        'Dataset submission and distributed training pipeline live at app.gstdtoken.com/training',
+        'Dataset submission and distributed training pipeline — available via the GSTD node network',
         'Real LoRA adapters trained end-to-end and verified',
         'Base-model coverage is still limited — check Documentation for what is wired up today',
       ],

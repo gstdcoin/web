@@ -6,17 +6,13 @@ import { Server, Coins, Globe, ExternalLink, Copy, AlertTriangle } from 'lucide-
 import { useEffect, useState } from 'react';
 import { TOKEN_INFO, LINKS } from '@/content/config';
 
-const PLATFORM_API = 'https://app.gstdtoken.com/api/v1';
+const PLATFORM_API = 'https://platform.gstdtoken.com/api/v1';
 
-// Fields confirmed real in gstdcoin/ai frontend/src/pages/api/v1/stats/public.ts —
-// never fill these with placeholder/simulated numbers if the fetch fails.
+// /api/v1/nodes returns { nodes: [...], count: N }
+// never fill with placeholder/simulated numbers if the fetch fails.
 interface NetworkStats {
   nodes_online: number;
-  total_registered: number;
   total_tasks_completed: number;
-  queue_depth: number;
-  total_gstd_paid: number;
-  protocol_treasury_gstd: number;
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -49,10 +45,15 @@ export function LiveNetworkStatus() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await fetch(`${PLATFORM_API}/stats/public`, { cache: 'no-store' });
+        const res = await fetch(`${PLATFORM_API}/nodes`, { cache: 'no-store' });
         if (res.ok) {
           const data = await res.json();
-          setStats(data);
+          const nodes: any[] = data.nodes || [];
+          const mapped: NetworkStats = {
+            nodes_online: data.count ?? nodes.length,
+            total_tasks_completed: nodes.reduce((s: number, n: any) => s + (n.tasks_completed || 0), 0),
+          };
+          setStats(mapped);
           setUnavailable(false);
           setFetchedAt(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
         } else {

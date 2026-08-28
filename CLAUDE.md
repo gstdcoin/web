@@ -3,7 +3,8 @@
 ## Stack
 - **Framework**: Next.js 15 (App Router), TypeScript, Tailwind CSS
 - **Hosting**: Cloudflare Workers, via `@opennextjs/cloudflare` (see [docs/CLOUDFLARE_DEPLOY.md](docs/CLOUDFLARE_DEPLOY.md))
-- Has 3 server API routes (`/api/health`, `/api/stonfi-pool`, `/api/chat`) that proxy external APIs — despite the "no backend" rule below, they exist and run as Worker functions. `/api/chat` is deliberate, not scope creep: it proxies straight to a live node (via the same GitHub-raw seed-peer list gstdbot's own peers.ts bootstraps from), never touching app.gstdtoken.com — the point is that gstdtoken.com, on Cloudflare, keeps serving live chat even during a Vercel-side outage on the platform.
+- Has 3 server API routes (`/api/health`, `/api/stonfi-pool`, `/api/chat`) that proxy external APIs — despite the "no backend" rule below, they exist and run as Worker functions. `/api/chat` is deliberate, not scope creep: it proxies straight to a live node (via the same GitHub-raw seed-peer list gstdbot's own peers.ts bootstraps from), never touching platform.gstdtoken.com — the point is that gstdtoken.com, on Cloudflare, keeps serving live chat independently of any platform outage.
+- **Platform API**: `platform.gstdtoken.com` (Cloudflare Worker + KV) — replaced old `app.gstdtoken.com` (Vercel). Node registry and task queue live there. `/api/stonfi-pool` fetches `/api/v1/nodes` for live node count.
 
 ## Local Dev
 ```bash

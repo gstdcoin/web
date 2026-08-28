@@ -30,7 +30,7 @@ export const LINKS = {
     `https://app.ston.fi/swap?ft=TON&tt=${GSTD_TON_CONTRACT}&amount=1`,
   buyGSDT:
     `https://app.ston.fi/swap?ft=TON&tt=${GSTD_TON_CONTRACT}&amount=1`,
-  launchNodes: "https://app.gstdtoken.com/nodes",
+  launchNodes: "https://platform.gstdtoken.com/api/v1/nodes",
 };
 
 export const TOKEN_INFO = {
