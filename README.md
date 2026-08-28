@@ -42,7 +42,7 @@ TON is live today. A bridge to Solana and XRPL exists as open-source code but is
 | Styling | Tailwind CSS, shadcn/ui, Framer Motion |
 | i18n | English + Russian |
 | Hosting | Cloudflare Workers (free tier) |
-| Network stats | Live from `app.gstdtoken.com/api/v1/stats` |
+| Network stats | Live from `platform.gstdtoken.com/api/v1/nodes` |
 
 ---
 

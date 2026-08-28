@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { GSTD_TON_CONTRACT } from '../../../content/config';
 
 const STONFI_API_BASE = 'https://api.ston.fi';
-const NODE_API_BASE = 'https://app.gstdtoken.com/api/v1';
+const NODE_API_BASE = 'https://platform.gstdtoken.com/api/v1';
 
 export async function GET() {
   try {
@@ -12,7 +12,7 @@ export async function GET() {
         next: { revalidate: 300 },
         headers: { 'Accept': 'application/json' },
       }),
-      fetch(`${NODE_API_BASE}/network/stats`, {
+      fetch(`${NODE_API_BASE}/nodes`, {
         next: { revalidate: 60 },
         headers: { 'Accept': 'application/json' },
       }),
@@ -57,8 +57,11 @@ export async function GET() {
 
     if (networkResponse.status === 'fulfilled' && networkResponse.value.ok) {
       const networkData = await networkResponse.value.json();
-      nodesOnline = networkData.nodes_online || networkData.active_workers || 0;
-      requestsServed = networkData.tasks_completed || networkData.total_requests || 0;
+      // platform.gstdtoken.com/api/v1/nodes returns { nodes: [...], count: N }
+      nodesOnline = networkData.count || networkData.nodes_online || networkData.active_workers || 0;
+      const nodes = networkData.nodes || [];
+      requestsServed = nodes.reduce((sum: number, n: any) => sum + (n.tasks_completed || 0), 0)
+        || networkData.tasks_completed || 0;
       treasuryBalance = networkData.treasury_balance || 0;
     }
 
