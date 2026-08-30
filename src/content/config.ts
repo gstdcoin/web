@@ -10,18 +10,18 @@ export const SITE = {
 
 export const LINKS = {
   telegram: "https://t.me/gstdtoken",
-  // The actual functional bot (chat, mobile-node earning, wallet) --
+  // The actual functional bot (chat, node earning, wallet) --
   // distinct from `telegram` above, which is the announcements/discussion
   // channel. Runs against the node network directly; stays usable even if
   // platform.gstdtoken.com is down, unlike aiChat/platform/app below.
-  telegramBot: "https://t.me/GstdAppBot",
+  telegramBot: "https://t.me/gstdaibot",
   twitter: "https://x.com/gstdtoken",
   github: "https://github.com/gstdcoin",
   docs: "/advantages",
   platform: "https://platform.gstdtoken.com",
-  aiChat: "https://t.me/GstdAppBot",
-  app: "https://platform.gstdtoken.com/api/v1/nodes",
-  monitor: "https://platform.gstdtoken.com/api/v1/nodes",
+  aiChat: "https://t.me/gstdaibot",
+  app: "https://app.gstdtoken.com",
+  monitor: "https://app.gstdtoken.com/nodes",
   chat: "https://t.me/gstdtoken",
   stonfiSwap:
     `https://app.ston.fi/swap?ft=TON&tt=${GSTD_TON_CONTRACT}&amount=1`,
