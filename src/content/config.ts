@@ -20,8 +20,8 @@ export const LINKS = {
   docs: "/advantages",
   platform: "https://platform.gstdtoken.com",
   aiChat: "https://t.me/gstdaibot",
-  app: "https://app.gstdtoken.com",
-  monitor: "https://app.gstdtoken.com/nodes",
+  app: "https://platform.gstdtoken.com",
+  monitor: "https://platform.gstdtoken.com/api/v1/nodes",
   chat: "https://t.me/gstdtoken",
   stonfiSwap:
     `https://app.ston.fi/swap?ft=TON&tt=${GSTD_TON_CONTRACT}&amount=1`,
