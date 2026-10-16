@@ -38,5 +38,5 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: deploy
-          # Pin Wrangler to meet OpenNext 1.20.12's peer requirement for Next 16.4.
-          wranglerVersion: '4.148.0'
+          # Keep the known-good Wrangler version paired with OpenNext 1.20.2.
+          wranglerVersion: '4.122.0'

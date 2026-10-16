@@ -2,7 +2,7 @@
 
 This site runs on Cloudflare Workers via [`@opennextjs/cloudflare`](https://opennext.js.org/cloudflare), which builds the full Next.js app (including the `/api/health` and `/api/stonfi-pool` server routes) into a single Worker. This preserves 100% of the app's functionality — nothing was made static-only.
 
-Free tier covers this site comfortably: 100,000 requests/day, 10ms CPU time per request, unlimited bandwidth.
+The Free plan allows 100,000 requests/day, but each Worker invocation has a 10ms CPU limit. Static pages and APIs must be smoke-tested against the deployed Worker; a successful build does not establish that every route fits this limit.
 
 ## Already deployed once
 
@@ -11,7 +11,7 @@ The site was deployed directly via `wrangler deploy` and is live at:
 
 Verified working: homepage, `/about`, `/api/health`, `/api/stonfi-pool`, and the security headers all respond correctly in production.
 
-The deploy workflow keeps OpenNext, Next.js, and Wrangler on compatible versions. When updating Next.js, use an OpenNext Cloudflare release that explicitly supports it and align Wrangler with that adapter's peer requirement; a successful build alone does not guarantee Worker runtime compatibility.
+The production-tested versions are Next.js 16.3.8, OpenNext Cloudflare 1.20.2, and Wrangler 4.122.0. Keep these versions compatible and run deployed-route smoke tests before upgrading; a successful build alone does not establish Worker runtime compatibility.
 
 ## Option A — GitHub Actions (recommended, auto-deploys on push)
 
