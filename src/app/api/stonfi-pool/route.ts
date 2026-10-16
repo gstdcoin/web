@@ -4,93 +4,81 @@ import { GSTD_TON_CONTRACT } from '../../../content/config';
 const STONFI_API_BASE = 'https://api.ston.fi';
 const NODE_API_BASE = 'https://platform.gstdtoken.com/api/v1';
 
+function toFiniteNumber(value: unknown): number | null {
+  if (typeof value !== 'number' && typeof value !== 'string') return null;
+  if (typeof value === 'string' && !value.trim()) return null;
+  const number = Number(value);
+  return Number.isFinite(number) ? number : null;
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+async function getJson(url: string, revalidate: number): Promise<unknown> {
+  const response = await fetch(url, {
+    next: { revalidate },
+    headers: { Accept: 'application/json' },
+  });
+  if (!response.ok) throw new Error(`${url} returned HTTP ${response.status}`);
+  return response.json();
+}
+
 export async function GET() {
-  try {
-    // Fetch pool data and network stats in parallel
-    const [poolsResponse, networkResponse] = await Promise.allSettled([
-      fetch(`${STONFI_API_BASE}/v1/pools`, {
-        next: { revalidate: 300 },
-        headers: { 'Accept': 'application/json' },
-      }),
-      fetch(`${NODE_API_BASE}/nodes`, {
-        next: { revalidate: 60 },
-        headers: { 'Accept': 'application/json' },
-      }),
-    ]);
+  const [assetResult, poolsResult, networkResult] = await Promise.allSettled([
+    getJson(`${STONFI_API_BASE}/v1/assets/${GSTD_TON_CONTRACT}`, 300),
+    getJson(`${STONFI_API_BASE}/v1/pools`, 300),
+    getJson(`${NODE_API_BASE}/network/stats`, 60),
+  ]);
 
-    let gstdPriceUSD = 0;
-    let poolTVL = 0;
-    let poolFound = false;
+  const assetData = assetResult.status === 'fulfilled' ? assetResult.value : null;
+  const asset = isRecord(assetData) && isRecord(assetData.asset) ? assetData.asset : null;
+  const gstdPriceUSD = toFiniteNumber(
+    asset?.dex_usd_price ?? asset?.dex_price_usd
+  );
 
-    // Parse pool data for GSTD price
-    if (poolsResponse.status === 'fulfilled' && poolsResponse.value.ok) {
-      const poolsData = await poolsResponse.value.json();
-      const gstdPool = Array.isArray(poolsData)
-        ? poolsData.find((pool: any) =>
-            pool.token0_address === GSTD_TON_CONTRACT ||
-            pool.token1_address === GSTD_TON_CONTRACT ||
-            pool.token0?.address === GSTD_TON_CONTRACT ||
-            pool.token1?.address === GSTD_TON_CONTRACT
-          )
-        : null;
+  const poolsData = poolsResult.status === 'fulfilled' ? poolsResult.value : null;
+  const poolList = isRecord(poolsData) && Array.isArray(poolsData.pool_list)
+    ? poolsData.pool_list
+    : null;
+  const poolRecords = poolList?.filter(isRecord) ?? [];
+  const gstdPools = poolRecords.filter(pool =>
+    pool.deprecated !== true &&
+    (pool.token0_address === GSTD_TON_CONTRACT || pool.token1_address === GSTD_TON_CONTRACT)
+  );
+  const poolValues = gstdPools
+    .map(pool => toFiniteNumber(pool.lp_total_supply_usd))
+    .filter((value): value is number => value !== null && value >= 0);
+  const poolTVL = poolList !== null && poolValues.length === gstdPools.length && gstdPools.length > 0
+    ? poolValues.reduce((total, value) => total + value, 0)
+    : null;
 
-      if (gstdPool) {
-        poolFound = true;
-        const reserve0 = parseFloat(gstdPool.reserve0 || gstdPool.token0_reserve || '0');
-        const reserve1 = parseFloat(gstdPool.reserve1 || gstdPool.token1_reserve || '0');
-        const token0Decimals = parseInt(gstdPool.token0?.decimals || '9');
-        const token1Decimals = parseInt(gstdPool.token1?.decimals || '9');
-        const gstdAmount = reserve0 / Math.pow(10, token0Decimals);
-        const tonAmount = reserve1 / Math.pow(10, token1Decimals);
-        const tonPrice = 5; // approximate
-        if (gstdAmount > 0 && tonAmount > 0) {
-          gstdPriceUSD = (tonAmount * tonPrice) / gstdAmount;
-          poolTVL = (gstdAmount * gstdPriceUSD) + (tonAmount * tonPrice);
-        }
-      }
-    }
+  const networkData = networkResult.status === 'fulfilled' ? networkResult.value : null;
+  const activeWorkers = toFiniteNumber(isRecord(networkData) ? networkData.active_workers : undefined);
+  const totalTasks = toFiniteNumber(isRecord(networkData) ? networkData.total_tasks : undefined);
+  const nodesOnline = activeWorkers !== null && activeWorkers >= 0 ? activeWorkers : null;
+  const requestsServed = totalTasks !== null && totalTasks >= 0 ? totalTasks : null;
 
-    // Parse network stats
-    let nodesOnline = 0;
-    let requestsServed = 0;
-    let treasuryBalance = 0;
+  const sources = {
+    stonfiAsset: gstdPriceUSD !== null && gstdPriceUSD >= 0,
+    stonfiPools: poolTVL !== null,
+    network: nodesOnline !== null && requestsServed !== null,
+  };
 
-    if (networkResponse.status === 'fulfilled' && networkResponse.value.ok) {
-      const networkData = await networkResponse.value.json();
-      // platform.gstdtoken.com/api/v1/nodes returns { nodes: [...], count: N }
-      nodesOnline = networkData.count || networkData.nodes_online || networkData.active_workers || 0;
-      const nodes = networkData.nodes || [];
-      requestsServed = nodes.reduce((sum: number, n: any) => sum + (n.tasks_completed || 0), 0)
-        || networkData.tasks_completed || 0;
-      treasuryBalance = networkData.treasury_balance || 0;
-    }
+  if (assetResult.status === 'rejected') console.error('STON.fi asset request failed:', assetResult.reason);
+  if (poolsResult.status === 'rejected') console.error('STON.fi pools request failed:', poolsResult.reason);
+  if (networkResult.status === 'rejected') console.error('Network stats request failed:', networkResult.reason);
 
-    return NextResponse.json({
-      success: true,
-      data: {
-        gstdPriceUSD,
-        poolTVL,
-        nodesOnline,
-        requestsServed,
-        treasuryBalance,
-        poolFound,
-      },
-      source: poolFound ? 'stonfi' : 'default',
-    });
-  } catch (error) {
-    console.error('Error fetching pool data:', error);
-    return NextResponse.json({
-      success: false,
-      data: {
-        gstdPriceUSD: 0,
-        poolTVL: 0,
-        nodesOnline: 0,
-        requestsServed: 0,
-        treasuryBalance: 0,
-        poolFound: false,
-      },
-      source: 'fallback',
-      error: error instanceof Error ? error.message : 'Unknown error',
-    });
-  }
+  return NextResponse.json({
+    success: Object.values(sources).every(Boolean),
+    data: {
+      gstdPriceUSD: sources.stonfiAsset ? gstdPriceUSD : 0,
+      poolTVL: poolTVL ?? 0,
+      nodesOnline: nodesOnline ?? 0,
+      requestsServed: requestsServed ?? 0,
+      treasuryBalance: null,
+      poolFound: gstdPools.length > 0,
+    },
+    sources,
+  });
 }

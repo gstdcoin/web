@@ -136,6 +136,8 @@ export default {
     goldBackingRatio: 'Nodes Online',
     physicalGoldReserve: 'Active Nodes',
     reserveValue: 'Requests Served',
+    liveSource: 'Live data',
+    sourceUnavailable: 'Source unavailable',
     logoAlt: 'GSTD Token Logo',
     liquidity: 'Liquidity',
     community: 'Community',

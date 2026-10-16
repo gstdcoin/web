@@ -2,7 +2,7 @@
 
 import { useLanguage } from './LanguageProvider';
 import { Badge } from '@/components/ui/badge';
-import { Server, Coins, Globe, ExternalLink, Copy, AlertTriangle } from 'lucide-react';
+import { Server, Coins, Globe, ExternalLink, Copy, AlertTriangle, Activity, CheckCircle2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { TOKEN_INFO, LINKS } from '@/content/config';
 
@@ -11,8 +11,28 @@ const PLATFORM_API = 'https://platform.gstdtoken.com/api/v1';
 // /api/v1/nodes returns { nodes: [...], count: N }
 // never fill with placeholder/simulated numbers if the fetch fails.
 interface NetworkStats {
-  nodes_online: number;
-  total_tasks_completed: number;
+  active_workers: number;
+  total_nodes: number;
+  total_tasks: number;
+  total_users: number;
+  total_earned_gstd: number;
+}
+
+interface NodeRecord {
+  last_seen?: string | number;
+}
+
+function toTimestamp(value: NodeRecord['last_seen']): number | null {
+  if (typeof value === 'number' && Number.isFinite(value)) {
+    return value < 1e12 ? value * 1000 : value;
+  }
+  if (typeof value === 'string' && value.trim()) {
+    const numeric = Number(value);
+    if (Number.isFinite(numeric)) return numeric < 1e12 ? numeric * 1000 : numeric;
+    const parsed = Date.parse(value);
+    if (Number.isFinite(parsed)) return parsed;
+  }
+  return null;
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -39,36 +59,65 @@ function CopyButton({ text }: { text: string }) {
 export function LiveNetworkStatus() {
   const { t } = useLanguage();
   const [stats, setStats] = useState<NetworkStats | null>(null);
-  const [unavailable, setUnavailable] = useState(false);
-  const [fetchedAt, setFetchedAt] = useState<string | null>(null);
+  const [serviceAvailable, setServiceAvailable] = useState<boolean | null>(null);
+  const [lastHeartbeat, setLastHeartbeat] = useState<number | null>(null);
+  const [fetchedAt, setFetchedAt] = useState<Date | null>(null);
 
   useEffect(() => {
+    let disposed = false;
     const fetchStats = async () => {
       try {
-        const res = await fetch(`${PLATFORM_API}/nodes`, { cache: 'no-store' });
-        if (res.ok) {
-          const data = await res.json();
-          const nodes: any[] = data.nodes || [];
-          const mapped: NetworkStats = {
-            nodes_online: data.count ?? nodes.length,
-            total_tasks_completed: nodes.reduce((s: number, n: any) => s + (n.tasks_completed || 0), 0),
-          };
-          setStats(mapped);
-          setUnavailable(false);
-          setFetchedAt(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
-        } else {
-          setUnavailable(true);
+        const signal = AbortSignal.timeout(8000);
+        const [statsResponse, healthResponse, nodesResponse] = await Promise.all([
+          fetch(`${PLATFORM_API}/network/stats`, { cache: 'no-store', signal }),
+          fetch(`${PLATFORM_API}/health`, { cache: 'no-store', signal }),
+          fetch(`${PLATFORM_API}/nodes`, { cache: 'no-store', signal }),
+        ]);
+        if (!statsResponse.ok) throw new Error(`Network statistics returned HTTP ${statsResponse.status}`);
+        const data = await statsResponse.json();
+        if (!Number.isFinite(data.active_workers) || !Number.isFinite(data.total_nodes)) {
+          throw new Error('Network statistics response is missing node counts');
         }
-      } catch (_e) {
-        setUnavailable(true);
+        const nodeData = nodesResponse.ok ? await nodesResponse.json() : null;
+        const timestamps = (Array.isArray(nodeData?.nodes) ? nodeData.nodes : [])
+          .map((node: NodeRecord) => toTimestamp(node.last_seen))
+          .filter((timestamp: number | null): timestamp is number =>
+            timestamp !== null && timestamp >= 0 && timestamp <= Date.now() + 60_000
+          );
+        const mostRecent = timestamps.length ? Math.max(...timestamps) : null;
+        if (disposed) return;
+        setStats({
+          active_workers: data.active_workers,
+          total_nodes: data.total_nodes,
+          total_tasks: Number.isFinite(data.total_tasks) ? data.total_tasks : 0,
+          total_users: Number.isFinite(data.total_users) ? data.total_users : 0,
+          total_earned_gstd: Number.isFinite(data.total_earned_gstd) ? data.total_earned_gstd : 0,
+        });
+        setLastHeartbeat(mostRecent);
+        setServiceAvailable(healthResponse.ok);
+        setFetchedAt(new Date());
+      } catch {
+        if (!disposed) setServiceAvailable(false);
       }
     };
-    fetchStats();
+    void fetchStats();
     const interval = setInterval(fetchStats, 60_000);
-    return () => clearInterval(interval);
+    return () => {
+      disposed = true;
+      clearInterval(interval);
+    };
   }, []);
 
-  const nodesOnline = stats?.nodes_online ?? null;
+  const nodesOnline = stats?.active_workers ?? null;
+  const formatLastActivity = () => {
+    if (lastHeartbeat === null) return 'No heartbeat data';
+    const elapsed = Math.max(0, Math.floor((Date.now() - lastHeartbeat) / 60_000));
+    if (elapsed < 1) return 'Just now';
+    if (elapsed < 60) return `${elapsed} min ago`;
+    const hours = Math.floor(elapsed / 60);
+    if (hours < 24) return `${hours} hr ago`;
+    return `${Math.floor(hours / 24)} d ago`;
+  };
   const networkStatusTitle = t('networkStatus.title') as string;
 
   const CHAINS = [
@@ -79,8 +128,8 @@ export function LiveNetworkStatus() {
 
   const PROTOCOL_STAGES = [
     { label: 'Node Network', status: 'live', badge: 'Live' },
-    { label: 'On-chain Settlement', status: 'live', badge: 'Live (85/10/5)' },
-    { label: 'Fine-Tuning Pipeline', status: 'live', badge: 'Live, limited' },
+    { label: 'On-chain Settlement', status: 'building', badge: 'Integration unverified' },
+    { label: 'Fine-Tuning Pipeline', status: 'building', badge: 'Not verified' },
     { label: 'Cross-chain Bridge', status: 'building', badge: 'In Development' },
   ];
 
@@ -103,20 +152,24 @@ export function LiveNetworkStatus() {
               Real-time protocol metrics &mdash; Mainnet
             </p>
           </div>
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full glass-institutional border-[#D4AF37]/20 text-xs text-[#D4AF37]">
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4AF37] opacity-60" />
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#D4AF37]" />
-            </span>
-            Live{fetchedAt ? ` · ${fetchedAt}` : ''}
+          <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full glass-institutional border text-xs ${
+            serviceAvailable === true ? 'border-emerald-500/20 text-emerald-400'
+            : serviceAvailable === false ? 'border-amber-500/20 text-amber-300'
+            : 'border-white/10 text-slate-400'
+          }`}>
+            {serviceAvailable === true ? <CheckCircle2 className="w-3.5 h-3.5" />
+              : serviceAvailable === false ? <AlertTriangle className="w-3.5 h-3.5" />
+              : <span className="w-1.5 h-1.5 rounded-full bg-slate-500" />}
+            {serviceAvailable === true ? 'API online' : serviceAvailable === false ? 'API unavailable' : 'Checking API'}
+            {fetchedAt ? ` · ${fetchedAt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}` : ''}
           </div>
         </div>
 
-        {unavailable && (
+        {serviceAvailable === false && (
           <div className="flex items-start gap-2.5 mb-6 rounded-xl border border-amber-500/25 bg-amber-500/5 px-4 py-3">
             <AlertTriangle className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
             <p className="text-amber-200/90 text-sm">
-              {(t('networkStatus.unavailableNote') as string) || 'The live API is temporarily unreachable. This panel never shows simulated numbers.'}
+              {(t('networkStatus.unavailableNote') as string) || 'Live API data is unavailable. Previously received figures are retained and no simulated values are shown.'}
             </p>
           </div>
         )}
@@ -135,7 +188,25 @@ export function LiveNetworkStatus() {
             <div className="text-3xl font-black text-[#D4AF37] mb-1">
               {nodesOnline !== null ? nodesOnline : '—'}
             </div>
-            <div className="text-xs text-slate-500">Mainnet · distributed</div>
+            <div className="text-xs text-slate-500">
+              {stats ? `${stats.total_nodes} registered · heartbeat within platform window` : 'Mainnet · live API'}
+            </div>
+          </div>
+
+          <div className="glass-institutional rounded-2xl border border-[#D4AF37]/20 p-5">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-8 h-8 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center">
+                <Activity className="w-4 h-4 text-[#D4AF37]" />
+              </div>
+              <span className="text-xs text-slate-400 uppercase tracking-wide">Network activity</span>
+            </div>
+            <div className="text-2xl font-black text-slate-100 mb-1">
+              {stats ? stats.total_tasks.toLocaleString() : '—'}
+            </div>
+            <div className="text-xs text-slate-500">
+              {stats ? `${stats.total_users.toLocaleString()} registered users · ${stats.total_earned_gstd.toLocaleString(undefined, { maximumFractionDigits: 2 })} GSTD recorded` : 'Awaiting live API data'}
+            </div>
+            {stats && <div className="text-xs text-slate-500 mt-1">Last node heartbeat: {formatLastActivity()}</div>}
           </div>
 
           {/* Token Supply — real from config */}

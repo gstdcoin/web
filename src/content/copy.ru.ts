@@ -136,6 +136,8 @@ export default {
     goldBackingRatio: 'Нод онлайн',
     physicalGoldReserve: 'Активные ноды',
     reserveValue: 'Запросов обработано',
+    liveSource: 'Актуальные данные',
+    sourceUnavailable: 'Источник недоступен',
     logoAlt: 'Логотип токена GSTD',
     liquidity: 'Ликвидность',
     community: 'Сообщество',

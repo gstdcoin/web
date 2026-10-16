@@ -15,7 +15,12 @@ interface NetworkStats {
   poolTVL: number;
   nodesOnline: number;
   requestsServed: number;
-  treasuryBalance: number;
+  treasuryBalance: number | null;
+  sources?: {
+    stonfiAsset: boolean;
+    stonfiPools: boolean;
+    network: boolean;
+  };
 }
 
 export default function TokenPage() {
@@ -27,12 +32,13 @@ export default function TokenPage() {
     const fetchStats = async () => {
       try {
         const response = await fetch('/api/stonfi-pool');
+        if (!response.ok) throw new Error(`Network metrics returned HTTP ${response.status}`);
         const result = await response.json();
         if (result.data) {
-          setStats(result.data);
+          setStats({ ...result.data, sources: result.sources });
         }
-      } catch (_e) {
-        // silent
+      } catch (error) {
+        console.error('Failed to load token network metrics:', error);
       } finally {
         setIsLoading(false);
       }
@@ -70,8 +76,14 @@ export default function TokenPage() {
     },
   ];
 
-  const statValue = (val: number | undefined, format: (n: number) => string) =>
-    isLoading ? '...' : val !== undefined && val > 0 ? format(val) : '—';
+  const statValue = (val: number | null | undefined, format: (n: number) => string) =>
+    isLoading ? '...' : val !== null && val !== undefined && val > 0 ? format(val) : '—';
+
+  const sourceStatus = (available: boolean | undefined) => (
+    <span className={`text-xs ${available ? 'text-green-400' : 'text-amber-300'}`}>
+      {available ? t('tokenInfo.liveSource') : t('tokenInfo.sourceUnavailable')}
+    </span>
+  );
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0A0A0A] via-[#1a1a1a] to-[#0A0A0A]">
@@ -197,8 +209,7 @@ export default function TokenPage() {
                       {t('tokenInfo.physicalGoldReserve')}
                     </div>
                     <div className="flex items-center justify-center gap-1.5 mt-2">
-                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs text-green-400 font-medium">{t('tokenInfo.verifiedViaOracle')}</span>
+                      {sourceStatus(stats?.sources?.network)}
                     </div>
                   </div>
                   <div className="text-center">
@@ -210,8 +221,7 @@ export default function TokenPage() {
                       GSTD / USD
                     </div>
                     <div className="flex items-center justify-center gap-1.5 mt-2">
-                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs text-green-400 font-medium">Live · STON.fi</span>
+                      {sourceStatus(stats?.sources?.stonfiAsset)}
                     </div>
                   </div>
                   <div className="text-center">
@@ -222,8 +232,7 @@ export default function TokenPage() {
                       {t('tokenInfo.reserveValue')}
                     </div>
                     <div className="flex items-center justify-center gap-1.5 mt-2">
-                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs text-green-400">{t('tokenInfo.verifiedViaOracle')}</span>
+                      {sourceStatus(stats?.sources?.network)}
                     </div>
                   </div>
                 </div>
