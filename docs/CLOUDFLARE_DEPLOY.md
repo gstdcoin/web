@@ -11,6 +11,8 @@ The site was deployed directly via `wrangler deploy` and is live at:
 
 Verified working: homepage, `/about`, `/api/health`, `/api/stonfi-pool`, and the security headers all respond correctly in production.
 
+The deploy workflow keeps OpenNext, Next.js, and Wrangler on compatible versions. When updating Next.js, use an OpenNext Cloudflare release that explicitly supports it and align Wrangler with that adapter's peer requirement; a successful build alone does not guarantee Worker runtime compatibility.
+
 ## Option A — GitHub Actions (recommended, auto-deploys on push)
 
 `.github/workflows/deploy.yml` is already in the repo — it builds with `opennextjs-cloudflare` and deploys with `wrangler` on every push to `main`. To activate it once the code is pushed:
