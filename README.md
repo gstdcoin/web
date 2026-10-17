@@ -1,36 +1,30 @@
-# GSTD — Decentralized AI Compute & Fine-Tuning Network
+# GSTD Web
 
-> The landing page for [gstdtoken.com](https://gstdtoken.com)  
-> Built with Next.js 16 App Router and Tailwind CSS, deployed on Cloudflare Workers.
+The public website for [gstdtoken.com](https://gstdtoken.com), built with Next.js 16 and Tailwind CSS and deployed on Cloudflare Workers.
+
+> **Current network status:** the production API reported 0 registered/online nodes, 0 tasks, and 0 payouts on 2026-10-17. The existence of UI pages or API integrations does not mean compute jobs, earnings, model training, or cross-chain transfers are currently available.
 
 ---
 
 ## What is GSTD?
 
-GSTD is a DePIN (Decentralized Physical Infrastructure Network) where anyone can:
-
-- **Run a node** — earn GSTD by serving AI inference requests and hosting blockchain RPC nodes
-- **Fine-tune models** — submit a dataset, a distributed node trains a LoRA adapter on it (real adapters have been produced end-to-end; base-model availability is limited)
-- **Use AI** — pay with GSTD for inference routed to available nodes on the network
-- **Bridge tokens** between TON, Solana, and XRPL — TON is live today; the Solana/XRPL bridge is early-stage, unaudited, open-source code that has never moved funds in production
+This repository contains the GSTD marketing website and its frontend integrations. Node software, platform APIs, and smart contracts are maintained in separate repositories. Check current availability and contract status before relying on any network feature.
 
 ---
 
 ## Why GSTD is Unique
 
-### 1. Federated Fine-Tuning
-Submit a dataset → a distributed node trains a LoRA adapter using QLoRA → download your adapter. The pipeline has produced real, verified adapters end-to-end.
+### 1. Model training
+The codebase includes model-training interfaces and experimental workflows. This README does not claim that a distributed training service is currently available in production.
 
-### 2. Real Revenue Split
-- **85%** of every fee goes directly to node operators, verified on-chain
-- **10%** flows to the protocol treasury
-- **5%** funds buyback & burn
+### 2. Protocol economics
+Revenue splits and buyback mechanisms are design goals documented in the contracts repository; they are not evidence of current user payments or node payouts.
 
-### 3. Any Hardware
-Raspberry Pi, laptop, desktop, server — any device can participate. The node scores your hardware into a tier (Spark through Sovereign) that sets a rewards multiplier. No GPU required — CPU fallback is supported for inference.
+### 3. Node software
+Node requirements and supported hardware are documented in [gstdcoin/gstdbot](https://github.com/gstdcoin/gstdbot). A node's presence in the codebase does not guarantee a task assignment or reward.
 
-### 4. Multi-Chain by Design (TON live, bridge in progress)
-TON is live today. A bridge to Solana and XRPL exists as open-source code but is early-stage, unaudited, and has never moved funds in production — treat it as not yet live.
+### 4. Cross-chain bridge
+The Solana/XRPL bridge is deferred, unaudited, and has never moved funds in production. Do not send funds to bridge addresses; see [gstdcoin/gstd-bridge](https://github.com/gstdcoin/gstd-bridge).
 
 ---
 
@@ -42,7 +36,7 @@ TON is live today. A bridge to Solana and XRPL exists as open-source code but is
 | Styling | Tailwind CSS, shadcn/ui, Framer Motion |
 | i18n | English + Russian |
 | Hosting | Cloudflare Workers (free tier) |
-| Network stats | Live from `platform.gstdtoken.com/api/v1/nodes` |
+| Network stats | Live from `app.gstdtoken.com/api/v1/stats/public` |
 
 ---
 
