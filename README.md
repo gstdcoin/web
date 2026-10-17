@@ -1,7 +1,7 @@
 # GSTD — Decentralized AI Compute & Fine-Tuning Network
 
 > The landing page for [gstdtoken.com](https://gstdtoken.com)  
-> Built with Next.js 15, Tailwind CSS, deployed on Cloudflare Workers.
+> Built with Next.js 16 App Router and Tailwind CSS, deployed on Cloudflare Workers.
 
 ---
 
@@ -38,7 +38,7 @@ TON is live today. A bridge to Solana and XRPL exists as open-source code but is
 
 | Layer | Technology |
 |---|---|
-| Frontend | Next.js 15 (App Router), TypeScript |
+| Frontend | Next.js 16 (App Router), TypeScript |
 | Styling | Tailwind CSS, shadcn/ui, Framer Motion |
 | i18n | English + Russian |
 | Hosting | Cloudflare Workers (free tier) |
@@ -60,7 +60,7 @@ npm run dev
 
 ## Deploy (Cloudflare Workers)
 
-Push to `main` → Cloudflare's Git integration auto-builds and deploys (see [docs/CLOUDFLARE_DEPLOY.md](docs/CLOUDFLARE_DEPLOY.md)).
+Push to `main` → GitHub Actions builds with OpenNext and deploys to Cloudflare Workers (see [docs/CLOUDFLARE_DEPLOY.md](docs/CLOUDFLARE_DEPLOY.md)).
 
 Manual deploy:
 
@@ -82,7 +82,7 @@ npm run cf:preview
 | Repo | Description |
 |---|---|
 | **gstdcoin/web** | **This repo — landing page** |
-| [gstdcoin/ai](https://github.com/gstdcoin/ai) | Dashboard + Vercel API |
+| [gstdcoin/ai](https://github.com/gstdcoin/ai) | AI dashboard + Cloudflare Workers API |
 | [gstdcoin/gstdbot](https://github.com/gstdcoin/gstdbot) | Node OS software |
 | [gstdcoin/contracts](https://github.com/gstdcoin/contracts) | TON smart contracts |
 | [gstdcoin/gstd-bridge](https://github.com/gstdcoin/gstd-bridge) | Cross-chain bridge |
