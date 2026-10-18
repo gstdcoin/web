@@ -18,10 +18,10 @@ export const LINKS = {
   twitter: "https://x.com/gstdtoken",
   github: "https://github.com/gstdcoin",
   docs: "/advantages",
-  platform: "https://platform.gstdtoken.com",
+  platform: "https://app.gstdtoken.com",
   aiChat: "https://t.me/gstdaibot",
-  app: "https://platform.gstdtoken.com",
-  monitor: "https://platform.gstdtoken.com/api/v1/nodes",
+  app: "https://app.gstdtoken.com",
+  monitor: "https://app.gstdtoken.com/api/v1/nodes/list",
   chat: "https://t.me/gstdtoken",
   stonfiSwap:
     `https://app.ston.fi/swap?ft=TON&tt=${GSTD_TON_CONTRACT}&amount=1`,
@@ -30,7 +30,7 @@ export const LINKS = {
     `https://app.ston.fi/swap?ft=TON&tt=${GSTD_TON_CONTRACT}&amount=1`,
   buyGSDT:
     `https://app.ston.fi/swap?ft=TON&tt=${GSTD_TON_CONTRACT}&amount=1`,
-  launchNodes: "https://platform.gstdtoken.com/api/v1/nodes",
+  launchNodes: "https://github.com/gstdcoin/gstdbot",
 };
 
 export const TOKEN_INFO = {
