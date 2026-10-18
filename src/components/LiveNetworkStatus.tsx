@@ -6,7 +6,7 @@ import { Server, Coins, Globe, ExternalLink, Copy, AlertTriangle, Activity, Chec
 import { useEffect, useState } from 'react';
 import { TOKEN_INFO, LINKS } from '@/content/config';
 
-const PLATFORM_API = 'https://platform.gstdtoken.com/api/v1';
+const PLATFORM_API = 'https://app.gstdtoken.com/api/v1';
 
 // /api/v1/nodes returns { nodes: [...], count: N }
 // never fill with placeholder/simulated numbers if the fetch fails.
@@ -71,7 +71,7 @@ export function LiveNetworkStatus() {
         const [statsResponse, healthResponse, nodesResponse] = await Promise.all([
           fetch(`${PLATFORM_API}/network/stats`, { cache: 'no-store', signal }),
           fetch(`${PLATFORM_API}/health`, { cache: 'no-store', signal }),
-          fetch(`${PLATFORM_API}/nodes`, { cache: 'no-store', signal }),
+          fetch(`${PLATFORM_API}/nodes/list`, { cache: 'no-store', signal }),
         ]);
         if (!statsResponse.ok) throw new Error(`Network statistics returned HTTP ${statsResponse.status}`);
         const data = await statsResponse.json();
@@ -91,7 +91,7 @@ export function LiveNetworkStatus() {
           total_nodes: data.total_nodes,
           total_tasks: Number.isFinite(data.total_tasks) ? data.total_tasks : 0,
           total_users: Number.isFinite(data.total_users) ? data.total_users : 0,
-          total_earned_gstd: Number.isFinite(data.total_earned_gstd) ? data.total_earned_gstd : 0,
+          total_earned_gstd: Number.isFinite(data.total_gstd_paid) ? data.total_gstd_paid : 0,
         });
         setLastHeartbeat(mostRecent);
         setServiceAvailable(healthResponse.ok);
@@ -204,7 +204,7 @@ export function LiveNetworkStatus() {
               {stats ? stats.total_tasks.toLocaleString() : '—'}
             </div>
             <div className="text-xs text-slate-500">
-              {stats ? `${stats.total_users.toLocaleString()} registered users · ${stats.total_earned_gstd.toLocaleString(undefined, { maximumFractionDigits: 2 })} GSTD recorded` : 'Awaiting live API data'}
+              {stats ? `${stats.total_users.toLocaleString()} registered users · ${stats.total_earned_gstd.toLocaleString(undefined, { maximumFractionDigits: 2 })} GSTD paid out` : 'Awaiting live API data'}
             </div>
             {stats && <div className="text-xs text-slate-500 mt-1">Last node heartbeat: {formatLastActivity()}</div>}
           </div>

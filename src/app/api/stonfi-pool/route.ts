@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { GSTD_TON_CONTRACT } from '../../../content/config';
 
 const STONFI_API_BASE = 'https://api.ston.fi';
-const NODE_API_BASE = 'https://platform.gstdtoken.com/api/v1';
+const NODE_API_BASE = 'https://app.gstdtoken.com/api/v1';
 
 function toFiniteNumber(value: unknown): number | null {
   if (typeof value !== 'number' && typeof value !== 'string') return null;
