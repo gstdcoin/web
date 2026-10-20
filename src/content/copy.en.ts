@@ -22,16 +22,16 @@ export default {
 
   ecosystem: {
     title: 'The GSTD Ecosystem',
-    subtitle: 'Deploy nodes, process AI requests, earn GSTD — all from open-source repositories',
+    subtitle: 'Deploy nodes, process AI requests, earn GSTD — all from public source repositories',
     launchApp: 'Open',
     app: {
       title: 'GSTD Node',
-      description: 'Deploy your own node from the open-source repository. Share computing resources, process AI requests — earn GSTD fees for every completed task.',
+      description: 'Deploy your own node from the public repository. Share computing resources, process AI requests — earn GSTD fees for every completed task.',
       cta: 'Deploy Node',
     },
     monitor: {
-      title: 'Open Source',
-      description: 'All platform components are open-source and deployable from GitHub. No central servers — the network is the nodes.',
+      title: 'Source-Available',
+            description: 'Platform source code is public on GitHub and free for noncommercial use and network participation; commercial use needs a separate license. No central servers — the network is the nodes.',
       cta: 'GitHub',
     },
     chat: {
@@ -59,14 +59,14 @@ export default {
     tryBot: 'Try it in Telegram',
     viewGithub: 'View GitHub',
     fineTuneModels: 'Fine-Tune Models',
-    tags: ['Open', 'Distributed', 'AI Compute', 'Node Rewards', 'Open Source'],
+    tags: ['Open', 'Distributed', 'AI Compute', 'Node Rewards', 'Source-Available'],
   },
 
   // Features
   features: {
     lightningFast: 'Node Network',
     secure: 'Utility Token',
-    communityDriven: 'Open Source',
+    communityDriven: 'Source-Available',
     scalable: 'Multichain',
   },
 
@@ -181,13 +181,13 @@ export default {
       'Open Node Network',
       'Utility Token — Not Investment',
       'Multichain Roadmap: TON Live, Bridge in Development',
-      'Open Source',
+      'Source-Available',
     ],
     featureDescriptions: [
       'Anyone can run node software on their own hardware to process AI inference requests — earning GSTD for every completed workload.',
       'GSTD is a payment token for AI compute. Earnings come from real usage — not staking, not gold, not promises.',
       'GSTD runs on TON today. A cross-chain bridge to Solana and XRPL is early-stage, unaudited, and has never moved funds in production — treat it as not live.',
-      'All platform components are open-source. Deploy from GitHub, verify on-chain.',
+      'Platform source code is public on GitHub (noncommercial license). Run it, read it, verify on-chain.',
     ],
     buildBullets: [
       'Node Network: Anyone can run node software that processes AI inference requests, generating protocol fees',
@@ -258,7 +258,7 @@ export default {
   roadmap: {
     title: 'Roadmap',
     subtitle: 'GSTD Protocol Evolution',
-    description: 'No fixed dates — phases reflect what is actually built and verifiable in the open-source repositories, not a marketing timeline.',
+    description: 'No fixed dates — phases reflect what is actually built and verifiable in the public repositories, not a marketing timeline.',
     phases: [
       'Open Node Network',
       'Decentralized AI Inference',
@@ -269,7 +269,7 @@ export default {
       'Open AI Agent Infrastructure',
     ],
     phaseDescriptions: [
-      'Token, node registry, and the open-source node client',
+      'Token, node registry, and the public node client',
       'Requests routed to nodes, fees settled on-chain',
       'Dataset submission and distributed LoRA training',
       'Proving that a completed workload was done correctly',
@@ -279,13 +279,13 @@ export default {
     ],
     keyMilestones: 'Key Milestones',
     securityFirst: 'Security First',
-    securityFirstDescription: 'Contracts are open-source and publicly verifiable; independent audits are a prerequisite before any bridge or reserve contract handles real funds.',
+    securityFirstDescription: 'Contracts are public and verifiable; independent audits are a prerequisite before any bridge or reserve contract handles real funds.',
     communityDriven: 'Community Driven',
     communityDrivenDescription: 'Decentralized governance and community decision making',
     scalableGrowth: 'Scalable Growth',
     scalableGrowthDescription: 'Sustainable growth with innovative features and partnerships',
     developmentProgress: 'Development Progress',
-    developmentProgressDescription: 'Status is sourced from the open-source repositories — not projected',
+    developmentProgressDescription: 'Status is sourced from the public repositories — not projected',
     phaseComplete: 'Live',
     phaseProgress: 'Live, Limited',
     phasePlanning: 'In Progress',
@@ -297,7 +297,7 @@ export default {
     phaseFeatures: [
       [
         'Jetton deployed on TON, supply fixed, admin key burned',
-        'Open-source node client (gstdcoin/gstdbot) with a one-line installer',
+        'Source-available node client (gstdcoin/gstdbot) with a one-line installer',
         'Hardware scored into tiers — Spark, Flame, Storm, Titan, Sovereign',
       ],
       [
@@ -321,7 +321,7 @@ export default {
         'Today’s live treasury holds TON only',
       ],
       [
-        'Cross-chain bridge to Solana and XRPL exists as open-source code',
+        'Cross-chain bridge to Solana and XRPL exists as public code',
         'No live vault on either chain, unaudited, has never processed a real transfer',
         'Independent audit required before any bridge functionality should be relied upon',
       ],
@@ -363,7 +363,7 @@ export default {
     userResponsibilityNoticeText: 'You are solely responsible for the security of your wallet and private keys, for verifying transactions before submitting them, and for complying with the laws that apply to you. We cannot reverse blockchain transactions or recover lost keys.',
     complianceSecurity: 'Compliance & Security',
     securityAudits: 'Security Audits',
-    securityAuditsDescription: 'Smart contracts are reviewed for security before deployment. All contract code is open-source and publicly verifiable.',
+    securityAuditsDescription: 'Smart contracts are reviewed for security before deployment. All contract code is public and verifiable.',
     legalCompliance: 'Legal Compliance',
     legalComplianceDescription: 'We work with legal experts to ensure compliance with applicable laws and regulations.',
     transparency: 'Transparency',
@@ -386,7 +386,7 @@ export default {
         },
         {
           heading: '2. Description of Service',
-          body: 'The Platform is open-source, permissionless software that connects node operators (who provide compute resources for AI inference) with users who pay for that compute using GSTD, a utility token on the TON blockchain. The Platform does not operate, own, or control the compute hardware, the TON blockchain, or any third-party exchange. We provide software and infrastructure only; we do not act as a custodian, broker, exchange, or financial intermediary.',
+          body: 'The Platform is source-available, permissionless software that connects node operators (who provide compute resources for AI inference) with users who pay for that compute using GSTD, a utility token on the TON blockchain. The Platform does not operate, own, or control the compute hardware, the TON blockchain, or any third-party exchange. We provide software and infrastructure only; we do not act as a custodian, broker, exchange, or financial intermediary.',
         },
         {
           heading: '3. Nature of GSTD — Not a Security, Not an Investment',
@@ -406,7 +406,7 @@ export default {
         },
         {
           heading: '7. No Warranties',
-          body: 'THE PLATFORM IS PROVIDED "AS IS" AND "AS AVAILABLE," WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, NON-INFRINGEMENT, OR THAT THE PLATFORM WILL BE UNINTERRUPTED, SECURE, ERROR-FREE, OR FREE OF HARMFUL COMPONENTS. Open-source code, including smart contracts and node software, may contain bugs or vulnerabilities despite reasonable review, and we do not warrant otherwise.',
+          body: 'THE PLATFORM IS PROVIDED "AS IS" AND "AS AVAILABLE," WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, NON-INFRINGEMENT, OR THAT THE PLATFORM WILL BE UNINTERRUPTED, SECURE, ERROR-FREE, OR FREE OF HARMFUL COMPONENTS. Public source code, including smart contracts and node software, may contain bugs or vulnerabilities despite reasonable review, and we do not warrant otherwise.',
         },
         {
           heading: '8. Limitation of Liability',
@@ -422,7 +422,7 @@ export default {
         },
         {
           heading: '11. Termination',
-          body: 'Because the Platform is decentralized and permissionless, we cannot "terminate" your ability to run open-source node software or hold a self-custodied wallet. We may, however, restrict, suspend, or discontinue any centrally-operated service (such as the website, the Telegram bot, or a particular API endpoint) at any time, for any reason, without liability to you.',
+          body: 'Because the Platform is decentralized and permissionless, we cannot "terminate" your ability to run node software or hold a self-custodied wallet. We may, however, restrict, suspend, or discontinue any centrally-operated service (such as the website, the Telegram bot, or a particular API endpoint) at any time, for any reason, without liability to you.',
         },
         {
           heading: '12. Governing Law and Dispute Resolution',
@@ -496,7 +496,7 @@ export default {
         },
         {
           heading: '3. Smart Contract and Technology Risk',
-          body: 'The Platform relies on open-source smart contracts and software that, despite reasonable review, may contain undiscovered bugs, vulnerabilities, or exploits. A successful exploit, network attack, or software failure could result in the partial or total loss of funds, tokens, or data, with no guarantee of recovery or compensation.',
+          body: 'The Platform relies on public smart contracts and software that, despite reasonable review, may contain undiscovered bugs, vulnerabilities, or exploits. A successful exploit, network attack, or software failure could result in the partial or total loss of funds, tokens, or data, with no guarantee of recovery or compensation.',
         },
         {
           heading: '4. Node Operation Risk',
@@ -728,7 +728,7 @@ export default {
 
   // Node Install Section
   nodeInstall: {
-    badge: 'One-line install · open source',
+    badge: 'One-line install · source-available',
     title: 'Run a Node',
     subtitle: 'One install script sets up the node on Linux, macOS, or Windows (WSL) — installs its own Node.js runtime, registers your device, and starts polling for work.',
     requirements: 'Installer handles Node.js 20+ setup itself · Linux / macOS / Windows WSL · Raspberry Pi 4 and up',
@@ -757,7 +757,7 @@ export default {
       },
       {
         question: 'How do node operators earn?',
-        answer: 'Node operators run the open-source node software on their hardware, register on the network, and receive 85% of every GSTD fee for requests routed to their node, settled on-chain by the SettlementMaster contract. Earnings scale with usage and are never guaranteed.',
+        answer: 'Node operators run the node software on their hardware, register on the network, and receive 85% of every GSTD fee for requests routed to their node, settled on-chain by the SettlementMaster contract. Earnings scale with usage and are never guaranteed.',
       },
       {
         question: 'How does the treasury work?',
@@ -769,7 +769,7 @@ export default {
       },
       {
         question: 'Is the cross-chain bridge live?',
-        answer: 'No. TON is the only live network today. Bridge code for Solana and XRPL exists in an open-source repository but is unaudited, has no deployed vault on either chain, and has never processed a real transfer. Do not rely on it for moving funds.',
+        answer: 'No. TON is the only live network today. Bridge code for Solana and XRPL exists in a public repository but is unaudited, has no deployed vault on either chain, and has never processed a real transfer. Do not rely on it for moving funds.',
       },
       {
         question: 'What AI models can I use?',
@@ -864,7 +864,7 @@ export default {
       features: [
         'Deployed, on-chain contract',
         'Budgets held, not pre-paid to a party',
-        'Open-source, publicly verifiable',
+        'Public source, verifiable',
         'No claim of correctness verification',
       ],
     },
@@ -908,7 +908,7 @@ export default {
 
   // Node Economy section
   nodeEconomy: {
-    badge: 'Node software · open source',
+    badge: 'Node software · source-available',
     title: 'Your Hardware Can Become Part of the Network',
     subtitle: 'Instead of leaving computing resources idle, contribute them to the network.',
     devices: ['Laptop', 'Desktop', 'Gaming PC', 'Workstation', 'Server', 'GPU Server'],
@@ -990,7 +990,7 @@ export default {
     subtitle: 'Models the node network actually serves today',
     categories: ['Chat', 'Coding', 'Vision', 'Embeddings', 'Fine-Tuning', 'Agents'],
     inferenceTitle: 'Inference Models',
-    inferenceNote: 'Shipped in the open-source node client — availability depends on which nodes have a model loaded.',
+    inferenceNote: 'Shipped in the node client — availability depends on which nodes have a model loaded.',
     finetuneTitle: 'Fine-Tuning Models',
     finetuneNote: 'Accepted by the training pipeline. Only a subset is confirmed live end-to-end — check Documentation for current status before submitting a job.',
     columns: { model: 'Model', provider: 'Provider / Node', availability: 'Availability' },
@@ -1013,7 +1013,7 @@ export default {
   // Documentation hub
   docs: {
     title: 'Documentation',
-    subtitle: 'What the protocol actually does, sourced from the same open-source repositories that run it.',
+    subtitle: 'What the protocol actually does, sourced from the same public repositories that run it.',
     sections: [
       { title: 'Overview', description: 'What GSTD is, and what it is not.' },
       { title: 'Architecture', description: 'Node client, backend API, and how they talk to each other.' },
@@ -1043,7 +1043,7 @@ export default {
       { label: 'On-Chain Transactions', description: 'Settlement, treasury, and escrow activity — verifiable on a TON explorer.' },
       { label: 'Network Metrics', description: 'Live node and task data, when the API is reachable.' },
       { label: 'Node Software', description: 'The exact code that runs on every node.' },
-      { label: 'Smart Contracts', description: 'SettlementMaster, Escrow, and Treasury — open-source and deployed on TON mainnet.' },
+      { label: 'Smart Contracts', description: 'SettlementMaster, Escrow, and Treasury — public code and deployed on TON mainnet.' },
     ],
     disclaimer: 'Nothing on this website constitutes an offer of securities, investment advice, or a guarantee of future value.',
   },

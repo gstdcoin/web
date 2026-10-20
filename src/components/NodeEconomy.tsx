@@ -26,7 +26,7 @@ export function NodeEconomy() {
           className="text-center mb-12"
         >
           <div className="inline-flex items-center px-4 py-1.5 rounded-full glass-institutional border-[#D4AF37]/30 text-[#D4AF37] text-xs font-medium mb-6">
-            {ne?.badge || 'Node software · open source'}
+            {ne?.badge || 'Node software · source-available'}
           </div>
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
             <span className="text-gradient-gold">{ne?.title || 'Your Hardware Can Become Part of the Network'}</span>
