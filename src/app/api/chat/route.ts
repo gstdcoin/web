@@ -3,7 +3,7 @@ import { getCloudflareContext } from '@opennextjs/cloudflare';
 
 // Proxies chat requests directly to a live GSTD node, bypassing
 // app.gstdtoken.com entirely. gstdtoken.com runs on Cloudflare Workers,
-// independent of the Vercel account that hosts app.gstdtoken.com -- so
+// independent of the Cloudflare deployment that hosts app.gstdtoken.com -- so
 // this keeps working even during a platform-side outage there.
 //
 // Seed source is the same GitHub-raw peer list gstdbot's own

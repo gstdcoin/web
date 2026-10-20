@@ -39,7 +39,7 @@ export function NodeEconomy() {
         {/* Devices → Resources */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-14">
           <div className="glass-institutional rounded-2xl border border-[#D4AF37]/20 p-6">
-            <div className="text-xs text-slate-500 uppercase tracking-widest mb-4">Hardware</div>
+            <div className="text-xs text-slate-500 uppercase tracking-widest mb-4">{ne?.hardwareTitle || 'Hardware'}</div>
             <div className="grid grid-cols-2 gap-3">
               {devices.map((device, i) => {
                 const Icon = DEVICE_ICONS[i] || Cpu;
@@ -53,7 +53,7 @@ export function NodeEconomy() {
             </div>
           </div>
           <div className="glass-institutional rounded-2xl border border-[#D4AF37]/20 p-6">
-            <div className="text-xs text-slate-500 uppercase tracking-widest mb-4">Resources</div>
+            <div className="text-xs text-slate-500 uppercase tracking-widest mb-4">{ne?.resourcesTitle || 'Resources'}</div>
             <div className="flex flex-wrap gap-2">
               {resources.map((res) => (
                 <span key={res} className="px-3 py-1.5 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/25 text-[#D4AF37] text-sm font-medium">
@@ -61,7 +61,7 @@ export function NodeEconomy() {
                 </span>
               ))}
             </div>
-            <div className="text-xs text-slate-500 uppercase tracking-widest mb-3 mt-6">Hardware Tiers</div>
+            <div className="text-xs text-slate-500 uppercase tracking-widest mb-3 mt-6">{ne?.tiersTitle || 'Hardware Tiers'}</div>
             <div className="space-y-1.5">
               {NODE_TIERS.map((tier) => (
                 <div key={tier.name} className="flex items-center justify-between text-sm">

@@ -10,7 +10,7 @@ interface ChatMessage {
 
 // Talks to /api/chat, which proxies straight to a live node from the
 // network's own seed-peer list -- never touches app.gstdtoken.com. This is
-// the live proof that the node network, not the Vercel-hosted platform, is
+// the live proof that the node network, not the platform host, is
 // what actually serves requests.
 export function LiveChat() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);

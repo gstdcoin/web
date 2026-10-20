@@ -303,11 +303,11 @@ export default {
       [
         'AI inference requests routed to available nodes',
         'On-chain fee settlement live on TON mainnet (SettlementMaster.tact) — 85% node / 10% treasury / 5% buyback & burn',
-        '8 inference models shipped in the node client',
+        'The node client supports a catalog of open models — the current list is in the Documentation',
       ],
       [
         'Dataset submission and distributed training pipeline — available via the GSTD node network',
-        'Real LoRA adapters trained end-to-end and verified',
+        'Training pipeline is implemented; no production training run on live nodes has completed yet',
         'Base-model coverage is still limited — check Documentation for what is wired up today',
       ],
       [
@@ -933,6 +933,8 @@ export default {
     inferenceTitle: 'For AI Inference',
     inference: ['NVIDIA GPU', 'AMD GPU', 'Apple Silicon', 'CPU fallback supported'],
     tiersTitle: 'Hardware Tiers',
+    hardwareTitle: 'Hardware',
+    resourcesTitle: 'Resources',
     tiersNote: 'The node software scores your hardware into a multiplier tier — higher tiers earn more per completed workload. There is no single hard minimum beyond what a Raspberry Pi 4 provides.',
   },
 
