@@ -1,5 +1,11 @@
 import { NextResponse } from 'next/server';
 import { getCloudflareContext } from '@opennextjs/cloudflare';
+import {
+  allowChatRequest,
+  readJsonBody,
+  validateChatBody,
+  type RateLimiterBinding,
+} from '@/lib/chat-request-guard';
 
 // This makes gstdtoken.com a real peer in the node network's own protocol --
 // not a special-cased fallback bolted onto a proxy. gstdbot's own
@@ -23,29 +29,60 @@ const WORKERS_AI_MODELS = [
   '@cf/mistralai/mistral-small-3.1-24b-instruct',
 ];
 
+type ChatEnvironment = {
+  AI?: { run(model: string, input: Record<string, unknown>): Promise<any> };
+  CHAT_RATE_LIMITER?: RateLimiterBinding;
+};
+
 export async function POST(req: Request) {
-  let body: any;
+  let env: ChatEnvironment;
   try {
-    body = await req.json();
-  } catch {
-    return NextResponse.json({ error: { message: 'Invalid JSON body', type: 'invalid_request' } }, { status: 400 });
+    const context = await getCloudflareContext({ async: true });
+    env = context.env as ChatEnvironment;
+  } catch (e) {
+    console.error('[ollama/completions] Cloudflare context unavailable', e);
+    return NextResponse.json({ error: { message: 'Inference service unavailable', type: 'internal_error' } }, { status: 503 });
+  }
+  if (process.env.NODE_ENV === 'production' && !env.CHAT_RATE_LIMITER) {
+    console.error('[ollama/completions] required Cloudflare rate limiter binding is unavailable');
+    return NextResponse.json({ error: { message: 'Rate limiting unavailable', type: 'internal_error' } }, { status: 503 });
   }
 
-  const messages = body.messages;
-  if (!Array.isArray(messages) || messages.length === 0) {
-    return NextResponse.json({ error: { message: 'messages array required', type: 'invalid_request' } }, { status: 400 });
+  try {
+    if (!(await allowChatRequest(req, env.CHAT_RATE_LIMITER))) {
+      return NextResponse.json({ error: { message: 'Rate limit exceeded', type: 'rate_limit' } }, { status: 429 });
+    }
+  } catch (e) {
+    console.error('[ollama/completions] Rate limiter failed', e);
+    return NextResponse.json({ error: { message: 'Rate limiting unavailable', type: 'internal_error' } }, { status: 503 });
+  }
+
+  const parsed = await readJsonBody(req);
+  if (parsed.status) {
+    const message = parsed.status === 413 ? 'Request body too large' : 'Invalid JSON body';
+    return NextResponse.json({ error: { message, type: 'invalid_request' } }, { status: parsed.status });
+  }
+  const body = validateChatBody(parsed.body);
+  if (!body) {
+    return NextResponse.json({ error: { message: 'Invalid chat request', type: 'invalid_request' } }, { status: 400 });
+  }
+  if (body.stream) {
+    return NextResponse.json({ error: { message: 'Streaming is not supported by this endpoint', type: 'invalid_request' } }, { status: 400 });
   }
 
   try {
-    const { env } = await getCloudflareContext({ async: true });
-    const ai = (env as any).AI;
+    const ai = env.AI;
     if (!ai) {
       return NextResponse.json({ error: { message: 'AI binding not configured', type: 'internal_error' } }, { status: 503 });
     }
 
     for (const model of WORKERS_AI_MODELS) {
       try {
-        const result = await ai.run(model, { messages, max_tokens: body.max_tokens || 512 });
+        const result = await ai.run(model, {
+          messages: body.messages,
+          max_tokens: body.max_tokens ?? 512,
+          ...(body.temperature === undefined ? {} : { temperature: body.temperature }),
+        });
         if (result?.response) {
           return NextResponse.json({
             id: `chatcmpl-${Date.now()}`,
