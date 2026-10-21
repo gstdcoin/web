@@ -2,17 +2,16 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from './LanguageProvider';
 
 interface ChatMessage {
   role: 'user' | 'assistant';
   content: string;
 }
 
-// Talks to /api/chat, which proxies straight to a live node from the
-// network's own seed-peer list -- never touches app.gstdtoken.com. This is
-// the live proof that the node network, not the platform host, is
-// what actually serves requests.
 export function LiveChat() {
+  const { language } = useLanguage();
+  const ru = language !== 'en';
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -105,18 +104,26 @@ export function LiveChat() {
           className="text-center mb-8"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-3">
-            <span className="text-gradient-gold">Talk to the network</span>
+            <span className="text-gradient-gold">{ru ? 'Демо-чат' : 'Demo chat'}</span>
           </h2>
           <p className="text-slate-400 max-w-xl mx-auto text-sm">
-            This chat is served directly by a node on the network — not by a central server.
-            {servedBy && <span className="block mt-1 text-emerald-400 font-mono text-xs">served by {servedBy}</span>}
+            {ru
+              ? 'Запрос уходит на ноду сети, если хотя бы одна онлайн. Если нод нет, отвечает резервная модель Cloudflare Workers AI (небольшая, ответы могут быть слабыми).'
+              : 'Your request goes to a network node when at least one is online. Otherwise a Cloudflare Workers AI fallback model answers (small model, answers may be weak).'}
+            {servedBy && (
+              <span className="block mt-1 text-emerald-400 font-mono text-xs">
+                {servedBy.startsWith('fallback')
+                  ? (ru ? 'ответил: резервная модель Cloudflare (нод онлайн нет)' : 'answered by: Cloudflare fallback model (no nodes online)')
+                  : `${ru ? 'ответила нода' : 'served by node'} ${servedBy}`}
+              </span>
+            )}
           </p>
         </motion.div>
 
         <div className="glass-institutional rounded-2xl border border-[#D4AF37]/20 flex flex-col h-[420px]">
           <div className="flex-1 overflow-y-auto p-5 space-y-4">
             {messages.length === 0 && (
-              <p className="text-slate-500 text-sm text-center mt-16">Ask anything — your message goes straight to a live node.</p>
+              <p className="text-slate-500 text-sm text-center mt-16">{ru ? 'Задайте любой вопрос.' : 'Ask anything.'}</p>
             )}
             {messages.map((m, i) => (
               <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -134,7 +141,7 @@ export function LiveChat() {
             {loading && (
               <div className="flex justify-start">
                 <div className="rounded-xl px-4 py-2.5 text-sm bg-white/5 border border-white/10 text-slate-400">
-                  thinking…
+                  {ru ? 'думаю…' : 'thinking…'}
                 </div>
               </div>
             )}
@@ -146,7 +153,7 @@ export function LiveChat() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && (e.preventDefault(), send())}
-              placeholder="Message the network…"
+              placeholder={ru ? 'Сообщение…' : 'Message…'}
               disabled={loading}
               className="flex-1 bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-[#D4AF37]/40"
             />
@@ -155,7 +162,7 @@ export function LiveChat() {
               disabled={loading || !input.trim()}
               className="px-5 py-2.5 rounded-lg bg-[#D4AF37] text-black text-sm font-semibold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#D4AF37]/90 transition"
             >
-              Send
+              {ru ? 'Отправить' : 'Send'}
             </button>
           </div>
         </div>

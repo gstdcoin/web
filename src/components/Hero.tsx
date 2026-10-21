@@ -2,16 +2,9 @@
 
 import { useLanguage } from './LanguageProvider';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Github, Cpu, Network, CheckCircle, Circle } from 'lucide-react';
+import { ArrowRight, Github, Cpu, Network } from 'lucide-react';
 import { LINKS, TOKEN_INFO } from '@/content/config';
 import Link from 'next/link';
-
-const STATUS_ITEMS = [
-  { icon: CheckCircle, color: 'text-emerald-400', label: 'Node Network', sub: 'Live on Mainnet' },
-  { icon: CheckCircle, color: 'text-emerald-400', label: 'On-Chain Settlement', sub: 'Live (SettlementMaster)' },
-  { icon: CheckCircle, color: 'text-emerald-400', label: 'Fine-Tuning Pipeline', sub: 'Live, limited models' },
-  { icon: Circle, color: 'text-slate-500', label: 'Cross-Chain Bridge', sub: 'In development' },
-];
 
 export function Hero() {
   const { t } = useLanguage();
@@ -135,7 +128,7 @@ export function Hero() {
                   </div>
                 </div>
                 <span className="text-[10px] font-bold px-2 py-1 rounded-full bg-[#D4AF37]/15 text-[#D4AF37] border border-[#D4AF37]/20 uppercase tracking-wide">
-                  Phase 1
+                  {t('hero.stage')}
                 </span>
               </div>
 
@@ -147,7 +140,7 @@ export function Hero() {
                   { label: 'Max Supply', value: '1,000,000,000', unit: 'GSTD' },
                   { label: 'Network', value: TOKEN_INFO.network, unit: 'Blockchain' },
                   { label: 'Category', value: 'AI Compute', unit: 'Sector' },
-                  { label: 'Live Chain', value: 'TON', unit: 'Bridge in dev.' },
+                    { label: 'Type', value: 'Utility', unit: 'Jetton' },
                 ].map((item) => (
                   <div key={item.label} className="bg-[#111111] rounded-xl p-3 border border-white/5">
                     <div className="text-[10px] text-slate-500 mb-0.5 uppercase tracking-wide">{item.label}</div>
@@ -157,19 +150,12 @@ export function Hero() {
                 ))}
               </div>
 
-              {/* Protocol Status — honest, no fake data */}
+              {/* Protocol Status */}
               <div className="space-y-2">
-                <div className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Protocol Status</div>
-                {STATUS_ITEMS.map((item) => (
-                  <div key={item.label} className="flex items-center gap-2.5 py-1.5 border-b border-white/5 last:border-0">
-                    <item.icon className={`w-3.5 h-3.5 flex-shrink-0 ${item.color}`} />
-                    <div className="flex-1 min-w-0">
-                      <div className="text-xs text-slate-300 font-medium">{item.label}</div>
-                    </div>
-                    <span className={`text-[10px] font-semibold ${item.color} whitespace-nowrap`}>{item.sub}</span>
-                  </div>
-                ))}
+                <div className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">{t('hero.statusTitle')}</div>
+                <p className="text-xs text-slate-400 leading-relaxed">{t('hero.statusNote')}</p>
               </div>
+
 
               {/* Contract address */}
               <div className="bg-[#111111] rounded-xl px-3 py-2 border border-white/5">

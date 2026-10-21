@@ -64,16 +64,14 @@ export function NodeRequirements() {
             <table className="w-full text-sm min-w-[420px]">
               <thead>
                 <tr className="text-left text-slate-500 text-xs uppercase tracking-wide">
-                  <th className="pb-3 font-medium">Tier</th>
-                  <th className="pb-3 font-medium">Multiplier</th>
-                  <th className="pb-3 font-medium">Modules</th>
+                  <th className="pb-3 font-medium">{nr?.tierColumn || 'Tier'}</th>
+                  <th className="pb-3 font-medium">{nr?.modulesColumn || 'Modules'}</th>
                 </tr>
               </thead>
               <tbody>
                 {NODE_TIERS.map((tier) => (
                   <tr key={tier.name} className="border-t border-white/5">
                     <td className="py-3 text-slate-100 font-semibold">{tier.name}</td>
-                    <td className="py-3 text-[#D4AF37] font-mono">{tier.multiplier}</td>
                     <td className="py-3 text-slate-400">{tier.modules}</td>
                   </tr>
                 ))}

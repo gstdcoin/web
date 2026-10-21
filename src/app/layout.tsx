@@ -35,7 +35,7 @@ export default function RootLayout({
               "name": "GSTD Token",
               "url": "https://gstdtoken.com",
               "logo": "https://gstdtoken.com/logogstd.png",
-              "description": "Open AI compute network on TON. Pay GSTD for AI inference. Run a node, earn 85% of fees on-chain.",
+              "description": "Open AI compute network on TON. Pay GSTD for AI inference or run a node.",
               "sameAs": [
                 "https://t.me/gstdtoken",
                 "https://x.com/gstdtoken",
@@ -52,12 +52,7 @@ export default function RootLayout({
               "@type": "WebSite",
               "name": "GSTD Token",
               "url": "https://gstdtoken.com",
-              "description": "Open AI compute network on TON. Pay GSTD for AI inference. Run a node, earn 85% of fees on-chain.",
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://gstdtoken.com/search?q={search_term_string}",
-                "query-input": "required name=search_term_string"
-              }
+              "description": "Open AI compute network on TON. Pay GSTD for AI inference or run a node."
             })
           }}
         />

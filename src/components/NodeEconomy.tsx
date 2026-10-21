@@ -66,7 +66,6 @@ export function NodeEconomy() {
               {NODE_TIERS.map((tier) => (
                 <div key={tier.name} className="flex items-center justify-between text-sm">
                   <span className="text-slate-200 font-medium">{tier.name}</span>
-                  <span className="text-slate-500 font-mono text-xs">{tier.multiplier}</span>
                 </div>
               ))}
             </div>

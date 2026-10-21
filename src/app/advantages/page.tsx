@@ -3,7 +3,7 @@
 import { useLanguage } from '@/components/LanguageProvider';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Shield, Zap, Eye, TrendingUp, Users, DollarSign, Globe, ExternalLink } from 'lucide-react';
+import { Shield, Zap, Eye, Users, DollarSign, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { LINKS } from '@/content/config';
 
@@ -30,12 +30,6 @@ export default function InvestorsPage() {
       color: 'bg-[#D4AF37]',
     },
     {
-      icon: TrendingUp,
-      title: t('investors.advantages.dca.title'),
-      description: t('investors.advantages.dca.description'),
-      color: 'bg-blue-500',
-    },
-    {
       icon: Users,
       title: t('investors.advantages.antiwhale.title'),
       description: t('investors.advantages.antiwhale.description'),
@@ -46,30 +40,6 @@ export default function InvestorsPage() {
       title: t('investors.advantages.income.title'),
       description: t('investors.advantages.income.description'),
       color: 'bg-emerald-500',
-    },
-    {
-      icon: Globe,
-      title: t('investors.advantages.growth.title'),
-      description: t('investors.advantages.growth.description'),
-      color: 'bg-[#D4AF37]',
-    },
-  ];
-
-  const sections = [
-    {
-      title: t('investors.sections.documentation.title'),
-      description: t('investors.sections.documentation.description'),
-      items: t('investors.sections.documentation.items') as string[],
-    },
-    {
-      title: t('investors.sections.developers.title'),
-      description: t('investors.sections.developers.description'),
-      items: t('investors.sections.developers.items') as string[],
-    },
-    {
-      title: t('investors.sections.partners.title'),
-      description: t('investors.sections.partners.description'),
-      items: t('investors.sections.partners.items') as string[],
     },
   ];
 
@@ -112,35 +82,6 @@ export default function InvestorsPage() {
                   <CardDescription className="text-slate-200 leading-relaxed text-center">
                     {advantage.description}
                   </CardDescription>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
-
-        {/* Information Sections */}
-        <section className="mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 px-4">
-            <span className="text-gradient-gold">{t('investors.sectionsTitle')}</span>
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 px-4">
-            {sections.map((section, index) => (
-              <Card key={index} className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-all duration-300 card-mobile-full text-center">
-                <CardHeader className="text-center">
-                  <CardTitle className="text-lg sm:text-xl text-slate-100 mb-2">{section.title}</CardTitle>
-                  <CardDescription className="text-slate-200 text-sm sm:text-base">
-                    {section.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3">
-                    {section.items.map((item, itemIndex) => (
-                      <li key={itemIndex} className="flex items-start justify-center space-x-2">
-                        <div className="w-2 h-2 bg-[#D4AF37] rounded-full flex-shrink-0 mt-2"></div>
-                        <span className="text-slate-200">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </CardContent>
               </Card>
             ))}

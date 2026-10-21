@@ -1,6 +1,5 @@
 import { AiMarketplace } from '@/components/AiMarketplace';
 import { RequestFlow } from '@/components/RequestFlow';
-import { FineTuning } from '@/components/FineTuning';
 import { LiveChat } from '@/components/LiveChat';
 
 export default function AiPage() {
@@ -9,7 +8,6 @@ export default function AiPage() {
       <LiveChat />
       <AiMarketplace />
       <RequestFlow />
-      <FineTuning />
     </div>
   );
 }

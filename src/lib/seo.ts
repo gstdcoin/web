@@ -7,7 +7,7 @@ export const defaultMetadata: Metadata = {
     template: `%s | ${SITE.name}`,
   },
   description: 'Open AI compute network on TON. Connect your hardware, contribute compute, and earn GSTD for completed AI workloads.',
-  keywords: ['GSTD', 'open AI compute network', 'TON ecosystem', 'distributed AI computing', 'AI fine-tuning', 'run a node', 'decentralized LLM inference', 'AI inference network'],
+  keywords: ['GSTD', 'open AI compute network', 'TON ecosystem', 'distributed AI computing', 'AI inference network'],
   authors: [{ name: 'GSTD Team' }],
   creator: 'GSTD',
   publisher: 'GSTD',
@@ -19,10 +19,6 @@ export const defaultMetadata: Metadata = {
   metadataBase: new URL(SITE.url),
   alternates: {
     canonical: '/',
-    languages: {
-      'en-US': '/en',
-      'ru-RU': '/ru',
-    },
   },
   openGraph: {
     title: SITE.name,
