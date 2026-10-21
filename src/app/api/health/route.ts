@@ -14,13 +14,14 @@ export async function GET() {
       );
     }
 
-    const health = await response.json() as { ok?: boolean; kv?: string };
-    const ready = health.ok === true && health.kv === 'ok';
+    const health = await response.json() as { ok?: boolean; status?: string; kv?: string };
+    const platformOk = health.ok === true || health.status === 'ok';
+    const ready = platformOk && health.kv === 'ok';
     return NextResponse.json(
       {
         ok: ready,
         ready,
-        checks: { platform: health.ok === true ? 'ok' : 'unavailable', kv: health.kv || 'unknown' },
+        checks: { platform: platformOk ? 'ok' : 'unavailable', kv: health.kv || 'unknown' },
         timestamp: new Date().toISOString(),
       },
       { status: ready ? 200 : 503 },
