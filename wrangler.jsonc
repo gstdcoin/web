@@ -16,5 +16,15 @@
 	],
 	"ai": {
 		"binding": "AI"
-	}
+	},
+	"ratelimits": [
+		{
+			"name": "CHAT_RATE_LIMITER",
+			"namespace_id": "861420261114",
+			"simple": {
+				"limit": 10,
+				"period": 60
+			}
+		}
+	]
 }

@@ -1,5 +1,11 @@
 import { NextResponse } from 'next/server';
 import { getCloudflareContext } from '@opennextjs/cloudflare';
+import {
+  allowChatRequest,
+  readJsonBody,
+  validateChatBody,
+  type RateLimiterBinding,
+} from '@/lib/chat-request-guard';
 
 // Proxies chat requests directly to a live GSTD node, bypassing
 // app.gstdtoken.com entirely. gstdtoken.com runs on Cloudflare Workers,
@@ -35,42 +41,95 @@ const SEED_PEERS_URL =
 const NODE_TIMEOUT_MS = 20_000;
 const SEED_FETCH_TIMEOUT_MS = 5_000;
 
+type ChatEnvironment = {
+  AI?: { run(model: string, input: Record<string, unknown>): Promise<any> };
+  CHAT_RATE_LIMITER?: RateLimiterBinding;
+};
+
+function normalizeSeedUrl(raw: string, allowedHosts: Set<string>): string | null {
+  try {
+    const url = new URL(raw);
+    const host = url.hostname.toLowerCase();
+    if (url.protocol !== 'https:' || url.username || url.password
+      || (url.port !== '' && url.port !== '443')
+      || !allowedHosts.has(host)
+      || host === 'localhost' || host.endsWith('.localhost') || host.endsWith('.local')
+      || host.endsWith('.internal') || /^\d{1,3}(?:\.\d{1,3}){3}$/.test(host) || host.includes(':')) {
+      return null;
+    }
+    return url.toString().replace(/\/$/, '');
+  } catch {
+    return null;
+  }
+}
+
 async function getSeedNodeUrls(): Promise<string[]> {
+  const allowedHosts = new Set(
+    (process.env.GSTD_SEED_HOSTS || '')
+      .split(',')
+      .map((host) => host.trim().toLowerCase())
+      .filter(Boolean),
+  );
+  if (allowedHosts.size === 0) return [];
+
   try {
     const resp = await fetch(`${SEED_PEERS_URL}?t=${Math.floor(Date.now() / 60000)}`, {
       signal: AbortSignal.timeout(SEED_FETCH_TIMEOUT_MS),
     });
-    if (!resp.ok) return [];
+    if (!resp.ok) {
+      console.warn(`[chat] seed list request failed with HTTP ${resp.status}`);
+      return [];
+    }
     const text = await resp.text();
     return text
       .split('\n')
       .map((s) => s.trim())
-      .filter((s) => s.startsWith('http'));
-  } catch {
+      .map((s) => normalizeSeedUrl(s, allowedHosts))
+      .filter((url): url is string => !!url);
+  } catch (error) {
+    console.warn('[chat] seed list request failed', error);
     return [];
   }
 }
 
 export async function POST(req: Request) {
-  let body: any;
+  let chatEnv: ChatEnvironment = {};
+  let contextError = '';
   try {
-    body = await req.json();
-  } catch {
-    return NextResponse.json({ error: 'Invalid JSON body' }, { status: 400 });
+    const { env } = await getCloudflareContext({ async: true });
+    chatEnv = env as ChatEnvironment;
+  } catch (error) {
+    contextError = error instanceof Error ? error.message : 'Cloudflare context unavailable';
+    console.warn('[chat] Cloudflare context unavailable', error);
+  }
+  if (process.env.NODE_ENV === 'production' && !chatEnv.CHAT_RATE_LIMITER) {
+    console.error('[chat] required Cloudflare rate limiter binding is unavailable', contextError);
+    return NextResponse.json({ error: 'Chat rate limiter unavailable' }, { status: 503 });
+  }
+  try {
+    if (!(await allowChatRequest(req, chatEnv.CHAT_RATE_LIMITER))) {
+      return NextResponse.json({ error: 'Chat rate limit exceeded' }, { status: 429 });
+    }
+  } catch (error) {
+    console.error('[chat] rate limiter failed', error);
+    return NextResponse.json({ error: 'Rate limiting unavailable' }, { status: 503 });
+  }
+
+  const parsed = await readJsonBody(req);
+  if (parsed.status) {
+    return NextResponse.json(
+      { error: parsed.status === 413 ? 'Request body too large' : 'Invalid JSON body' },
+      { status: parsed.status },
+    );
+  }
+  const body = validateChatBody(parsed.body);
+  if (!body) {
+    return NextResponse.json({ error: 'Invalid chat request' }, { status: 400 });
   }
 
   const seeds = await getSeedNodeUrls();
-  if (seeds.length === 0) {
-    return NextResponse.json(
-      {
-        error: 'no_nodes_available',
-        message: 'No GSTD nodes are currently reachable. The network needs at least one node operator online -- see /nodes to run one.',
-      },
-      { status: 503 },
-    );
-  }
-
-  const errors: string[] = [];
+  const errors: string[] = contextError ? [`Cloudflare context: ${contextError}`] : [];
+  if (seeds.length === 0) errors.push('no allowed seed nodes configured or reachable');
   for (const nodeUrl of seeds) {
     try {
       const resp = await fetch(`${nodeUrl.replace(/\/$/, '')}/v1/chat/completions`, {
@@ -105,18 +164,22 @@ export async function POST(req: Request) {
   // so it's the one worth the token-by-token UX.
   const wantsStream = body.stream === true;
   try {
-    const { env } = await getCloudflareContext({ async: true });
-    const ai = (env as any).AI;
+    const ai = chatEnv.AI;
     if (ai) {
+      const fallbackInput = {
+          messages: body.messages,
+          max_tokens: body.max_tokens ?? 512,
+          ...(body.temperature === undefined ? {} : { temperature: body.temperature }),
+      };
       for (const model of WORKERS_AI_MODELS) {
-        try {
+          try {
           if (wantsStream) {
-            const stream = await ai.run(model, { messages: body.messages, stream: true });
-            return new Response(stream as ReadableStream, {
-              headers: { 'content-type': 'text/event-stream', 'x-served-by': 'fallback (no node online)', 'x-model': model },
-            });
-          }
-          const result = await ai.run(model, { messages: body.messages });
+              const stream = await ai.run(model, { ...fallbackInput, stream: true });
+              return new Response(stream as ReadableStream, {
+                headers: { 'content-type': 'text/event-stream', 'x-served-by': 'fallback (no node online)', 'x-model': model },
+              });
+            }
+            const result = await ai.run(model, fallbackInput);
           if (result?.response) {
             return NextResponse.json({
               id: `chatcmpl-fallback-${Date.now()}`,
