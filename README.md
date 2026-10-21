@@ -1,87 +1,61 @@
 # GSTD Web
 
-The public website for [gstdtoken.com](https://gstdtoken.com), built with Next.js 16 and Tailwind CSS and deployed on Cloudflare Workers.
+The public website of GSTD — decentralized AI compute on TON. Ask the AI, link a wallet, run a node.
 
-> **Current network status:** the production API reported 0 registered/online nodes, 0 tasks, and 0 payouts on 2026-10-17. The existence of UI pages or API integrations does not mean compute jobs, earnings, model training, or cross-chain transfers are currently available.
+[![Website](https://img.shields.io/badge/site-gstdtoken.com-00d2ff?style=flat-square)](https://gstdtoken.com)
+[![App](https://img.shields.io/badge/app-app.gstdtoken.com-0ea5e9?style=flat-square)](https://app.gstdtoken.com)
+[![Telegram](https://img.shields.io/badge/Telegram-@gstdaibot-26a5e4?style=flat-square)](https://t.me/gstdaibot)
+[![License](https://img.shields.io/badge/license-PolyForm%20NC%201.0.0-orange?style=flat-square)](LICENSE)
 
----
+Built with Next.js 16 and Tailwind CSS, deployed on Cloudflare Workers (free tier) through OpenNext.
 
-## What is GSTD?
+## What you will find on the site
 
-This repository contains the GSTD marketing website and its frontend integrations. Node software, platform APIs, and smart contracts are maintained in separate repositories. Check current availability and contract status before relying on any network feature.
+- **Home** — what GSTD is, how a node works, live network counters.
+- **Nodes** — hardware requirements and one-command node install.
+- **Docs and FAQ** — guides for users and developers, with links to the source repositories.
+- **Transparency** — what is deployed, what is experimental, and what is not available yet.
+- **Languages** — English and Russian.
 
----
+Every number on the site comes from the live platform API ([`network/stats`](https://app.gstdtoken.com/api/v1/network/stats)). When the API is unreachable the site shows an "unavailable" notice instead of made-up figures.
 
-## Why GSTD is Unique
+> **Status:** early-stage. Whether nodes, tasks or payouts exist at a given moment is shown by the live stats, not by this README. The site describes planned features as plans, and nothing on it is an offer of income or investment advice.
 
-### 1. Model training
-The codebase includes model-training interfaces and experimental workflows. This README does not claim that a distributed training service is currently available in production.
-
-### 2. Protocol economics
-Revenue splits and buyback mechanisms are design goals documented in the contracts repository; they are not evidence of current user payments or node payouts.
-
-### 3. Node software
-Node requirements and supported hardware are documented in [gstdcoin/gstdbot](https://github.com/gstdcoin/gstdbot). A node's presence in the codebase does not guarantee a task assignment or reward.
-
-### 4. Cross-chain bridge
-The Solana/XRPL bridge is deferred, unaudited, and has never moved funds in production. Do not send funds to bridge addresses; see [gstdcoin/gstd-bridge](https://github.com/gstdcoin/gstd-bridge).
-
----
-
-## Stack
-
-| Layer | Technology |
-|---|---|
-| Frontend | Next.js 16 (App Router), TypeScript |
-| Styling | Tailwind CSS, shadcn/ui, Framer Motion |
-| i18n | English + Russian |
-| Hosting | Cloudflare Workers (free tier) |
-| Network stats | Live from `app.gstdtoken.com/api/v1/stats/public` |
-
----
-
-## Development
+## Quick start
 
 ```bash
 git clone https://github.com/gstdcoin/web
 cd web
 npm install
 npm run dev
-# → http://localhost:3000
+# http://localhost:3000
 ```
 
----
-
-## Deploy (Cloudflare Workers)
-
-Push to `main` → GitHub Actions builds with OpenNext and deploys to Cloudflare Workers (see [docs/CLOUDFLARE_DEPLOY.md](docs/CLOUDFLARE_DEPLOY.md)).
-
-Manual deploy:
-
-```bash
-npx wrangler login   # once, opens browser auth
-npm run cf:deploy
-```
-
-Local preview of the production Worker build:
-
-```bash
-npm run cf:preview
-```
-
----
-
-## Ecosystem
-
-| Repo | Description |
+| Command | What it does |
 |---|---|
-| **gstdcoin/web** | **This repo — landing page** |
-| [gstdcoin/ai](https://github.com/gstdcoin/ai) | AI dashboard + Cloudflare Workers API |
-| [gstdcoin/gstdbot](https://github.com/gstdcoin/gstdbot) | Node OS software |
-| [gstdcoin/contracts](https://github.com/gstdcoin/contracts) | TON smart contracts |
-| [gstdcoin/gstd-bridge](https://github.com/gstdcoin/gstd-bridge) | Cross-chain bridge |
+| `npm run dev` | Local development server |
+| `npm run build` | Production build |
+| `npm run cf:preview` | Preview the Cloudflare Worker build locally |
+| `npm run cf:deploy` | Build and deploy to Cloudflare Workers |
 
----
+## Deploy
+
+A push to `main` runs GitHub Actions, which builds with OpenNext and deploys to the `gstd-web` Worker. See [docs/CLOUDFLARE_DEPLOY.md](docs/CLOUDFLARE_DEPLOY.md) for secrets and a manual deploy.
+
+## The GSTD ecosystem
+
+| Repository | What it is |
+|---|---|
+| **gstdcoin/web** | **This repo — the public website** |
+| [gstdcoin/ai](https://github.com/gstdcoin/ai) | Platform app and API on Cloudflare Workers, plus the `@gstdaibot` Telegram webhook |
+| [gstdcoin/gstdbot](https://github.com/gstdcoin/gstdbot) | Node software: install, heartbeats, tasks, sovereign core |
+| [gstdcoin/A2A](https://github.com/gstdcoin/A2A) | Experimental client libraries and agent integration docs |
+| [gstdcoin/contracts](https://github.com/gstdcoin/contracts) | TON smart-contract sources (unaudited) |
+| [gstdcoin/gstd-bridge](https://github.com/gstdcoin/gstd-bridge) | Cross-chain bridge research scaffold (deferred, not deployed) |
+
+## Contributing and security
+
+Issues and pull requests are welcome. Report vulnerabilities privately through GitHub security advisories rather than public issues.
 
 ## License
 
