@@ -16,6 +16,15 @@ interface RepoInfo {
   url: string;
 }
 
+const REPO_DESCRIPTIONS: Record<string, { ru: string; en: string }> = {
+  ai: { ru: 'Платформа app.gstdtoken.com: чат, API, статистика сети', en: 'app.gstdtoken.com platform: chat, API, network stats' },
+  web: { ru: 'Этот сайт — gstdtoken.com', en: 'This website — gstdtoken.com' },
+  gstdbot: { ru: 'Telegram-бот, ПО ноды и ядро сети', en: 'Telegram bot, node software and network core' },
+  A2A: { ru: 'SDK для ИИ-агентов и MCP-сервер', en: 'AI agent SDK and MCP server' },
+  'gstd-bridge': { ru: 'Код кросс-чейн моста (не запущен, без аудита)', en: 'Cross-chain bridge code (not live, unaudited)' },
+  contracts: { ru: 'Смарт-контракты на Tact (без независимого аудита)', en: 'Tact smart contracts (not independently audited)' },
+};
+
 const FALLBACK_REPOS: RepoInfo[] = GITHUB_REPOS.map((name) => ({
   name,
   description: null,
@@ -95,7 +104,7 @@ export function OpenSource() {
                 <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-[#D4AF37] transition-colors flex-shrink-0" />
               </div>
               <p className="text-sm text-slate-400 mb-4 min-h-[2.5rem] line-clamp-2">
-                {repo.description || '—'}
+                {REPO_DESCRIPTIONS[repo.name]?.[language === 'ru' ? 'ru' : 'en'] || repo.description || '—'}
               </p>
               <div className="flex items-center gap-4 text-xs text-slate-500">
                 {repo.language && (
