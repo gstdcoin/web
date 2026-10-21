@@ -3,12 +3,11 @@
 import { useLanguage } from '@/components/LanguageProvider';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Server, Network, Layers, ShieldCheck, Coins, Globe, Bot, Shield, Users, TrendingUp } from 'lucide-react';
+import { Server, Network, ShieldCheck, Coins, Globe, Bot, Shield } from 'lucide-react';
 
-const PHASE_ICONS = [Server, Network, Layers, ShieldCheck, Coins, Globe, Bot];
-// Status is asserted here from what the repo research actually confirmed —
-// not a projection. Keep in sync with copy.*.ts roadmap.phaseFeatures.
-const PHASE_STATUS = ['completed', 'completed', 'current', 'current', 'current', 'future', 'current'] as const;
+const PHASE_ICONS = [Server, Network, ShieldCheck, Coins, Globe, Bot];
+// Status reflects what is actually verifiable; keep in sync with copy.*.ts roadmap.phaseFeatures.
+const PHASE_STATUS = ['completed', 'current', 'current', 'current', 'future', 'current'] as const;
 
 export default function RoadmapPage() {
   const { t } = useLanguage();
@@ -31,16 +30,6 @@ export default function RoadmapPage() {
       icon: Shield,
       title: t('roadmap.securityFirst'),
       description: t('roadmap.securityFirstDescription'),
-    },
-    {
-      icon: Users,
-      title: t('roadmap.communityDriven'),
-      description: t('roadmap.communityDrivenDescription'),
-    },
-    {
-      icon: TrendingUp,
-      title: t('roadmap.scalableGrowth'),
-      description: t('roadmap.scalableGrowthDescription'),
     },
   ];
 
@@ -119,7 +108,7 @@ export default function RoadmapPage() {
           <h2 className="text-3xl font-bold text-center mb-12">
             <span className="text-gradient-gold">{t('roadmap.keyMilestones')}</span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 max-w-md mx-auto gap-8">
             {milestones.map((milestone, index) => (
               <Card key={index} className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-all duration-300 text-center card-mobile-full">
                 <CardHeader>

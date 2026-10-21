@@ -10,6 +10,24 @@ import { LINKS } from '@/content/config';
 
 const ICONS = [BookOpen, Layers, Server, Cpu, Sparkles, Wallet, Coins, ShieldCheck, Landmark, Ticket, Lock, Code2, Users, HelpCircle];
 
+const GH = `${LINKS.github}`;
+const HREFS = [
+  `${GH}/gstdbot#readme`,
+  `${GH}/ai#readme`,
+  '/nodes',
+  `${GH}/gstdbot#readme`,
+  `${GH}/gstdbot#readme`,
+  `${GH}/gstdbot#readme`,
+  `${GH}/gstdbot#readme`,
+  `${GH}/gstdbot#readme`,
+  '/treasury',
+  '/token',
+  `${GH}/gstdbot#readme`,
+  `${GH}/ai#readme`,
+  '/developers',
+  '/#faq',
+];
+
 export function DocsHub() {
   const { t } = useLanguage();
   const docs = t('docs') as any;
@@ -34,21 +52,25 @@ export function DocsHub() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {sections.map((section, i) => {
             const Icon = ICONS[i] || BookOpen;
+            const href = HREFS[i] || GH;
+            const external = href.startsWith('http');
             return (
-              <motion.div
+              <motion.a
                 key={section.title}
+                href={href}
+                {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.04 }}
-                className="glass-institutional rounded-2xl border border-[#D4AF37]/20 p-5"
+                className="block glass-institutional rounded-2xl border border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-colors p-5"
               >
                 <div className="w-9 h-9 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center mb-3">
                   <Icon className="w-4 h-4 text-[#D4AF37]" />
                 </div>
                 <h3 className="text-slate-100 font-semibold mb-1">{section.title}</h3>
                 <p className="text-slate-500 text-sm">{section.description}</p>
-              </motion.div>
+              </motion.a>
             );
           })}
         </div>

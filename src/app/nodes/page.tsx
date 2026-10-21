@@ -1,7 +1,6 @@
 import { NodeEconomy } from '@/components/NodeEconomy';
 import { NodeInstall } from '@/components/NodeInstall';
 import { NodeRequirements } from '@/components/NodeRequirements';
-import { WalletAsNode } from '@/components/WalletAsNode';
 import { FAQ } from '@/components/FAQ';
 
 export default function NodesPage() {
@@ -10,7 +9,6 @@ export default function NodesPage() {
       <NodeEconomy />
       <NodeInstall />
       <NodeRequirements />
-      <WalletAsNode />
       <FAQ />
     </div>
   );

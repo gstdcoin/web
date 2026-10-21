@@ -2,7 +2,7 @@
 
 import { useLanguage } from './LanguageProvider';
 import { motion } from 'framer-motion';
-import { INFERENCE_MODELS, FINETUNE_MODELS } from '@/content/config';
+import { INFERENCE_MODELS } from '@/content/config';
 
 export function AiMarketplace() {
   const { t } = useLanguage();
@@ -35,7 +35,7 @@ export function AiMarketplace() {
         </div>
 
         {/* Inference models */}
-        <div className="glass-institutional rounded-2xl border border-[#D4AF37]/20 p-6 mb-8">
+        <div className="glass-institutional rounded-2xl border border-[#D4AF37]/20 p-6">
           <h2 className="text-lg font-bold text-slate-100 mb-1">{am?.inferenceTitle || 'Inference Models'}</h2>
           <p className="text-slate-500 text-sm mb-5">{am?.inferenceNote}</p>
           <div className="overflow-x-auto -mx-2 px-2">
@@ -43,7 +43,6 @@ export function AiMarketplace() {
               <thead>
                 <tr className="text-left text-slate-500 text-xs uppercase tracking-wide">
                   <th className="pb-3 font-medium">{columns.model}</th>
-                  <th className="pb-3 font-medium">{columns.provider}</th>
                   <th className="pb-3 font-medium">{columns.availability}</th>
                 </tr>
               </thead>
@@ -51,47 +50,9 @@ export function AiMarketplace() {
                 {INFERENCE_MODELS.map((model) => (
                   <tr key={model} className="border-t border-white/5">
                     <td className="py-3 text-slate-100 font-mono">{model}</td>
-                    <td className="py-3 text-slate-400">Node network</td>
-                    <td className="py-3">
-                      <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/25">
-                        Shipped
-                      </span>
-                    </td>
+                    <td className="py-3 text-slate-400">{am?.supportedByClient}</td>
                   </tr>
                 ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        {/* Fine-tune models */}
-        <div className="glass-institutional rounded-2xl border border-[#D4AF37]/20 p-6">
-          <h2 className="text-lg font-bold text-slate-100 mb-1">{am?.finetuneTitle || 'Fine-Tuning Models'}</h2>
-          <p className="text-slate-500 text-sm mb-5">{am?.finetuneNote}</p>
-          <div className="overflow-x-auto -mx-2 px-2">
-            <table className="w-full text-sm min-w-[400px]">
-              <thead>
-                <tr className="text-left text-slate-500 text-xs uppercase tracking-wide">
-                  <th className="pb-3 font-medium">{columns.model}</th>
-                  <th className="pb-3 font-medium">{columns.provider}</th>
-                  <th className="pb-3 font-medium">{columns.availability}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {FINETUNE_MODELS.map((model) => {
-                  const live = model === 'qwen2.5:0.5b';
-                  return (
-                    <tr key={model} className="border-t border-white/5">
-                      <td className="py-3 text-slate-100 font-mono">{model}</td>
-                      <td className="py-3 text-slate-400">Training pipeline</td>
-                      <td className="py-3">
-                        <span className={`text-xs px-2 py-0.5 rounded-full border ${live ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/25' : 'bg-amber-500/15 text-amber-400 border-amber-500/25'}`}>
-                          {live ? 'Confirmed live' : 'Accepted, unconfirmed'}
-                        </span>
-                      </td>
-                    </tr>
-                  );
-                })}
               </tbody>
             </table>
           </div>

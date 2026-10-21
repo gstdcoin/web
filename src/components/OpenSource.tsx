@@ -26,7 +26,7 @@ const FALLBACK_REPOS: RepoInfo[] = GITHUB_REPOS.map((name) => ({
 }));
 
 export function OpenSource() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [repos, setRepos] = useState<RepoInfo[]>(FALLBACK_REPOS);
   const [live, setLive] = useState(false);
 
@@ -64,7 +64,7 @@ export function OpenSource() {
         >
           <div className="inline-flex items-center px-4 py-1.5 rounded-full glass-institutional border-[#D4AF37]/30 text-[#D4AF37] text-xs font-medium mb-6">
             <Github className="w-3 h-3 mr-2" />
-            {live ? 'Live from GitHub' : 'github.com/' + GITHUB_ORG}
+            {live ? (language === 'ru' ? 'Данные из GitHub' : 'Live from GitHub') : 'github.com/' + GITHUB_ORG}
           </div>
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
             <span className="text-gradient-gold">{os?.title || 'The Protocol Is Open'}</span>
@@ -104,10 +104,12 @@ export function OpenSource() {
                     {repo.language}
                   </span>
                 )}
-                <span className="flex items-center gap-1">
-                  <Star className="w-3 h-3" />
-                  {repo.stars} {labels.stars}
-                </span>
+                {live && (
+                  <span className="flex items-center gap-1">
+                    <Star className="w-3 h-3" />
+                    {repo.stars} {labels.stars}
+                  </span>
+                )}
                 {repo.updatedAt && (
                   <span>{labels.updated} {new Date(repo.updatedAt).toLocaleDateString()}</span>
                 )}

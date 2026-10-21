@@ -39,11 +39,6 @@ export default {
       description: 'Join the GSTD community on Telegram. Get support, follow network updates, and coordinate with other node operators.',
       cta: 'Join Telegram',
     },
-    finetune: {
-      title: 'Fine-Tuning Marketplace',
-      description: 'Submit your dataset. A distributed node trains a LoRA adapter on it — real adapters have been produced end-to-end. Base-model availability is limited; check Documentation before relying on a specific model.',
-      cta: 'Start fine-tuning',
-    },
   },
 
   // Hero Section
@@ -58,8 +53,10 @@ export default {
     useNetwork: 'Use the Network',
     tryBot: 'Try it in Telegram',
     viewGithub: 'View GitHub',
-    fineTuneModels: 'Fine-Tune Models',
     tags: ['Open', 'Distributed', 'AI Compute', 'Node Rewards', 'Source-Available'],
+    statusTitle: 'Status',
+    statusNote: 'Early stage: the node network is only starting up. Current figures are in the "Network status" block below.',
+    stage: 'Early stage',
   },
 
   // Features
@@ -78,7 +75,7 @@ export default {
     },
     goldLiquidity: {
       title: 'Pay-for-Compute Model',
-      description: 'Users pay GSTD for AI inference. Node operators earn the large majority of every fee (85% on-chain); the remainder funds the treasury and a buyback & burn.',
+      description: 'Users pay GSTD for AI inference and node operators receive a share of the fee for the requests they process. Income depends on real usage and is not guaranteed.',
     },
     lowInterest: {
       title: 'Listed on STON.fi',
@@ -97,15 +94,13 @@ export default {
   whatWeBuildTitle: 'What we are building',
   whatWeBuildBullets: [
     'Decentralized AI Inference',
-    'Fine-Tuning Marketplace',
     'Node Operator Earnings',
     'Ecosystem Treasury',
   ],
   whatWeBuildDescriptions: [
     'The protocol routes each inference request to an available node according to capability, availability and load. Routing logic is still evolving — see Documentation for the current implementation.',
-    'Submit your dataset. A distributed node trains a LoRA adapter on it. The pipeline has produced real, verified adapters end to end — availability currently depends on which base model is wired up for training.',
-    'Node operators earn 85% of every fee paid in GSTD, settled on-chain. The more requests your node handles, the more you earn.',
-    '10% of all fees go to the ecosystem treasury; 5% is used for GSTD buyback & burn.',
+    'Node operators receive a share of each GSTD fee for the requests they process. The more requests a node handles, the more it earns; income is not guaranteed.',
+    'Part of the fees is earmarked for the treasury; the actual balance is published on the Treasury page.',
   ],
 
   // Token Section
@@ -129,9 +124,9 @@ export default {
     proofOfReserve: 'Network Stats',
     proofOfReserveTitle: 'Live Network Metrics',
     proofOfReserveDescription: 'Real-time stats from the GSTD node network.',
-    proofOfReserveNote: 'Data sourced from the live node registry',
-    proofOfReserveAuditor: 'On-chain verifiable',
-    proofOfReserveUpdate: 'Updated every heartbeat. All nodes verified on TON network.',
+    proofOfReserveNote: 'Data from the platform API',
+    proofOfReserveAuditor: 'Data source',
+    proofOfReserveUpdate: 'Data from the GSTD platform node registry; there is no independent on-chain verification of it.',
     verifiedViaOracle: 'Live Network Data',
     goldBackingRatio: 'Nodes Online',
     physicalGoldReserve: 'Active Nodes',
@@ -145,29 +140,29 @@ export default {
     reserve: 'Treasury',
     computePayment: 'AI Compute Payment',
     governanceVoting: 'Governance voting',
-    feeDiscounts: 'Task Launch',
-    stakingRewards: 'Node Earnings',
+    feeDiscounts: 'Paid multi-model chat modes',
+    stakingRewards: 'Node operator rewards',
     maxSupply: 'Max Supply',
     maxSupplyValue: '1B (TON)',
     useCaseInference: 'Pay for AI inference (GSTD)',
-    useCaseNodeShare: 'Node operators earn 85% of every fee, settled on-chain',
-    useCaseTreasuryShare: '10% to treasury, 5% to buyback & burn',
+    useCaseNodeShare: 'Node operators receive a share of the fee for requests they process',
+    useCaseTreasuryShare: 'Part of the fees is earmarked for the treasury',
     whyLowRate: 'How does the treasury work?',
-    whyLowRateAnswer: 'A portion of protocol fees may be allocated to the ecosystem treasury according to the protocol’s published rules — currently 10% of settled fees, with a further 5% used for GSTD buyback & burn.',
+    whyLowRateAnswer: 'See the Treasury page for the balance and distribution. We do not promise token buybacks or yield.',
   },
   token: {
     featuresTitle: 'Token Features',
     features: [
       'Pay for AI Compute',
-      'Protocol Access',
-      'Fee Discounts',
-      'Node Earnings',
+      'Node Rewards',
+      'Referral Bonuses',
+      'Paid Chat Modes',
     ],
     featureDescriptions: [
-      'Use GSTD to pay for AI inference on the decentralized node network.',
-      'Access premium models and priority routing on the network.',
-      'Benefit from reduced fees and priority access to new features.',
-      'Run a node and earn GSTD for every AI request you process.',
+      'GSTD is used to pay for AI inference on the node network.',
+      'Node operators receive GSTD for processed requests. Income depends on usage and is not guaranteed.',
+      'In the Telegram bot: +1 GSTD for the inviter when a friend links a new wallet (up to 20 friends), +0.2 GSTD for the friend; the daily budget is limited.',
+      'In the chat on app.gstdtoken.com, GSTD pays for modes that use several expert models.',
     ],
   },
 
@@ -175,7 +170,7 @@ export default {
   about: {
     title: 'About GSTD',
     subtitle: 'Open AI compute network on TON',
-    description: 'GSTD is an open protocol for decentralized AI inference. Anyone can run node software on their own hardware, register on the network, and earn GSTD for completed workloads — 85% of every fee, settled on-chain.',
+    description: 'GSTD is an open protocol for decentralized AI inference. Anyone can run node software on their own hardware, register on the network, and receive GSTD for completed workloads. The network is at an early stage.',
     featuresTitle: 'Key Features',
     features: [
       'Open Node Network',
@@ -185,15 +180,15 @@ export default {
     ],
     featureDescriptions: [
       'Anyone can run node software on their own hardware to process AI inference requests — earning GSTD for every completed workload.',
-      'GSTD is a payment token for AI compute. Earnings come from real usage — not staking, not gold, not promises.',
+      'GSTD is a payment token for AI compute. Node income depends on real usage — no staking, no yield promises.',
       'GSTD runs on TON today. A cross-chain bridge to Solana and XRPL is early-stage, unaudited, and has never moved funds in production — treat it as not live.',
-      'Platform source code is public on GitHub (noncommercial license). Run it, read it, verify on-chain.',
+      'Platform source code is public on GitHub (noncommercial license). Read it and run it.',
     ],
     buildBullets: [
       'Node Network: Anyone can run node software that processes AI inference requests, generating protocol fees',
-      'Fee Distribution: Node operators earn 85% of every inference fee, settled on-chain by the SettlementMaster contract',
-      'Treasury: 10% of fees fund the treasury; a further 5% is used for GSTD buyback & burn',
-      'Open Access: Any device (laptop, Pi, server) can join and start earning',
+      'Fee Distribution: a node operator receives a share of the fee for processed requests; rewards are tracked in the platform ledger and withdrawn on request',
+      'Treasury: part of the fees is earmarked for the treasury; see the Treasury page for the balance',
+      'Open Access: Any device (laptop, Pi, server) can run a node',
     ],
     missionTitle: 'Our Mission',
     missionDescription: 'Build an open AI compute network where anyone can run a node and earn GSTD by serving AI requests. No gatekeepers, no single provider — just an open compute market.',
@@ -215,31 +210,29 @@ export default {
     subtitle: 'Get your GSTD tokens today',
     featuresTitle: 'Why Choose GSTD?',
     features: [
-      'Built on secure TON blockchain',
-      'Low transaction fees',
-      'Fast settlement times',
-      'Community-driven development',
-      'Transparent governance',
-      'Regular security audits',
+      'Jetton on the TON blockchain',
+      'Low TON transaction fees',
+      'Open source platform code',
+      'Utility token for AI compute',
     ],
     benefits: [
       {
-        title: 'Secure & Trusted',
-        description: 'Built on TON blockchain with proven security and reliability.',
+        title: 'On TON',
+        description: 'GSTD is a Jetton on the TON blockchain; check the contract in the explorer.',
       },
       {
-        title: 'Fast Transactions',
-        description: 'Lightning-fast swaps with minimal fees and instant settlement.',
+        title: 'Swap on STON.fi',
+        description: 'Swap TON for GSTD through the STON.fi DEX. Liquidity is limited and the price can move sharply.',
       },
       {
-        title: 'Community Driven',
-        description: 'Join thousands of users in the growing GSTD ecosystem.',
+        title: 'Early stage',
+        description: 'The network is at an early stage. This is not investment advice; buy only what you are ready to lose.',
       },
     ],
-    quickBuyTitle: 'Buy GSTD Now',
-    quickBuyDescription: 'Get your GSTD tokens instantly through our secure swap interface',
+    quickBuyTitle: 'Buy GSTD',
+    quickBuyDescription: 'Swap TON for GSTD on the STON.fi DEX',
     buyButtonText: 'Buy GSTD on STON.fi',
-    poweredBy: 'Powered by STON.fi • Secure • Fast • Low Fees',
+    poweredBy: 'Swap runs on the third-party STON.fi DEX',
   },
   buySteps: [
     'Get a TON Wallet',
@@ -262,19 +255,17 @@ export default {
     phases: [
       'Open Node Network',
       'Decentralized AI Inference',
-      'Distributed Fine-Tuning',
       'Verification & Reputation',
-      'Treasury & Reserve Infrastructure',
-      'Permissionless AI Compute Marketplace',
+      'Treasury & Payouts',
+      'Cross-chain Access',
       'Open AI Agent Infrastructure',
     ],
     phaseDescriptions: [
       'Token, node registry, and the public node client',
-      'Requests routed to nodes, fees settled on-chain',
-      'Dataset submission and distributed LoRA training',
+      'Requests routed to nodes; fees tracked in the platform ledger',
       'Proving that a completed workload was done correctly',
-      'On-chain treasury, escrow, and reserve-asset infrastructure',
-      'Cross-chain access and an open marketplace for compute',
+      'Treasury reporting and payouts to node operators; on-chain settlement is still being designed',
+      'Cross-chain bridge — public code, unaudited, not live',
       'Agent-to-agent task execution built on the same network',
     ],
     keyMilestones: 'Key Milestones',
@@ -302,13 +293,8 @@ export default {
       ],
       [
         'AI inference requests routed to available nodes',
-        'On-chain fee settlement live on TON mainnet (SettlementMaster.tact) — 85% node / 10% treasury / 5% buyback & burn',
+        'Fees and rewards are tracked in the platform ledger; there is no on-chain settlement yet',
         'The node client supports a catalog of open models — the current list is in the Documentation',
-      ],
-      [
-        'Dataset submission and distributed training pipeline — available via the GSTD node network',
-        'Training pipeline is implemented; no production training run on live nodes has completed yet',
-        'Base-model coverage is still limited — check Documentation for what is wired up today',
       ],
       [
         'Result submissions are signed (Ed25519) so the network knows who submitted a result',
@@ -316,9 +302,9 @@ export default {
         'Node reputation and capability-based routing — in design',
       ],
       [
-        'Escrow and ecosystem treasury contracts deployed on TON mainnet',
-        'A gold-reserve treasury contract (potential XAUt allocation) is written but not yet deployed or audited',
-        'Today’s live treasury holds TON only',
+        'The treasury is currently an internal platform ledger (see the Treasury page)',
+        'Contract code is public in gstdcoin/contracts; it has not been independently audited',
+        'No buyback or yield is promised',
       ],
       [
         'Cross-chain bridge to Solana and XRPL exists as public code',
@@ -539,166 +525,47 @@ export default {
   investors: {
     title: 'Core Protocol',
     subtitle: 'GSTD Protocol Core Components',
-    description: 'GSTD is an open AI compute network. Node operators run node software on their own hardware and earn 85% of every fee paid in GSTD by users requesting AI compute, settled on-chain.',
-    summary: '⚡️ GSTD is an open AI compute network: users pay GSTD for AI inference, node operators earn 85% of fees on-chain, 10% funds the treasury, 5% funds buyback & burn. No gold promises. No APY. Earnings come from real compute usage.',
-    advantagesTitle: 'Key Advantages',
+    description: 'GSTD is an open AI compute network at an early stage. Node operators run node software on their own hardware and receive a share of the fee paid in GSTD by users requesting AI compute.',
+    summary: 'GSTD is an open AI compute network: users pay GSTD for AI inference and node operators receive a share of the fee. No yield promises. Income depends on real usage; right now there are no nodes online and usage is small.',
+    advantagesTitle: 'Key Features',
     advantages: {
       reliability: {
-        title: 'Real Earnings from Compute',
-        description: 'Node operators earn GSTD for every AI request they process. Earnings scale directly with network usage — the more requests, the more earned.',
+        title: 'Pay for Compute',
+        description: 'Node operators receive GSTD for the AI requests they process. Income depends on network usage and is not guaranteed.',
       },
       interest: {
         title: 'Low Barrier to Entry',
-        description: 'Any hardware can join — Raspberry Pi, laptop, or server. Install Ollama, register your node, start earning. No minimum stake required.',
+        description: 'Any hardware can join — Raspberry Pi, laptop, or server. Install the node and register. No minimum stake required.',
       },
       transparency: {
-        title: 'Web3 Transparency',
-        description: 'All operations are on-chain. Node registry, fee distribution, and treasury balance are publicly verifiable.',
-      },
-      dca: {
-        title: 'Treasury & Buyback Loop',
-        description: '10% of settled inference fees flow to the ecosystem treasury; a further 5% funds GSTD buyback & burn — tied directly to real network usage, on-chain.',
+        title: 'Open Source',
+        description: 'The platform source code is public on GitHub (noncommercial license). Network metrics are published from the API with no simulation.',
       },
       antiwhale: {
         title: 'Open Access',
-        description: 'No gatekeepers for participation. Any wallet can pay for AI compute. Any device can run node software and serve requests.',
+        description: 'Any device can run node software and serve requests.',
       },
       income: {
         title: 'Node Operator Rewards',
-        description: 'Node operators earn 85% of every inference fee routed to their node, settled on-chain. Income is proportional to compute served — not inflationary token emissions.',
-      },
-      growth: {
-        title: 'Utility-Driven Growth',
-        description: 'Network value grows with real usage. More AI requests = more fees = more treasury buybacks = stronger GSTD utility.',
-      },
-    },
-    sectionsTitle: 'Documentation & Resources',
-    sections: {
-      documentation: {
-        title: 'Documentation',
-        description: 'Comprehensive guides and technical documentation',
-        items: [
-          'Whitepaper',
-          'Technical Docs',
-          'API Reference',
-          'Security Audit',
-        ],
-      },
-      developers: {
-        title: 'For Developers',
-        description: 'Resources for developers and integrators',
-        items: [
-          'SDK & Libraries',
-          'Integration Guide',
-          'Code Examples',
-          'Developer Support',
-        ],
-      },
-      partners: {
-        title: 'Partners',
-        description: 'Partnership opportunities and programs',
-        items: [
-          'Partnership Program',
-          'Requirements',
-          'Benefits',
-          'Contact Info',
-        ],
+        description: 'Rewards are accrued in the platform ledger in proportion to completed compute and withdrawn to a wallet on request.',
       },
     },
     cta: {
       title: 'Join the GSTD Network',
-      description: 'Run a node and earn from real AI compute demand — or pay GSTD to access models on the network.',
+      description: 'Run a node or pay GSTD for AI chat access. The network is at an early stage.',
       badge: 'Get GSTD',
     },
   },
 
   // Footer
   footer: {
-    description: 'Open AI compute network on TON. Pay GSTD for inference. Run a node, earn 85% of fees on-chain.',
+    description: 'Open AI compute network on TON. Pay GSTD for inference or run a node.',
     followUs: 'Follow us',
     quickLinks: 'Quick Links',
     contact: 'Contact',
     allRightsReserved: 'All rights reserved',
     privacyPolicy: 'Privacy Policy',
     termsOfService: 'Terms of Service',
-  },
-
-  // Utility Cycle
-  utilityCycle: {
-    title: 'Protocol Utility',
-    subtitle: 'How GSTD flows through the network',
-    steps: [
-      {
-        number: 1,
-        title: 'Pay for AI Compute',
-        description: 'Users pay GSTD to request AI inference from models like Llama, Mistral, and others running on decentralized nodes.',
-        metric: 'Pay per inference',
-        icon: 'Coins',
-      },
-      {
-        number: 2,
-        title: 'Node Operators Earn',
-        description: 'Node operators running node software receive 85% of every fee, settled on-chain. The more requests routed to your node, the more GSTD you earn.',
-        metric: '85% of every fee',
-        icon: 'CreditCard',
-      },
-      {
-        number: 3,
-        title: 'Treasury & Buyback Loop',
-        description: '10% of settled inference fees flow to the ecosystem treasury; 5% funds GSTD buyback & burn. This ties protocol revenue directly to real usage.',
-        metric: '10% Treasury · 5% Buyback & Burn',
-        icon: 'Network',
-      },
-    ],
-    protocolIndicator: 'Utility Protocol • Pay-for-Compute Model',
-  },
-
-  // Multichain
-  multichain: {
-    title: 'Multichain Roadmap',
-    subtitle: 'TON is live today. A bridge to Solana and XRPL is early-stage and not yet functional.',
-    networks: [
-      {
-        name: 'TON',
-        title: 'Live network',
-        description: 'GSTD is deployed and trading on TON today. Node rewards, treasury settlement, and the jetton itself all run here.',
-        features: [
-          'Jetton deployed, supply fixed',
-          'SettlementMaster live on mainnet',
-          'Telegram-native wallets',
-        ],
-        status: 'active',
-      },
-      {
-        name: 'Solana',
-        title: 'Bridge in development',
-        description: 'A bridge validator exists in source code but has never processed a real transfer — no vault has been deployed on Solana.',
-        features: [
-          'Watcher/detection logic exists',
-          'No live vault',
-          'Not audited',
-        ],
-        status: 'building',
-      },
-      {
-        name: 'XRPL',
-        title: 'Bridge in development',
-        description: 'Same status as Solana: bridge code exists but is unaudited and has never moved funds on XRPL.',
-        features: [
-          'Watcher/detection logic exists',
-          'No live vault',
-          'Not audited',
-        ],
-        status: 'building',
-      },
-    ],
-    bridge: {
-      status: 'In Development — Not Live',
-      networks: 'TON ↔ Solana ↔ XRPL',
-      time: 'Not yet available',
-      title: 'Cross-Chain Bridge',
-      unifiedLiquidity: 'Planned: a shared liquidity layer across chains. Do not send funds expecting bridge functionality until this is independently verified as production-ready.',
-    },
   },
 
   // Network Status
@@ -735,15 +602,15 @@ export default {
     ctaGithub: 'View on GitHub',
     ctaTelegram: 'Node Operators Chat',
     modes: [
-      { title: 'Spark → Flame', desc: 'Entry hardware — Raspberry Pi class devices. Lower hardware multiplier, still earns.', badge: 'Entry' },
+      { title: 'Spark → Flame', desc: 'Entry hardware — Raspberry Pi class devices.', badge: 'Entry' },
       { title: 'Storm → Titan', desc: 'Multi-core desktops and workstations with more RAM/disk.', badge: 'Mid-tier' },
-      { title: 'Sovereign', desc: '32-core+ or GPU-equipped machines. Highest hardware multiplier.', badge: 'Top-tier' },
+      { title: 'Sovereign', desc: '32-core+ or GPU-equipped machines.', badge: 'Top-tier' },
     ],
   },
 
   featureSection: {
     title: 'Key Features',
-    subtitle: 'A permissionless compute network where nodes earn fees for AI inference and model fine-tuning',
+    subtitle: 'An open compute network where nodes receive a share of the fee for AI inference',
   },
 
   // FAQ Section
@@ -753,15 +620,15 @@ export default {
     items: [
       {
         question: 'What is GSTD?',
-        answer: 'GSTD is a utility token for paying for AI inference on an open node network. It is NOT an investment product. Earnings come from real compute usage — no staking rewards, no APY promises.',
+        answer: 'GSTD is a utility token for paying for AI inference on an open node network. It is NOT an investment product. Income comes from real usage — no staking, no yield promises.',
       },
       {
         question: 'How do node operators earn?',
-        answer: 'Node operators run the node software on their hardware, register on the network, and receive 85% of every GSTD fee for requests routed to their node, settled on-chain by the SettlementMaster contract. Earnings scale with usage and are never guaranteed.',
+        answer: 'Node operators run the open node software on their hardware, register on the network, and receive a share of the GSTD fee for the requests they process. Rewards are accrued in the platform ledger and withdrawn to a wallet on request. The network is at an early stage: income is not guaranteed and depends on real usage.',
       },
       {
         question: 'How does the treasury work?',
-        answer: '10% of settled inference fees accumulate in the ecosystem treasury, and a further 5% is used for GSTD buyback & burn. Treasury allocation follows the protocol’s published rules — see the Treasury page for what it currently holds.',
+        answer: 'Part of the fees is earmarked for the ecosystem treasury. See the Treasury page for the actual balance and how it is used; we do not promise yield or token buybacks.',
       },
       {
         question: 'Why is GSTD a utility token?',
@@ -773,122 +640,17 @@ export default {
       },
       {
         question: 'What AI models can I use?',
-        answer: 'Inference runs on the models the node software actually ships with — currently Llama 3.3 70B, Llama 3.1 8B, Llama 4 Scout, Qwen3 32B, Kimi K2, GPT-OSS 120B, GPT-OSS 20B, and Mixtral 8x7B. The network routes your request to an available node that has the model loaded; not every model is available on every node.',
+        answer: 'Right now no nodes are online, so the demo chat on the site answers through a Cloudflare Workers AI fallback model. The node software runs on top of Ollama and can serve whichever models are installed on that node; once nodes appear, a request is routed to an available node that has the model.',
       },
       {
         question: 'Is task execution cryptographically guaranteed?',
-        answer: 'A deployed on-chain Escrow contract holds task budgets. Result submission is signed (Ed25519) so the network knows who submitted a result. There is currently no cryptographic proof that a computation was performed correctly — we do not claim a "mathematical guarantee," and you should not rely on one.',
-      },
-      {
-        question: 'How does the fine-tuning marketplace work?',
-        answer: 'Submit your dataset. A distributed node trains a LoRA adapter on it — the pipeline has produced real, verified adapters end to end. Availability currently depends on which base model is wired up for training; check Documentation for the current list before relying on a specific model.',
+        answer: 'No. There is currently no cryptographic proof that a computation was performed correctly — we do not claim a "mathematical guarantee," and you should not rely on one.',
       },
       {
         question: 'What hardware do I need to run a node?',
-        answer: 'Any device the node software supports: Raspberry Pi 4 and up, laptop, desktop, or server. Hardware is scored into tiers (Spark through Sovereign) based on CPU/RAM/disk/GPU — more capable hardware earns a higher multiplier. There is no single hard minimum beyond what a Raspberry Pi 4 provides.',
+        answer: 'Any device the node software supports: Raspberry Pi 4 and up, laptop, desktop, or server. There is no single hard minimum beyond what a Raspberry Pi 4 provides; the more capable the hardware, the more models it can serve.',
       },
     ],
-  },
-
-  // Cloud Comparison
-  cloudComparison: {
-    title: 'A Different Model',
-    subtitle: 'Pay for infrastructure time, or pay for AI results',
-    description: 'GSTD offers a distributed alternative to centralized cloud AI providers, with payment tied to completed inference rather than reserved capacity.',
-    cloud: {
-      title: 'Cloud Providers',
-      expensive: 'Centralized',
-      features: [
-        'Pay for reserved usage time',
-        'Pricing set by the provider',
-        'Centralized infrastructure',
-        'No independent execution guarantee',
-      ],
-      price: 'Provider-set pricing',
-    },
-    gstd: {
-      title: 'GSTD Network',
-      features: [
-        'Pay only for results',
-        'Competitive pricing',
-        'Open node network',
-        'On-chain escrow for task budgets',
-      ],
-      price: 'Varies by task and model',
-      savings: 'Competitive vs. centralized cloud',
-    },
-  },
-
-  // Wallet as Node
-  walletAsNode: {
-    title: 'Your Wallet Is Your Node Identity',
-    subtitle: 'One wallet, one node',
-    description: 'Node rewards settle directly to your TON wallet via TonConnect. Running node software is still required to actually process work — your wallet is how you get paid, not a substitute for the node.',
-    benefits: [
-      'TonConnect wallet integration',
-      'Rewards settle on-chain',
-      'No custodial balance to trust',
-      'Earn GSTD per completed workload',
-    ],
-    flow: {
-      title: 'How it works',
-      steps: [
-        {
-          title: 'Install the Node',
-          description: 'Run the one-line install script on your hardware (see Run a Node below)',
-        },
-        {
-          title: 'Connect Wallet',
-          description: 'Link your TON wallet via TonConnect so rewards have somewhere to go',
-        },
-        {
-          title: 'Process Workloads',
-          description: 'Your node polls for available tasks and processes AI inference requests',
-        },
-        {
-          title: 'Earn GSTD',
-          description: 'Earn 85% of every inference fee routed to your node, settled on-chain to your wallet.',
-        },
-      ],
-    },
-    cta: 'Connect Wallet',
-  },
-
-  // Escrow & Treasury
-  escrowTreasury: {
-    title: 'Escrow & Protocol Treasury',
-    subtitle: 'Built from network activity, not token promises',
-    escrow: {
-      title: 'Escrow: Task Budgets On-Chain',
-      description: 'A deployed on-chain Escrow contract holds task budgets and releases them according to protocol rules. This protects against a task simply not running — it is not a cryptographic guarantee that the compute result itself is correct.',
-      features: [
-        'Deployed, on-chain contract',
-        'Budgets held, not pre-paid to a party',
-        'Public source, verifiable',
-        'No claim of correctness verification',
-      ],
-    },
-    treasury: {
-      title: 'Treasury: Protocol Fund',
-      description: 'A portion of protocol fees is allocated to the ecosystem treasury according to the protocol’s published rules — currently 10% of settled fees, with a further 5% used for GSTD buyback & burn.',
-      features: [
-        '10% of settled fees → Treasury',
-        '5% → GSTD buyback & burn',
-        'Network development funding',
-        'On-chain balance, publicly verifiable',
-      ],
-    },
-    reserveAssets: {
-      title: 'Reserve Assets',
-      description: 'The treasury may hold digital reserve assets such as XAUt as part of its reserve strategy. This is a treasury allocation choice, not a promise made to GSTD holders.',
-      disclaimer: 'Reserve assets are treasury holdings and do not by themselves constitute a redemption right or guarantee of GSTD value. GSTD is not backed by, redeemable for, or pegged to any reserve asset.',
-      status: 'A gold-reserve treasury contract has been written but is not yet deployed. The live treasury today holds TON only.',
-    },
-    nightAudit: {
-      title: 'Daily Stats',
-      description: 'Public stats on network activity, sourced from the live node registry. All settlement transactions are verifiable on-chain.',
-      time: 'Updated continuously when the API is reachable',
-    },
   },
 
   // Core Message — "The network is the infrastructure"
@@ -935,7 +697,9 @@ export default {
     tiersTitle: 'Hardware Tiers',
     hardwareTitle: 'Hardware',
     resourcesTitle: 'Resources',
-    tiersNote: 'The node software scores your hardware into a multiplier tier — higher tiers earn more per completed workload. There is no single hard minimum beyond what a Raspberry Pi 4 provides.',
+    tiersNote: 'The node software scores your hardware into a class (Spark through Sovereign). There is no single hard minimum beyond what a Raspberry Pi 4 provides.',
+    tierColumn: 'Tier',
+    modulesColumn: 'Modules',
   },
 
   // How AI Requests Work
@@ -943,34 +707,6 @@ export default {
     title: 'How AI Requests Work',
     steps: ['User', 'Request', 'Router', 'Node Selection', 'Compute', 'Verification', 'Result', 'Settlement'],
     description: 'The protocol routes workloads to available nodes. Result submissions are cryptographically signed so the network knows who submitted them. There is currently no cryptographic proof that a computation was performed correctly — that is active, unfinished work, not a shipped guarantee.',
-  },
-
-  // Economic Flow diagram
-  economicFlow: {
-    title: 'Economic Flow',
-    subtitle: 'How GSTD moves through the network',
-    userLoop: ['Users', 'Pay GSTD', 'AI Compute', 'Node Operators', 'Node Rewards'],
-    feeLoop: {
-      label: 'Protocol Fee',
-      target: 'Treasury',
-      allocations: ['Infrastructure', 'Security', 'Development', 'Ecosystem', 'Reserve Assets'],
-    },
-    split: 'Verified on-chain: 85% node · 10% treasury · 5% buyback & burn',
-  },
-
-  // Why This Model
-  whyThisModel: {
-    title: 'From Speculation to Network Utility',
-    traditionalTitle: 'Traditional Token',
-    traditional: ['Price', 'Speculation', 'Centralized services'],
-    protocolTitle: 'GSTD Protocol',
-    protocol: ['Compute', 'AI services', 'Node participation', 'Network fees', 'Treasury', 'Open infrastructure'],
-  },
-
-  // Decentralization section
-  decentralization: {
-    title: 'No Single Computer Is the Network',
-    body: 'Network resilience comes from participation by independent operators. This is a design goal the protocol is still building toward — routing, verification, and node diversity are all active work, not a finished guarantee of resilience or independence.',
   },
 
   // Open Source / Developers section
@@ -986,28 +722,13 @@ export default {
 
   // AI Marketplace
   aiMarketplace: {
-    title: 'Decentralized AI Marketplace',
-    subtitle: 'Models the node network actually serves today',
-    categories: ['Chat', 'Coding', 'Vision', 'Embeddings', 'Fine-Tuning', 'Agents'],
-    inferenceTitle: 'Inference Models',
-    inferenceNote: 'Shipped in the node client — availability depends on which nodes have a model loaded.',
-    finetuneTitle: 'Fine-Tuning Models',
-    finetuneNote: 'Accepted by the training pipeline. Only a subset is confirmed live end-to-end — check Documentation for current status before submitting a job.',
-    columns: { model: 'Model', provider: 'Provider / Node', availability: 'Availability' },
-  },
-
-  // Fine-tuning explainer
-  fineTuning: {
-    title: 'Distributed Fine-Tuning',
-    steps: [
-      'Upload a dataset.',
-      'Select a model.',
-      'A distributed node performs the training workload.',
-      'Receive your trained adapter.',
-    ],
-    loraTitle: 'What is LoRA?',
-    loraExplainer: 'LoRA (Low-Rank Adaptation) trains a small set of additional weights instead of the full model — cheaper to train and easy to swap in and out. QLoRA does the same thing on a quantized (compressed) base model, further reducing hardware requirements.',
-    note: 'Result quality and training time depend on your dataset and the base model selected. We do not publish a fixed cost-savings multiplier — see Documentation for what has actually been measured.',
+    title: 'Models',
+    subtitle: 'Demo chat and the node client. The list below shows API model names, not a guarantee of availability.',
+    categories: ['Chat', 'Coding'],
+    inferenceTitle: 'API model names',
+    inferenceNote: 'A node maps these names to a model installed locally (Ollama), so the actual model may differ. No nodes are online right now.',
+    supportedByClient: 'Supported by the node client',
+    columns: { model: 'Model', provider: 'Provider / Node', availability: 'Status' },
   },
 
   // Documentation hub
@@ -1020,12 +741,12 @@ export default {
       { title: 'Node', description: 'Installing, configuring, and running node software.' },
       { title: 'Compute', description: 'How workloads are picked up and processed.' },
       { title: 'Inference', description: 'Supported models and how requests are routed.' },
-      { title: 'Payments', description: 'How GSTD is paid, held in escrow, and settled.' },
-      { title: 'Rewards', description: 'How node operators earn, on-chain.' },
+      { title: 'Payments', description: 'How AI inference is paid for in GSTD.' },
+      { title: 'Rewards', description: 'How node operators receive rewards.' },
       { title: 'Verification', description: 'What is cryptographically proven today, and what is not yet.' },
-      { title: 'Treasury', description: 'What the treasury holds and how it is funded.' },
+      { title: 'Treasury', description: 'What the treasury publishes and how it is funded.' },
       { title: 'Token', description: 'GSTD as a utility token — supply, contract, use cases.' },
-      { title: 'Security', description: 'What is audited, what is unaudited, and current known risk.' },
+      { title: 'Security', description: 'Known risks and what has not been independently audited.' },
       { title: 'API', description: 'Public endpoints and their real response fields.' },
       { title: 'Developers', description: 'SDKs, repositories, and how to build on the network.' },
       { title: 'FAQ', description: 'Common questions, answered honestly.' },
@@ -1040,10 +761,10 @@ export default {
       { label: 'Token Contract (TON)', description: 'The deployed jetton — supply, holders, and admin status, live on-chain.' },
       { label: 'GitHub', description: 'All six repositories that make up the protocol — node client, backend, contracts, bridge, agent SDK, and this website.' },
       { label: 'Protocol Documentation', description: 'How the network actually works, sourced from the code.' },
-      { label: 'On-Chain Transactions', description: 'Settlement, treasury, and escrow activity — verifiable on a TON explorer.' },
+      { label: 'On-Chain Transactions', description: 'GSTD transfers are verifiable on a TON explorer.' },
       { label: 'Network Metrics', description: 'Live node and task data, when the API is reachable.' },
       { label: 'Node Software', description: 'The exact code that runs on every node.' },
-      { label: 'Smart Contracts', description: 'SettlementMaster, Escrow, and Treasury — public code and deployed on TON mainnet.' },
+      { label: 'Smart Contracts', description: 'Public code in the contracts repository; not independently audited.' },
     ],
     disclaimer: 'Nothing on this website constitutes an offer of securities, investment advice, or a guarantee of future value.',
   },

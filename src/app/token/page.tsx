@@ -261,33 +261,7 @@ export default function TokenPage() {
           <h2 className="text-3xl font-bold text-center mb-12">
             <span className="text-gradient-gold">{t('tokenInfo.tokenEconomics')}</span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 card-mobile-full">
-              <CardHeader>
-                <CardTitle className="text-lg text-slate-100">{t('tokenInfo.supplyDistribution')}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  <div className="flex justify-between">
-                    <span className="text-slate-200">{t('tokenInfo.liquidity')}</span>
-                    <span className="font-semibold text-[#D4AF37]">30%</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-slate-200">{t('tokenInfo.community')}</span>
-                    <span className="font-semibold text-[#D4AF37]">40%</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-slate-200">{t('tokenInfo.team')}</span>
-                    <span className="font-semibold text-[#D4AF37]">20%</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-slate-200">{t('tokenInfo.reserve')}</span>
-                    <span className="font-semibold text-[#D4AF37]">10%</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Card className="glass-institutional border-[#D4AF37]/20 hover:border-[#D4AF37]/40 card-mobile-full">
               <CardHeader>
                 <CardTitle className="text-lg text-slate-100">{t('tokenInfo.useCases')}</CardTitle>
@@ -297,10 +271,6 @@ export default function TokenPage() {
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-[#D4AF37] rounded-full"></div>
                     <span className="text-slate-200">{t('tokenInfo.computePayment')}</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-[#D4AF37] rounded-full"></div>
-                    <span className="text-slate-200">{t('tokenInfo.governanceVoting')}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-[#D4AF37] rounded-full"></div>
@@ -332,29 +302,6 @@ export default function TokenPage() {
               </CardContent>
             </Card>
           </div>
-        </section>
-
-        {/* Fee Distribution */}
-        <section className="mt-12">
-          <Card className="glass-institutional border-[#D4AF37]/20 card-mobile-full">
-            <CardHeader>
-              <CardTitle className="text-lg text-slate-100">{t('tokenInfo.useCaseInference')}</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="flex justify-between items-start">
-                <span className="text-slate-200 flex-1">{t('tokenInfo.useCaseNodeShare')}</span>
-              </div>
-              <div className="flex justify-between items-start">
-                <span className="text-slate-200 flex-1">{t('tokenInfo.useCaseTreasuryShare')}</span>
-              </div>
-              <div className="p-3 glass-institutional border-[#D4AF37]/20 rounded-lg mt-2">
-                <p className="text-xs font-semibold text-[#D4AF37] mb-1">{t('tokenInfo.whyLowRate')}</p>
-                <p className="text-xs text-slate-200" style={{ lineHeight: '1.7' }}>
-                  {t('tokenInfo.whyLowRateAnswer')}
-                </p>
-              </div>
-            </CardContent>
-          </Card>
         </section>
       </main>
     </div>
