@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { registeredNodeUrls } from '@/lib/node-discovery';
 import { getCloudflareContext } from '@opennextjs/cloudflare';
 import {
   allowChatRequest,
@@ -38,7 +39,7 @@ const WORKERS_AI_MODELS = [
 ];
 const SEED_PEERS_URL =
   'https://raw.githubusercontent.com/gstdcoin/ai/main/gstd-seed-peers.txt';
-const NODE_TIMEOUT_MS = 20_000;
+const NODE_TIMEOUT_MS = 60_000;
 const SEED_FETCH_TIMEOUT_MS = 5_000;
 
 type ChatEnvironment = {
@@ -70,6 +71,10 @@ async function getSeedNodeUrls(): Promise<string[]> {
       .map((host) => host.trim().toLowerCase())
       .filter(Boolean),
   );
+  const trustedIds = new Set((process.env.GSTD_TRUSTED_NODE_IDS || '')
+    .split(',').map(id => id.trim()).filter(Boolean));
+  const registered = await registeredNodeUrls(trustedIds, allowedHosts);
+  if (registered.length > 0) return registered;
   if (allowedHosts.size === 0) return [];
 
   try {
@@ -160,8 +165,8 @@ export async function POST(req: Request) {
   // Every known seed failed -- try the Workers AI fallback before giving up.
   // Streaming only: node-served responses above are already fast/local-ish
   // relative to a browser round trip and JSON is simpler to keep correct
-  // there; this is the path actually active right now (all seeds offline),
-  // so it's the one worth the token-by-token UX.
+  // there; Cloudflare AI remains an explicitly identified fallback
+  // and is explicitly identified as Cloudflare AI in response metadata.
   const wantsStream = body.stream === true;
   try {
     const ai = chatEnv.AI;
@@ -176,7 +181,7 @@ export async function POST(req: Request) {
           if (wantsStream) {
               const stream = await ai.run(model, { ...fallbackInput, stream: true });
               return new Response(stream as ReadableStream, {
-                headers: { 'content-type': 'text/event-stream', 'x-served-by': 'fallback (no node online)', 'x-model': model },
+                headers: { 'content-type': 'text/event-stream', 'x-served-by': 'cloudflare-workers-ai', 'x-model': model },
               });
             }
             const result = await ai.run(model, fallbackInput);
@@ -187,7 +192,7 @@ export async function POST(req: Request) {
               created: Math.floor(Date.now() / 1000),
               model,
               choices: [{ index: 0, message: { role: 'assistant', content: result.response }, finish_reason: 'stop' }],
-              _servedBy: 'fallback (no node online)',
+              _servedBy: 'cloudflare-workers-ai',
             });
           }
         } catch (e) {
@@ -203,7 +208,7 @@ export async function POST(req: Request) {
   return NextResponse.json(
     {
       error: 'all_nodes_unreachable',
-      message: 'All known GSTD nodes are currently offline. Try again shortly, or run a node yourself at /nodes.',
+      message: 'Node routing and the Cloudflare AI fallback are currently unavailable. Try again shortly.',
       attempted: errors,
     },
     { status: 503 },

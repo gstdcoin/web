@@ -26,7 +26,7 @@ Every number on the site comes from the live platform API ([`network/stats`](htt
 ```bash
 git clone https://github.com/gstdcoin/web
 cd web
-npm install
+npm ci
 npm run dev
 # http://localhost:3000
 ```
@@ -40,7 +40,7 @@ npm run dev
 
 ## Deploy
 
-A push to `main` runs GitHub Actions, which builds with OpenNext and deploys to the `gstd-web` Worker. See [docs/CLOUDFLARE_DEPLOY.md](docs/CLOUDFLARE_DEPLOY.md) for secrets and a manual deploy.
+A push to `main` runs type checks, routing tests and a production dependency audit, builds with OpenNext, and validates health/pages on the separate `gstd-web-preview` Worker before deploying `gstd-web`. See [docs/CLOUDFLARE_DEPLOY.md](docs/CLOUDFLARE_DEPLOY.md) for secrets and a manual deploy.
 
 ## The GSTD ecosystem
 
@@ -60,3 +60,12 @@ Issues and pull requests are welcome. Report vulnerabilities privately through G
 ## License
 
 Source-available under the [PolyForm Noncommercial License 1.0.0](LICENSE), with an additional permission for taking part in the GSTD network (including receiving GSTD rewards). Commercial use by companies needs a separate license. Not an OSI open-source license.
+
+## Node-backed chat
+
+Chat discovers the operator-approved persistent identities in `GSTD_TRUSTED_NODE_IDS`
+through the canonical live registry. Rotating Cloudflare tunnel URLs are resolved
+from the signed node record; unrelated registrants and private destinations are rejected.
+A named public hostname may be explicitly allowed with `GSTD_SEED_HOSTS`.
+The response identifies the actual serving node. When node routing fails, Workers AI
+is identified as `cloudflare-workers-ai`; that fallback is not evidence that every node is offline.

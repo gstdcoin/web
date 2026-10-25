@@ -11,7 +11,7 @@ The site was deployed directly via `wrangler deploy` and is live at:
 
 Verified working: homepage, `/about`, `/api/health`, `/api/stonfi-pool`, and the security headers all respond correctly in production.
 
-The production-tested versions are Next.js 16.3.8, OpenNext Cloudflare 1.20.2, and Wrangler 4.122.0. Keep these versions compatible and run deployed-route smoke tests before upgrading; a successful build alone does not establish Worker runtime compatibility.
+The production-tested versions are Next.js 16.4.3 and OpenNext Cloudflare 1.20.13, with the Wrangler version recorded in package-lock.json. Keep these versions compatible and run deployed-route smoke tests before upgrading; a successful build alone does not establish Worker runtime compatibility.
 
 ## Option A — GitHub Actions (recommended, auto-deploys on push)
 
@@ -46,3 +46,15 @@ npm run cf:preview
 - **`images.unoptimized: true`** — Cloudflare's on-the-fly image resizing (`next/image` optimization) requires the paid Cloudflare Images add-on. Since site images are already pre-built as `webp`/`svg` in `/public`, this is off to avoid any billing surprise. If you later want automatic resizing, see https://opennext.js.org/cloudflare/howtos/image and add an `images.binding` to `wrangler.jsonc`.
 - **`vercel.json` removed** — its security headers were moved into `next.config.mjs`'s native `headers()` function, which Cloudflare's build respects the same way Vercel did.
 - Both API routes (`/api/health`, `/api/stonfi-pool`) run as real server functions inside the Worker (Node.js-compatible runtime via the `nodejs_compat` flag in `wrangler.jsonc`) — not converted to client-side fetch, not static. Full parity with the current Vercel behavior.
+
+## Preview gate and node routing
+
+Deployment uses `npm ci`, type checks, routing tests and a production dependency audit.
+The isolated `gstd-web-preview` Worker has its own self-reference binding and no production routes.
+Its readiness API and English/Russian pages must pass before `gstd-web` is updated.
+Production readiness is checked again after deployment. Keep the Next/OpenNext pair compatible;
+the earlier adapter could build a patched Next release yet fail on every Worker request.
+
+Only operator-approved persistent node IDs in `GSTD_TRUSTED_NODE_IDS` can supply
+rotating tunnel destinations through the canonical registry. Use a stable named tunnel
+for sustained operation. No secret node key or wallet key belongs in this configuration.

@@ -7,39 +7,76 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: gstd-web-production
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    name: Build & Deploy
+    name: Validate Preview & Deploy
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: 'npm'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build for Cloudflare Workers
-        # CLOUDFLARE_API_TOKEN/ACCOUNT_ID needed here (not just in the Deploy
-        # step below) because of the "ai" binding in wrangler.jsonc --
-        # next.config.mjs's initOpenNextCloudflareForDev() runs on every
-        # `next build`, and unlike KV/D1/R2, Workers AI can't be emulated
-        # locally: it opens a remote proxy session to Cloudflare even at
-        # build time, which fails without these.
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Check types and production dependencies
+        run: |
+          npm test
+          npx tsc --noEmit
+          npm audit --omit=dev --audit-level=high
+      - name: Build Cloudflare Worker
         run: npx opennextjs-cloudflare build
+      - name: Bootstrap isolated preview
+        id: preview
+        run: |
+          set -euo pipefail
+          OPEN_NEXT_DEPLOY=true npx wrangler deploy --config wrangler.preview.jsonc 2>&1 | tee "$RUNNER_TEMP/preview-deploy.log"
+          worker_url="$(grep -Eo 'https://[[:alnum:].-]+\.workers\.dev' "$RUNNER_TEMP/preview-deploy.log" | tail -n 1 || true)"
+          test -n "$worker_url" || { echo "::error::Missing preview URL"; exit 1; }
+          echo "url=$worker_url" >> "$GITHUB_OUTPUT"
+      - name: Populate preview cache
+        run: npx opennextjs-cloudflare deploy --config wrangler.preview.jsonc
+      - name: Verify preview readiness and pages
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-
-      - name: Deploy
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy
-          # Keep the known-good Wrangler version paired with OpenNext 1.20.2.
-          wranglerVersion: '4.122.0'
+          WORKER_URL: ${{ steps.preview.outputs.url }}
+        run: |
+          set -euo pipefail
+          ready=false
+          for attempt in $(seq 1 12); do
+            if curl --fail --silent --show-error --max-time 20 "$WORKER_URL/api/health" > "$RUNNER_TEMP/preview-health.json"; then
+              node -e "const h=require(process.argv[1]); if(h.ok!==true || h.ready!==true) process.exit(1)" "$RUNNER_TEMP/preview-health.json"
+              ready=true
+              break
+            fi
+            sleep 5
+          done
+          test "$ready" = true || { echo "::error::Preview readiness failed"; exit 1; }
+          for path in / /en /ru; do
+            curl --fail --silent --show-error --location --max-time 30 "$WORKER_URL$path" > "$RUNNER_TEMP/preview-page.html"
+            grep -iq '<!doctype html' "$RUNNER_TEMP/preview-page.html"
+            echo "Preview $path returned HTML successfully"
+          done
+      - name: Deploy validated production
+        run: npx opennextjs-cloudflare deploy --config wrangler.jsonc
+      - name: Verify production readiness and page
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 12); do
+            if curl --fail --silent --show-error --max-time 20 https://gstdtoken.com/api/health > "$RUNNER_TEMP/production-health.json"; then
+              node -e "const h=require(process.argv[1]); if(h.ok!==true || h.ready!==true) process.exit(1)" "$RUNNER_TEMP/production-health.json"
+              curl --fail --silent --show-error --location --max-time 30 https://gstdtoken.com/ > "$RUNNER_TEMP/production-page.html"
+              grep -iq '<!doctype html' "$RUNNER_TEMP/production-page.html"
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "::error::Production readiness failed"
+          exit 1

@@ -12,7 +12,8 @@
     "build:analyze": "ANALYZE=true npm run build",
     "clean": "rm -rf .next out .open-next node_modules/.cache",
     "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "cf:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy"
+    "cf:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "test": "node --test scripts/node-discovery.test.cjs"
   },
   "dependencies": {
     "@radix-ui/react-separator": "^1.0.3",
@@ -22,16 +23,16 @@
     "framer-motion": "^12.23.15",
     "js-yaml": "^4.1.1",
     "lucide-react": "^0.408.0",
-    "next": "^16.3.8",
+    "next": "16.4.3",
     "next-intl": "^4.14.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "sharp": "^0.35.3",
+    "sharp": "^0.35.5",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@opennextjs/cloudflare": "^1.20.2",
+    "@opennextjs/cloudflare": "1.20.13",
     "@types/node": "^20.14.12",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
@@ -50,6 +51,6 @@
     "micromatch": "^4.0.8",
     "semver": "^7.6.0",
     "tar": "^6.2.1",
-    "sharp": "^0.35.3"
+    "sharp": "$sharp"
   }
 }
