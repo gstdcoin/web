@@ -35,7 +35,7 @@ export function LiveChat() {
       const resp = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ model: 'qwen2.5:0.5b', messages: next, stream: true }),
+        body: JSON.stringify({ model: 'auto', messages: next, stream: true }),
       });
 
       if (!resp.ok) {
