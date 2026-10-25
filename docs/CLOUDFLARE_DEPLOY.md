@@ -51,7 +51,7 @@ npm run cf:preview
 
 Deployment uses `npm ci`, type checks, routing tests and a production dependency audit.
 The isolated `gstd-web-preview` Worker has its own self-reference binding and no production routes.
-Its readiness API and English/Russian pages must pass before `gstd-web` is updated.
+Its readiness API and public pages must pass before `gstd-web` is updated.
 Production readiness is checked again after deployment. Keep the Next/OpenNext pair compatible;
 the earlier adapter could build a patched Next release yet fail on every Worker request.
 

@@ -59,7 +59,7 @@ jobs:
             sleep 5
           done
           test "$ready" = true || { echo "::error::Preview readiness failed"; exit 1; }
-          for path in / /en /ru; do
+          for path in / /about /nodes /ai; do
             curl --fail --silent --show-error --location --max-time 30 "$WORKER_URL$path" > "$RUNNER_TEMP/preview-page.html"
             grep -iq '<!doctype html' "$RUNNER_TEMP/preview-page.html"
             echo "Preview $path returned HTML successfully"
