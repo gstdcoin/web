@@ -167,6 +167,9 @@ export async function POST(req: Request) {
   // relative to a browser round trip and JSON is simpler to keep correct
   // there; Cloudflare AI remains an explicitly identified fallback
   // and is explicitly identified as Cloudflare AI in response metadata.
+  if ((parsed.body as Record<string,unknown>).allow_cloud_fallback !== true) {
+    return NextResponse.json({error:'node_unavailable',message:'No node answered. Cloudflare AI fallback requires your explicit consent.'},{status:503});
+  }
   const wantsStream = body.stream === true;
   try {
     const ai = chatEnv.AI;

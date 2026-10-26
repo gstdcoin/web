@@ -31,7 +31,7 @@ export default {
     },
     monitor: {
       title: 'Source-Available',
-            description: 'Platform source code is public on GitHub and free for noncommercial use and network participation; commercial use needs a separate license. No central servers — the network is the nodes.',
+            description: 'Platform source code is public on GitHub and free for noncommercial use and network participation; commercial use needs a separate license. Nodes can serve local compute; the platform and custody wallet remain central dependencies today.',
       cta: 'GitHub',
     },
     chat: {
@@ -624,7 +624,7 @@ export default {
       },
       {
         question: 'How do node operators earn?',
-        answer: 'Node operators run the open node software on their hardware, register on the network, and receive a share of the GSTD fee for the requests they process. Rewards are accrued in the platform ledger and withdrawn to a wallet on request. The network is at an early stage: income is not guaranteed and depends on real usage.',
+        answer: 'Node operators run the open node software on their hardware, register on the network, and receive a share of the GSTD fee for the requests they process. Funded accepted work allocates 85% to executors, 10% to the protocol and 5% to the reserve. Earned credits can pay for other nodes or request a withdrawal signed by the custody owner. The network is at an early stage: income is not guaranteed and depends on real usage.',
       },
       {
         question: 'How does the treasury work?',
@@ -640,7 +640,7 @@ export default {
       },
       {
         question: 'What AI models can I use?',
-        answer: 'Right now no nodes are online, so the demo chat on the site answers through a Cloudflare Workers AI fallback model. The node software runs on top of Ollama and can serve whichever models are installed on that node; once nodes appear, a request is routed to an available node that has the model.',
+        answer: 'Live node availability is shown in network status. Corporate AI fallback requires explicit user consent. The node software runs on top of Ollama and can serve whichever models are installed on that node; once nodes appear, a request is routed to an available node that has the model.',
       },
       {
         question: 'Is task execution cryptographically guaranteed?',

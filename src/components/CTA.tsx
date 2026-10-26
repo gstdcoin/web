@@ -21,6 +21,10 @@ export function CTA() {
             {ru ? 'Попробуйте ИИ, затем подключите компьютер или создайте своё приложение.' : 'Try AI, then connect a computer or build your own application.'}
           </p>
 
+          <p className="text-slate-300 mb-6">
+            {ru?'Круговорот GSTD: оплатить вычисления → выполнить принятое задание → использовать заработанное на других нодах. 85% получает исполнитель, 10% — протокол, 5% — резерв. Бесплатные запросы не создают токены.':'GSTD cycle: pay for compute → complete accepted work → use earned credits on other nodes. Executor 85%, protocol 10%, reserve 5%. Free requests do not create tokens.'}
+          </p>
+          <p className="mb-6"><a className="text-[#D4AF37] underline" href="https://app.gstdtoken.com/payments">{ru?'Баланс, пополнение и вывод GSTD':'GSTD balance, deposits and withdrawals'} ↗</a></p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button size="lg" className="bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30 hover:bg-[#D4AF37]/30 hover:border-[#D4AF37]/50 group hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]" asChild>
               <Link href="/ai">

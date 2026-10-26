@@ -15,6 +15,7 @@ export function LiveChat() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [cloudConsent,setCloudConsent] = useState(false);
   const [servedBy, setServedBy] = useState<string | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -35,7 +36,7 @@ export function LiveChat() {
       const resp = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ model: 'auto', messages: next, stream: true }),
+        body: JSON.stringify({ model: 'auto', messages: next, stream: true, allow_cloud_fallback:cloudConsent }),
       });
 
       if (!resp.ok) {
@@ -108,8 +109,8 @@ export function LiveChat() {
           </h2>
           <p className="text-slate-400 max-w-xl mx-auto text-sm">
             {ru
-              ? 'Запрос уходит на ноду сети, если хотя бы одна онлайн. Если запрос к ноде недоступен, отвечает резервная модель Cloudflare Workers AI (небольшая, ответы могут быть слабыми).'
-              : 'Your request goes to a network node when at least one is online. If node routing is unavailable, a Cloudflare Workers AI fallback model answers (small model, answers may be weak).'}
+              ? 'Запрос уходит на ноду сети, если хотя бы одна онлайн. Передача корпоративному резервному ИИ возможна только с вашим разрешением ниже.'
+              : 'Your request goes to a network node when at least one is online. Corporate AI fallback is used only with your permission below.'}
             {servedBy && (
               <span className="block mt-1 text-emerald-400 font-mono text-xs">
                 {servedBy === 'cloudflare-workers-ai'
@@ -120,6 +121,10 @@ export function LiveChat() {
           </p>
         </motion.div>
 
+        <label className="flex items-start gap-3 text-sm text-slate-400 mb-4">
+          <input type="checkbox" checked={cloudConsent} onChange={e=>setCloudConsent(e.target.checked)}/>
+          {ru?'Разрешаю отправить запрос Cloudflare AI, если ноды не ответят.':'Allow my question to be sent to Cloudflare AI only if nodes do not answer.'}
+        </label>
         <div className="glass-institutional rounded-2xl border border-[#D4AF37]/20 flex flex-col h-[420px]">
           <div className="flex-1 overflow-y-auto p-5 space-y-4">
             {messages.length === 0 && (
