@@ -46,21 +46,5 @@ export const SOCIAL_LINKS = {
   docs: "/docs"
 };
 
-// Verified against source (gstdcoin/gstdbot README + src/naas/hardware_profiler.ts).
-// Do not rename these tiers or invent hardware minimums — only what the repo documents.
-export const NODE_TIERS = [
-  { name: "Spark", modules: 2 },
-  { name: "Flame", modules: 4 },
-  { name: "Storm", modules: 6 },
-  { name: "Titan", modules: 8 },
-  { name: "Sovereign", modules: "Unlimited" },
-];
-
-// Verified: gstdcoin/gstdbot README "Supported AI Models" table (inference, via node network).
-export const INFERENCE_MODELS = [
-  "llama-3.3-70b", "llama-3.1-8b", "llama-4-scout", "qwen3-32b",
-  "kimi-k2", "gpt-oss-120b", "gpt-oss-20b", "mixtral-8x7b",
-];
-
 export const GITHUB_ORG = "gstdcoin";
 export const GITHUB_REPOS = ["ai", "web", "gstdbot", "A2A", "gstd-bridge", "contracts"];

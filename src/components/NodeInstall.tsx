@@ -10,7 +10,7 @@ import { motion } from 'framer-motion';
 const INSTALL_CMD = 'curl -fsSL https://raw.githubusercontent.com/gstdcoin/gstdbot/main/install.sh | bash';
 
 export function NodeInstall() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [copied, setCopied] = useState(false);
 
   const copy = () => {
@@ -40,10 +40,10 @@ export function NodeInstall() {
             {ni?.badge || 'One-line install'}
           </div>
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            <span className="text-gradient-gold">{ni?.title || 'Run a Node in 60 Seconds'}</span>
+            <span className="text-gradient-gold">{ni?.title || 'Run a Node'}</span>
           </h2>
           <p className="text-slate-300 text-base md:text-lg max-w-2xl mx-auto">
-            {ni?.subtitle || 'Deploy on any Linux, macOS or Windows (WSL) machine. The node auto-starts, updates itself, and earns GSTD for every task it completes.'}
+            {ni?.subtitle || 'Install on Linux or WSL2. Model download time depends on your connection. Rewards require funded accepted work.'}
           </p>
         </motion.div>
 
@@ -72,6 +72,7 @@ export function NodeInstall() {
                 variant="ghost"
                 size="sm"
                 onClick={copy}
+                aria-label={language === 'ru' ? 'Скопировать команду установки' : 'Copy installation command'}
                 className="flex-shrink-0 text-slate-400 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-colors"
               >
                 {copied
@@ -83,6 +84,17 @@ export function NodeInstall() {
           </div>
         </motion.div>
 
+        <div className="glass-institutional rounded-2xl border border-[#D4AF37]/20 p-6 mb-8">
+          <h3 className="text-xl font-semibold mb-3">{language === 'ru' ? 'После установки' : 'After installation'}</h3>
+          <ol className="list-decimal pl-5 space-y-2 text-slate-300 text-sm">
+            <li>{language === 'ru' ? 'Откройте адрес панели, указанный установщиком. По умолчанию: http://localhost:8080; на существующей установке порт может отличаться.' : 'Open the dashboard address printed by the installer. Default: http://localhost:8080; an existing installation may use another port.'}</li>
+            <li>{language === 'ru' ? 'Настройте PIN с токеном первого запуска на машине. В панели укажите публичный TON-адрес для новых начислений. Seed-фраза не нужна.' : 'Set up a PIN using the machine’s first-run setup token. Enter a public TON address for future earnings in the dashboard. No seed phrase is needed.'}</li>
+            <li>{language === 'ru' ? 'В разделе «Локальные модели» скачайте модель Ollama по имени и проверьте её в чате. Загрузка расходует трафик, диск и RAM при запуске.' : 'Download an Ollama model by name under Local models and test it in chat. Downloads use bandwidth and disk; running models use RAM.'}</li>
+            <li>{language === 'ru' ? 'Панель показывает CPU, RAM, занятые слоты и регистрацию. Обновление ноды запускается вручную; учёт наград и вывод находятся на платформе.' : 'The dashboard shows CPU, RAM, active slots and registration. Node updates are manual; reward accounting and withdrawals are on the platform.'}</li>
+          </ol>
+          <a className="inline-block mt-4 text-[#D4AF37] underline" href="https://github.com/gstdcoin/gstdbot/blob/main/docs/OPERATOR_PANEL.md" target="_blank" rel="noreferrer">{language === 'ru' ? 'Подробная инструкция оператора ↗' : 'Detailed operator guide ↗'}</a>
+        </div>
+
         {/* Modes */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -92,9 +104,9 @@ export function NodeInstall() {
           className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10"
         >
           {(ni?.modes || [
-            { title: 'Cloud AI', desc: 'Instant. Uses cloud inference. Free. Default.', badge: 'Default' },
-            { title: 'Hybrid', desc: 'Local + cloud. Better privacy.', badge: 'Balanced' },
-            { title: 'Sovereign', desc: 'Fully local. ~10 GB. Max privacy.', badge: 'Advanced' },
+            { title: 'Local AI', desc: 'Run an installed model locally.', badge: 'Default' },
+            { title: 'GSTD network', desc: 'Allow another node explicitly.', badge: 'Optional' },
+            { title: 'Paid work', desc: '85% of funded accepted work.', badge: 'GSTD' },
           ]).map((mode: any, i: number) => (
             <div key={i} className="glass-institutional border border-[#D4AF37]/20 rounded-xl p-4 text-center">
               <div className="inline-block px-2 py-0.5 rounded text-xs bg-[#D4AF37]/10 text-[#D4AF37] mb-2">{mode.badge}</div>

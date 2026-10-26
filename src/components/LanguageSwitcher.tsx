@@ -16,6 +16,7 @@ export function LanguageSwitcher() {
       variant="outline"
       size="sm"
       onClick={toggleLocale}
+      aria-label={language === 'en' ? 'Switch to Russian' : 'Переключить на английский'}
       className="bg-[#1a1a1a]/80 backdrop-blur-md border-[#D4AF37]/30 text-slate-100 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/50 transition-all duration-300"
     >
       {language === 'en' ? 'RU' : 'EN'}

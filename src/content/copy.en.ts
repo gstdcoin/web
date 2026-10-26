@@ -26,7 +26,7 @@ export default {
     launchApp: 'Open',
     app: {
       title: 'GSTD Node',
-      description: 'Deploy your own node from the public repository. Share computing resources, process AI requests — earn GSTD fees for every completed task.',
+      description: 'Deploy your own node from the public repository. Share computing resources, process AI requests — earn GSTD only for funded, accepted work.',
       cta: 'Deploy Node',
     },
     monitor: {
@@ -48,7 +48,7 @@ export default {
     title: 'Open AI Compute Network',
     quote: 'AI infrastructure should not belong to a single provider.',
     subtitle: 'Connect your hardware. Contribute compute. Process AI workloads. Earn GSTD.',
-    longDescription: 'GSTD is an open protocol for decentralized AI inference and distributed computing. Anyone can run a node, contribute compute and earn GSTD for completed workloads.',
+    longDescription: 'GSTD is an open protocol for decentralized AI inference and distributed computing. Anyone can run a node, contribute compute and earn GSTD for funded, accepted work.',
     deployNode: 'Run a Node',
     useNetwork: 'Use the Network',
     tryBot: 'Try it in Telegram',
@@ -71,7 +71,7 @@ export default {
   featureCards: {
     infrastructure: {
       title: 'Decentralized Node Network',
-      description: 'Users deploy nodes with their own hardware to process AI requests and share computing power — earning GSTD fees for every task completed.',
+      description: 'Users deploy nodes with their own hardware to process AI requests and share computing power — earning GSTD only for funded, accepted work.',
     },
     goldLiquidity: {
       title: 'Pay-for-Compute Model',
@@ -140,7 +140,7 @@ export default {
     reserve: 'Treasury',
     computePayment: 'AI Compute Payment',
     governanceVoting: 'Governance voting',
-    feeDiscounts: 'Paid multi-model chat modes',
+    feeDiscounts: 'Payment for available models',
     stakingRewards: 'Node operator rewards',
     maxSupply: 'Max Supply',
     maxSupplyValue: '1B (TON)',
@@ -155,14 +155,14 @@ export default {
     features: [
       'Pay for AI Compute',
       'Node Rewards',
-      'Referral Bonuses',
-      'Paid Chat Modes',
+      'Separate Promotional Quotas',
+      'Access to Models',
     ],
     featureDescriptions: [
       'GSTD is used to pay for AI inference on the node network.',
       'Node operators receive GSTD for processed requests. Income depends on usage and is not guaranteed.',
-      'In the Telegram bot: +1 GSTD for the inviter when a friend links a new wallet (up to 20 friends), +0.2 GSTD for the friend; the daily budget is limited.',
-      'In the chat on app.gstdtoken.com, GSTD pays for modes that use several expert models.',
+      'Promotional quotas are separate from paid balances and cannot be withdrawn as GSTD.',
+      'GSTD pays for available models on the platform. Check live model availability and prices before requesting.',
     ],
   },
 
@@ -170,7 +170,7 @@ export default {
   about: {
     title: 'About GSTD',
     subtitle: 'Open AI compute network on TON',
-    description: 'GSTD is an open protocol for decentralized AI inference. Anyone can run node software on their own hardware, register on the network, and receive GSTD for completed workloads. The network is at an early stage.',
+    description: 'GSTD is an open protocol for decentralized AI inference. Anyone can run node software on their own hardware, register on the network, and receive GSTD for funded, accepted work. The network is at an early stage.',
     featuresTitle: 'Key Features',
     features: [
       'Open Node Network',
@@ -179,7 +179,7 @@ export default {
       'Source-Available',
     ],
     featureDescriptions: [
-      'Anyone can run node software on their own hardware to process AI inference requests — earning GSTD for every completed workload.',
+      'Anyone can run node software on their own hardware to process AI inference requests — earning GSTD for funded, accepted work.',
       'GSTD is a payment token for AI compute. Node income depends on real usage — no staking, no yield promises.',
       'GSTD runs on TON today. A cross-chain bridge to Solana and XRPL is early-stage, unaudited, and has never moved funds in production — treat it as not live.',
       'Platform source code is public on GitHub (noncommercial license). Read it and run it.',
@@ -191,7 +191,7 @@ export default {
       'Open Access: Any device (laptop, Pi, server) can run a node',
     ],
     missionTitle: 'Our Mission',
-    missionDescription: 'Build an open AI compute network where anyone can run a node and earn GSTD by serving AI requests. No gatekeepers, no single provider — just an open compute market.',
+    missionDescription: 'Build an open AI compute network where anyone can run a node and earn GSTD by serving AI requests. The goal is an open compute market; today the platform and custody remain central dependencies.',
   },
 
   // Buy Page
@@ -289,7 +289,7 @@ export default {
       [
         'Jetton deployed on TON, supply fixed, admin key burned',
         'Source-available node client (gstdcoin/gstdbot) with a one-line installer',
-        'Hardware scored into tiers — Spark, Flame, Storm, Titan, Sovereign',
+        'Local inference, PIN-protected operator dashboard and model management',
       ],
       [
         'AI inference requests routed to available nodes',
@@ -312,9 +312,9 @@ export default {
         'Independent audit required before any bridge functionality should be relied upon',
       ],
       [
-        'Agent SDK (gstdcoin/A2A) with a working task poll/compute/submit loop and MCP server',
+        'Agent SDK (gstdcoin/A2A); the Python monitor registers and sends heartbeats, while execution requires an integration',
         'Federated learning and a shared knowledge store are proposed designs, not implemented',
-        'Open for anyone to build agents on top of the network today',
+        'SDKs provide integration building blocks; deployment and workload execution must be validated',
       ],
     ],
   },
@@ -663,7 +663,7 @@ export default {
     ],
     pillars: [
       { title: 'Open', description: 'Anyone can participate — run a node, build an app, or read the source.' },
-      { title: 'Distributed', description: 'Compute is supplied by independent operators, not one data center.' },
+      { title: 'Distributed', description: 'The node software supports independent operators; the current pilot has one physical compute node.' },
       { title: 'Incentivized', description: 'Nodes receive GSTD for accepted paid work; blockchain withdrawals require the custody owner signature.' },
     ],
   },
@@ -696,7 +696,7 @@ export default {
     tiersTitle: 'Hardware Tiers',
     hardwareTitle: 'Hardware',
     resourcesTitle: 'Resources',
-    tiersNote: 'The node software scores your hardware into a class (Spark through Sovereign). There is no single hard minimum beyond what a Raspberry Pi 4 provides.',
+    tiersNote: "Model requirements vary. Check RAM, disk space and runtime compatibility before downloading.",
     tierColumn: 'Tier',
     modulesColumn: 'Modules',
   },

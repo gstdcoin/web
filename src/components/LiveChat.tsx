@@ -41,7 +41,7 @@ export function LiveChat() {
 
       if (!resp.ok) {
         const data = await resp.json().catch(() => ({}));
-        setMessages([...next, { role: 'assistant', content: `⚠️ ${data.message || 'The node network is unreachable right now.'}` }]);
+        setMessages([...next, { role: 'assistant', content: `⚠️ ${(ru ? 'Сеть нод сейчас недоступна. Попробуйте позже.' : 'The node network is currently unavailable. Try again later.')}` }]);
         setServedBy(null);
         return;
       }
@@ -84,10 +84,10 @@ export function LiveChat() {
       }
 
       if (!content) {
-        setMessages([...next, { role: 'assistant', content: '(empty response)' }]);
+        setMessages([...next, { role: 'assistant', content: ru ? 'Нода вернула пустой ответ. Попробуйте ещё раз.' : 'The node returned an empty response. Please try again.' }]);
       }
     } catch {
-      setMessages([...next, { role: 'assistant', content: '⚠️ Could not reach the node network. Try again shortly.' }]);
+      setMessages([...next, { role: 'assistant', content: ru ? '⚠️ Не удалось связаться с сетью нод. Попробуйте позже.' : '⚠️ Could not reach the node network. Try again shortly.' }]);
       setServedBy(null);
     } finally {
       setLoading(false);
