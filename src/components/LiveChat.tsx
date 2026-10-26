@@ -108,12 +108,12 @@ export function LiveChat() {
           </h2>
           <p className="text-slate-400 max-w-xl mx-auto text-sm">
             {ru
-              ? 'Запрос уходит на ноду сети, если хотя бы одна онлайн. Если нод нет, отвечает резервная модель Cloudflare Workers AI (небольшая, ответы могут быть слабыми).'
-              : 'Your request goes to a network node when at least one is online. Otherwise a Cloudflare Workers AI fallback model answers (small model, answers may be weak).'}
+              ? 'Запрос уходит на ноду сети, если хотя бы одна онлайн. Если запрос к ноде недоступен, отвечает резервная модель Cloudflare Workers AI (небольшая, ответы могут быть слабыми).'
+              : 'Your request goes to a network node when at least one is online. If node routing is unavailable, a Cloudflare Workers AI fallback model answers (small model, answers may be weak).'}
             {servedBy && (
               <span className="block mt-1 text-emerald-400 font-mono text-xs">
-                {servedBy.startsWith('fallback')
-                  ? (ru ? 'ответил: резервная модель Cloudflare (нод онлайн нет)' : 'answered by: Cloudflare fallback model (no nodes online)')
+                {servedBy === 'cloudflare-workers-ai'
+                  ? (ru ? 'ответил: резервный ИИ Cloudflare' : 'answered by: Cloudflare AI fallback')
                   : `${ru ? 'ответила нода' : 'served by node'} ${servedBy}`}
               </span>
             )}

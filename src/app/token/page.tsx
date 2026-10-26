@@ -30,6 +30,7 @@ export default function TokenPage() {
 
   useEffect(() => {
     const fetchStats = async () => {
+      if (document.hidden) return;
       try {
         const response = await fetch('/api/stonfi-pool');
         if (!response.ok) throw new Error(`Network metrics returned HTTP ${response.status}`);

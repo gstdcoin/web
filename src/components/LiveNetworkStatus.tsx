@@ -81,13 +81,13 @@ export function LiveNetworkStatus() {
 
   useEffect(() => {
     let disposed = false;
+    let inFlight = false;
     const fetchStats = async () => {
+      if (document.hidden || inFlight) return;
+      inFlight = true;
       try {
         const signal = AbortSignal.timeout(8000);
-        const [statsResponse, healthResponse] = await Promise.all([
-          fetch(`${PLATFORM_API}/network/stats`, { cache: 'no-store', signal }),
-          fetch(`${PLATFORM_API}/health`, { cache: 'no-store', signal }),
-        ]);
+        const statsResponse = await fetch(`${PLATFORM_API}/network/stats`, { signal });
         if (!statsResponse.ok) throw new Error(`Network statistics returned HTTP ${statsResponse.status}`);
         const data = await statsResponse.json();
         if (!Number.isFinite(data.active_workers) || !Number.isFinite(data.total_nodes)) {
@@ -101,13 +101,13 @@ export function LiveNetworkStatus() {
           total_users: Number.isFinite(data.total_users) ? data.total_users : 0,
           total_earned_gstd: Number.isFinite(data.total_gstd_paid) ? data.total_gstd_paid : 0,
         });
-        setServiceAvailable(healthResponse.ok);
+        setServiceAvailable(true);
       } catch {
         if (!disposed) setServiceAvailable(false);
-      }
+      } finally { inFlight = false; }
     };
     void fetchStats();
-    const interval = setInterval(fetchStats, 60_000);
+    const interval = setInterval(fetchStats, 120_000);
     return () => {
       disposed = true;
       clearInterval(interval);
