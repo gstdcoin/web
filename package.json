@@ -51,6 +51,10 @@
     "micromatch": "^4.0.8",
     "semver": "^7.6.0",
     "tar": "^6.2.1",
-    "sharp": "$sharp"
+    "sharp": "$sharp",
+    "@node-minify/core": {
+      "glob": "^10.5.0"
+    },
+    "undici@>=7.0.0 <8.0.0": "^7.30.1"
   }
 }
