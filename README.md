@@ -69,3 +69,7 @@ from the signed node record; unrelated registrants and private destinations are 
 A named public hostname may be explicitly allowed with `GSTD_SEED_HOSTS`.
 The response identifies the actual serving node. When node routing fails, Workers AI
 is identified as `cloudflare-workers-ai`; that fallback is not evidence that every node is offline.
+
+## First useful action
+
+The home page has three entry paths: [ask AI](https://gstdtoken.com/ai), [connect a node](https://gstdtoken.com/nodes), or [build with its API](https://gstdtoken.com/developers). [Telegram](https://t.me/gstdaibot) is another interface to the same platform. No wallet is required for the first AI chat. See the [ecosystem contract](https://github.com/gstdcoin/ai/blob/main/docs/ECOSYSTEM.md).

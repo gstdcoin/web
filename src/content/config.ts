@@ -10,16 +10,13 @@ export const SITE = {
 
 export const LINKS = {
   telegram: "https://t.me/gstdtoken",
-  // The actual functional bot (chat, node earning, wallet) --
-  // distinct from `telegram` above, which is the announcements/discussion
-  // channel. Runs against the node network directly; stays usable even if
-  // platform.gstdtoken.com is down, unlike aiChat/platform/app below.
+  // Telegram is another interface to the canonical platform webhook.
   telegramBot: "https://t.me/gstdaibot",
   twitter: "https://x.com/gstdtoken",
   github: "https://github.com/gstdcoin",
-  docs: "/advantages",
+  docs: "/docs",
   platform: "https://app.gstdtoken.com",
-  aiChat: "https://t.me/gstdaibot",
+  aiChat: "/ai",
   app: "https://app.gstdtoken.com",
   monitor: "https://app.gstdtoken.com/api/v1/nodes/list",
   chat: "https://t.me/gstdtoken",
@@ -46,7 +43,7 @@ export const SOCIAL_LINKS = {
   telegram: "https://t.me/gstdtoken",
   twitter: "https://x.com/gstdtoken",
   github: "https://github.com/gstdcoin",
-  docs: "/advantages"
+  docs: "/docs"
 };
 
 // Verified against source (gstdcoin/gstdbot README + src/naas/hardware_profiler.ts).

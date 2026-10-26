@@ -1,179 +1,44 @@
 'use client';
 
-import { useLanguage } from './LanguageProvider';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Github, Cpu, Network } from 'lucide-react';
-import { LINKS, TOKEN_INFO } from '@/content/config';
 import Link from 'next/link';
+import { useLanguage } from './LanguageProvider';
+import { LINKS } from '@/content/config';
+import { ArrowRight, MessageSquare, Server, Code2 } from 'lucide-react';
 
 export function Hero() {
-  const { t } = useLanguage();
-  const tags = (t('hero.tags') as unknown as string[]) || [];
-  const tagIcons = [Network, Network, Cpu, Cpu, Github];
-
+  const { language } = useLanguage();
+  const ru = language !== 'en';
+  const actions = [
+    { href: '/ai', icon: MessageSquare, title: ru ? 'Спросить ИИ' : 'Ask AI',
+      text: ru ? 'Откройте чат и задайте вопрос. Для первого запроса кошелёк не нужен.' : 'Open the chat and ask a question. No wallet is needed to try it.' },
+    { href: '/nodes', icon: Server, title: ru ? 'Подключить ноду' : 'Run a node',
+      text: ru ? 'Подключите свой компьютер: выполняйте задачи сети на установленной модели.' : 'Connect your computer and execute network tasks with an installed model.' },
+    { href: '/developers', icon: Code2, title: ru ? 'Использовать API' : 'Build with the API',
+      text: ru ? 'Добавьте ИИ в своё приложение через знакомый API. Начните с одного запроса.' : 'Add AI to your app through a familiar API. Start with one request.' },
+  ];
   return (
-    <section className="relative min-h-[85vh] md:min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-[#0A0A0A] via-[#0f0f1a] to-[#0A0A0A]">
-      {/* Subtle background glow */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] bg-[#D4AF37]/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#D4AF37]/3 rounded-full blur-[100px]" />
-      </div>
-
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10 max-w-7xl py-16 md:py-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-
-          {/* Left: Content */}
-          <div className="text-left space-y-7 md:space-y-8">
-
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-institutional border-[#D4AF37]/30 text-[#D4AF37] text-xs font-semibold tracking-wide">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4AF37] opacity-60" />
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#D4AF37]" />
-              </span>
-              {t('hero.badge')}
-            </div>
-
-            {/* Main Heading */}
-            <h1 className="hero-title text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              <span className="text-gradient-gold">{t('hero.title')}</span>
-            </h1>
-
-            {/* Quote line */}
-            <p className="text-lg md:text-xl text-slate-200 max-w-xl italic border-l-2 border-[#D4AF37]/40 pl-4">
-              {t('hero.quote')}
-            </p>
-
-            {/* Subtitle */}
-            <p className="text-base md:text-lg text-slate-300 max-w-xl leading-relaxed font-medium">
-              {t('hero.subtitle')}
-            </p>
-            <p className="text-sm md:text-base text-slate-400 max-w-xl leading-relaxed">
-              {t('hero.longDescription')}
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row flex-wrap gap-3">
-              <Button
-                className="bg-[#D4AF37] text-[#0A0A0A] hover:bg-[#B8860B] font-semibold group w-full sm:w-auto shadow-[0_0_24px_rgba(212,175,55,0.3)] hover:shadow-[0_0_32px_rgba(212,175,55,0.5)] transition-all"
-                asChild
-              >
-                <Link href="/nodes">
-                  {t('hero.deployNode')}
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
-              <Button
-                variant="outline"
-                className="border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/50 w-full sm:w-auto"
-                asChild
-              >
-                <Link href="/ai">
-                  {t('hero.useNetwork')}
-                </Link>
-              </Button>
-              <Button
-                variant="outline"
-                className="border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/50 w-full sm:w-auto"
-                asChild
-              >
-                {/* Runs against the node network directly -- the one entry
-                    point that keeps working even when app.gstdtoken.com doesn't. */}
-                <a href={LINKS.telegramBot} target="_blank" rel="noopener noreferrer">
-                  {t('hero.tryBot')}
-                </a>
-              </Button>
-              <Button
-                variant="outline"
-                className="border-white/15 text-white/80 hover:bg-white/5 hover:border-white/30 w-full sm:w-auto"
-                asChild
-              >
-                <a href={LINKS.github} target="_blank" rel="noopener noreferrer">
-                  <Github className="mr-2 h-4 w-4" />
-                  {t('hero.viewGithub')}
-                </a>
-              </Button>
-            </div>
-
-            {/* Feature Pills */}
-            <div className="flex flex-wrap gap-2">
-              {tags.map((tag, index) => {
-                const IconComponent = tagIcons[index] || Network;
-                return (
-                  <div
-                    key={index}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-full glass-institutional border-[#D4AF37]/15 text-slate-300 text-xs font-medium"
-                  >
-                    <IconComponent className="w-3 h-3 text-[#D4AF37] flex-shrink-0" />
-                    <span>{tag}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Right: Token Overview Card */}
-          <div className="hidden md:flex items-center justify-center">
-            <div className="w-full max-w-sm glass-institutional rounded-2xl border border-[#D4AF37]/20 p-6 space-y-5 shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
-
-              {/* Card header */}
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#D4AF37] to-[#B8860B] flex items-center justify-center shadow-md">
-                    <span className="text-[#0A0A0A] font-black text-sm">G</span>
-                  </div>
-                  <div>
-                    <div className="font-bold text-white text-sm">GSTD Token</div>
-                    <div className="text-xs text-[#D4AF37]/80">DePIN · AI Compute</div>
-                  </div>
-                </div>
-                <span className="text-[10px] font-bold px-2 py-1 rounded-full bg-[#D4AF37]/15 text-[#D4AF37] border border-[#D4AF37]/20 uppercase tracking-wide">
-                  {t('hero.stage')}
-                </span>
-              </div>
-
-              <div className="border-t border-[#D4AF37]/10" />
-
-              {/* Key metrics grid */}
-              <div className="grid grid-cols-2 gap-2.5">
-                {[
-                  { label: 'Max Supply', value: '1,000,000,000', unit: 'GSTD' },
-                  { label: 'Network', value: TOKEN_INFO.network, unit: 'Blockchain' },
-                  { label: 'Category', value: 'AI Compute', unit: 'Sector' },
-                    { label: 'Type', value: 'Utility', unit: 'Jetton' },
-                ].map((item) => (
-                  <div key={item.label} className="bg-[#111111] rounded-xl p-3 border border-white/5">
-                    <div className="text-[10px] text-slate-500 mb-0.5 uppercase tracking-wide">{item.label}</div>
-                    <div className="font-bold text-[#D4AF37] text-sm leading-tight">{item.value}</div>
-                    <div className="text-[10px] text-slate-600">{item.unit}</div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Protocol Status */}
-              <div className="space-y-2">
-                <div className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">{t('hero.statusTitle')}</div>
-                <p className="text-xs text-slate-400 leading-relaxed">{t('hero.statusNote')}</p>
-              </div>
-
-
-              {/* Contract address */}
-              <div className="bg-[#111111] rounded-xl px-3 py-2 border border-white/5">
-                <div className="text-[10px] text-slate-500 mb-1 uppercase tracking-wide">Contract (TON)</div>
-                <div className="font-mono text-[10px] text-[#D4AF37]/80 truncate">{TOKEN_INFO.contractAddress}</div>
-              </div>
-
-              {/* Buy button */}
-              <a
-                href={LINKS.stonfiSwap}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full text-center py-2.5 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#B8860B] text-[#0A0A0A] font-bold text-sm hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-all hover:opacity-90"
-              >
-                Buy GSTD on STON.fi →
-              </a>
-            </div>
-          </div>
+    <section className="bg-gradient-to-br from-[#0A0A0A] via-[#0f0f1a] to-[#0A0A0A] py-16 md:py-24">
+      <div className="container mx-auto max-w-6xl px-4">
+        <p className="text-[#D4AF37] font-semibold mb-4">GSTD · {ru ? 'Открытая сеть ИИ-вычислений' : 'An open AI compute network'}</p>
+        <h1 className="text-4xl md:text-6xl font-bold leading-tight max-w-4xl">
+          {ru ? 'Пользуйтесь ИИ. Подключайте свой компьютер. Создавайте полезные приложения.' : 'Use AI. Connect your computer. Build useful apps.'}
+        </h1>
+        <p className="text-slate-300 text-lg max-w-3xl mt-6">
+          {ru ? 'Одна сеть для пользователей, разработчиков и операторов нод. GSTD — токен оплаты вычислений; начать знакомство с сетью можно с бесплатного чата.' : 'One network for users, developers and node operators. GSTD is the compute payment token; start exploring with the free chat.'}
+        </p>
+        <div className="grid md:grid-cols-3 gap-4 mt-10">
+          {actions.map(({href,icon: Icon,title,text},index) => (
+            <Link key={href} href={href} className={`rounded-2xl border p-6 transition-colors ${index === 0 ? 'border-[#D4AF37]/60 bg-[#D4AF37]/10 hover:bg-[#D4AF37]/15' : 'border-white/15 bg-white/5 hover:border-[#D4AF37]/40'}`}>
+              <Icon className="text-[#D4AF37] mb-4" size={26} />
+              <h2 className="font-bold text-xl flex items-center gap-2">{title}<ArrowRight size={18}/></h2>
+              <p className="text-slate-400 text-sm mt-3 leading-relaxed">{text}</p>
+            </Link>
+          ))}
+        </div>
+        <div className="flex flex-wrap gap-5 text-sm mt-7">
+          <a className="text-[#D4AF37] underline underline-offset-4" href={LINKS.telegramBot} target="_blank" rel="noopener noreferrer">{ru ? 'Тот же ИИ в Telegram' : 'Use AI in Telegram'} ↗</a>
+          <Link className="text-slate-400 underline underline-offset-4" href="/docs">{ru ? 'Как устроена сеть' : 'How the network works'}</Link>
+          <Link className="text-slate-400 underline underline-offset-4" href="/token">{ru ? 'Роль GSTD' : 'The role of GSTD'}</Link>
         </div>
       </div>
     </section>

@@ -8,12 +8,11 @@ import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { LINKS } from '@/content/config';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   // Adaptive glass header based on scroll
   useEffect(() => {
@@ -28,8 +27,6 @@ export function Navbar() {
     { key: 'network', href: '/' },
     { key: 'nodes', href: '/nodes' },
     { key: 'ai', href: '/ai' },
-    { key: 'token', href: '/token' },
-    { key: 'treasury', href: '/treasury' },
     { key: 'developers', href: '/developers' },
     { key: 'docs', href: '/docs' },
   ];
@@ -87,9 +84,9 @@ export function Navbar() {
               </Link>
             </Button>
             <Button className="bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30 hover:bg-[#D4AF37]/30 hover:border-[#D4AF37]/50" size="sm" asChild>
-              <a href={LINKS.stonfiSwap} target="_blank" rel="noopener noreferrer">
-                {t('nav.useGstd')}
-              </a>
+              <Link href="/ai">
+                {language === 'en' ? 'Ask AI' : 'Спросить ИИ'}
+              </Link>
             </Button>
           </div>
 
@@ -138,9 +135,9 @@ export function Navbar() {
                   </Link>
                 </Button>
                 <Button className="bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30 hover:bg-[#D4AF37]/30 hover:border-[#D4AF37]/50 w-full" size="sm" asChild>
-                  <a href={LINKS.stonfiSwap} target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
-                    {t('nav.useGstd')}
-                  </a>
+                  <Link href="/ai" onClick={() => setIsOpen(false)}>
+                    {language === 'en' ? 'Ask AI' : 'Спросить ИИ'}
+                  </Link>
                 </Button>
               </div>
             </div>
