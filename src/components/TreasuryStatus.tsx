@@ -3,44 +3,40 @@
 import { useEffect, useState } from 'react';
 import { AlertTriangle } from 'lucide-react';
 import { useLanguage } from './LanguageProvider';
+import {publicFinanceView,type PublicFinance} from '@/lib/publicFinance';
 
 const PLATFORM_API = 'https://app.gstdtoken.com/api/v1';
 
-interface FundStatus {
-  treasury_gstd: number;
-  total_collected_gstd: number;
-  total_distributed_gstd: number;
-}
 
 const TEXT = {
   ru: {
     title: 'Казна',
     subtitle: 'Данные из API платформы. Ничего не симулируется: если API недоступен, цифры не показываются.',
     balance: 'Баланс казны, GSTD',
-    collected: 'Собрано, GSTD',
-    distributed: 'Распределено, GSTD',
+    reserve: 'Резерв протокола, GSTD',
+    payments: 'Платежи и вывод',
     unavailable: 'Данные казны сейчас недоступны.',
     notesTitle: 'Что важно знать',
     notes: [
       'Казна ведётся в учёте платформы (внутренний реестр). Автоматического расчёта через смарт-контракт в сети TON сейчас нет.',
       'Выкуп (buyback) и сжигание токена пока не выполнялись.',
-      'Доля комиссий, предназначенная казне, задаётся правилами платформы и может меняться; гарантий доходности или стоимости GSTD нет.',
-      'GSTD — утилитарный токен для оплаты ИИ-вычислений. Он не обеспечен резервами и не обменивается на другие активы.',
+      'За принятую оплаченную работу: 85% исполнителю, 10% протоколу, 5% резерву. Получение и вывод не удерживают дополнительную комиссию GSTD.',
+      'Платные балансы обеспечиваются GSTD на кошельке обеспечения. Вывод подписывает его владелец и оплачивает газ TON. Промозапросы не создают выводимые токены.',
     ],
   },
   en: {
     title: 'Treasury',
     subtitle: 'Data from the platform API. Nothing is simulated: if the API is unavailable, no numbers are shown.',
     balance: 'Treasury balance, GSTD',
-    collected: 'Collected, GSTD',
-    distributed: 'Distributed, GSTD',
+    reserve: 'Protocol reserve, GSTD',
+    payments: 'Payments and withdrawals',
     unavailable: 'Treasury data is currently unavailable.',
     notesTitle: 'Good to know',
     notes: [
       'The treasury is tracked in the platform ledger (internal registry). There is currently no automatic settlement through a TON smart contract.',
       'No token buyback or burn has been executed yet.',
-      'The share of fees earmarked for the treasury is set by platform rules and may change; there is no guarantee of yield or of the GSTD price.',
-      'GSTD is a utility token for paying for AI compute. It is not backed by reserves and is not redeemable for other assets.',
+      'Accepted paid work allocates 85% to the executor, 10% to the protocol and 5% to the reserve. There is no additional GSTD claim or withdrawal fee.',
+      'Paid credit is backed by GSTD held in custody. The custody owner signs withdrawals and pays TON execution costs. Promo requests do not create withdrawable tokens.',
     ],
   },
 } as const;
@@ -48,23 +44,18 @@ const TEXT = {
 export function TreasuryStatus() {
   const { language } = useLanguage();
   const tx = TEXT[language === 'en' ? 'en' : 'ru'];
-  const [fund, setFund] = useState<FundStatus | null>(null);
+  const [fund, setFund] = useState<PublicFinance | null>(null);
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
     let disposed = false;
-    fetch(`${PLATFORM_API}/fund/status`, { cache: 'no-store', signal: AbortSignal.timeout(8000) })
+    fetch(`${PLATFORM_API}/fund/status`, { signal: AbortSignal.timeout(8000) })
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
       .then((d) => {
         if (disposed) return;
-        if (![d.treasury_gstd, d.total_collected_gstd, d.total_distributed_gstd].every(Number.isFinite)) {
-          throw new Error('Unexpected response');
-        }
-        setFund({
-          treasury_gstd: d.treasury_gstd,
-          total_collected_gstd: d.total_collected_gstd,
-          total_distributed_gstd: d.total_distributed_gstd,
-        });
+        const current=publicFinanceView(d);
+        if(!current)throw new Error('Unexpected finance ledger response');
+        setFund(current);
       })
       .catch(() => {
         if (!disposed) setFailed(true);
@@ -77,8 +68,7 @@ export function TreasuryStatus() {
   const fmt = (n: number) => n.toLocaleString(undefined, { maximumFractionDigits: 4 });
   const cards = [
     { label: tx.balance, value: fund?.treasury_gstd },
-    { label: tx.collected, value: fund?.total_collected_gstd },
-    { label: tx.distributed, value: fund?.total_distributed_gstd },
+    { label: tx.reserve, value: fund?.reserve_gstd },
   ];
 
   return (
@@ -96,7 +86,7 @@ export function TreasuryStatus() {
           </div>
         )}
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
           {cards.map((c) => (
             <div key={c.label} className="glass-institutional rounded-2xl border border-[#D4AF37]/20 p-5">
               <div className="text-xs text-slate-400 uppercase tracking-wide mb-2">{c.label}</div>
@@ -104,6 +94,8 @@ export function TreasuryStatus() {
             </div>
           ))}
         </div>
+
+        <a className="inline-block text-[#D4AF37] underline mb-6" href="https://app.gstdtoken.com/payments">{tx.payments} →</a>
 
         <div className="glass-institutional rounded-2xl border border-white/10 p-6">
           <h2 className="text-lg font-bold text-slate-100 mb-3">{tx.notesTitle}</h2>

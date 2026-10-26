@@ -13,7 +13,7 @@
     "clean": "rm -rf .next out .open-next node_modules/.cache",
     "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "cf:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-    "test": "node --test scripts/node-discovery.test.cjs"
+    "test": "node --test scripts/*.test.cjs"
   },
   "dependencies": {
     "@radix-ui/react-separator": "^1.0.3",

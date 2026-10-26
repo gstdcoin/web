@@ -526,7 +526,7 @@ export default {
     title: 'Core Protocol',
     subtitle: 'GSTD Protocol Core Components',
     description: 'GSTD is an open AI compute network at an early stage. Node operators run node software on their own hardware and receive a share of the fee paid in GSTD by users requesting AI compute.',
-    summary: 'GSTD is an open AI compute network: users pay GSTD for AI inference and node operators receive a share of the fee. No yield promises. Income depends on real usage; right now there are no nodes online and usage is small.',
+    summary: 'GSTD is an open AI compute network: users pay GSTD for AI inference and node operators receive a share of the fee. No yield promises. Income depends on real usage; check the live status for current capacity and usage.',
     advantagesTitle: 'Key Features',
     advantages: {
       reliability: {
