@@ -4,7 +4,6 @@ import { useLanguage } from './LanguageProvider';
 import { Button } from '@/components/ui/button';
 import { Laptop, Monitor, Gamepad2, Cpu, Server, Zap, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { NODE_TIERS } from '@/content/config';
 
 const DEVICE_ICONS = [Laptop, Monitor, Gamepad2, Cpu, Server, Zap];
 
@@ -61,14 +60,7 @@ export function NodeEconomy() {
                 </span>
               ))}
             </div>
-            <div className="text-xs text-slate-500 uppercase tracking-widest mb-3 mt-6">{ne?.tiersTitle || 'Hardware Tiers'}</div>
-            <div className="space-y-1.5">
-              {NODE_TIERS.map((tier) => (
-                <div key={tier.name} className="flex items-center justify-between text-sm">
-                  <span className="text-slate-200 font-medium">{tier.name}</span>
-                </div>
-              ))}
-            </div>
+
           </div>
         </div>
 

@@ -3,7 +3,6 @@
 import { useLanguage } from './LanguageProvider';
 import { Cpu, BrainCircuit } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { NODE_TIERS } from '@/content/config';
 
 export function NodeRequirements() {
   const { t } = useLanguage();
@@ -58,28 +57,7 @@ export function NodeRequirements() {
           </div>
         </div>
 
-        <div className="glass-institutional rounded-2xl border border-[#D4AF37]/20 p-6">
-          <h3 className="text-sm uppercase tracking-widest text-slate-300 mb-4">{nr?.tiersTitle || 'Hardware Tiers'}</h3>
-          <div className="overflow-x-auto -mx-2 px-2">
-            <table className="w-full text-sm min-w-[420px]">
-              <thead>
-                <tr className="text-left text-slate-500 text-xs uppercase tracking-wide">
-                  <th className="pb-3 font-medium">{nr?.tierColumn || 'Tier'}</th>
-                  <th className="pb-3 font-medium">{nr?.modulesColumn || 'Modules'}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {NODE_TIERS.map((tier) => (
-                  <tr key={tier.name} className="border-t border-white/5">
-                    <td className="py-3 text-slate-100 font-semibold">{tier.name}</td>
-                    <td className="py-3 text-slate-400">{tier.modules}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="text-slate-500 text-xs mt-4">{nr?.tiersNote}</p>
-        </div>
+
       </div>
     </section>
   );

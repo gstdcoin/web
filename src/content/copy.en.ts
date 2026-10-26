@@ -597,14 +597,14 @@ export default {
   nodeInstall: {
     badge: 'One-line install · source-available',
     title: 'Run a Node',
-    subtitle: 'One install script sets up the node on Linux, macOS, or Windows (WSL) — installs its own Node.js runtime, registers your device, and starts polling for work.',
-    requirements: 'Installer handles Node.js 20+ setup itself · Linux / macOS / Windows WSL · Raspberry Pi 4 and up',
+    subtitle: 'Install on Linux or in a WSL2 Linux shell. Setup includes Node.js and a local model; download time depends on your connection. macOS needs separate validation.',
+    requirements: 'Installer handles Node.js 20+ setup itself · Linux / WSL2 · 64-bit ARM Raspberry Pi',
     ctaGithub: 'View on GitHub',
     ctaTelegram: 'Node Operators Chat',
     modes: [
-      { title: 'Spark → Flame', desc: 'Entry hardware — Raspberry Pi class devices.', badge: 'Entry' },
-      { title: 'Storm → Titan', desc: 'Multi-core desktops and workstations with more RAM/disk.', badge: 'Mid-tier' },
-      { title: 'Sovereign', desc: '32-core+ or GPU-equipped machines.', badge: 'Top-tier' },
+      { title: 'Local AI', desc: 'Run an installed model. Requests stay on this device by default.', badge: 'Default' },
+      { title: 'Network requests', desc: 'Choose network mode explicitly to use another available node.', badge: 'Optional' },
+      { title: 'Paid work', desc: 'Earn 85% of funded accepted work. Availability and income are not guaranteed.', badge: 'GSTD' },
     ],
   },
 
@@ -664,7 +664,7 @@ export default {
     pillars: [
       { title: 'Open', description: 'Anyone can participate — run a node, build an app, or read the source.' },
       { title: 'Distributed', description: 'Compute is supplied by independent operators, not one data center.' },
-      { title: 'Incentivized', description: 'Nodes receive GSTD for completed workloads, settled on-chain.' },
+      { title: 'Incentivized', description: 'Nodes receive GSTD for accepted paid work; blockchain withdrawals require the custody owner signature.' },
     ],
   },
 
@@ -674,11 +674,10 @@ export default {
     title: 'Your Hardware Can Become Part of the Network',
     subtitle: 'Instead of leaving computing resources idle, contribute them to the network.',
     devices: ['Laptop', 'Desktop', 'Gaming PC', 'Workstation', 'Server', 'GPU Server'],
-    resources: ['CPU', 'GPU', 'RAM', 'Storage', 'Bandwidth'],
+    resources: ['CPU', 'GPU', 'RAM'],
     workflow: [
       'Install the node',
       'Connect your wallet',
-      'Node is scored into a hardware tier',
       'Receive workloads',
       'Complete workloads',
       'Earn GSTD',
@@ -689,7 +688,7 @@ export default {
   // Node Requirements
   nodeRequirements: {
     title: 'Node Requirements',
-    subtitle: 'Verified against the node software’s own hardware scoring — not invented minimums.',
+    subtitle: 'Choose a model that fits your RAM. Useful paid work earns 85%; hardware classes do not create rewards.',
     basicTitle: 'Basic',
     basic: ['CPU', 'RAM', 'Internet connection', 'Storage'],
     inferenceTitle: 'For AI Inference',
@@ -726,7 +725,7 @@ export default {
     subtitle: 'Demo chat and the node client. The list below shows API model names, not a guarantee of availability.',
     categories: ['Chat', 'Coding'],
     inferenceTitle: 'API model names',
-    inferenceNote: 'A node maps these names to a model installed locally (Ollama), so the actual model may differ. No nodes are online right now.',
+    inferenceNote: 'A node maps these names to a model installed locally (Ollama), so the actual model may differ. Check live availability before sending a request.',
     supportedByClient: 'Supported by the node client',
     columns: { model: 'Model', provider: 'Provider / Node', availability: 'Status' },
   },
