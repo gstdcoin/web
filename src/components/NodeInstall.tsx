@@ -125,7 +125,7 @@ export function NodeInstall() {
           className="flex flex-col items-center gap-4"
         >
           <p className="text-slate-500 text-sm">
-            {ni?.requirements || 'Requires: Node.js ≥ 20 • Linux / macOS / Windows WSL • Raspberry Pi supported'}
+            {ni?.requirements || 'Installer sets up Node.js 20+ • Linux / WSL2 • 64-bit ARM'}
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
             <Button className="bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30 hover:bg-[#D4AF37]/30 hover:border-[#D4AF37]/50 hover:shadow-[0_0_20px_rgba(212,175,55,0.3)]" asChild>

@@ -670,6 +670,8 @@ export default {
 
   // Node Economy section
   nodeEconomy: {
+    hardwareTitle: 'Hardware',
+    resourcesTitle: 'Resources',
     badge: 'Node software · source-available',
     title: 'Your Hardware Can Become Part of the Network',
     subtitle: 'Instead of leaving computing resources idle, contribute them to the network.',

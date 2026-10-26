@@ -670,6 +670,8 @@ export default {
 
   // Node Economy section
   nodeEconomy: {
+    hardwareTitle: 'Оборудование',
+    resourcesTitle: 'Ресурсы',
     badge: 'ПО ноды · исходники публичны',
     title: 'Ваше оборудование может стать частью сети',
     subtitle: 'Вместо того чтобы простаивать, предоставьте вычислительные ресурсы сети.',
