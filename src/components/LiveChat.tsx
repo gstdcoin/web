@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from './LanguageProvider';
+import { MAX_CHAT_MESSAGES, MAX_CHAT_MESSAGE_CHARS } from '@/lib/chat-request-guard';
 
 interface ChatMessage {
   role: 'user' | 'assistant';
@@ -25,7 +26,7 @@ export function LiveChat() {
 
   async function send() {
     const text = input.trim();
-    if (!text || loading) return;
+    if (!text || loading || messages.length >= MAX_CHAT_MESSAGES) return;
 
     const next = [...messages, { role: 'user' as const, content: text }];
     setMessages(next);
@@ -40,8 +41,12 @@ export function LiveChat() {
       });
 
       if (!resp.ok) {
-        const data = await resp.json().catch(() => ({}));
-        setMessages([...next, { role: 'assistant', content: `⚠️ ${(ru ? 'Сеть нод сейчас недоступна. Попробуйте позже.' : 'The node network is currently unavailable. Try again later.')}` }]);
+        const failure = resp.status === 429
+          ? (ru ? 'Слишком много запросов. Подождите минуту и попробуйте снова.' : 'Too many requests. Wait a minute and try again.')
+          : resp.status === 400 || resp.status === 413
+            ? (ru ? 'Сообщение или история слишком длинные. Сократите вопрос или начните новый диалог.' : 'The message or history is too long. Shorten your question or start a new chat.')
+            : (ru ? 'Нода не смогла ответить. Попробуйте позже.' : 'The node could not answer. Please try again later.');
+        setMessages([...next, { role: 'assistant', content: `⚠️ ${failure}` }]);
         setServedBy(null);
         return;
       }
@@ -125,6 +130,18 @@ export function LiveChat() {
           <input type="checkbox" checked={cloudConsent} onChange={e=>setCloudConsent(e.target.checked)}/>
           {ru?'Разрешаю отправить запрос Cloudflare AI, если ноды не ответят.':'Allow my question to be sent to Cloudflare AI only if nodes do not answer.'}
         </label>
+        <div className="flex items-center justify-between gap-3 mb-3 text-sm">
+          <p role="status" className="text-slate-400">
+            {messages.length >= MAX_CHAT_MESSAGES
+              ? (ru ? 'Достигнут предел диалога. Начните новый, чтобы продолжить.' : 'Chat limit reached. Start a new chat to continue.')
+              : ''}
+          </p>
+          <button type="button" disabled={loading || messages.length === 0}
+            onClick={() => { setMessages([]); setServedBy(null); setInput(''); }}
+            className="text-amber-300 disabled:opacity-40 whitespace-nowrap">
+            {ru ? 'Новый диалог' : 'New chat'}
+          </button>
+        </div>
         <div className="glass-institutional rounded-2xl border border-[#D4AF37]/20 flex flex-col h-[420px]">
           <div className="flex-1 overflow-y-auto p-5 space-y-4">
             {messages.length === 0 && (
@@ -155,11 +172,12 @@ export function LiveChat() {
 
           <div className="border-t border-white/10 p-3 flex gap-2">
             <input
+              maxLength={MAX_CHAT_MESSAGE_CHARS}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && (e.preventDefault(), send())}
               placeholder={ru ? 'Сообщение…' : 'Message…'}
-              disabled={loading}
+              disabled={loading || messages.length >= MAX_CHAT_MESSAGES}
               className="flex-1 bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-[#D4AF37]/40"
             />
             <button
