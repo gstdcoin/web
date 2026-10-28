@@ -1,6 +1,6 @@
 # GSTD Web
 
-The public website of GSTD — decentralized AI compute on TON. Ask the AI, link a wallet, run a node.
+The public information website for GSTD: understand the project, install a compute node and read the documentation. The [GSTD app](https://app.gstdtoken.com/chat) is the main workspace for chat, model selection, balance and rewards.
 
 [![Website](https://img.shields.io/badge/site-gstdtoken.com-00d2ff?style=flat-square)](https://gstdtoken.com)
 [![App](https://img.shields.io/badge/app-app.gstdtoken.com-0ea5e9?style=flat-square)](https://app.gstdtoken.com)
@@ -15,7 +15,8 @@ Built with Next.js 16 and Tailwind CSS, deployed on Cloudflare Workers (free tie
 - **Nodes** — hardware requirements and one-command node install.
 - **Docs and FAQ** — guides for users and developers, with links to the source repositories.
 - **Transparency** — what is deployed, what is experimental, and what is not available yet.
-- **Languages** — English and Russian.
+- **AI demo** — the existing `/ai` free demo remains available; model selection and paid balance belong to the app.
+- **Languages** — English and Russian. App return links may pass `?lang=en` or `?lang=ru`; this takes priority over a stored website preference.
 
 Every number on the site comes from the live platform API ([`network/stats`](https://app.gstdtoken.com/api/v1/network/stats)). When the API is unreachable the site shows an "unavailable" notice instead of made-up figures.
 
@@ -65,11 +66,10 @@ Source-available under the [PolyForm Noncommercial License 1.0.0](LICENSE), with
 
 Chat discovers the operator-approved persistent identities in `GSTD_TRUSTED_NODE_IDS`
 through the canonical live registry. Rotating Cloudflare tunnel URLs are resolved
-from the signed node record; unrelated registrants and private destinations are rejected.
+from the canonical registry record for an approved node identity; unrelated registrants and private destinations are rejected.
 A named public hostname may be explicitly allowed with `GSTD_SEED_HOSTS`.
-The response identifies the actual serving node. When node routing fails, Workers AI
-is identified as `cloudflare-workers-ai`; that fallback is not evidence that every node is offline.
+The response identifies the actual serving node. Workers AI is optional: it requires explicit consent to send the question and conversation history, and only applies to automatic model selection. It is identified as `cloudflare-workers-ai`; the site never silently substitutes an explicitly requested model. Legacy cloud-peer and peer-heartbeat shims return 410: the website is not a compute node.
 
 ## First useful action
 
-The home page has three entry paths: [ask AI](https://gstdtoken.com/ai), [connect a node](https://gstdtoken.com/nodes), or [build with its API](https://gstdtoken.com/developers). [Telegram](https://t.me/gstdaibot) is another interface to the same platform. No wallet is required for the first AI chat. See the [ecosystem contract](https://github.com/gstdcoin/ai/blob/main/docs/ECOSYSTEM.md).
+The home page has three entry paths: [use the main app](https://app.gstdtoken.com/chat), [connect a node](https://gstdtoken.com/nodes), or [build with its API](https://gstdtoken.com/developers). The [website demo](https://gstdtoken.com/ai) is a separate, optional introduction; its conversation is not copied into the app. Existing routes remain available. [Telegram](https://t.me/gstdaibot) is another interface to the same platform. No wallet is required for the first AI chat. See the [ecosystem contract](https://github.com/gstdcoin/ai/blob/main/docs/ECOSYSTEM.md).

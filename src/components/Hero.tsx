@@ -3,13 +3,14 @@
 import Link from 'next/link';
 import { useLanguage } from './LanguageProvider';
 import { LINKS } from '@/content/config';
+import { appUrl } from '@/lib/ecosystem-links';
 import { ArrowRight, MessageSquare, Server, Code2 } from 'lucide-react';
 
 export function Hero() {
   const { language } = useLanguage();
   const ru = language !== 'en';
   const actions = [
-    { href: '/ai', icon: MessageSquare, title: ru ? 'Спросить ИИ' : 'Ask AI',
+    { href: appUrl(language), icon: MessageSquare, title: ru ? 'Спросить ИИ' : 'Ask AI',
       text: ru ? 'Откройте чат и задайте вопрос. Для первого запроса кошелёк не нужен.' : 'Open the chat and ask a question. No wallet is needed to try it.' },
     { href: '/nodes', icon: Server, title: ru ? 'Подключить ноду' : 'Run a node',
       text: ru ? 'Подключите свой компьютер: выполняйте задачи сети на установленной модели.' : 'Connect your computer and execute network tasks with an installed model.' },
@@ -24,7 +25,7 @@ export function Hero() {
           {ru ? 'Пользуйтесь ИИ. Подключайте свой компьютер. Создавайте полезные приложения.' : 'Use AI. Connect your computer. Build useful apps.'}
         </h1>
         <p className="text-slate-300 text-lg max-w-3xl mt-6">
-          {ru ? 'Одна сеть для пользователей, разработчиков и операторов нод. GSTD — токен оплаты вычислений; начать знакомство с сетью можно с бесплатного чата.' : 'One network for users, developers and node operators. GSTD is the compute payment token; start exploring with the free chat.'}
+          {ru ? 'Здесь — описание проекта, установка ноды и документация. Чат с выбором модели, баланс и награды находятся в приложении GSTD. Бесплатный запрос можно отправить без кошелька.' : 'This website explains the project, node setup and documentation. Model selection, chat, balance and rewards are in the GSTD app. You can send a free request without a wallet.'}
         </p>
         <div className="grid md:grid-cols-3 gap-4 mt-10">
           {actions.map(({href,icon: Icon,title,text},index) => (

@@ -7,7 +7,7 @@ export default {
     monitor: 'Сеть',
     network: 'Сеть',
     nodes: 'Ноды',
-    ai: 'ИИ',
+    ai: 'Демо ИИ',
     about: 'О проекте',
     token: 'Токен',
     treasury: 'Казна',

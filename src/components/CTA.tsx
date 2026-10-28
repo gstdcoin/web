@@ -4,7 +4,7 @@ import { useLanguage } from './LanguageProvider';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 import { LINKS } from '@/content/config';
-import Link from 'next/link';
+import { appUrl } from '@/lib/ecosystem-links';
 
 export function CTA() {
   const { language } = useLanguage();
@@ -24,13 +24,13 @@ export function CTA() {
           <p className="text-slate-300 mb-6">
             {ru?'Круговорот GSTD: оплатить вычисления → выполнить принятое задание → использовать заработанное на других нодах. 85% получает исполнитель, 10% — протокол, 5% — резерв. Бесплатные запросы не создают токены.':'GSTD cycle: pay for compute → complete accepted work → use earned credits on other nodes. Executor 85%, protocol 10%, reserve 5%. Free requests do not create tokens.'}
           </p>
-          <p className="mb-6"><a className="text-[#D4AF37] underline" href="https://app.gstdtoken.com/payments">{ru?'Баланс, пополнение и вывод GSTD':'GSTD balance, deposits and withdrawals'} ↗</a></p>
+          <p className="mb-6"><a className="text-[#D4AF37] underline" href={appUrl(language, '/payments')}>{ru?'Баланс, пополнение и вывод GSTD':'GSTD balance, deposits and withdrawals'} ↗</a></p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button size="lg" className="bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30 hover:bg-[#D4AF37]/30 hover:border-[#D4AF37]/50 group hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]" asChild>
-              <Link href="/ai">
+              <a href={appUrl(language)}>
                 {ru ? 'Открыть чат' : 'Open chat'}
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </a>
             </Button>
             <Button size="lg" variant="outline" className="border-white/10 text-white/70 hover:bg-white/5 hover:text-white" asChild>
               <a href={LINKS.telegramBot} target="_blank" rel="noopener noreferrer">

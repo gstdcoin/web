@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useLanguage } from '@/components/LanguageProvider';
+import { appUrl } from '@/lib/ecosystem-links';
 import { LINKS } from '@/content/config';
 
 const EXAMPLE = `curl http://127.0.0.1:8081/v1/chat/completions \\
@@ -34,7 +35,7 @@ export default function DevelopersPage() {
         <p className="text-slate-400 mt-3">{ru ? 'Без своей ноды сначала попробуйте публичный чат. Он не требует установки, а источник ответа отмечен в интерфейсе.' : 'Without a node, try the public chat first. Nothing to install; the interface identifies the serving source.'}</p>
       </section>
       <div className="flex flex-wrap gap-5 text-[#D4AF37]">
-        <Link href="/ai">{ru ? 'Открыть чат' : 'Open chat'} →</Link>
+        <a href={appUrl(language)}>{ru ? 'Открыть приложение' : 'Open app'} →</a>
         <a href={LINKS.telegramBot} target="_blank" rel="noopener noreferrer">Telegram ↗</a>
         <a href="https://github.com/gstdcoin/gstdbot" target="_blank" rel="noopener noreferrer">{ru ? 'Исходный код ноды' : 'Node source'} ↗</a>
         <a href="https://github.com/gstdcoin/A2A" target="_blank" rel="noopener noreferrer">A2A SDK ↗</a>

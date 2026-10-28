@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { AlertTriangle } from 'lucide-react';
+import { appUrl } from '@/lib/ecosystem-links';
 import { useLanguage } from './LanguageProvider';
 import {publicFinanceView,type PublicFinance} from '@/lib/publicFinance';
 
@@ -95,7 +96,7 @@ export function TreasuryStatus() {
           ))}
         </div>
 
-        <a className="inline-block text-[#D4AF37] underline mb-6" href="https://app.gstdtoken.com/payments">{tx.payments} →</a>
+        <a className="inline-block text-[#D4AF37] underline mb-6" href={appUrl(language, '/payments')}>{tx.payments} →</a>
 
         <div className="glass-institutional rounded-2xl border border-white/10 p-6">
           <h2 className="text-lg font-bold text-slate-100 mb-3">{tx.notesTitle}</h2>

@@ -7,7 +7,7 @@ export default {
     monitor: 'Network',
     network: 'Network',
     nodes: 'Nodes',
-    ai: 'AI',
+    ai: 'AI demo',
     about: 'About',
     token: 'Token',
     treasury: 'Treasury',

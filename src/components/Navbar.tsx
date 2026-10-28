@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
+import { appUrl } from '@/lib/ecosystem-links';
 import { cn } from '@/lib/utils';
 
 export function Navbar() {
@@ -78,15 +79,15 @@ export function Navbar() {
           {/* Language Switcher & CTAs */}
           <div className="hidden md:flex items-center space-x-3">
             <LanguageSwitcher />
-            <Button variant="outline" className="border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/50" size="sm" asChild>
+            <Button variant="outline" className="hidden lg:inline-flex border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/50" size="sm" asChild>
               <Link href="/nodes">
                 {t('nav.runNode')}
               </Link>
             </Button>
             <Button className="bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30 hover:bg-[#D4AF37]/30 hover:border-[#D4AF37]/50" size="sm" asChild>
-              <Link href="/ai">
-                {language === 'en' ? 'Ask AI' : 'Спросить ИИ'}
-              </Link>
+              <a href={appUrl(language)}>
+                {language === 'en' ? 'Open app' : 'Открыть приложение'}
+              </a>
             </Button>
           </div>
 
@@ -135,9 +136,9 @@ export function Navbar() {
                   </Link>
                 </Button>
                 <Button className="bg-[#D4AF37]/20 text-[#D4AF37] border-[#D4AF37]/30 hover:bg-[#D4AF37]/30 hover:border-[#D4AF37]/50 w-full" size="sm" asChild>
-                  <Link href="/ai" onClick={() => setIsOpen(false)}>
-                    {language === 'en' ? 'Ask AI' : 'Спросить ИИ'}
-                  </Link>
+                  <a href={appUrl(language)} onClick={() => setIsOpen(false)}>
+                    {language === 'en' ? 'Open app' : 'Открыть приложение'}
+                  </a>
                 </Button>
               </div>
             </div>

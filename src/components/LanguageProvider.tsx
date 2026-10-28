@@ -1,5 +1,6 @@
 'use client';
 
+import { websiteLanguage } from '@/lib/ecosystem-links';
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 type Language = 'en' | 'ru';
@@ -25,11 +26,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>('ru');
 
   useEffect(() => {
-    // Check localStorage for saved language preference
-    const savedLanguage = localStorage.getItem('gstd-language') as Language;
-    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'ru')) {
-      setLanguage(savedLanguage);
-    }
+    let savedLanguage: string | null = null;
+    try { savedLanguage = localStorage.getItem('gstd-language'); } catch { /* optional preference */ }
+    const initialLanguage = websiteLanguage(window.location.search, savedLanguage);
+    setLanguage(initialLanguage);
+    try { localStorage.setItem('gstd-language', initialLanguage); } catch { /* optional preference */ }
   }, []);
 
   useEffect(() => {
@@ -38,7 +39,12 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   const handleSetLanguage = (lang: Language) => {
     setLanguage(lang);
-    localStorage.setItem('gstd-language', lang);
+    try { localStorage.setItem('gstd-language', lang); } catch { /* optional preference */ }
+    const url = new URL(window.location.href);
+    if (url.searchParams.has('lang')) {
+      url.searchParams.set('lang', lang);
+      window.history.replaceState(window.history.state, '', url);
+    }
   };
 
   const t = (key: string): string | string[] => {

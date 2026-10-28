@@ -5,9 +5,10 @@ import Link from 'next/link';
 import { SITE, LINKS } from '@/content/config';
 import { SocialLinks } from '@/components/SocialLinks';
 import Image from 'next/image';
+import { appUrl } from '@/lib/ecosystem-links';
 
 export function Footer() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const footerLinks = [
     { key: 'nodes', href: '/nodes' },
@@ -71,12 +72,12 @@ export function Footer() {
           {/* Contact */}
           <div>
             <h3 className="text-sm font-semibold text-[#D4AF37] mb-4">
-              {t('footer.contact')}
+              {language === 'ru' ? 'Приложение GSTD' : 'GSTD app'}
             </h3>
             <div className="space-y-3 text-slate-300">
-              <p>Telegram: @gstdtoken</p>
-              <p>X: @gstdtoken</p>
-              <p>GitHub: @gstdcoin</p>
+              <a className="block hover:text-[#D4AF37]" href={appUrl(language)}>{language === 'ru' ? 'Чат и выбор модели' : 'Chat and model selection'} →</a>
+              <a className="block hover:text-[#D4AF37]" href={appUrl(language, '/nodes')}>{language === 'ru' ? 'Работающие ноды' : 'Live nodes'} →</a>
+              <a className="block hover:text-[#D4AF37]" href={appUrl(language, '/payments')}>{language === 'ru' ? 'Баланс и награды' : 'Balance and rewards'} →</a>
             </div>
           </div>
         </div>

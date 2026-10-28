@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from './LanguageProvider';
+import { appUrl } from '@/lib/ecosystem-links';
 import { MAX_CHAT_MESSAGES, MAX_CHAT_MESSAGE_CHARS } from '@/lib/chat-request-guard';
 
 interface ChatMessage {
@@ -110,9 +111,9 @@ export function LiveChat() {
           transition={{ duration: 0.5 }}
           className="text-center mb-8"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">
+          <h1 className="text-3xl md:text-4xl font-bold mb-3">
             <span className="text-gradient-gold">{ru ? 'Демо-чат' : 'Demo chat'}</span>
-          </h2>
+          </h1>
           <p className="text-slate-400 max-w-xl mx-auto text-sm">
             {ru
               ? 'Запрос уходит на ноду сети, если хотя бы одна онлайн. Передача корпоративному резервному ИИ возможна только с вашим разрешением ниже.'
@@ -127,6 +128,10 @@ export function LiveChat() {
           </p>
         </motion.div>
 
+        <div className="rounded-xl border border-[#D4AF37]/20 bg-[#D4AF37]/5 p-4 mb-6 text-sm">
+          <p className="text-slate-300">{ru ? 'Это бесплатное демо для знакомства с сетью. Выбор конкретной модели, баланс и награды — в основном приложении. При переходе история этого демо не передаётся.' : 'This free demo introduces the network. Choose a specific model and manage balance and rewards in the main app. This demo conversation is not transferred when you open it.'}</p>
+          <a className="inline-block mt-3 text-[#D4AF37] underline" href={appUrl(language)}>{ru ? 'Открыть основной чат в приложении' : 'Open the main chat in the app'} →</a>
+        </div>
         <label className="flex items-start gap-3 text-sm text-slate-400 mb-4">
           <input type="checkbox" checked={cloudConsent} onChange={e=>setCloudConsent(e.target.checked)}/>
           {ru?'Разрешаю передать вопрос и историю этого диалога Cloudflare AI, если ноды не ответят.':'Allow my question and this conversation history to be sent to Cloudflare AI only if nodes do not answer.'}
