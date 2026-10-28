@@ -21,7 +21,7 @@ const TEXT = {
       'Казна ведётся в учёте платформы (внутренний реестр). Автоматического расчёта через смарт-контракт в сети TON сейчас нет.',
       'Выкуп (buyback) и сжигание токена пока не выполнялись.',
       'За принятую оплаченную работу: 85% исполнителю, 10% протоколу, 5% резерву. Получение и вывод не удерживают дополнительную комиссию GSTD.',
-      'Платные балансы обеспечиваются GSTD на кошельке обеспечения. Вывод подписывает его владелец и оплачивает газ TON. Промозапросы не создают выводимые токены.',
+      'Платным балансам требуется обеспечение GSTD на кошельке хранения. Вывод подписывает его владелец и оплачивает газ TON. Реальный цикл от депозита до вывода в mainnet пока не подтверждён. Промозапросы не создают выводимые токены.',
     ],
   },
   en: {
@@ -36,7 +36,7 @@ const TEXT = {
       'The treasury is tracked in the platform ledger (internal registry). There is currently no automatic settlement through a TON smart contract.',
       'No token buyback or burn has been executed yet.',
       'Accepted paid work allocates 85% to the executor, 10% to the protocol and 5% to the reserve. There is no additional GSTD claim or withdrawal fee.',
-      'Paid credit is backed by GSTD held in custody. The custody owner signs withdrawals and pays TON execution costs. Promo requests do not create withdrawable tokens.',
+      'Paid credit requires GSTD held in custody. The custody owner signs withdrawals and pays TON execution costs. A real deposit-to-withdrawal mainnet cycle has not yet been confirmed. Promo requests do not create withdrawable tokens.',
     ],
   },
 } as const;

@@ -188,7 +188,7 @@ export default {
       'Node Network: Anyone can run node software that processes AI inference requests, generating protocol fees',
       'Fee Distribution: a node operator receives a share of the fee for processed requests; rewards are tracked in the platform ledger and withdrawn on request',
       'Treasury: part of the fees is earmarked for the treasury; see the Treasury page for the balance',
-      'Open Access: Any device (laptop, Pi, server) can run a node',
+      'Open Access: Linux x86-64/ARM64 and WSL2; model support depends on RAM, disk and the inference runtime',
     ],
     missionTitle: 'Our Mission',
     missionDescription: 'Build an open AI compute network where anyone can run a node and earn GSTD by serving AI requests. The goal is an open compute market; today the platform and custody remain central dependencies.',
@@ -372,7 +372,7 @@ export default {
         },
         {
           heading: '2. Description of Service',
-          body: 'The Platform is source-available, permissionless software that connects node operators (who provide compute resources for AI inference) with users who pay for that compute using GSTD, a utility token on the TON blockchain. The Platform does not operate, own, or control the compute hardware, the TON blockchain, or any third-party exchange. We provide software and infrastructure only; we do not act as a custodian, broker, exchange, or financial intermediary.',
+          body: 'The Platform is source-available, permissionless software that connects node operators (who provide compute resources for AI inference) with users who pay for that compute using GSTD, a utility token on the TON blockchain. The Platform does not operate, own, or control the compute hardware, the TON blockchain, or any third-party exchange. Paid platform balances are recorded in a central ledger and backed by a custody wallet; withdrawals require its owner to sign. A real deposit-to-withdrawal mainnet cycle has not yet been confirmed. Self-hosted local inference does not require a paid platform balance.',
         },
         {
           heading: '3. Nature of GSTD — Not a Security, Not an Investment',
@@ -535,7 +535,7 @@ export default {
       },
       interest: {
         title: 'Low Barrier to Entry',
-        description: 'Any hardware can join — Raspberry Pi, laptop, or server. Install the node and register. No minimum stake required.',
+        description: 'Use supported 64-bit Linux or WSL2 hardware. Choose models for available RAM and disk; GPU support depends on drivers. No minimum stake is required.',
       },
       transparency: {
         title: 'Open Source',
@@ -543,7 +543,7 @@ export default {
       },
       antiwhale: {
         title: 'Open Access',
-        description: 'Any device can run node software and serve requests.',
+        description: 'Supported Linux x86-64/ARM64 and WSL2 machines can run node software. Available models depend on the machine.',
       },
       income: {
         title: 'Node Operator Rewards',
@@ -648,7 +648,7 @@ export default {
       },
       {
         question: 'What hardware do I need to run a node?',
-        answer: 'Any device the node software supports: Raspberry Pi 4 and up, laptop, desktop, or server. There is no single hard minimum beyond what a Raspberry Pi 4 provides; the more capable the hardware, the more models it can serve.',
+        answer: 'The installer targets Linux x86-64/ARM64 and WSL2. CPU inference is available; each model needs sufficient RAM and free disk. GPU acceleration depends on runtime and driver support. Linux clusters run one node per machine; pooled model execution across machines is not implemented.',
       },
     ],
   },
@@ -727,7 +727,7 @@ export default {
     subtitle: 'Demo chat and the node client. The list below shows API model names, not a guarantee of availability.',
     categories: ['Chat', 'Coding'],
     inferenceTitle: 'API model names',
-    inferenceNote: 'A node maps these names to a model installed locally (Ollama), so the actual model may differ. Check live availability before sending a request.',
+    inferenceNote: 'Use the exact model name from the live registry. If it is unavailable, the request fails; choosing a different model requires your consent.',
     supportedByClient: 'Supported by the node client',
     columns: { model: 'Model', provider: 'Provider / Node', availability: 'Status' },
   },

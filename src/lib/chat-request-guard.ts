@@ -140,3 +140,10 @@ export async function allowChatRequest(
   entry.count += 1;
   return entry.count <= CHAT_RATE_LIMIT;
 }
+
+/** Consent to a provider is not consent to substitute an explicitly named model. */
+export function allowsCloudFallback(raw: unknown, body: ChatRequestBody): boolean {
+  return !!raw && typeof raw === 'object'
+    && (raw as Record<string, unknown>).allow_cloud_fallback === true
+    && (body.model === undefined || body.model === 'auto');
+}

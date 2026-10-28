@@ -31,3 +31,12 @@ test('fails closed when the registry is unavailable or no identities are trusted
   assert.equal((await discover(new Set(), new Set(), async () => { throw Error('must not fetch'); })).length, 0);
   assert.equal((await discover(new Set(['trusted']), new Set(), async () => new Response('', { status:503 }))).length, 0);
 });
+
+test('registry lookup refuses redirects rather than following an unvalidated destination',async()=>{
+ let called=false;
+ const result=await discover(new Set(['trusted']),new Set(),async(url,options)=>{
+  called=true;assert.equal(options.redirect,'error');
+  throw new TypeError('redirect rejected');
+ });
+ assert.equal(called,true);assert.equal(result.length,0);
+});

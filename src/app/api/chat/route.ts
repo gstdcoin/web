@@ -1,37 +1,20 @@
 import { NextResponse } from 'next/server';
 import { registeredNodeUrls } from '@/lib/node-discovery';
+import { assertNodeCompletion, guardNodeStream } from '@/lib/node-response-guard';
 import { getCloudflareContext } from '@opennextjs/cloudflare';
 import {
   allowChatRequest,
+  allowsCloudFallback,
   readJsonBody,
   validateChatBody,
   type RateLimiterBinding,
 } from '@/lib/chat-request-guard';
 
-// Proxies chat requests directly to a live GSTD node, bypassing
-// app.gstdtoken.com entirely. gstdtoken.com runs on Cloudflare Workers,
-// independent of the Cloudflare deployment that hosts app.gstdtoken.com -- so
-// this keeps working even during a platform-side outage there.
-//
-// Seed source is the same GitHub-raw peer list gstdbot's own
-// src/p2p/peers.ts already bootstraps from (not app.gstdtoken.com), kept
-// in sync with that file's SEED_PEERS_URL. A node's own peer-gossip mesh
-// (see peers.ts) is the real source of truth once you're inside the
-// network; this is just how a browser, which isn't part of that mesh,
-// finds a first node to talk to.
-//
-// A P2P network with zero volunteer nodes online can't serve anyone --
-// that's a real gap no amount of proxy code fixes by itself. So if every
-// seed node is unreachable, this falls back to Cloudflare Workers AI
-// (same account already hosting this Worker, no new vendor/credentials).
-// Real nodes are always tried first and preferred -- this fallback exists
-// so "talk to the network" is never just dead air waiting for a volunteer
-// to come online, not to replace node-served inference as the intended
-// path.
-// Cloudflare deprecates Workers AI model IDs fairly often (already hit once:
-// llama-3.1-8b-instruct-fast turned out to alias a deprecated backend despite
-// docs listing it as current). Try a short list in order instead of betting
-// on one ID staying valid.
+// Discover trusted node identities from the canonical registry, then the
+// explicitly allowlisted seed file. All upstream requests reject redirects:
+// a validated public endpoint must not redirect inference into a private host.
+// Cloudflare AI is optional and only used for auto-selection with explicit
+// permission; a named model must never silently become a different model.
 const WORKERS_AI_MODELS = [
   '@cf/meta/llama-3.2-3b-instruct',
   '@cf/meta/llama-3.1-8b-instruct',
@@ -64,6 +47,20 @@ function normalizeSeedUrl(raw: string, allowedHosts: Set<string>): string | null
   }
 }
 
+// Short isolate-local cache/coalescing reduces free-tier registry calls. Never
+// retain stale destinations after refresh failure; rotations retry within 30s.
+const registryCache = new Map<string, { expires: number; request: Promise<string[]> }>();
+function cachedRegisteredNodeUrls(ids: Set<string>, hosts: Set<string>): Promise<string[]> {
+  const key = JSON.stringify([Array.from(ids).sort(), Array.from(hosts).sort()]);
+  const now = Date.now();
+  const previous = registryCache.get(key);
+  if (previous && previous.expires > now) return previous.request;
+  registryCache.clear();
+  const request = registeredNodeUrls(ids, hosts);
+  registryCache.set(key, { expires: now + 30_000, request });
+  return request;
+}
+
 async function getSeedNodeUrls(): Promise<string[]> {
   const allowedHosts = new Set(
     (process.env.GSTD_SEED_HOSTS || '')
@@ -73,13 +70,14 @@ async function getSeedNodeUrls(): Promise<string[]> {
   );
   const trustedIds = new Set((process.env.GSTD_TRUSTED_NODE_IDS || '')
     .split(',').map(id => id.trim()).filter(Boolean));
-  const registered = await registeredNodeUrls(trustedIds, allowedHosts);
+  const registered = await cachedRegisteredNodeUrls(trustedIds, allowedHosts);
   if (registered.length > 0) return registered;
   if (allowedHosts.size === 0) return [];
 
   try {
     const resp = await fetch(`${SEED_PEERS_URL}?t=${Math.floor(Date.now() / 60000)}`, {
       signal: AbortSignal.timeout(SEED_FETCH_TIMEOUT_MS),
+      redirect: 'error',
     });
     if (!resp.ok) {
       console.warn(`[chat] seed list request failed with HTTP ${resp.status}`);
@@ -142,6 +140,7 @@ export async function POST(req: Request) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
         signal: AbortSignal.timeout(NODE_TIMEOUT_MS),
+        redirect: 'error',
       });
       if (!resp.ok) {
         errors.push(`${nodeUrl}: HTTP ${resp.status}`);
@@ -151,11 +150,13 @@ export async function POST(req: Request) {
       // SSE (see gstdbot-full/src/gateway/server.ts) -- pass it straight
       // through rather than trying to json-parse a streaming body.
       if (resp.headers.get('content-type')?.includes('text/event-stream')) {
-        return new Response(resp.body, {
+        if (!resp.body) throw new Error('node_empty_stream');
+        return new Response(guardNodeStream(resp.body, body.model), {
           headers: { 'content-type': 'text/event-stream', 'x-served-by': nodeUrl },
         });
       }
       const data = await resp.json();
+      assertNodeCompletion(data, body.model);
       return NextResponse.json({ ...data, _servedBy: nodeUrl });
     } catch (e) {
       errors.push(`${nodeUrl}: ${e instanceof Error ? e.message : 'unreachable'}`);
@@ -167,8 +168,8 @@ export async function POST(req: Request) {
   // relative to a browser round trip and JSON is simpler to keep correct
   // there; Cloudflare AI remains an explicitly identified fallback
   // and is explicitly identified as Cloudflare AI in response metadata.
-  if ((parsed.body as Record<string,unknown>).allow_cloud_fallback !== true) {
-    return NextResponse.json({error:'node_unavailable',message:'No node answered. Cloudflare AI fallback requires your explicit consent.'},{status:503});
+  if (!allowsCloudFallback(parsed.body, body)) {
+    return NextResponse.json({error:'node_unavailable',message:'The requested node model is unavailable. Cloudflare AI requires explicit consent and auto model selection.'},{status:503});
   }
   const wantsStream = body.stream === true;
   try {

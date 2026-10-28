@@ -1,5 +1,6 @@
 /** Discover explicitly trusted node identities through the canonical live registry.
- * Cloudflare public tunnels may rotate; the persistent signed identity does not.
+ * Cloudflare public tunnels may rotate; the allowlisted registry identity does not.
+ * The registry is trusted here; this does not independently verify node signatures.
  */
 export async function registeredNodeUrls(
   trustedIds: Set<string>,
@@ -9,7 +10,7 @@ export async function registeredNodeUrls(
   if (!trustedIds.size) return [];
   try {
     const response = await request('https://app.gstdtoken.com/api/v1/nodes/list', {
-      signal: AbortSignal.timeout(5000), cache: 'no-store',
+      signal: AbortSignal.timeout(5000), cache: 'no-store', redirect: 'error',
     });
     if (!response.ok) return [];
     const data = await response.json() as { nodes?: unknown };
@@ -24,7 +25,7 @@ export async function registeredNodeUrls(
         const host = url.hostname.toLowerCase();
         const allowed = allowedHosts.has(host) || /^[a-z0-9]+(?:-[a-z0-9]+)*\.trycloudflare\.com$/.test(host);
         if (url.protocol !== 'https:' || url.username || url.password || url.port
-          || !allowed || host === 'localhost' || host.endsWith('.local')
+          || !allowed || host === 'localhost' || host.endsWith('.localhost') || host.endsWith('.local')
           || host.endsWith('.internal') || host.includes(':') || /^\d+(?:\.\d+){3}$/.test(host)) continue;
         urls.push(url.origin);
       } catch { /* malformed registry URL is not routable */ }

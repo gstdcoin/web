@@ -103,7 +103,7 @@ export function LiveNetworkStatus() {
         });
         setServiceAvailable(true);
       } catch {
-        if (!disposed) setServiceAvailable(false);
+        if (!disposed) { setStats(null); setServiceAvailable(false); }
       } finally { inFlight = false; }
     };
     void fetchStats();
@@ -182,7 +182,7 @@ export function LiveNetworkStatus() {
               <span className="text-xs text-slate-400 uppercase tracking-wide">{tx.supply}</span>
             </div>
             <div className="text-2xl font-black text-slate-100 mb-1">1,000,000,000</div>
-            <div className="text-xs text-slate-500">{TOKEN_INFO.symbol} · {TOKEN_INFO.decimals} decimals · {TOKEN_INFO.network}</div>
+            <div className="text-xs text-slate-500">{TOKEN_INFO.symbol} · {TOKEN_INFO.decimals} {language === 'en' ? 'decimals' : 'знаков после запятой'} · {TOKEN_INFO.network}</div>
           </div>
         </div>
 

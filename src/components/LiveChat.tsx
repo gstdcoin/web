@@ -75,15 +75,16 @@ export function LiveChat() {
           if (!trimmed.startsWith('data: ')) continue;
           const payload = trimmed.slice(6);
           if (payload === '[DONE]') continue;
-          try {
-            const chunk = JSON.parse(payload);
-            const delta = chunk.choices?.[0]?.delta?.content;
-            if (delta) {
-              content += delta;
-              setMessages([...next, { role: 'assistant', content }]);
-            }
-          } catch {
-            // partial/non-JSON line, skip
+          let chunk;
+          try { chunk = JSON.parse(payload); } catch { continue; }
+          if (chunk.error || chunk._gstd?.error || chunk._gstd?.tier === 'fallback') {
+            await reader.cancel();
+            throw new Error('Invalid node response');
+          }
+          const delta = chunk.choices?.[0]?.delta?.content;
+          if (delta) {
+            content += delta;
+            setMessages([...next, { role: 'assistant', content }]);
           }
         }
       }
@@ -128,7 +129,7 @@ export function LiveChat() {
 
         <label className="flex items-start gap-3 text-sm text-slate-400 mb-4">
           <input type="checkbox" checked={cloudConsent} onChange={e=>setCloudConsent(e.target.checked)}/>
-          {ru?'Разрешаю отправить запрос Cloudflare AI, если ноды не ответят.':'Allow my question to be sent to Cloudflare AI only if nodes do not answer.'}
+          {ru?'Разрешаю передать вопрос и историю этого диалога Cloudflare AI, если ноды не ответят.':'Allow my question and this conversation history to be sent to Cloudflare AI only if nodes do not answer.'}
         </label>
         <div className="flex items-center justify-between gap-3 mb-3 text-sm">
           <p role="status" className="text-slate-400">
