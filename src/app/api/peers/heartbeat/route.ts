@@ -1,12 +1,10 @@
 import { NextResponse } from 'next/server';
 
-// gstdbot's own src/p2p/peers.ts (sendHeartbeatTo) proactively POSTs a
-// heartbeat to every known peer, including seeds, and marks a peer "alive"
-// (lastSeen = now) purely on getting a response here -- it doesn't need us
-// to gossip back a real peer table for gstdtoken.com to become selectable
-// by getBestPeer()/forwardToPeer() afterwards. We don't maintain node
-// state (this Worker is stateless per-request), so this just acks; the
-// real capability lives at /v1/ollama/completions.
+/** A website is not a compute node. Never acknowledge a heartbeat that would
+ * make peers select this site as an available inference executor. */
 export async function POST() {
-  return NextResponse.json({ ok: true, peers: [] });
+  return NextResponse.json({ error: {
+    code: 'website_is_not_compute_peer',
+    message: 'This website does not participate as a compute peer. Discover live nodes through the platform registry.',
+  } }, { status: 410, headers: { 'Cache-Control': 'no-store' } });
 }
