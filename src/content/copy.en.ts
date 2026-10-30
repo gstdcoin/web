@@ -1,4 +1,45 @@
 export default {
+  nodeHardwareEntry: {
+  "eyebrow": "Bring the hardware you already own",
+  "title": "From a Hugging Face setup to a GSTD node",
+  "intro": "Hugging Face Hardware shows equipment shared by its community. Its owners may choose to join GSTD; they are not automatically network participants. Start with your existing computer, not a hardware purchase.",
+  "hardwareTitle": "Choose your installation path",
+  "rows": [
+    {
+      "name": "Linux CPU · x86-64 / ARM64",
+      "status": "Base installation path",
+      "detail": "A GPU is optional. Choose a local model that fits the machine’s available RAM and disk, then test it."
+    },
+    {
+      "name": "NVIDIA · Linux / WSL2",
+      "status": "Driver and runtime dependent",
+      "detail": "A detected card is not proof of GPU inference. Confirm Ollama can load the model and actually offload work."
+    },
+    {
+      "name": "AMD · Linux / WSL2",
+      "status": "Check the exact GPU and runtime",
+      "detail": "Acceleration depends on the device, driver and supported Ollama backend. A CPU path may remain available; GPU execution must be verified."
+    },
+    {
+      "name": "Apple Silicon · macOS",
+      "status": "Physical validation still required",
+      "detail": "Use a supported local Ollama runtime. Unified memory is shared: RAM and GPU memory must not be counted twice. This hardware path has not been physically verified here."
+    }
+  ],
+  "stepsTitle": "A short path to useful work",
+  "steps": [
+    "Install the node using the guide below and open its dashboard.",
+    "Check measured resources; import a fitting public GGUF from Hugging Face with dashboard buttons.",
+    "Run a local question on the exact model. Link your public TON address for new rewards; no seed phrase is needed.",
+    "Check worker readiness and the live registry. Outbound funded jobs do not require a public incoming port; direct network chat needs reachable HTTPS."
+  ],
+  "cluster": "Linux cluster: install an independent node with its own identity on each machine. This does not pool RAM/VRAM or split one model across computers.",
+  "economy": "Only accepted, funded work creates rewards: 85% executor, 10% protocol, 5% reserve. Installing a model or keeping a node online does not guarantee assignments, income or a funded withdrawal.",
+  "matrixLink": "Installation and hardware limits ↗",
+  "modelLink": "Hugging Face operator guide ↗",
+  "communityLink": "Equipment shared by the Hugging Face community ↗",
+  "registryLink": "See the live GSTD registry ↗"
+},
   // Navigation
   nav: {
     home: 'Home',
