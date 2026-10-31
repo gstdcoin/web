@@ -60,7 +60,7 @@ Issues and pull requests are welcome. Report vulnerabilities privately through G
 
 ## License
 
-Source-available under the [PolyForm Noncommercial License 1.0.0](LICENSE), with an additional permission for taking part in the GSTD network (including receiving GSTD rewards). Commercial use by companies needs a separate license. Not an OSI open-source license.
+Source-available under [LICENSE](LICENSE): unmodified PolyForm Noncommercial 1.0.0 plus additional permission for individuals and companies to run nodes, earn accepted-work GSTD and build commercial applications or API/SDK integrations using the GSTD network without separate approval. Paid network-compute charges under that grant settle in canonical GSTD; independent application fees may use other currencies. Installation, free requests and local execution have no added token requirement, and TON may cover gas. Base noncommercial rights, earlier releases and third-party licenses are preserved. This is not OSI open source. See [the practical licensing guide and third-party scope](docs/LICENSING.md).
 
 ## Node-backed chat
 

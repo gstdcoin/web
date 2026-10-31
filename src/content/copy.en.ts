@@ -72,7 +72,7 @@ export default {
     },
     monitor: {
       title: 'Source-Available',
-            description: 'Platform source code is public on GitHub and free for noncommercial use and network participation; commercial use needs a separate license. Nodes can serve local compute; the platform and custody wallet remain central dependencies today.',
+            description: 'Source-available code is public on GitHub. Individuals and companies can run nodes and build commercial network integrations under LICENSE; paid network compute settles in GSTD. Installation and free/local use need no token. Platform and custody remain central dependencies.',
       cta: 'GitHub',
     },
     chat: {
@@ -223,7 +223,7 @@ export default {
       'Anyone can run node software on their own hardware to process AI inference requests — earning GSTD for funded, accepted work.',
       'GSTD is a payment token for AI compute. Node income depends on real usage — no staking, no yield promises.',
       'GSTD runs on TON today. A cross-chain bridge to Solana and XRPL is early-stage, unaudited, and has never moved funds in production — treat it as not live.',
-      'Platform source code is public on GitHub (noncommercial license). Read it and run it.',
+      'Platform source is public on GitHub: PolyForm NC plus permission for commercial GSTD network applications. See LICENSE for its scope.',
     ],
     buildBullets: [
       'Node Network: Anyone can run node software that processes AI inference requests, generating protocol fees',
@@ -413,7 +413,7 @@ export default {
         },
         {
           heading: '2. Description of Service',
-          body: 'The Platform is source-available, permissionless software that connects node operators (who provide compute resources for AI inference) with users who pay for that compute using GSTD, a utility token on the TON blockchain. The Platform does not operate, own, or control the compute hardware, the TON blockchain, or any third-party exchange. Paid platform balances are recorded in a central ledger and backed by a custody wallet; withdrawals require its owner to sign. A real deposit-to-withdrawal mainnet cycle has not yet been confirmed. Self-hosted local inference does not require a paid platform balance.',
+          body: 'The Platform is source-available software that connects node operators (who provide compute resources for AI inference) with users who pay for that compute using GSTD, a utility token on the TON blockchain. The Platform does not operate, own, or control the compute hardware, the TON blockchain, or any third-party exchange. Paid platform balances are recorded in a central ledger and backed by a custody wallet; withdrawals require its owner to sign. A real deposit-to-withdrawal mainnet cycle has not yet been confirmed. Self-hosted local inference does not require a paid platform balance.',
         },
         {
           heading: '3. Nature of GSTD — Not a Security, Not an Investment',
@@ -580,7 +580,7 @@ export default {
       },
       transparency: {
         title: 'Open Source',
-        description: 'The platform source code is public on GitHub (noncommercial license). Network metrics are published from the API with no simulation.',
+        description: 'The platform source is public on GitHub under PolyForm NC plus a commercial GSTD network permission. Network metrics come from the API without simulation.',
       },
       antiwhale: {
         title: 'Open Access',
