@@ -1,9 +1,9 @@
 import { LINKS } from '@/content/config';
 export type WebsiteLanguage = 'ru' | 'en';
-export type AppDestination = '/chat' | '/nodes' | '/payments';
+export type AppDestination = '/chat' | '/nodes' | '/payments' | '/escrow-mainnet';
 /** Public navigation only. Never copy wallet sessions or demo conversation data. */
 export function appUrl(language: WebsiteLanguage, destination: AppDestination = '/chat', model?: string): string {
-  if (!['/chat', '/nodes', '/payments'].includes(destination)) throw new Error('Unsupported app destination');
+  if (!['/chat', '/nodes', '/payments', '/escrow-mainnet'].includes(destination)) throw new Error('Unsupported app destination');
   const url = new URL(`${language === 'ru' ? '/ru' : ''}${destination}`, LINKS.app);
   if (model) url.searchParams.set('model', model);
   return url.toString();

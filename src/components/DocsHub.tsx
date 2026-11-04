@@ -1,5 +1,6 @@
 'use client';
 
+import { GettingStarted } from './GettingStarted';
 import { useLanguage } from './LanguageProvider';
 import { motion } from 'framer-motion';
 import {
@@ -49,6 +50,7 @@ export function DocsHub() {
           <p className="text-slate-300 max-w-2xl mx-auto">{docs?.subtitle}</p>
         </motion.div>
 
+        <GettingStarted />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {sections.map((section, i) => {
             const Icon = ICONS[i] || BookOpen;

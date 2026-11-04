@@ -9,6 +9,8 @@ The public information website for GSTD: understand the project, install a compu
 
 Built with Next.js 16 and Tailwind CSS, deployed on Cloudflare Workers (free tier) through OpenNext.
 
+[Start here / Начните здесь](https://gstdtoken.com/docs#get-started): step-by-step AI, node, wallet and payments guide. Platform balances and direct-contract escrow are separate payment paths. Mainnet escrow is open beta; a real mainnet payout remains unverified.
+
 ## What you will find on the site
 
 - **Home** — what GSTD is, how a node works, live network counters.
