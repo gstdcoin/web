@@ -305,7 +305,7 @@ export default {
       'Token, node registry, and the public node client',
       'Requests routed to nodes; fees tracked in the platform ledger',
       'Proving that a completed workload was done correctly',
-      'Treasury reporting and payouts to node operators; on-chain settlement is still being designed',
+      'Treasury reporting and payouts to node operators; separate contract settlement is open beta; a real mainnet payout remains unverified',
       'Cross-chain bridge — public code, unaudited, not live',
       'Agent-to-agent task execution built on the same network',
     ],
@@ -334,11 +334,11 @@ export default {
       ],
       [
         'AI inference requests routed to available nodes',
-        'Fees and rewards are tracked in the platform ledger; there is no on-chain settlement yet',
+        'Platform credits use the ledger; separate per-job mainnet escrow is open beta, with a real mainnet payout still unverified',
         'The node client supports a catalog of open models — the current list is in the Documentation',
       ],
       [
-        'Result submissions are signed (Ed25519) so the network knows who submitted a result',
+        'Worker requests authenticate a registered Ed25519 identity; the result body is not a portable signed computation proof',
         'No cryptographic proof of correct computation yet — in design',
         'Node reputation and capability-based routing — in design',
       ],
@@ -416,8 +416,8 @@ export default {
           body: 'The Platform is source-available software that connects node operators (who provide compute resources for AI inference) with users who pay for that compute using GSTD, a utility token on the TON blockchain. The Platform does not operate, own, or control the compute hardware, the TON blockchain, or any third-party exchange. Paid platform balances are recorded in a central ledger and backed by a custody wallet; withdrawals require its owner to sign. A real deposit-to-withdrawal mainnet cycle has not yet been confirmed. Self-hosted local inference does not require a paid platform balance.',
         },
         {
-          heading: '3. Nature of GSTD — Not a Security, Not an Investment',
-          body: 'GSTD is a utility token designed solely to pay for AI compute on the network, comparable to how gas tokens pay for computation on other blockchains. GSTD is not a security, share, bond, deposit, or any other form of regulated financial instrument in any jurisdiction. Purchasing, holding, earning, or using GSTD carries no expectation of profit derived from the efforts of others, no dividend, no interest, and no guarantee of value, liquidity, or future price. Nothing on the Platform is an offer or solicitation to buy or sell any security in any jurisdiction where such an offer would be unlawful.',
+          heading: '3. Intended Use of GSTD and Risks',
+          body: 'GSTD is a utility token designed solely to pay for AI compute on the network, comparable to how gas tokens pay for computation on other blockchains. The intended compute use does not establish its regulatory classification or exemption in any jurisdiction; legal qualification requires a separate assessment. Purchasing, holding, earning, or using GSTD carries no expectation of profit derived from the efforts of others, no dividend, no interest, and no guarantee of value, liquidity, or future price. Nothing on the Platform is an offer or solicitation to buy or sell any security in any jurisdiction where such an offer would be unlawful.',
         },
         {
           heading: '4. Eligibility and Compliance',
@@ -515,7 +515,7 @@ export default {
       sections: [
         {
           heading: '1. Not Investment Advice, Not a Security',
-          body: 'Nothing published on the Platform — including this website, documentation, or any statement by a contributor — is financial, investment, tax, or legal advice, or a recommendation to buy, hold, or sell GSTD or any other asset. GSTD is not registered as a security in any jurisdiction and no regulator has reviewed or approved it.',
+          body: 'Nothing published on the Platform — including this website, documentation, or any statement by a contributor — is financial, investment, tax, or legal advice, or a recommendation to buy, hold, or sell GSTD or any other asset. This website does not establish regulatory approval or determine the token\'s legal classification.',
         },
         {
           heading: '2. Extreme Price Volatility',
@@ -665,7 +665,7 @@ export default {
       },
       {
         question: 'How do node operators earn?',
-        answer: 'Node operators run the open node software on their hardware, register on the network, and receive a share of the GSTD fee for the requests they process. Funded accepted work allocates 85% to executors, 10% to the protocol and 5% to the reserve. Earned credits can pay for other nodes or request a withdrawal signed by the custody owner. The network is at an early stage: income is not guaranteed and depends on real usage.',
+        answer: 'Node operators run the open node software on their hardware, register on the network, and receive a share of the GSTD fee for the requests they process. Funded accepted work allocates 85% to executors, 10% to the protocol and 5% to the reserve. Platform credits can pay for other nodes or request a custody-owner-signed withdrawal. Separate escrow beneficiaries sign their own claims; the balances are not merged. The network is at an early stage: income is not guaranteed and depends on real usage.',
       },
       {
         question: 'How does the treasury work?',
@@ -748,7 +748,7 @@ export default {
   requestFlow: {
     title: 'How AI Requests Work',
     steps: ['User', 'Request', 'Router', 'Node Selection', 'Compute', 'Verification', 'Result', 'Settlement'],
-    description: 'The protocol routes workloads to available nodes. Result submissions are cryptographically signed so the network knows who submitted them. There is currently no cryptographic proof that a computation was performed correctly — that is active, unfinished work, not a shipped guarantee.',
+    description: 'The protocol routes workloads to available nodes. Worker requests authenticate a registered Ed25519 identity. The current authentication does not create a portable signature over the answer body. There is currently no cryptographic proof that a computation was performed correctly — that is active, unfinished work, not a shipped guarantee.',
   },
 
   // Open Source / Developers section
