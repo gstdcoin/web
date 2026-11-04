@@ -79,7 +79,7 @@ export function Navbar() {
           {/* Language Switcher & CTAs */}
           <div className="hidden md:flex items-center space-x-3">
             <LanguageSwitcher />
-            <Button variant="outline" className="hidden lg:inline-flex border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/50" size="sm" asChild>
+            <Button variant="outline" className="hidden lg:inline-flex border-[#D4AF37]/30 text-[#D4AF37] hover:text-[#D4AF37] hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/50" size="sm" asChild>
               <Link href="/nodes">
                 {t('nav.runNode')}
               </Link>
@@ -98,7 +98,7 @@ export function Navbar() {
               variant="ghost"
               size="sm"
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden min-w-0 px-2 text-slate-100 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10"
+              className="md:hidden min-w-0 px-2 text-slate-100 hover:text-[#D4AF37] hover:text-[#D4AF37] hover:bg-[#D4AF37]/10"
             >
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
@@ -130,7 +130,7 @@ export function Navbar() {
               </div>
               {/* CTA Buttons in Grid */}
               <div className="mt-3 grid grid-cols-2 gap-2">
-                <Button variant="outline" className="border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 w-full" size="sm" asChild>
+                <Button variant="outline" className="border-[#D4AF37]/30 text-[#D4AF37] hover:text-[#D4AF37] hover:bg-[#D4AF37]/10 w-full" size="sm" asChild>
                   <Link href="/nodes" onClick={() => setIsOpen(false)}>
                     {t('nav.runNode')}
                   </Link>
