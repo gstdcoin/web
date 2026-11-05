@@ -1,5 +1,7 @@
 # GSTD Web
 
+**Русский:** здесь публичный сайт; чат, кошелёк и Telegram-бот находятся в платформе ai. [Карта проекта и инструкции](https://github.com/gstdcoin/ai/blob/main/docs/INDEX.md).
+
 The public information website for GSTD: understand the project, install a compute node and read the documentation. The [GSTD app](https://app.gstdtoken.com/chat) is the main workspace for chat, model selection, balance and rewards.
 
 [![Website](https://img.shields.io/badge/site-gstdtoken.com-00d2ff?style=flat-square)](https://gstdtoken.com)
