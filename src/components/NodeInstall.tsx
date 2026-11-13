@@ -7,7 +7,7 @@ import { Copy, Check, Terminal, Github, ExternalLink } from 'lucide-react';
 import { LINKS } from '@/content/config';
 import { motion } from 'framer-motion';
 
-const INSTALL_CMD = 'curl -fsSL https://raw.githubusercontent.com/gstdcoin/gstdbot/main/install.sh | bash';
+const INSTALL_CMD = "(installer=$(mktemp) && trap 'rm -f \"$installer\"' EXIT && curl -fsSL https://raw.githubusercontent.com/gstdcoin/gstdbot/main/install.sh -o \"$installer\" && printf '%s  %s\\n' c314582d0712ec9f9611cd3c86f18d1a54099d41f2a8fec2d37f7d315b323732 \"$installer\" | sha256sum -c - && bash \"$installer\")";
 
 export function NodeInstall() {
   const { t, language } = useLanguage();
