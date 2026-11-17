@@ -25,6 +25,8 @@ jobs:
         with:
           node-version: '22'
           cache: 'npm'
+      - name: Use lockfile npm version
+        run: npm install --global npm@11.13.0
       - name: Install locked dependencies
         run: npm ci
       - name: Check types and production dependencies
