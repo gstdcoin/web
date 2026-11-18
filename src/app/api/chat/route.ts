@@ -77,7 +77,7 @@ async function getSeedNodeUrls(): Promise<string[]> {
   try {
     const resp = await fetch(`${SEED_PEERS_URL}?t=${Math.floor(Date.now() / 60000)}`, {
       signal: AbortSignal.timeout(SEED_FETCH_TIMEOUT_MS),
-      redirect: 'error',
+      redirect: 'manual',
     });
     if (!resp.ok) {
       console.warn(`[chat] seed list request failed with HTTP ${resp.status}`);
@@ -140,7 +140,7 @@ export async function POST(req: Request) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
         signal: AbortSignal.timeout(NODE_TIMEOUT_MS),
-        redirect: 'error',
+        redirect: 'manual',
       });
       if (!resp.ok) {
         errors.push(`${nodeUrl}: HTTP ${resp.status}`);

@@ -4,7 +4,7 @@ import { pathToFileURL } from 'node:url';
 export async function checkNetworkStats(baseUrl, request = fetch) {
   const response = await request(new URL('/api/network/stats', baseUrl), {
     headers: { Accept: 'application/json' },
-    redirect: 'error',
+    redirect: 'manual',
     signal: AbortSignal.timeout(10_000),
   });
   if (!response.ok) throw new Error(`Network statistics returned HTTP ${response.status}`);
