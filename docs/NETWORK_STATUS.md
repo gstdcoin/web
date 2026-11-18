@@ -6,7 +6,7 @@ The route validates every displayed counter, uses `tasks_completed` for complete
 
 Successful responses use a short public cache to limit platform requests. The browser refreshes every two minutes and when the page becomes visible or connectivity returns. Unavailability remains visible if a refresh fails.
 
-The direct cross-origin browser request failed on 2026-11-18 because the platform statistics response lacked an `Access-Control-Allow-Origin` header, even though its health endpoint supplied one. A healthy `/api/health` alone did not exercise that browser data path.
+The direct cross-origin browser request failed on 2026-11-18 because the platform statistics response lacked an `Access-Control-Allow-Origin` header, even though its health endpoint supplied one. A healthy `/api/health` alone did not exercise that browser data path. The new preview contract check then blocked an unsupported `redirect: error` mode before production deployment. Worker outbound requests now use `redirect: manual` and reject non-success statuses, including redirects, without following them. The same correction applies to website node discovery and chat; see the [Cloudflare Request API](https://developers.cloudflare.com/workers/runtime-apis/request/).
 
 Run `npm test`, `npm run type-check` and `npm run lint`. For a deployed preview or production website, run `node scripts/check-network-stats.mjs https://gstdtoken.com` (replace the origin for preview). The Cloudflare workflow checks this contract in preview before production and again after production deployment.
 

@@ -10,7 +10,7 @@ export async function registeredNodeUrls(
   if (!trustedIds.size) return [];
   try {
     const response = await request('https://app.gstdtoken.com/api/v1/nodes/list', {
-      signal: AbortSignal.timeout(5000), cache: 'no-store', redirect: 'error',
+      signal: AbortSignal.timeout(5000), cache: 'no-store', redirect: 'manual',
     });
     if (!response.ok) return [];
     const data = await response.json() as { nodes?: unknown };

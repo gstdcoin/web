@@ -13,7 +13,7 @@ export async function GET() {
   try {
     const upstream = await fetch(STATS_URL, {
       headers: { Accept: 'application/json' },
-      redirect: 'error',
+      redirect: 'manual',
       signal: AbortSignal.timeout(5000),
       next: { revalidate: 60 },
     });
