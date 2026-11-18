@@ -14,7 +14,10 @@
     "clean": "rm -rf .next out .open-next node_modules/.cache",
     "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "cf:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-    "test": "node --test scripts/*.test.cjs"
+    "test": "node --test scripts/*.test.cjs",
+    "check:matcher": "node scripts/check-picomatch.cjs && node --test scripts/picomatch-security.cjs",
+    "prebuild": "npm run check:matcher",
+    "pretest": "npm run check:matcher"
   },
   "dependencies": {
     "@radix-ui/react-separator": "^1.0.3",
@@ -24,7 +27,7 @@
     "framer-motion": "^12.23.15",
     "js-yaml": "^4.1.1",
     "lucide-react": "^0.408.0",
-    "next": "16.4.3",
+    "next": "16.4.6",
     "next-intl": "^4.14.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -40,11 +43,12 @@
     "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
     "eslint-config-next": "^15.5.9",
-    "glob": "^11.0.0",
+    "glob": "14.0.6",
     "postcss": "^8.4.40",
     "tailwindcss": "^3.4.7",
     "typescript": "^5.5.3",
-    "wrangler": "^4.122.0"
+    "wrangler": "^4.122.0",
+    "picomatch": "file:vendor/picomatch"
   },
   "overrides": {
     "ws": "^8.18.0",
@@ -53,10 +57,11 @@
     "semver": "^7.6.0",
     "tar": "^6.2.1",
     "sharp": "$sharp",
-    "@node-minify/core": {
-      "glob": "^10.5.0"
-    },
     "undici@>=7.0.0 <8.0.0": "^7.30.1",
-    "postcss-selector-parser@<7.1.6": "^7.1.6"
-  }
+    "postcss-selector-parser@<7.1.6": "^7.1.6",
+    "picomatch": "$picomatch",
+    "glob": "$glob",
+    "minimatch@>=7.0.0 <11.0.1": "11.0.1"
+  },
+  "packageManager": "npm@11.13.0"
 }
