@@ -1,5 +1,11 @@
 # GSTD Web
 
+[![CI](https://github.com/gstdcoin/web/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/gstdcoin/web/actions/workflows/ci.yml)
+
+[Project map / Карта проекта](https://github.com/gstdcoin/ai/blob/main/docs/INDEX.md) · [Release evidence](https://github.com/gstdcoin/ai/blob/main/docs/READINESS.md) · [Repository maintenance](https://github.com/gstdcoin/ai/blob/main/docs/REPOSITORY_MAINTENANCE.md)
+
+Default branch: `main`.
+
 **Русский:** здесь публичный сайт; чат, кошелёк и Telegram-бот находятся в платформе ai. [Карта проекта и инструкции](https://github.com/gstdcoin/ai/blob/main/docs/INDEX.md).
 
 The public information website for GSTD: understand the project, install a compute node and read the documentation. The [GSTD app](https://app.gstdtoken.com/chat) is the main workspace for chat, model selection, balance and rewards.
@@ -28,6 +34,8 @@ Every number on the site comes from the live platform API ([`network/stats`](htt
 
 ## Quick start
 
+Use Node.js 22 and npm 11.13.0. The default branch contains the deployed site; draft website changes are listed in the [review queue](https://github.com/gstdcoin/ai/blob/main/docs/REPOSITORY_MAINTENANCE.md).
+
 ```bash
 git clone https://github.com/gstdcoin/web
 cd web
@@ -39,6 +47,8 @@ npm run dev
 | Command | What it does |
 |---|---|
 | `npm run dev` | Local development server |
+| `npm test` | Route and UI-boundary tests, plus the matcher guard |
+| `npm run type-check` | TypeScript validation |
 | `npm run build` | Production build |
 | `npm run cf:preview` | Preview the Cloudflare Worker build locally |
 | `npm run cf:deploy` | Build and deploy to Cloudflare Workers |
