@@ -5,12 +5,10 @@ import { Server, Coins, ExternalLink, Copy, AlertTriangle, Activity, CheckCircle
 import { useEffect, useState } from 'react';
 import { TOKEN_INFO, LINKS } from '@/content/config';
 
-const PLATFORM_API = 'https://app.gstdtoken.com/api/v1';
-
 interface NetworkStats {
   active_workers: number;
   total_nodes: number;
-  total_tasks: number;
+  tasks_completed: number;
   total_users: number;
   total_earned_gstd: number;
 }
@@ -87,20 +85,16 @@ export function LiveNetworkStatus() {
       inFlight = true;
       try {
         const signal = AbortSignal.timeout(8000);
-        const statsResponse = await fetch(`${PLATFORM_API}/network/stats`, { signal });
+        const statsResponse = await fetch('/api/network/stats', { signal });
         if (!statsResponse.ok) throw new Error(`Network statistics returned HTTP ${statsResponse.status}`);
-        const data = await statsResponse.json();
-        if (!Number.isFinite(data.active_workers) || !Number.isFinite(data.total_nodes)) {
-          throw new Error('Network statistics response is missing node counts');
+        const data: NetworkStats = await statsResponse.json();
+        if (![data.active_workers, data.total_nodes, data.tasks_completed, data.total_users]
+          .every(value => Number.isSafeInteger(value) && value >= 0) ||
+          !Number.isFinite(data.total_earned_gstd) || data.total_earned_gstd < 0) {
+          throw new Error('Invalid network statistics');
         }
         if (disposed) return;
-        setStats({
-          active_workers: data.active_workers,
-          total_nodes: data.total_nodes,
-          total_tasks: Number.isFinite(data.total_tasks) ? data.total_tasks : 0,
-          total_users: Number.isFinite(data.total_users) ? data.total_users : 0,
-          total_earned_gstd: Number.isFinite(data.total_gstd_paid) ? data.total_gstd_paid : 0,
-        });
+        setStats(data);
         setServiceAvailable(true);
       } catch {
         if (!disposed) { setStats(null); setServiceAvailable(false); }
@@ -108,9 +102,13 @@ export function LiveNetworkStatus() {
     };
     void fetchStats();
     const interval = setInterval(fetchStats, 120_000);
+    document.addEventListener('visibilitychange', fetchStats);
+    window.addEventListener('online', fetchStats);
     return () => {
       disposed = true;
       clearInterval(interval);
+      document.removeEventListener('visibilitychange', fetchStats);
+      window.removeEventListener('online', fetchStats);
     };
   }, []);
 
@@ -168,7 +166,7 @@ export function LiveNetworkStatus() {
               </div>
               <span className="text-xs text-slate-400 uppercase tracking-wide">{tx.activity}</span>
             </div>
-            <div className="text-3xl font-black text-slate-100 mb-1">{stats ? stats.total_tasks.toLocaleString() : '—'}</div>
+            <div className="text-3xl font-black text-slate-100 mb-1">{stats ? stats.tasks_completed.toLocaleString() : '—'}</div>
             <div className="text-xs text-slate-500">
               {stats ? `${stats.total_users.toLocaleString()} ${tx.usersPaid} ${stats.total_earned_gstd.toLocaleString(undefined, { maximumFractionDigits: 2 })}` : ''}
             </div>
