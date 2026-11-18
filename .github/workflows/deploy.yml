@@ -61,6 +61,7 @@ jobs:
             sleep 5
           done
           test "$ready" = true || { echo "::error::Preview readiness failed"; exit 1; }
+          node scripts/check-network-stats.mjs "$WORKER_URL"
           for path in / /about /nodes /ai /developers /docs; do
             curl --fail --silent --show-error --location --max-time 30 "$WORKER_URL$path" > "$RUNNER_TEMP/preview-page.html"
             grep -iq '<!doctype html' "$RUNNER_TEMP/preview-page.html"
@@ -74,6 +75,7 @@ jobs:
           for attempt in $(seq 1 12); do
             if curl --fail --silent --show-error --max-time 20 https://gstdtoken.com/api/health > "$RUNNER_TEMP/production-health.json"; then
               node -e "const h=require(process.argv[1]); if(h.ok!==true || h.ready!==true) process.exit(1)" "$RUNNER_TEMP/production-health.json"
+              node scripts/check-network-stats.mjs https://gstdtoken.com
               curl --fail --silent --show-error --location --max-time 30 https://gstdtoken.com/ > "$RUNNER_TEMP/production-page.html"
               grep -iq '<!doctype html' "$RUNNER_TEMP/production-page.html"
               exit 0
