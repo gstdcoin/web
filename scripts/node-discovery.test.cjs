@@ -7,7 +7,8 @@ const code = ts.transpileModule(fs.readFileSync('src/lib/node-discovery.ts', 'ut
   compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
 }).outputText;
 const exported = {};
-runInNewContext(code, { exports: exported, URL, AbortSignal, Date, Set, fetch });
+runInNewContext(code, { exports: exported, URL, AbortSignal, Date, Set, fetch,
+  require: () => ({ platformFetch: fetch }) });
 const discover = exported.registeredNodeUrls;
 const live = (node_id, node_url, last_seen = new Date().toISOString()) => ({ node_id, node_url, is_online: true, last_seen });
 test('routes a trusted persistent identity to its current tunnel and ignores other registrants', async () => {
