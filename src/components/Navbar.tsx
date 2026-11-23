@@ -25,7 +25,7 @@ export function Navbar() {
   }, []);
 
   const navItems = [
-    { key: 'network', href: '/' },
+    { key: 'network', href: '/network' },
     { key: 'nodes', href: '/nodes' },
     { key: 'ai', href: '/ai' },
     { key: 'developers', href: '/developers' },

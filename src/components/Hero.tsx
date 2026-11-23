@@ -38,7 +38,7 @@ export function Hero() {
         </div>
         <div className="flex flex-wrap gap-5 text-sm mt-7">
           <a className="text-[#D4AF37] underline underline-offset-4" href={LINKS.telegramBot} target="_blank" rel="noopener noreferrer">{ru ? 'Тот же ИИ в Telegram' : 'Use AI in Telegram'} ↗</a>
-          <Link className="text-slate-400 underline underline-offset-4" href="/docs">{ru ? 'Как устроена сеть' : 'How the network works'}</Link>
+          <Link className="text-slate-400 underline underline-offset-4" href="/network">{ru ? 'Паспорт сети: проверить данные' : 'Network passport: inspect the data'}</Link>
           <Link className="text-slate-400 underline underline-offset-4" href="/token">{ru ? 'Роль GSTD' : 'The role of GSTD'}</Link>
         </div>
       </div>

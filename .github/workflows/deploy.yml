@@ -2,7 +2,7 @@ name: Deploy to Cloudflare Workers
 
 on:
   push:
-    branches: [main, codex/gstdtoken-xyz]
+    branches: [main, codex/gstdtoken-xyz, codex/compute-passport]
 
 permissions:
   contents: read
@@ -62,7 +62,8 @@ jobs:
           done
           test "$ready" = true || { echo "::error::Preview readiness failed"; exit 1; }
           node scripts/check-network-stats.mjs "$WORKER_URL"
-          for path in / /about /nodes /ai /developers /docs; do
+          node scripts/check-compute-passport.mjs "$WORKER_URL"
+          for path in / /network /about /nodes /ai /developers /docs; do
             curl --fail --silent --show-error --location --max-time 30 "$WORKER_URL$path" > "$RUNNER_TEMP/preview-page.html"
             grep -iq '<!doctype html' "$RUNNER_TEMP/preview-page.html"
             echo "Preview $path returned HTML successfully"
@@ -78,6 +79,7 @@ jobs:
             if curl --fail --silent --show-error --max-time 20 https://gstdtoken.xyz/api/health > "$RUNNER_TEMP/production-health.json"; then
               node -e "const h=require(process.argv[1]); if(h.ok!==true || h.ready!==true) process.exit(1)" "$RUNNER_TEMP/production-health.json"
               node scripts/check-network-stats.mjs https://gstdtoken.xyz
+              node scripts/check-compute-passport.mjs https://gstdtoken.xyz
               curl --fail --silent --show-error --location --max-time 30 https://gstdtoken.xyz/ > "$RUNNER_TEMP/production-page.html"
               grep -iq '<!doctype html' "$RUNNER_TEMP/production-page.html"
               exit 0

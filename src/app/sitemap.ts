@@ -10,6 +10,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // 404 live, and omitted /about and /advantages entirely.
   const routes = [
     '',
+    '/network',
+    '/nodes',
+    '/ai',
+    '/developers',
+    '/docs',
     '/token',
     '/buy',
     '/roadmap',

@@ -1,7 +1,7 @@
 import { getCloudflareContext } from '@opennextjs/cloudflare';
 
 const ORIGIN = 'https://app.gstdtoken.xyz';
-const PUBLIC_PATHS = new Set(['/api/v1/health', '/api/v1/network/stats', '/api/v1/nodes/list']);
+const PUBLIC_PATHS = new Set(['/api/v1/health', '/api/v1/network/stats', '/api/v1/nodes/list', '/api/v1/nodes/update/manifest', '/api/v1/telegram/health']);
 
 /** Public read-only platform calls use a Worker binding, independent of public DNS. */
 export const platformFetch: typeof fetch = async (input, init) => {
