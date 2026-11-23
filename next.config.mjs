@@ -32,6 +32,13 @@ const nextConfig = {
 
   poweredByHeader: false,
 
+  async redirects() {
+    return ['www.gstdtoken.xyz', 'gstdtoken.com', 'www.gstdtoken.com'].map(host => ({
+      source: '/:path*', has: [{ type: 'host', value: host.replaceAll('.', '\\.') }],
+      destination: 'https://gstdtoken.xyz/:path*', permanent: true,
+    }));
+  },
+
   async headers() {
     return [
       {

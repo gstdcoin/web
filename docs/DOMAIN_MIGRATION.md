@@ -2,6 +2,8 @@
 
 Canonical website: `https://gstdtoken.xyz`. Website alias: `https://www.gstdtoken.xyz`. Platform/API: `https://app.gstdtoken.xyz`. Worker names and the existing Cloudflare account remain unchanged.
 
+The website config permanently redirects `www.gstdtoken.xyz` and recognized former website hosts to the fixed canonical origin while preserving paths. Lookalike hosts and the platform subdomain are not matched. Redirects from an old hostname can work only if its DNS/HTTPS and route still deliver the request to this Worker; application code cannot redirect an unresolved or externally controlled domain.
+
 The `GSTD_PLATFORM` service binding targets the existing `gstd-ai-platform` Worker for public GET health/statistics/node-discovery calls. Preview uses the same read-only data paths. Production fails closed if that binding is absent; it does not invent statistics or silently fall back to a different control plane. Only local development may use public HTTP fetches.
 
 The registrar must delegate the domain to the exact Cloudflare-assigned nameservers before the custom domains can serve valid HTTPS. Domain registration and a successful CI build alone do not complete that step. The migration proposal was prepared while DNS returned NXDOMAIN; it must not be described as a verified production launch.
