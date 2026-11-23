@@ -1,4 +1,6 @@
-const STATS_URL = 'https://app.gstdtoken.com/api/v1/network/stats';
+import { platformFetch } from '@/lib/platform-fetch';
+
+const STATS_URL = 'https://app.gstdtoken.xyz/api/v1/network/stats';
 
 function counter(value: unknown): value is number {
   return typeof value === 'number' && Number.isSafeInteger(value) && value >= 0;
@@ -11,11 +13,10 @@ export async function GET() {
   });
 
   try {
-    const upstream = await fetch(STATS_URL, {
+    const upstream = await platformFetch(STATS_URL, {
       headers: { Accept: 'application/json' },
       redirect: 'manual',
       signal: AbortSignal.timeout(5000),
-      next: { revalidate: 60 },
     });
     if (!upstream.ok) return unavailable();
 

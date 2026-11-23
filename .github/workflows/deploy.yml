@@ -2,7 +2,7 @@ name: Deploy to Cloudflare Workers
 
 on:
   push:
-    branches: [main]
+    branches: [main, codex/gstdtoken-xyz]
 
 permissions:
   contents: read
@@ -68,15 +68,17 @@ jobs:
             echo "Preview $path returned HTML successfully"
           done
       - name: Deploy validated production
+        if: github.ref == 'refs/heads/main'
         run: npx opennextjs-cloudflare deploy --config wrangler.jsonc
       - name: Verify production readiness and page
+        if: github.ref == 'refs/heads/main'
         run: |
           set -euo pipefail
           for attempt in $(seq 1 12); do
-            if curl --fail --silent --show-error --max-time 20 https://gstdtoken.com/api/health > "$RUNNER_TEMP/production-health.json"; then
+            if curl --fail --silent --show-error --max-time 20 https://gstdtoken.xyz/api/health > "$RUNNER_TEMP/production-health.json"; then
               node -e "const h=require(process.argv[1]); if(h.ok!==true || h.ready!==true) process.exit(1)" "$RUNNER_TEMP/production-health.json"
-              node scripts/check-network-stats.mjs https://gstdtoken.com
-              curl --fail --silent --show-error --location --max-time 30 https://gstdtoken.com/ > "$RUNNER_TEMP/production-page.html"
+              node scripts/check-network-stats.mjs https://gstdtoken.xyz
+              curl --fail --silent --show-error --location --max-time 30 https://gstdtoken.xyz/ > "$RUNNER_TEMP/production-page.html"
               grep -iq '<!doctype html' "$RUNNER_TEMP/production-page.html"
               exit 0
             fi

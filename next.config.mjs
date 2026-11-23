@@ -27,10 +27,17 @@ const nextConfig = {
 
   // Environment variables
   env: {
-    NEXT_PUBLIC_PLAUSIBLE_DOMAIN: process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || 'gstdtoken.com',
+    NEXT_PUBLIC_PLAUSIBLE_DOMAIN: process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || 'gstdtoken.xyz',
   },
 
   poweredByHeader: false,
+
+  async redirects() {
+    return ['www.gstdtoken.xyz', 'gstdtoken.com', 'www.gstdtoken.com'].map(host => ({
+      source: '/:path*', has: [{ type: 'host', value: host.replaceAll('.', '\\.') }],
+      destination: 'https://gstdtoken.xyz/:path*', permanent: true,
+    }));
+  },
 
   async headers() {
     return [

@@ -1,5 +1,7 @@
 # GSTD Web
 
+> Domain migration proposal: website `gstdtoken.xyz`, platform `app.gstdtoken.xyz`. DNS/HTTPS and Telegram cutover must be verified before announcing the new host as live. See [migration status](https://github.com/gstdcoin/ai/blob/main/docs/DOMAIN_MIGRATION.md).
+
 [![CI](https://github.com/gstdcoin/web/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/gstdcoin/web/actions/workflows/ci.yml)
 
 [Project map / Карта проекта](https://github.com/gstdcoin/ai/blob/main/docs/INDEX.md) · [Release evidence](https://github.com/gstdcoin/ai/blob/main/docs/READINESS.md) · [Repository maintenance](https://github.com/gstdcoin/ai/blob/main/docs/REPOSITORY_MAINTENANCE.md)
@@ -8,16 +10,16 @@ Default branch: `main`.
 
 **Русский:** здесь публичный сайт; чат, кошелёк и Telegram-бот находятся в платформе ai. [Карта проекта и инструкции](https://github.com/gstdcoin/ai/blob/main/docs/INDEX.md).
 
-The public information website for GSTD: understand the project, install a compute node and read the documentation. The [GSTD app](https://app.gstdtoken.com/chat) is the main workspace for chat, model selection, balance and rewards.
+The public information website for GSTD: understand the project, install a compute node and read the documentation. The [GSTD app](https://app.gstdtoken.xyz/chat) is the main workspace for chat, model selection, balance and rewards.
 
-[![Website](https://img.shields.io/badge/site-gstdtoken.com-00d2ff?style=flat-square)](https://gstdtoken.com)
-[![App](https://img.shields.io/badge/app-app.gstdtoken.com-0ea5e9?style=flat-square)](https://app.gstdtoken.com)
+[![Website](https://img.shields.io/badge/site-gstdtoken.xyz-00d2ff?style=flat-square)](https://gstdtoken.xyz)
+[![App](https://img.shields.io/badge/app-app.gstdtoken.xyz-0ea5e9?style=flat-square)](https://app.gstdtoken.xyz)
 [![Telegram](https://img.shields.io/badge/Telegram-@gstdaibot-26a5e4?style=flat-square)](https://t.me/gstdaibot)
 [![License](https://img.shields.io/badge/license-PolyForm%20NC%201.0.0-orange?style=flat-square)](LICENSE)
 
 Built with Next.js 16 and Tailwind CSS, deployed on Cloudflare Workers (free tier) through OpenNext.
 
-[Start here / Начните здесь](https://gstdtoken.com/docs#get-started): step-by-step AI, node, wallet and payments guide. Platform balances and direct-contract escrow are separate payment paths. Mainnet escrow is open beta; a real mainnet payout remains unverified.
+[Start here / Начните здесь](https://gstdtoken.xyz/docs#get-started): step-by-step AI, node, wallet and payments guide. Platform balances and direct-contract escrow are separate payment paths. Mainnet escrow is open beta; a real mainnet payout remains unverified.
 
 ## What you will find on the site
 
@@ -28,7 +30,7 @@ Built with Next.js 16 and Tailwind CSS, deployed on Cloudflare Workers (free tie
 - **AI demo** — the existing `/ai` free demo remains available; model selection and paid balance belong to the app.
 - **Languages** — English and Russian. App return links may pass `?lang=en` or `?lang=ru`; this takes priority over a stored website preference.
 
-Every number on the site comes from the live platform API ([`network/stats`](https://app.gstdtoken.com/api/v1/network/stats)). When the API is unreachable the site shows an "unavailable" notice instead of made-up figures.
+Every number on the site comes from the live platform API ([`network/stats`](https://app.gstdtoken.xyz/api/v1/network/stats)). When the API is unreachable the site shows an "unavailable" notice instead of made-up figures.
 
 > **Status:** early-stage. Whether nodes, tasks or payouts exist at a given moment is shown by the live stats, not by this README. The site describes planned features as plans, and nothing on it is an offer of income or investment advice.
 
@@ -86,4 +88,4 @@ The response identifies the actual serving node. Workers AI is optional: it requ
 
 ## First useful action
 
-The home page has three entry paths: [use the main app](https://app.gstdtoken.com/chat), [connect a node](https://gstdtoken.com/nodes), or [build with its API](https://gstdtoken.com/developers). The [website demo](https://gstdtoken.com/ai) is a separate, optional introduction; its conversation is not copied into the app. Existing routes remain available. [Telegram](https://t.me/gstdaibot) is another interface to the same platform. No wallet is required for the first AI chat. See the [ecosystem contract](https://github.com/gstdcoin/ai/blob/main/docs/ECOSYSTEM.md).
+The home page has three entry paths: [use the main app](https://app.gstdtoken.xyz/chat), [connect a node](https://gstdtoken.xyz/nodes), or [build with its API](https://gstdtoken.xyz/developers). The [website demo](https://gstdtoken.xyz/ai) is a separate, optional introduction; its conversation is not copied into the app. Existing routes remain available. [Telegram](https://t.me/gstdaibot) is another interface to the same platform. No wallet is required for the first AI chat. See the [ecosystem contract](https://github.com/gstdcoin/ai/blob/main/docs/ECOSYSTEM.md).

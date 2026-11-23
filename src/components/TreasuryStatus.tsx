@@ -6,7 +6,7 @@ import { appUrl } from '@/lib/ecosystem-links';
 import { useLanguage } from './LanguageProvider';
 import {publicFinanceView,type PublicFinance} from '@/lib/publicFinance';
 
-const PLATFORM_API = 'https://app.gstdtoken.com/api/v1';
+const PLATFORM_API = 'https://app.gstdtoken.xyz/api/v1';
 
 
 const TEXT = {

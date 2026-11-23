@@ -17,7 +17,7 @@ export async function GET() {
         const res = await fetch(`https://api.github.com/repos/${GITHUB_ORG}/${repo}`, {
           headers: {
             Accept: 'application/vnd.github+json',
-            'User-Agent': 'gstd-web (+https://gstdtoken.com)',
+            'User-Agent': 'gstd-web (+https://gstdtoken.xyz)',
           },
           next: { revalidate: 3600 },
         });

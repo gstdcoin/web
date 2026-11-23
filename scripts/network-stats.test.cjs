@@ -9,13 +9,14 @@ const compiled = ts.transpileModule(source, { compilerOptions: { module: ts.Modu
 
 function handler(fetch) {
   const exports = {};
-  vm.runInNewContext(compiled, { exports, fetch, Response, AbortSignal });
+  vm.runInNewContext(compiled, { exports, fetch, Response, AbortSignal,
+    require: () => ({ platformFetch: fetch }) });
   return exports.GET;
 }
 
 test('serves only validated canonical counters through the site origin', async () => {
   const get = handler(async (url, options) => {
-    assert.equal(url, 'https://app.gstdtoken.com/api/v1/network/stats');
+    assert.equal(url, 'https://app.gstdtoken.xyz/api/v1/network/stats');
     assert.equal(options.redirect, 'manual');
     return Response.json({ active_workers: 1, total_nodes: 2, tasks_completed: 23, total_tasks: 25,
       total_users: 3, total_gstd_paid: 0.125, internal: 'omit' });
@@ -74,7 +75,7 @@ test('release smoke check exercises the browser route and rejects unavailable or
     return Response.json(stats);
   }), stats);
   for (const body of [null, {}, { ...stats, tasks_completed: '67' }, { ...stats, total_earned_gstd: -1 }]) {
-    await assert.rejects(() => checkNetworkStats('https://gstdtoken.com', async () => Response.json(body)));
+    await assert.rejects(() => checkNetworkStats('https://gstdtoken.xyz', async () => Response.json(body)));
   }
-  await assert.rejects(() => checkNetworkStats('https://gstdtoken.com', async () => new Response(null, { status: 503 })));
+  await assert.rejects(() => checkNetworkStats('https://gstdtoken.xyz', async () => new Response(null, { status: 503 })));
 });

@@ -19,7 +19,7 @@ export async function checkNetworkStats(baseUrl, request = fetch) {
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   try {
-    const stats = await checkNetworkStats(process.argv[2] || 'https://gstdtoken.com');
+    const stats = await checkNetworkStats(process.argv[2] || 'https://gstdtoken.xyz');
     console.log(JSON.stringify({ check: 'website_network_stats', ok: true, ...stats }));
   } catch (error) {
     console.error(error instanceof Error ? error.message : 'Network statistics check failed');

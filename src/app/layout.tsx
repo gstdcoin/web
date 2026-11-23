@@ -33,8 +33,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "GSTD Token",
-              "url": "https://gstdtoken.com",
-              "logo": "https://gstdtoken.com/logogstd.png",
+              "url": "https://gstdtoken.xyz",
+              "logo": "https://gstdtoken.xyz/logogstd.png",
               "description": "Open AI compute network on TON. Pay GSTD for AI inference or run a node.",
               "sameAs": [
                 "https://t.me/gstdtoken",
@@ -51,7 +51,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "GSTD Token",
-              "url": "https://gstdtoken.com",
+              "url": "https://gstdtoken.xyz",
               "description": "Open AI compute network on TON. Pay GSTD for AI inference or run a node."
             })
           }}
