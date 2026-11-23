@@ -23,7 +23,7 @@ export function passportNodes(value:unknown,now:number):PassportNode[]|null{
   if(now-seen>600000||ids.has(row.node_id))continue;
   const models=row.capabilities.filter((m):m is string=>typeof m==='string'&&/^[A-Za-z0-9][A-Za-z0-9._:/-]{0,159}$/.test(m));
   ids.add(row.node_id);result.push({id:row.node_id,name:row.name,version:row.version,cpu_cores:row.cpu_cores,gpu_reported:row.has_gpu,
-   models:[...new Set(models)].slice(0,20),last_seen:row.last_seen});
+   models:Array.from(new Set(models)).slice(0,20),last_seen:row.last_seen});
  }
  return result;
 }
