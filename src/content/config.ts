@@ -3,7 +3,7 @@ export const GSTD_TON_CONTRACT =
 
 export const SITE = {
   name: "GSTD Token",
-  url: "https://gstdtoken.com",
+  url: "https://gstdtoken.xyz",
   localeDefault: "ru",
   locales: ["en", "ru"],
 };
@@ -15,10 +15,10 @@ export const LINKS = {
   twitter: "https://x.com/gstdtoken",
   github: "https://github.com/gstdcoin",
   docs: "/docs",
-  platform: "https://app.gstdtoken.com",
+  platform: "https://app.gstdtoken.xyz",
   aiChat: "/ai",
-  app: "https://app.gstdtoken.com",
-  monitor: "https://app.gstdtoken.com/api/v1/nodes/list",
+  app: "https://app.gstdtoken.xyz",
+  monitor: "https://app.gstdtoken.xyz/api/v1/nodes/list",
   chat: "https://t.me/gstdtoken",
   stonfiSwap:
     `https://app.ston.fi/swap?ft=TON&tt=${GSTD_TON_CONTRACT}&amount=1`,

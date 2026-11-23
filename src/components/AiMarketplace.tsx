@@ -6,7 +6,7 @@ export function AiMarketplace(){
  const ru=useLanguage().language!=='en';
  const [models,setModels]=useState<Model[]|null>(null),[error,setError]=useState(false);
  async function load(){try{
-  const r=await fetch('https://app.gstdtoken.com/api/v1/models/available',{signal:AbortSignal.timeout(8000)});
+  const r=await fetch('https://app.gstdtoken.xyz/api/v1/models/available',{signal:AbortSignal.timeout(8000)});
   if(!r.ok)throw new Error();const data=await r.json();
   if(!Array.isArray(data.models))throw new Error();
   setModels(data.models.filter((m:Model)=>m.nodes_count>0));setError(false);

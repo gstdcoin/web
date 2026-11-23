@@ -12,6 +12,7 @@
     "binding": "ASSETS"
   },
   "services": [
+    { "binding": "GSTD_PLATFORM", "service": "gstd-ai-platform" },
     {
       "binding": "WORKER_SELF_REFERENCE",
       "service": "gstd-web-preview"

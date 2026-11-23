@@ -27,7 +27,7 @@ const nextConfig = {
 
   // Environment variables
   env: {
-    NEXT_PUBLIC_PLAUSIBLE_DOMAIN: process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || 'gstdtoken.com',
+    NEXT_PUBLIC_PLAUSIBLE_DOMAIN: process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || 'gstdtoken.xyz',
   },
 
   poweredByHeader: false,

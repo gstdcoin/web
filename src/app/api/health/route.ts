@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server';
+import { platformFetch } from '@/lib/platform-fetch';
 
 export async function GET() {
-  const apiBase = (process.env.GSTD_API_URL || 'https://app.gstdtoken.com/api/v1').replace(/\/+$/, '');
-  const healthUrl = apiBase.endsWith('/api/v1') ? `${apiBase}/health` : `${apiBase}/api/v1/health`;
+  const healthUrl = 'https://app.gstdtoken.xyz/api/v1/health';
 
   try {
-    const response = await fetch(healthUrl, { signal: AbortSignal.timeout(3000) });
+    const response = await platformFetch(healthUrl, { signal: AbortSignal.timeout(3000) });
     if (!response.ok) {
       console.warn(`[health] platform readiness check failed with HTTP ${response.status}`);
       return NextResponse.json(

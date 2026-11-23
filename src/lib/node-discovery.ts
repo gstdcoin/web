@@ -2,14 +2,15 @@
  * Cloudflare public tunnels may rotate; the allowlisted registry identity does not.
  * The registry is trusted here; this does not independently verify node signatures.
  */
+import { platformFetch } from './platform-fetch';
 export async function registeredNodeUrls(
   trustedIds: Set<string>,
   allowedHosts: Set<string>,
-  request: typeof fetch = fetch,
+  request: typeof fetch = platformFetch,
 ): Promise<string[]> {
   if (!trustedIds.size) return [];
   try {
-    const response = await request('https://app.gstdtoken.com/api/v1/nodes/list', {
+    const response = await request('https://app.gstdtoken.xyz/api/v1/nodes/list', {
       signal: AbortSignal.timeout(5000), cache: 'no-store', redirect: 'manual',
     });
     if (!response.ok) return [];

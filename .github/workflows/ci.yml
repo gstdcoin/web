@@ -43,7 +43,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          NEXT_PUBLIC_APP_URL: https://gstdtoken.com
+          NEXT_PUBLIC_APP_URL: https://gstdtoken.xyz
           # Same reason as deploy.yml's build step: the "ai" binding in
           # wrangler.jsonc makes next.config.mjs's initOpenNextCloudflareForDev()
           # open a remote proxy session on every `next build`, which needs

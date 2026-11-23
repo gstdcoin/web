@@ -2,6 +2,11 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "main": ".open-next/worker.js",
   "name": "gstd-web",
+  "workers_dev": true,
+  "routes": [
+    { "pattern": "gstdtoken.xyz", "custom_domain": true },
+    { "pattern": "www.gstdtoken.xyz", "custom_domain": true }
+  ],
   "compatibility_date": "2024-09-23",
   "compatibility_flags": [
     "nodejs_compat",
@@ -12,6 +17,7 @@
     "binding": "ASSETS"
   },
   "services": [
+    { "binding": "GSTD_PLATFORM", "service": "gstd-ai-platform" },
     {
       "binding": "WORKER_SELF_REFERENCE",
       "service": "gstd-web"

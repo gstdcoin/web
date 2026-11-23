@@ -22,7 +22,7 @@ The production-tested versions are Next.js 16.4.3 and OpenNext Cloudflare 1.20.1
    - `CLOUDFLARE_API_TOKEN`
    - `CLOUDFLARE_ACCOUNT_ID`
 3. Push to `main` — the workflow builds and deploys automatically.
-4. **Custom domain**: in the Cloudflare dashboard, open the `gstd-web` Worker → **Settings → Domains & Routes** → add `gstdtoken.com` (and `www.gstdtoken.com` if used). If the domain's DNS is already on Cloudflare, this is one click; otherwise Cloudflare will prompt you to update nameservers or add a CNAME.
+4. **Custom domain**: in the Cloudflare dashboard, open the `gstd-web` Worker → **Settings → Domains & Routes** → add `gstdtoken.xyz` (and `www.gstdtoken.xyz` if used). If the domain's DNS is already on Cloudflare, this is one click; otherwise Cloudflare will prompt you to update nameservers or add a CNAME.
 
 Build-time env vars (`NEXT_PUBLIC_*`) are already baked in from `.env.production` — no extra config needed unless you change them.
 

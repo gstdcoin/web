@@ -17,8 +17,8 @@ interface RepoInfo {
 }
 
 const REPO_DESCRIPTIONS: Record<string, { ru: string; en: string }> = {
-  ai: { ru: 'Платформа app.gstdtoken.com: чат, API, статистика сети', en: 'app.gstdtoken.com platform: chat, API, network stats' },
-  web: { ru: 'Этот сайт — gstdtoken.com', en: 'This website — gstdtoken.com' },
+  ai: { ru: 'Платформа app.gstdtoken.xyz: чат, API, статистика сети', en: 'app.gstdtoken.xyz platform: chat, API, network stats' },
+  web: { ru: 'Этот сайт — gstdtoken.xyz', en: 'This website — gstdtoken.xyz' },
   gstdbot: { ru: 'Telegram-бот, ПО ноды и ядро сети', en: 'Telegram bot, node software and network core' },
   A2A: { ru: 'SDK для ИИ-агентов и MCP-сервер', en: 'AI agent SDK and MCP server' },
   'gstd-bridge': { ru: 'Код кросс-чейн моста (не запущен, без аудита)', en: 'Cross-chain bridge code (not live, unaudited)' },
