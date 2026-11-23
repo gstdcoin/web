@@ -2,7 +2,7 @@ name: Deploy to Cloudflare Workers
 
 on:
   push:
-    branches: [main]
+    branches: [main, codex/gstdtoken-xyz]
 
 permissions:
   contents: read
@@ -68,8 +68,10 @@ jobs:
             echo "Preview $path returned HTML successfully"
           done
       - name: Deploy validated production
+        if: github.ref == 'refs/heads/main'
         run: npx opennextjs-cloudflare deploy --config wrangler.jsonc
       - name: Verify production readiness and page
+        if: github.ref == 'refs/heads/main'
         run: |
           set -euo pipefail
           for attempt in $(seq 1 12); do
