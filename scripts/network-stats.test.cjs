@@ -16,7 +16,7 @@ function handler(fetch) {
 test('serves only validated canonical counters through the site origin', async () => {
   const get = handler(async (url, options) => {
     assert.equal(url, 'https://app.gstdtoken.com/api/v1/network/stats');
-    assert.equal(options.redirect, 'error');
+    assert.equal(options.redirect, 'manual');
     return Response.json({ active_workers: 1, total_nodes: 2, tasks_completed: 23, total_tasks: 25,
       total_users: 3, total_gstd_paid: 0.125, internal: 'omit' });
   });
@@ -28,10 +28,20 @@ test('serves only validated canonical counters through the site origin', async (
 
 test('does not display invented counters when the platform response is invalid or unavailable', async () => {
   for (const fetch of [async () => Response.json({ active_workers: 1 }),
+    async () => new Response(null, { status: 302, headers: { Location: 'https://unvalidated.example' } }),
     async () => new Response(null, { status: 502 }), async () => { throw new Error('timeout'); }]) {
     const response = await handler(fetch)();
     assert.equal(response.status, 503);
     assert.equal(response.headers.get('Cache-Control'), 'no-store');
+  }
+});
+
+test('Cloudflare outbound routes use manual redirects and check unsuccessful responses', () => {
+  for (const path of ['src/app/api/network/stats/route.ts', 'src/app/api/chat/route.ts', 'src/lib/node-discovery.ts']) {
+    const source = fs.readFileSync(path, 'utf8');
+    assert.doesNotMatch(source, /redirect:\s*['"]error['"]/);
+    assert.match(source, /redirect:\s*['"]manual['"]/);
+    assert.match(source, /if\s*\(!\w+\.ok\)/);
   }
 });
 
@@ -60,7 +70,7 @@ test('release smoke check exercises the browser route and rejects unavailable or
   const stats = { active_workers: 1, total_nodes: 1, tasks_completed: 67, total_users: 3, total_earned_gstd: 0 };
   assert.deepEqual(await checkNetworkStats('https://preview.workers.dev/path', async (url, options) => {
     assert.equal(url.href, 'https://preview.workers.dev/api/network/stats');
-    assert.equal(options.redirect, 'error');
+    assert.equal(options.redirect, 'manual');
     return Response.json(stats);
   }), stats);
   for (const body of [null, {}, { ...stats, tasks_completed: '67' }, { ...stats, total_earned_gstd: -1 }]) {

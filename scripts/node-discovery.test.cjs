@@ -35,8 +35,8 @@ test('fails closed when the registry is unavailable or no identities are trusted
 test('registry lookup refuses redirects rather than following an unvalidated destination',async()=>{
  let called=false;
  const result=await discover(new Set(['trusted']),new Set(),async(url,options)=>{
-  called=true;assert.equal(options.redirect,'error');
-  throw new TypeError('redirect rejected');
+  called=true;assert.equal(options.redirect,'manual');
+  return new Response(null,{status:302,headers:{Location:'https://unvalidated.example'}});
  });
  assert.equal(called,true);assert.equal(result.length,0);
 });
