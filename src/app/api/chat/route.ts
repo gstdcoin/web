@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { registeredNodeUrls } from '@/lib/node-discovery';
+import { registeredNodeUrls, nodeTrustConfiguration } from '@/lib/node-discovery';
 import { assertNodeCompletion, guardNodeStream } from '@/lib/node-response-guard';
 import { getCloudflareContext } from '@opennextjs/cloudflare';
 import {
@@ -26,6 +26,8 @@ const NODE_TIMEOUT_MS = 60_000;
 const SEED_FETCH_TIMEOUT_MS = 5_000;
 
 type ChatEnvironment = {
+  GSTD_TRUSTED_NODE_IDS?: string;
+  GSTD_SEED_HOSTS?: string;
   AI?: { run(model: string, input: Record<string, unknown>): Promise<any> };
   CHAT_RATE_LIMITER?: RateLimiterBinding;
 };
@@ -61,15 +63,10 @@ function cachedRegisteredNodeUrls(ids: Set<string>, hosts: Set<string>): Promise
   return request;
 }
 
-async function getSeedNodeUrls(): Promise<string[]> {
-  const allowedHosts = new Set(
-    (process.env.GSTD_SEED_HOSTS || '')
-      .split(',')
-      .map((host) => host.trim().toLowerCase())
-      .filter(Boolean),
+async function getSeedNodeUrls(env: ChatEnvironment): Promise<string[]> {
+  const { allowedHosts, trustedIds } = nodeTrustConfiguration(
+    process.env.NODE_ENV === 'production' ? env : { ...process.env, ...env },
   );
-  const trustedIds = new Set((process.env.GSTD_TRUSTED_NODE_IDS || '')
-    .split(',').map(id => id.trim()).filter(Boolean));
   const registered = await cachedRegisteredNodeUrls(trustedIds, allowedHosts);
   if (registered.length > 0) return registered;
   if (allowedHosts.size === 0) return [];
@@ -130,7 +127,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Invalid chat request' }, { status: 400 });
   }
 
-  const seeds = await getSeedNodeUrls();
+  const seeds = await getSeedNodeUrls(chatEnv);
   const errors: string[] = contextError ? [`Cloudflare context: ${contextError}`] : [];
   if (seeds.length === 0) errors.push('no allowed seed nodes configured or reachable');
   for (const nodeUrl of seeds) {
@@ -139,7 +136,7 @@ export async function POST(req: Request) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
-        signal: AbortSignal.timeout(NODE_TIMEOUT_MS),
+        signal: AbortSignal.any([req.signal, AbortSignal.timeout(NODE_TIMEOUT_MS)]),
         redirect: 'manual',
       });
       if (!resp.ok) {
@@ -213,7 +210,6 @@ export async function POST(req: Request) {
     {
       error: 'all_nodes_unreachable',
       message: 'Node routing and the Cloudflare AI fallback are currently unavailable. Try again shortly.',
-      attempted: errors,
     },
     { status: 503 },
   );

@@ -2,7 +2,7 @@ name: Deploy to Cloudflare Workers
 
 on:
   push:
-    branches: [main, codex/gstdtoken-xyz, codex/compute-passport]
+    branches: [main, codex/gstdtoken-xyz, codex/compute-passport, codex/service-usability]
 
 permissions:
   contents: read
@@ -63,6 +63,7 @@ jobs:
           test "$ready" = true || { echo "::error::Preview readiness failed"; exit 1; }
           node scripts/check-network-stats.mjs "$WORKER_URL"
           node scripts/check-compute-passport.mjs "$WORKER_URL"
+          node scripts/check-service-journey.mjs "$WORKER_URL" --inference
           for path in / /network /about /nodes /ai /developers /docs; do
             curl --fail --silent --show-error --location --max-time 30 "$WORKER_URL$path" > "$RUNNER_TEMP/preview-page.html"
             grep -iq '<!doctype html' "$RUNNER_TEMP/preview-page.html"
