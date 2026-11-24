@@ -30,3 +30,5 @@ test('missing runtime trust or rate limiter cannot open production routing',asyn
   const {api,attempts}=route(env),r=await api.POST(request());assert.equal(r.status,503);assert.equal(attempts.length,0);
  }
 });
+
+test('both deployment profiles enable the runtime API used by discovery',()=>{for(const name of ['wrangler.jsonc','wrangler.preview.jsonc'])assert(fs.readFileSync(name,'utf8').includes('cache_option_enabled'));});

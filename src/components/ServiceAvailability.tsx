@@ -37,7 +37,7 @@ export function ServiceAvailability({id = 'channels'}: {id?: string}) {
       <article className="rounded-2xl border border-white/15 p-5 bg-white/[0.025]">
         <h3 className="font-medium">{ru ? 'Приложение GSTD' : 'GSTD platform'}</h3>
         <p className="text-sm text-slate-300 mt-3">{state.platform === null ? unknown : state.platform ? (ru ? 'Платформа отвечает' : 'Platform is responding') : (ru ? 'Временно недоступна' : 'Temporarily unavailable')}</p>
-        <p className="text-xs text-slate-500 mt-3">{ru ? 'Статус платформы не гарантирует ответ каждой модели.' : 'Platform health does not guarantee an answer from every model.'}</p>
+        <p className="text-xs text-slate-400 mt-3">{ru ? 'Статус платформы не гарантирует ответ каждой модели.' : 'Platform health does not guarantee an answer from every model.'}</p>
       </article>
       <article className="rounded-2xl border border-white/15 p-5 bg-white/[0.025]">
         <h3 className="font-medium">{ru ? 'Компьютеры участников' : 'Network computers'}</h3>
@@ -50,6 +50,6 @@ export function ServiceAvailability({id = 'channels'}: {id?: string}) {
         {state.telegram === true && <a href={LINKS.telegramBot} target="_blank" rel="noopener noreferrer" className="text-sm text-[#D4AF37] underline inline-block mt-3">{ru ? 'Открыть бота' : 'Open the bot'} ↗</a>}
       </article>
     </div>
-    <p role="status" aria-live="polite" className="text-xs text-slate-500 mt-4">{state.checkedAt ? `${ru ? 'Проверено' : 'Checked'} ${new Date(state.checkedAt).toLocaleTimeString(ru ? 'ru-RU' : 'en-GB')}` : (ru ? 'Подтверждённого статуса пока нет.' : 'No confirmed status yet.')} · <Link href="/network" className="underline">{ru ? 'Подробные данные сети' : 'Network details'}</Link></p>
+    <p role="status" aria-live="polite" className="text-xs text-slate-400 mt-4">{state.checkedAt ? `${ru ? 'Проверено' : 'Checked'} ${new Date(state.checkedAt).toLocaleTimeString(ru ? 'ru-RU' : 'en-GB')}` : (ru ? 'Подтверждённого статуса пока нет.' : 'No confirmed status yet.')} · <Link href="/network" className="underline">{ru ? 'Подробные данные сети' : 'Network details'}</Link></p>
   </section>;
 }
