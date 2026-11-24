@@ -14,6 +14,8 @@ Scope: gstdcoin repositories and the gstdtoken.xyz ecosystem. Review date: 2026-
 | Website free chat | `/api/chat`: HTTP 503 node_unavailable despite reachable trusted node | Runtime discovery configuration bug |
 | Telegram | HTTP 503; token/API/identity valid, webhook false | Not operational for message delivery |
 | Node host capacity | Termalin: disk 84.6%, memory about 18%, low load, no OOM | Track disk growth; do not delete models or backups automatically |
+| Node process / local model access | PM2 online with zero restarts; Ollama listens on 127.0.0.1:11434 | Model server is local, public traffic uses the node gateway |
+| Escrow RPC configuration | Read-only catalog action: HTTP 200, rpc_configured true | Configuration confirmed; no mainnet transaction or payout was tested |
 | Release execution | GitHub Actions account billing lock previously prevented runner startup; local Wrangler login expired | New release must obtain real successful deployment evidence |
 | Optional GSTD connector | Status/model tools returned service_unavailable | Connector availability is separate from public platform health |
 
@@ -27,6 +29,8 @@ Scope: gstdcoin repositories and the gstdtoken.xyz ecosystem. Review date: 2026-
 6. Cloud fallback remains off by default, requires explicit permission, and discloses that the current question and completed history go to Cloudflare AI. A requested exact model is never silently substituted.
 
 ## Verification
+
+Changes are tracked in [web PR #17](https://github.com/gstdcoin/web/pull/17). Local functional tests, TypeScript, ESLint (no errors) and the Next.js production build have passed. The browser verified editable examples, retained questions and actionable failure notices, both languages, and no horizontal overflow at 390 px. These observations do not replace a successful Cloudflare adapter build or live preview. GitHub refused to start this PR's validation and preview jobs because the account is locked due to a billing issue; no runner steps executed. The main branch and production site have not been updated by this PR.
 
 Use Node 22 and the locked npm version. From the repository root:
 
