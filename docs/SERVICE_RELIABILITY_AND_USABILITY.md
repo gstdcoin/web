@@ -30,7 +30,7 @@ Scope: gstdcoin repositories and the gstdtoken.xyz ecosystem. Review date: 2026-
 
 ## Verification
 
-Changes are tracked in [web PR #17](https://github.com/gstdcoin/web/pull/17). Local functional tests, TypeScript, ESLint (no errors) and the Next.js production build have passed. The browser verified editable examples, retained questions and actionable failure notices, both languages, and no horizontal overflow at 390 px. These observations do not replace a successful Cloudflare adapter build or live preview. GitHub refused to start this PR's validation and preview jobs because the account is locked due to a billing issue; no runner steps executed. The main branch and production site have not been updated by this PR.
+PR #17 is merged. Clean npm ci and audit passed; types, lint and Cloudflare build passed. Preview and production inference passed with a real node, no paid task and no cloud fallback. Production version b32811af-a46f-499d-b39f-966c0385d712 was published manually after owner authorization because GitHub Actions was locked. Telegram remains degraded.
 
 Use Node 22 and the locked npm version. From the repository root:
 
@@ -52,7 +52,7 @@ Browser verification: desktop and narrow layout; Russian/English; keyboard navig
 ## Remaining release and reliability work
 
 - Repair and verify canonical Telegram webhook/menu with the already deployed authenticated operation. Quick Edit private-preview initialization failed during the earlier attempt; its draft was discarded and production remained 1a82d842. A fresh operator credential must not be copied out of Cloudflare into chat or a node.
-- Obtain successful CI and a separate Cloudflare preview; exercise the website free journey against an actual trusted node before production. Passing local tests is not a deployment record.
+- Restore GitHub Actions. Manual preview and production checks passed; automated CI is still blocked.
 - One available CPU node is a single point of inference failure. Keep an honest unavailable state and opt-in fallback until a second independently operated node is verified. Do not advertise high availability from a heartbeat count.
 - Enable/inspect built-in Cloudflare metrics and bounded error logging under existing free allowances. Do not log prompts, wallet identifiers, tokens or response bodies. Account request/CPU/error and storage utilization separately. Browser polling pauses in hidden tabs and uses the existing cached report.
 - Define operator objectives before promising an SLA: completed free requests / eligible attempts; time to first visible text; completed-answer latency; dispatch rejection rate. Segment by exact model and compute profile. Publish a sample size and time window. GPU/VRAM verification, full task prices, escrow settlements and bridge withdrawals need their own evidence.
@@ -65,3 +65,5 @@ Browser verification: desktop and narrow layout; Russian/English; keyboard navig
 - [Cloudflare free and platform limits](https://developers.cloudflare.com/workers/platform/limits/)
 - [W3C status messages](https://www.w3.org/WAI/WCAG21/Understanding/status-messages)
 - [W3C error suggestions](https://www.w3.org/WAI/WCAG21/Understanding/error-suggestion)
+
+Release evidence: clean npm ci found zero vulnerabilities; 46 functional tests and four Picomatch tests passed. The cache_option_enabled flag fixed a second discovery failure on the pinned runtime. Preview e2440acd passed inference with a real node and fallback disabled; browser response and copy succeeded. GitHub remains blocked. Production smoke passed: first text 1645 ms, completion 1656 ms in one sample.
