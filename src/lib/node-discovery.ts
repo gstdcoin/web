@@ -3,6 +3,19 @@
  * The registry is trusted here; this does not independently verify node signatures.
  */
 import { platformFetch } from './platform-fetch';
+
+/** Read the request's Worker bindings, rather than assuming process.env is
+ * populated (our compatibility date predates that Cloudflare behavior). */
+export function nodeTrustConfiguration(env: Record<string, unknown>) {
+  const values = (name: string) => typeof env[name] === 'string'
+    ? (env[name] as string).split(',').map(value => value.trim()).filter(Boolean)
+    : [];
+  return {
+    trustedIds: new Set(values('GSTD_TRUSTED_NODE_IDS')),
+    allowedHosts: new Set(values('GSTD_SEED_HOSTS').map(host => host.toLowerCase())),
+  };
+}
+
 export async function registeredNodeUrls(
   trustedIds: Set<string>,
   allowedHosts: Set<string>,

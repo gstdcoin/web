@@ -1,6 +1,6 @@
 # GSTD Web
 
-> Domain migration proposal: website `gstdtoken.xyz`, platform `app.gstdtoken.xyz`. DNS/HTTPS and Telegram cutover must be verified before announcing the new host as live. See [migration status](https://github.com/gstdcoin/ai/blob/main/docs/DOMAIN_MIGRATION.md).
+> Website `gstdtoken.xyz` and platform `app.gstdtoken.xyz` are live. Telegram delivery is a separate check: do not infer bot readiness from working DNS or a valid bot token. See [migration status](https://github.com/gstdcoin/ai/blob/main/docs/DOMAIN_MIGRATION.md).
 
 [![CI](https://github.com/gstdcoin/web/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/gstdcoin/web/actions/workflows/ci.yml)
 
@@ -8,7 +8,7 @@
 
 Default branch: `main`.
 
-**Русский:** здесь публичный сайт; чат, кошелёк и Telegram-бот находятся в платформе ai. [Карта проекта и инструкции](https://github.com/gstdcoin/ai/blob/main/docs/INDEX.md).
+**Русский:** здесь публичный сайт и бесплатный пробный чат `/ai` без кошелька и установки. Выбор моделей, баланс и Telegram-бот находятся в платформе ai. [Карта проекта и инструкции](https://github.com/gstdcoin/ai/blob/main/docs/INDEX.md).
 
 The public information website for GSTD: understand the project, install a compute node and read the documentation. The [GSTD app](https://app.gstdtoken.xyz/chat) is the main workspace for chat, model selection, balance and rewards.
 
@@ -28,9 +28,12 @@ Built with Next.js 16 and Tailwind CSS, deployed on Cloudflare Workers (free tie
 - **Docs and FAQ** — guides for users and developers, with links to the source repositories.
 - **Transparency** — what is deployed, what is experimental, and what is not available yet.
 - **AI demo** — the existing `/ai` free demo remains available; model selection and paid balance belong to the app.
+- **Service availability** — plain-language platform, online-computer and Telegram checks; stale or absent observations stay unknown.
 - **Languages** — English and Russian. App return links may pass `?lang=en` or `?lang=ru`; this takes priority over a stored website preference.
 
 Every number on the site comes from the live platform API ([`network/stats`](https://app.gstdtoken.xyz/api/v1/network/stats)). When the API is unreachable the site shows an "unavailable" notice instead of made-up figures.
+
+See [service reliability and usability](docs/SERVICE_RELIABILITY_AND_USABILITY.md) for the observed service audit, request deadlines, beginner journey, release checks and remaining limitations. `node scripts/check-service-journey.mjs https://gstdtoken.xyz --inference` explicitly exercises one synthetic free request with cloud fallback disabled; omit `--inference` for read-only health checks.
 
 > **Status:** early-stage. Whether nodes, tasks or payouts exist at a given moment is shown by the live stats, not by this README. The site describes planned features as plans, and nothing on it is an offer of income or investment advice.
 

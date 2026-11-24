@@ -98,6 +98,9 @@ export function Navbar() {
               variant="ghost"
               size="sm"
               onClick={() => setIsOpen(!isOpen)}
+              aria-label={language === 'en' ? (isOpen ? 'Close navigation' : 'Open navigation') : (isOpen ? 'Закрыть меню' : 'Открыть меню')}
+              aria-expanded={isOpen}
+              aria-controls="gstd-mobile-menu"
               className="md:hidden min-w-0 px-2 text-slate-100 hover:text-[#D4AF37] hover:text-[#D4AF37] hover:bg-[#D4AF37]/10"
             >
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -107,7 +110,7 @@ export function Navbar() {
 
         {/* Mobile Navigation - Bento Style Grid */}
         {isOpen && (
-          <div className="md:hidden">
+          <div id="gstd-mobile-menu" className="md:hidden">
             <div className="px-2 pt-4 pb-4 border-t border-[#D4AF37]/10">
               {/* Bento Grid Layout */}
               <div className="grid grid-cols-2 gap-2">

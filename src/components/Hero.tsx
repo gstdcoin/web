@@ -2,15 +2,13 @@
 
 import Link from 'next/link';
 import { useLanguage } from './LanguageProvider';
-import { LINKS } from '@/content/config';
-import { appUrl } from '@/lib/ecosystem-links';
 import { ArrowRight, MessageSquare, Server, Code2 } from 'lucide-react';
 
 export function Hero() {
   const { language } = useLanguage();
   const ru = language !== 'en';
   const actions = [
-    { href: appUrl(language), icon: MessageSquare, title: ru ? 'Спросить ИИ' : 'Ask AI',
+    { href: '/ai#chat', icon: MessageSquare, title: ru ? 'Попробовать ИИ бесплатно' : 'Try AI for free',
       text: ru ? 'Откройте чат и задайте вопрос. Для первого запроса кошелёк не нужен.' : 'Open the chat and ask a question. No wallet is needed to try it.' },
     { href: '/nodes', icon: Server, title: ru ? 'Подключить ноду' : 'Run a node',
       text: ru ? 'Подключите свой компьютер: выполняйте задачи сети на установленной модели.' : 'Connect your computer and execute network tasks with an installed model.' },
@@ -37,7 +35,7 @@ export function Hero() {
           ))}
         </div>
         <div className="flex flex-wrap gap-5 text-sm mt-7">
-          <a className="text-[#D4AF37] underline underline-offset-4" href={LINKS.telegramBot} target="_blank" rel="noopener noreferrer">{ru ? 'Тот же ИИ в Telegram' : 'Use AI in Telegram'} ↗</a>
+          <Link className="text-[#D4AF37] underline underline-offset-4" href="/ai#channels">{ru ? 'Доступность Telegram' : 'Telegram availability'} →</Link>
           <Link className="text-slate-400 underline underline-offset-4" href="/network">{ru ? 'Паспорт сети: проверить данные' : 'Network passport: inspect the data'}</Link>
           <Link className="text-slate-400 underline underline-offset-4" href="/token">{ru ? 'Роль GSTD' : 'The role of GSTD'}</Link>
         </div>

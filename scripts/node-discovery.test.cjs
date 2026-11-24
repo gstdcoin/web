@@ -11,6 +11,14 @@ runInNewContext(code, { exports: exported, URL, AbortSignal, Date, Set, fetch,
   require: () => ({ platformFetch: fetch }) });
 const discover = exported.registeredNodeUrls;
 const live = (node_id, node_url, last_seen = new Date().toISOString()) => ({ node_id, node_url, is_online: true, last_seen });
+
+test('Worker binding trust configuration works without process.env and fails closed on absent bindings', () => {
+  const configured = exported.nodeTrustConfiguration({GSTD_TRUSTED_NODE_IDS:' trusted , second ',GSTD_SEED_HOSTS:' SAFE.example '});
+  assert.deepEqual(Array.from(configured.trustedIds), ['trusted','second']);
+  assert.deepEqual(Array.from(configured.allowedHosts), ['safe.example']);
+  assert.equal(exported.nodeTrustConfiguration({}).trustedIds.size, 0);
+  assert.equal(exported.nodeTrustConfiguration({GSTD_TRUSTED_NODE_IDS:{value:'trusted'}}).trustedIds.size, 0);
+});
 test('routes a trusted persistent identity to its current tunnel and ignores other registrants', async () => {
   const result = await discover(new Set(['trusted']), new Set(), async () => new Response(JSON.stringify({ nodes: [
     live('other', 'https://other.trycloudflare.com'),
